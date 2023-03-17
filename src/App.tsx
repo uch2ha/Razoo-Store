@@ -1,17 +1,21 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import './App.css'
+import { decrement, increment } from './features/counter/counterSlice'
+import { RootState } from './store'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const count = useSelector((state: RootState) => state.counter.value)
+  const dispatch = useDispatch()
 
   return (
     <div className="App">
-      <h1>Vite + React</h1>
+      <h1>Vite + React + Toolkit + Tailwind</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={() => dispatch(increment())}>Increment</button>
+        <span className="px-10">{count}</span>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
       </div>
     </div>
   )
