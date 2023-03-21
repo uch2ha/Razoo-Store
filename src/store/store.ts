@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { dbApi } from './DB/db.api'
+import { UIReducer } from './UI/ui.slice'
 
 export const store = configureStore({
   reducer: {
-    [dbApi.reducerPath]: dbApi.reducer
+    [dbApi.reducerPath]: dbApi.reducer,
+    UI: UIReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(dbApi.middleware)
 })
