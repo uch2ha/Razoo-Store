@@ -1,0 +1,114 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "name": "name1",
+      "description": "description1",
+      "categories": "categories1",
+      "sizes": "10ml",
+      "price": 10
+    },
+    {
+      "id": 1,
+      "name": "name2",
+      "description": "description2",
+      "categories": "categories2",
+      "sizes": "20ml",
+      "price": 20
+    },
+    {
+      "id": 3,
+      "name": "name3",
+      "description": "description3",
+      "categories": "categories3",
+      "sizes": "30ml",
+      "price": 30
+    },
+    {
+      "id": 4,
+      "name": "name4",
+      "description": "description4",
+      "categories": "categories4",
+      "sizes": "40ml",
+      "price": 40
+    },
+    {
+      "id": 5,
+      "name": "name5",
+      "description": "description5",
+      "categories": "categories5",
+      "sizes": "50ml",
+      "price": 50
+    }
+  ],
+  "users": [
+    {
+      "id": 0,
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@admin.com",
+      "isAdmin": true
+    },
+    {
+      "id": 1,
+      "firstName": "Dmitry",
+      "lastName": "Sinyavskiy",
+      "email": "sinyavskiy@gmail.com",
+      "isAdmin": false
+    },
+    {
+      "id": 2,
+      "firstName": "Diana",
+      "lastName": "Sojanen",
+      "email": "diana.sojanen@gmail.com",
+      "isAdmin": false
+    }
+  ],
+  "orders": [
+    {
+      "orderId": 0,
+      "products": [
+        {
+          "productId": 1,
+          "amount": 4
+        },
+        {
+          "productId": 2,
+          "amount": 1
+        }
+      ],
+      "userId": 1,
+      "purchasedAt": "date"
+    },
+    {
+      "orderId": 1,
+      "products": [
+        {
+          "productId": 2,
+          "amount": 5
+        },
+        {
+          "productId": 0,
+          "amount": 10
+        }
+      ],
+      "userId": 2,
+      "purchasedAt": "date"
+    },
+    {
+      "orderId": 2,
+      "products": [
+        {
+          "productId": 3,
+          "amount": 1
+        },
+        {
+          "productId": 2,
+          "amount": 1
+        }
+      ],
+      "userId": 2,
+      "purchasedAt": "date"
+    }
+  ]
+}
