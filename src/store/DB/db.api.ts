@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // components
 import { IUser, IOrder, IProduct } from '../../models'
 
-type IDb = { users: IUser[]; orders: IOrder[]; products: IProduct[] }
+export type IDb = { users: IUser[]; orders: IOrder[]; products: IProduct[] }
 
 export const dbApi = createApi({
   reducerPath: 'db/api',
