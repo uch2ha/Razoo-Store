@@ -1,99 +1,178 @@
-import React, { FC, useState } from 'react'
+import React, { ChangeEvent, FC, MouseEvent, useState } from 'react'
 
-const Filters: FC = () => {
+interface IFilters {
+  categories: {
+    [key: string]: boolean
+    shampoo: boolean
+    hairConditioner: boolean
+    hairMask: boolean
+    hairOil: boolean
+  }
+  size: {
+    [key: string]: boolean
+    '10ml': boolean
+    '25ml': boolean
+    '50ml': boolean
+    '100ml': boolean
+  }
+}
+
+interface IFiltersProps {
+  setFilters: (prev: (prev: IFilters) => IFilters) => void
+  filters: IFilters
+}
+
+const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
+  const { categories, size } = filters
   const [categoriesVisible, setCategoriesVisible] = useState(true)
   const [sizeVisible, setSizeVisible] = useState(false)
 
-  const handleClick = (e: any) => {
-    if (e.target.id === 'categories') setCategoriesVisible((prev) => !prev)
-    if (e.target.id === 'size') setSizeVisible((prev) => !prev)
+  // show or hide filter's categories
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement
+    if (target instanceof HTMLButtonElement) {
+      if (target.id === 'categories') setCategoriesVisible((prev) => !prev)
+      if (target.id === 'size') setSizeVisible((prev) => !prev)
+    }
+  }
+
+  const handleCategoriesCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.id
+    setFilters((prev: IFilters) => {
+      return {
+        ...prev,
+        categories: {
+          ...prev.categories,
+          [name]: !prev.categories[name]
+        }
+      }
+    })
+  }
+
+  const handleSizeCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.id
+    setFilters((prev: IFilters) => {
+      return {
+        ...prev,
+        size: {
+          ...prev.size,
+          [name]: !prev.size[name]
+        }
+      }
+    })
+  }
+
+  const handleReset = () => {
+    setFilters(() => {
+      return {
+        categories: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
+        size: { '10ml': false, '25ml': false, '50ml': false, '100ml': false }
+      }
+    })
   }
 
   return (
     <div className="bg-red-200 w-full h-full flex flex-col justify-start items-start">
-      <p
+      <button
         id="categories"
-        onClick={(e) => handleClick(e)}
+        onClick={handleClick}
         className="border-t-4 border-b-4 w-full pl-[30%] text-start">
         CATEGORIES
-      </p>
+      </button>
       {categoriesVisible && (
         <div className="flex flex-col items-start pl-[30%] border-b-4 w-full">
           <div>
-            <input type="checkbox" id="shampoo" name="shampoo" onChange={() => console.log(123)} />
+            <input
+              type="checkbox"
+              id="shampoo"
+              name="shampoo"
+              onChange={handleCategoriesCheck}
+              checked={categories.shampoo}
+            />
             <label htmlFor="shampoo">SHAMPOO</label>
           </div>
           <div>
             <input
               type="checkbox"
-              id="hair-conditioner"
-              name="hair-conditioner"
-              onChange={() => console.log(123)}
+              id="hairConditioner"
+              name="hairConditioner"
+              onChange={handleCategoriesCheck}
+              checked={categories.hairConditioner}
             />
-            <label htmlFor="hair-conditioner">HAIR CONDITIONER</label>
+            <label htmlFor="hairConditioner">HAIR CONDITIONER</label>
           </div>
           <div>
             <input
               type="checkbox"
-              id="hair-mask"
-              name="hair-mask"
-              onChange={() => console.log(123)}
+              id="hairMask"
+              name="hairMask"
+              onChange={handleCategoriesCheck}
+              checked={categories.hairMask}
             />
-            <label htmlFor="hair-mask">HAIR MASK</label>
+            <label htmlFor="hairMask">HAIR MASK</label>
           </div>
           <div>
             <input
               type="checkbox"
-              id="hair-oil"
-              name="hair-oil"
-              onChange={() => console.log(123)}
+              id="hairOil"
+              name="hairOil"
+              onChange={handleCategoriesCheck}
+              checked={categories.hairOil}
             />
-            <label htmlFor="hair-oil">HAIR OIL</label>
+            <label htmlFor="hairOil">HAIR OIL</label>
           </div>
         </div>
       )}
-      <p
-        id="size"
-        onClick={(e) => handleClick(e)}
-        className="border-b-4 w-full pl-[30%] text-start">
+      <button id="size" onClick={handleClick} className="border-b-4 w-full pl-[30%] text-start">
         SIZE
-      </p>
+      </button>
       {sizeVisible && (
         <div className="flex flex-col items-start pl-[30%] border-b-4 w-full">
           <div>
-            <input type="checkbox" id="shampoo" name="shampoo" onChange={() => console.log(123)} />
-            <label htmlFor="shampoo">SHAMPOO</label>
+            <input
+              type="checkbox"
+              id="10ml"
+              name="10ml"
+              onChange={handleSizeCheck}
+              checked={size['10ml']}
+            />
+            <label htmlFor="shampoo">10ml</label>
           </div>
           <div>
             <input
               type="checkbox"
-              id="hair-conditioner"
-              name="hair-conditioner"
-              onChange={() => console.log(123)}
+              id="25ml"
+              name="25ml"
+              onChange={handleSizeCheck}
+              checked={size['25ml']}
             />
-            <label htmlFor="hair-conditioner">HAIR CONDITIONER</label>
+            <label htmlFor="25ml">25ml</label>
           </div>
           <div>
             <input
               type="checkbox"
-              id="hair-mask"
-              name="hair-mask"
-              onChange={() => console.log(123)}
+              id="50ml"
+              name="50ml"
+              onChange={handleSizeCheck}
+              checked={size['50ml']}
             />
-            <label htmlFor="hair-mask">HAIR MASK</label>
+            <label htmlFor="50ml">50ml</label>
           </div>
           <div>
             <input
               type="checkbox"
-              id="hair-oil"
-              name="hair-oil"
-              onChange={() => console.log(123)}
+              id="100ml"
+              name="100ml"
+              onChange={handleSizeCheck}
+              checked={size['100ml']}
             />
-            <label htmlFor="hair-oil">HAIR OIL</label>
+            <label htmlFor="100ml">100ml</label>
           </div>
         </div>
       )}
-      <span className="w-full pl-[30%] text-start">reset</span>
+      <button onClick={handleReset} className="w-full pl-[30%] text-start">
+        reset
+      </button>
     </div>
   )
 }
