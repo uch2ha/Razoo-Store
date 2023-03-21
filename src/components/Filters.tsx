@@ -1,21 +1,6 @@
-import React, { ChangeEvent, FC, MouseEvent, useState } from 'react'
-
-interface IFilters {
-  categories: {
-    [key: string]: boolean
-    shampoo: boolean
-    hairConditioner: boolean
-    hairMask: boolean
-    hairOil: boolean
-  }
-  size: {
-    [key: string]: boolean
-    '10ml': boolean
-    '25ml': boolean
-    '50ml': boolean
-    '100ml': boolean
-  }
-}
+import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react'
+import { IFilters } from '../models/filters.interface'
+import { getFiltersDataFromLS, setFiltersDataToLS } from '../functions/localStorage'
 
 interface IFiltersProps {
   setFilters: (prev: (prev: IFilters) => IFilters) => void
@@ -24,18 +9,20 @@ interface IFiltersProps {
 
 const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
   const { categories, size } = filters
-  const [categoriesVisible, setCategoriesVisible] = useState(true)
-  const [sizeVisible, setSizeVisible] = useState(false)
+  const [categoriesIsVisible, setCategoriesIsVisible] = useState(false)
+  const [sizeIsVisible, setSizeIsVisible] = useState(false)
+  const [firstLoading, setFirstLoading] = useState(true)
 
   // show or hide filter's categories
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement
     if (target instanceof HTMLButtonElement) {
-      if (target.id === 'categories') setCategoriesVisible((prev) => !prev)
-      if (target.id === 'size') setSizeVisible((prev) => !prev)
+      if (target.id === 'categories') setCategoriesIsVisible((prev) => !prev)
+      if (target.id === 'size') setSizeIsVisible((prev) => !prev)
     }
   }
 
+  // handle check or uncheck for filter's categories
   const handleCategoriesCheck = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.id
     setFilters((prev: IFilters) => {
@@ -49,6 +36,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
     })
   }
 
+  // handle check or uncheck for filter's size
   const handleSizeCheck = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.id
     setFilters((prev: IFilters) => {
@@ -62,6 +50,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
     })
   }
 
+  // reset all filters to false
   const handleReset = () => {
     setFilters(() => {
       return {
@@ -71,6 +60,20 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
     })
   }
 
+  // get filters settings from LS
+  useEffect(() => {
+    const { filters, categoriesIsVisible, sizeIsVisible } = getFiltersDataFromLS()
+    if (filters) setFilters(() => filters)
+    if (categoriesIsVisible !== undefined) setCategoriesIsVisible(categoriesIsVisible)
+    if (sizeIsVisible !== undefined) setSizeIsVisible(sizeIsVisible)
+    setFirstLoading(false)
+  }, [])
+
+  // save filters settings to LS
+  useEffect(() => {
+    if (!firstLoading) setFiltersDataToLS(filters, categoriesIsVisible, sizeIsVisible)
+  }, [filters, categoriesIsVisible, sizeIsVisible])
+
   return (
     <div className="bg-red-200 w-full h-full flex flex-col justify-start items-start">
       <button
@@ -79,7 +82,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
         className="border-t-4 border-b-4 w-full pl-[30%] text-start">
         CATEGORIES
       </button>
-      {categoriesVisible && (
+      {categoriesIsVisible && (
         <div className="flex flex-col items-start pl-[30%] border-b-4 w-full">
           <div>
             <input
@@ -126,7 +129,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
       <button id="size" onClick={handleClick} className="border-b-4 w-full pl-[30%] text-start">
         SIZE
       </button>
-      {sizeVisible && (
+      {sizeIsVisible && (
         <div className="flex flex-col items-start pl-[30%] border-b-4 w-full">
           <div>
             <input
