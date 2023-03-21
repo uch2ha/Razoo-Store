@@ -15,7 +15,6 @@ const App: FC = () => {
   useEffect(() => {
     if (data) {
       //set all fixed data to LS
-      console.log('app')
       initLocalStorage(data)
     }
   }, [data])

@@ -4,7 +4,7 @@ import img from '../assets/shampoo_test.png'
 
 const Card: FC = () => {
   return (
-    <div className="border-2 flex flex-col items-center">
+    <div className="flex flex-col items-center border-2">
       <img src={img} className="h-[300px] mb-[-30px]" />
       <p className="text-2xl">Name</p>
       <p className="text-2xl">Shampoo (50ml)</p>
