@@ -9,7 +9,7 @@ const ShopPage: FC = () => {
     <div className="bg-gray-600 w-screen h-full flex flex-col items-center  justify-start">
       <NavBar />
       <div className="h-full w-full flex justify-start items-center text-center flex-col">
-        <img src={img} className="w-[86%] h-[200px] my-10" />
+        <img src={img} className="w-[82%] h-[200px] my-10" />
         <ShopComponent />
       </div>
     </div>
