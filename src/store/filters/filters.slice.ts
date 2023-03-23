@@ -24,6 +24,7 @@ export const filtersSlice = createSlice({
     toggleReset: (state) => {
       state.size = initialState.size
       state.category = initialState.category
+      state.sortBy = initialState.sortBy
     },
     setSortBy: (state, action: PayloadAction<'HP' | 'LP' | 'AZ' | 'ZA'>) => {
       if (state.sortBy === action.payload) {
