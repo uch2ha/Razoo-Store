@@ -88,9 +88,11 @@ const Filters: FC = () => {
         styles="border-b-2 w-full pl-[30%]"
         visible={categoriesIsVisible}
       />
-      {categoriesIsVisible && (
-        <FilterCheckBoxs handleClick={handleCategoriesCheck} filter={category} />
-      )}
+      <FilterCheckBoxs
+        handleClick={handleCategoriesCheck}
+        filter={category}
+        isVisible={categoriesIsVisible}
+      />
       <FilterButton
         id="size"
         title="size"
@@ -98,7 +100,7 @@ const Filters: FC = () => {
         styles="border-b-2 w-full pl-[30%]"
         visible={sizeIsVisible}
       />
-      {sizeIsVisible && <FilterCheckBoxs handleClick={handleSizeCheck} filter={size} />}
+      <FilterCheckBoxs handleClick={handleSizeCheck} filter={size} isVisible={sizeIsVisible} />
       <FilterButton title="reset" handleClick={handleReset} styles="ml-[calc(30%-16px)] px-4" />
     </div>
   )
