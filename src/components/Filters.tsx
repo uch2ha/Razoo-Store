@@ -8,7 +8,7 @@ interface IFiltersProps {
 }
 
 const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
-  const { categories, size } = filters
+  const { category, size } = filters
   const [categoriesIsVisible, setCategoriesIsVisible] = useState(false)
   const [sizeIsVisible, setSizeIsVisible] = useState(false)
   const [firstLoading, setFirstLoading] = useState(true)
@@ -28,9 +28,9 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
     setFilters((prev: IFilters) => {
       return {
         ...prev,
-        categories: {
-          ...prev.categories,
-          [name]: !prev.categories[name]
+        category: {
+          ...prev.category,
+          [name]: !prev.category[name]
         }
       }
     })
@@ -54,7 +54,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
   const handleReset = () => {
     setFilters(() => {
       return {
-        categories: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
+        category: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
         size: { '10ml': false, '25ml': false, '50ml': false, '100ml': false }
       }
     })
@@ -90,7 +90,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
               id="shampoo"
               name="shampoo"
               onChange={handleCategoriesCheck}
-              checked={categories.shampoo}
+              checked={category.shampoo}
             />
             <label htmlFor="shampoo">SHAMPOO</label>
           </div>
@@ -100,7 +100,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
               id="hairConditioner"
               name="hairConditioner"
               onChange={handleCategoriesCheck}
-              checked={categories.hairConditioner}
+              checked={category.hairConditioner}
             />
             <label htmlFor="hairConditioner">HAIR CONDITIONER</label>
           </div>
@@ -110,7 +110,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
               id="hairMask"
               name="hairMask"
               onChange={handleCategoriesCheck}
-              checked={categories.hairMask}
+              checked={category.hairMask}
             />
             <label htmlFor="hairMask">HAIR MASK</label>
           </div>
@@ -120,7 +120,7 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
               id="hairOil"
               name="hairOil"
               onChange={handleCategoriesCheck}
-              checked={categories.hairOil}
+              checked={category.hairOil}
             />
             <label htmlFor="hairOil">HAIR OIL</label>
           </div>

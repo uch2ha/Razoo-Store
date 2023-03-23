@@ -1,10 +1,14 @@
 import React, { FC, useState } from 'react'
 import Card from './Card'
 import Filters from './Filters'
+import { IProduct } from '../models'
 
 const CardGrid: FC = () => {
+  const [products, setProducts] = useState<IProduct[]>(
+    JSON.parse(localStorage.getItem('products') ?? '[]')
+  )
   const [filters, setFilters] = useState({
-    categories: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
+    category: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
     size: { '10ml': false, '25ml': false, '50ml': false, '100ml': false }
   })
 
@@ -13,17 +17,18 @@ const CardGrid: FC = () => {
       <div className="row-start-1 row-end-[100]">
         <Filters setFilters={setFilters} filters={filters} />
       </div>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {products &&
+        products.map((product) => {
+          return (
+            <Card
+              key={product.id}
+              category={product.category}
+              name={product.name}
+              price={product.price}
+              size={product.size}
+            />
+          )
+        })}
     </div>
   )
 }

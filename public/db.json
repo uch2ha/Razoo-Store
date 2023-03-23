@@ -27,128 +27,128 @@
       "id": 0,
       "name": "Color-Protecting Shampoo",
       "description": "This color-protecting shampoo is designed to gently cleanse and protect color-treated hair. Formulated with a blend of natural extracts and antioxidants, it helps to prevent fading and maintain vibrancy while restoring moisture and shine. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
-      "categories": "shampoo",
-      "sizes": "250ml",
+      "category": "shampoo",
+      "size": "250ml",
       "price": 14.99
     },
     {
       "id": 1,
       "name": "Nourishing Hair Mask",
       "description": "This deeply nourishing hair mask is designed to revive and restore dry, damaged hair. Formulated with a blend of natural oils and proteins, it helps to strengthen and protect hair while delivering intense moisture to each strand. To use, apply a generous amount to clean, damp hair and comb through from root to tip. Leave on for 5-10 minutes, then rinse thoroughly with warm water. For best results, use once or twice a week.",
-      "categories": "hairMask",
-      "sizes": "100ml",
+      "category": "hairMask",
+      "size": "100ml",
       "price": 24.99
     },
     {
       "id": 2,
       "name": "Smoothing Hair Serum",
       "description": "This lightweight, non-greasy hair serum is designed to smooth frizz, tame flyaways, and add shine to hair. Formulated with a blend of nourishing oils and vitamins, it helps to protect hair from heat damage and environmental stressors. To use, apply a small amount to clean, damp hair and work through from mid-lengths to ends. Style as desired.",
-      "categories": "hairOil",
-      "sizes": "50ml",
+      "category": "hairOil",
+      "size": "50ml",
       "price": 16.99
     },
     {
       "id": 3,
       "name": "Clarifying Shampoo",
       "description": "This clarifying shampoo is designed to remove build-up and impurities from hair, leaving it feeling fresh and clean. Formulated with gentle cleansing agents and a blend of essential oils, it helps to purify and balance the scalp while promoting healthy hair growth. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and repeat if necessary. For best results, follow with a conditioner or hair mask.",
-      "categories": "shampoo",
-      "sizes": "250ml",
+      "category": "shampoo",
+      "size": "250ml",
       "price": 12.99
     },
     {
       "id": 4,
       "name": "Hydrating Leave-In Conditioner",
       "description": "This hydrating leave-in conditioner is designed to detangle, smooth, and nourish hair without weighing it down. Formulated with a blend of natural oils and plant-based proteins, it helps to strengthen and protect hair while delivering essential moisture to each strand. To use, apply a small amount to clean, damp hair and comb through from mid-lengths to ends. Style as desired.",
-      "categories": "hairConditioner",
-      "sizes": "25ml",
+      "category": "hairConditioner",
+      "size": "25ml",
       "price": 9.99
     },
     {
       "id": 5,
       "name": "Repairing Hair Oil",
       "description": "This repairing hair oil is designed to restore and revitalize damaged hair, leaving it looking and feeling healthier. Formulated with a blend of nourishing oils and vitamins, it helps to strengthen and protect hair while delivering intense moisture and shine. To use, apply a small amount to clean, damp hair and work through from mid-lengths to ends. Style as desired.",
-      "categories": "hairOil",
-      "sizes": "100ml",
+      "category": "hairOil",
+      "size": "100ml",
       "price": 21.99
     },
     {
       "id": 6,
       "name": "Volumizing Hair Mousse",
       "description": "This volumizing hair mousse is designed to add body and fullness to fine or limp hair. Formulated with a blend of lightweight ingredients, it provides flexible hold and volume without weighing hair down. To use, shake can well and dispense a small amount into palm. Apply evenly to damp hair and style as desired.",
-      "categories": "hairOil",
-      "sizes": "100ml",
+      "category": "hairOil",
+      "size": "100ml",
       "price": 16.99
     },
     {
       "id": 7,
       "name": "Clarifying Shampoo",
       "description": "This clarifying shampoo is designed to deeply cleanse and purify hair, removing buildup and residue from styling products, hard water, and pollution. Formulated with a blend of natural extracts and antioxidants, it helps to restore hair's natural balance and shine. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
-      "categories": "shampoo",
-      "sizes": "250ml",
+      "category": "shampoo",
+      "size": "250ml",
       "price": 12.99
     },
     {
       "id": 8,
       "name": "Curl-Defining Cream",
       "description": "This curl-defining cream is designed to enhance and define natural curls, leaving them soft, bouncy, and frizz-free. Formulated with a blend of moisturizing oils and botanicals, it helps to nourish and protect hair while providing flexible hold and definition. To use, apply a small amount to clean, damp hair and scrunch or twist curls. Allow to air dry or diffuse for best results.",
-      "categories": "hairConditioner",
-      "sizes": "50ml",
+      "category": "hairConditioner",
+      "size": "50ml",
       "price": 11.99
     },
     {
       "id": 9,
       "name": "Scalp-Soothing Shampoo",
       "description": "This scalp-soothing shampoo is designed to calm and comfort sensitive or irritated scalps. Formulated with a blend of natural ingredients, it helps to reduce inflammation and redness while gently cleansing hair. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
-      "categories": "shampoo",
-      "sizes": "250ml",
+      "category": "shampoo",
+      "size": "250ml",
       "price": 13.99
     },
     {
       "id": 10,
       "name": "Repairing Hair Mask",
       "description": "This repairing hair mask is designed to deeply nourish and repair damaged hair, leaving it feeling soft, smooth, and healthy. Formulated with a blend of proteins and natural oils, it helps to strengthen and protect hair while restoring moisture and shine. To use, apply a generous amount to clean, damp hair and comb through from root to tip. Leave on for 5-10 minutes, then rinse thoroughly with warm water. For best results, use once or twice a week.",
-      "categories": "hairMask",
-      "sizes": "100ml",
+      "category": "hairMask",
+      "size": "100ml",
       "price": 23.99
     },
     {
       "id": 11,
       "name": "Smoothing Hair Mask",
       "description": "This smoothing hair mask is designed to tame frizz and flyaways while leaving hair soft, silky, and manageable. Formulated with a blend of natural oils and butters, it helps to hydrate and nourish hair while smoothing the cuticle. To use, apply a generous amount to clean, damp hair and comb through from root to tip. Leave on for 5-10 minutes, then rinse thoroughly with warm water. For best results, use once a week.",
-      "categories": "hairMask",
-      "sizes": "50ml",
+      "category": "hairMask",
+      "size": "50ml",
       "price": 15.99
     },
     {
       "id": 12,
       "name": "Leave-In Conditioner",
       "description": "This leave-in conditioner is designed to hydrate, detangle, and protect hair from heat and environmental damage. Formulated with a blend of natural oils and proteins, it helps to nourish and strengthen hair while leaving it soft and manageable. To use, apply a small amount to clean, damp hair and comb through from root to tip. Style as desired.",
-      "categories": "hairConditioner",
-      "sizes": "50ml",
+      "category": "hairConditioner",
+      "size": "50ml",
       "price": 10.99
     },
     {
       "id": 13,
       "name": "Dry Shampoo",
       "description": "This dry shampoo is designed to refresh and revive hair between washes, absorbing excess oil and sweat while adding volume and texture. Formulated with a blend of natural powders and fragrances, it leaves hair feeling clean and refreshed. To use, shake can well and hold 6-8 inches from scalp. Spray evenly onto roots and massage with fingertips. Brush through hair to distribute product.",
-      "categories": "shampoo",
-      "sizes": "50ml",
+      "category": "shampoo",
+      "size": "50ml",
       "price": 8.99
     },
     {
       "id": 14,
       "name": "Intensive Hair Serum",
       "description": "This intensive hair serum is designed to repair and protect hair from damage caused by heat, styling, and environmental stressors. Formulated with a blend of natural oils and antioxidants, it helps to strengthen and nourish hair while smoothing the cuticle and reducing frizz. To use, apply a small amount to clean, damp hair and comb through from root to tip. Style as desired.",
-      "categories": "hairOil",
-      "sizes": "25ml",
+      "category": "hairOil",
+      "size": "25ml",
       "price": 19.99
     },
     {
       "id": 15,
       "name": "Curl Defining Hair Gel",
       "description": "This curl defining hair gel is designed to enhance and define natural curls, providing long-lasting hold and frizz control. Formulated with a blend of natural ingredients and polymers, it helps to shape and sculpt curls while adding shine and bounce. To use, apply a small amount to clean, damp hair and scrunch from the ends to the roots. Diffuse or air dry hair for best results.",
-      "categories": "hairOil",
-      "sizes": "50ml",
+      "category": "hairOil",
+      "size": "50ml",
       "price": 14.99
     }
   ],

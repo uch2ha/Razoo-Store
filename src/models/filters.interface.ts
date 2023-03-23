@@ -1,5 +1,5 @@
 export interface IFilters {
-  categories: {
+  category: {
     [key: string]: boolean
     shampoo: boolean
     hairConditioner: boolean

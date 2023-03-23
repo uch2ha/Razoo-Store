@@ -2,13 +2,22 @@ import React, { FC } from 'react'
 
 import img from '../assets/shampoo_test.png'
 
-const Card: FC = () => {
+interface ICardProps {
+  name: string
+  category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
+  size: '10ml' | '25ml' | '50ml' | '100ml'
+  price: number
+}
+
+const Card: FC<ICardProps> = ({ name, category, size, price }) => {
   return (
     <div className="flex flex-col items-center border-2">
       <img src={img} className="h-[300px] mb-[-30px]" />
-      <p className="text-2xl">Name</p>
-      <p className="text-2xl">Shampoo (50ml)</p>
-      <p className="text-xl font-bold mt-6">20$</p>
+      <p className="text-2xl">{name}</p>
+      <p className="text-2xl">
+        {category} ({size})
+      </p>
+      <p className="text-xl font-bold mt-6">{price}$</p>
       <button className="border-2 w-[90%] my-3 py-2">Add to Cart</button>
     </div>
   )
