@@ -8,6 +8,7 @@ const productsFromLS = JSON.parse(localStorage.getItem('products') ?? '[]')
 
 // take the init state from LS if it exists
 // if no take data from fake data DB
+
 const initialState: IProduct[] = productsFromLS.length > 0 ? productsFromLS : DB.products
 
 export const productsSlice = createSlice({

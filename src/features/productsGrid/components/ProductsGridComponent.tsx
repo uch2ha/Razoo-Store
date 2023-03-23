@@ -1,17 +1,25 @@
 import React, { FC, useState } from 'react'
-import ProductsGrid from './ProductsGrid'
-import { IProduct } from '../../../models'
+import Grid from './Grid'
 import { usePaginate } from '../hooks/usePaginate'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
+import { useFilterProducts } from '../hooks/useFilterProducts'
 
-const ShopComponent: FC = () => {
+const ProductsGridComponent: FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
-  // get product list from LS
-  const products: IProduct[] = JSON.parse(localStorage.getItem('products') ?? '[]')
-  const totalPages = Math.ceil(products.length / 12)
+  // get product list from global store
+  const products = useSelector((state: RootState) => state.products) || []
+
+  // get filters from products store
+  const filters = useSelector((state: RootState) => state.filters) || {}
+
+  const filteredProducts = useFilterProducts(products, filters)
+
+  const totalPages = Math.ceil(filteredProducts.length / 12)
 
   // product list after pagination
-  const productsAfterPaginate = usePaginate(products, currentPage)
+  const productsAfterPaginate = usePaginate(filteredProducts, currentPage)
 
   const handlePrevPage = () => {
     setCurrentPage((prev) => {
@@ -40,9 +48,9 @@ const ShopComponent: FC = () => {
           »
         </button>
       </div>
-      <ProductsGrid products={productsAfterPaginate} />
+      <Grid products={productsAfterPaginate} />
     </div>
   )
 }
 
-export default ShopComponent
+export default ProductsGridComponent

@@ -1,17 +1,20 @@
 import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react'
-import { IFilters } from '../../../models/filters.interface'
 import { getFiltersDataFromLS, setFiltersDataToLS } from '../../../functions/localStorage'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
+import { filtersActions } from '../../../store/filters/filters.slice'
 
-interface IFiltersProps {
-  setFilters: (prev: (prev: IFilters) => IFilters) => void
-  filters: IFilters
-}
-
-const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
-  const { category, size } = filters
+const Filters: FC = () => {
   const [categoriesIsVisible, setCategoriesIsVisible] = useState(false)
   const [sizeIsVisible, setSizeIsVisible] = useState(false)
   const [firstLoading, setFirstLoading] = useState(true)
+
+  // get filters from products store
+  const filters = useSelector((state: RootState) => state.filters) || {}
+
+  const { category, size } = filters
+
+  const dispatch = useDispatch()
 
   // show or hide filter's categories
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -24,46 +27,23 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
 
   // handle check or uncheck for filter's categories
   const handleCategoriesCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.id
-    setFilters((prev: IFilters) => {
-      return {
-        ...prev,
-        category: {
-          ...prev.category,
-          [name]: !prev.category[name]
-        }
-      }
-    })
+    dispatch(filtersActions.toggleCategory({ filter: 'category', name: e.target.id }))
   }
 
   // handle check or uncheck for filter's size
   const handleSizeCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.id
-    setFilters((prev: IFilters) => {
-      return {
-        ...prev,
-        size: {
-          ...prev.size,
-          [name]: !prev.size[name]
-        }
-      }
-    })
+    dispatch(filtersActions.toggleCategory({ filter: 'size', name: e.target.id }))
   }
 
   // reset all filters to false
   const handleReset = () => {
-    setFilters(() => {
-      return {
-        category: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
-        size: { '10ml': false, '25ml': false, '50ml': false, '100ml': false }
-      }
-    })
+    dispatch(filtersActions.toggleReset())
   }
 
   // get filters settings from LS
   useEffect(() => {
     const { filters, categoriesIsVisible, sizeIsVisible } = getFiltersDataFromLS()
-    if (filters) setFilters(() => filters)
+    if (filters) dispatch(filtersActions.applyFiltersData(filters))
     if (categoriesIsVisible !== undefined) setCategoriesIsVisible(categoriesIsVisible)
     if (sizeIsVisible !== undefined) setSizeIsVisible(sizeIsVisible)
     setFirstLoading(false)
