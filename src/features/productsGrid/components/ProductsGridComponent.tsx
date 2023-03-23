@@ -4,6 +4,7 @@ import { usePaginate } from '../hooks/usePaginate'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { useFilterProducts } from '../hooks/useFilterProducts'
+import { Rhombus } from '../../../assets/svg/Rhombus'
 
 const ProductsGridComponent: FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -20,7 +21,7 @@ const ProductsGridComponent: FC = () => {
 
   // after filtering may happen that u will be on the not existing page number
   // this fixes it
-  if (currentPage > totalPages) setCurrentPage(totalPages)
+  if (currentPage > totalPages && currentPage !== 1) setCurrentPage(1)
 
   // product list after pagination
   const productsAfterPaginate = usePaginate(filteredProducts, currentPage)
@@ -40,17 +41,24 @@ const ProductsGridComponent: FC = () => {
   }
 
   return (
-    <div className="w-full  md:w-[91%] self-start flex flex-col mb-10">
-      <div className="w-fit self-end my-4">
-        <button className="border-2 px-4 py-2" onClick={handlePrevPage}>
-          «
-        </button>
-        <button className="border-2 px-4 py-2 mx-4">
-          {currentPage} / {totalPages}
-        </button>
-        <button className="border-2 px-4 py-2" onClick={handleNextPage}>
-          »
-        </button>
+    <div className="w-full md:w-[91%] self-start flex flex-col mb-10">
+      <div className="flex self-end justify-between items-center xl:w-[calc(75%-0.5rem)] lg:w-[calc(70%-0.5rem)] w-[calc(65%-0.5rem)]">
+        <p className="flex items-center font-bold text-3xl">
+          Products
+          <Rhombus className="text-base" />
+          {filteredProducts.length}
+        </p>
+        <div className="w-fit self-end my-4">
+          <button className="border-2 px-4 py-2" onClick={handlePrevPage}>
+            «
+          </button>
+          <button className="border-2 px-4 py-2 mx-4">
+            {currentPage} / {totalPages}
+          </button>
+          <button className="border-2 px-4 py-2" onClick={handleNextPage}>
+            »
+          </button>
+        </div>
       </div>
       <Grid products={productsAfterPaginate} />
     </div>

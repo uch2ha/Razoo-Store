@@ -10,7 +10,7 @@ interface IGridProps {
 const Grid: FC<IGridProps> = ({ products }) => {
   return (
     <div className="flex">
-      <div className="xl:w-[35%] lg:w-[50%] w-[70%] mr-[0.5rem]">
+      <div className="xl:max-w-[25%] xl:min-w-[25%] lg:max-w-[30%] lg:min-w-[30%] max-w-[35%] min-w-[35%] mr-[0.5rem]">
         <Filters />
       </div>
       <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 w-full gap-2">

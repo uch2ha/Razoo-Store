@@ -75,7 +75,7 @@ const Filters: FC = () => {
       <span className="uppercase w-full pl-[30%] text-start py-2 border-b-2 select-none">
         SORT BY
       </span>
-      <div className="flex flex-col border-b-2 w-full">
+      <div className="flex flex-col border-b-2 w-full py-4">
         <SortByButton id="HP" title="HIGHEST PRICE" handleClick={handleSortByClick} />
         <SortByButton id="LP" title="LOWEST PRICE" handleClick={handleSortByClick} />
         <SortByButton id="AZ" title="Name A-Z" handleClick={handleSortByClick} />
