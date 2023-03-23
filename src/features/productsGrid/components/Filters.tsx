@@ -55,7 +55,7 @@ const Filters: FC = () => {
   }, [filters, categoriesIsVisible, sizeIsVisible])
 
   return (
-    <div className="border-2 border-l-0 w-full h-full flex flex-col justify-start items-start">
+    <div className="border-2 border-l-0 w-full h-full flex flex-col justify-start items-start rounded-md">
       <button
         id="categories"
         onClick={handleClick}

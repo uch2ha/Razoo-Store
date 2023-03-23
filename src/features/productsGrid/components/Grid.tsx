@@ -10,7 +10,7 @@ interface IGridProps {
 const Grid: FC<IGridProps> = ({ products }) => {
   return (
     <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 w-full gap-2">
-      <div className="row-start-1 xl:row-end-[5] lg:row-end-[7]  ">
+      <div className="row-start-1 xl:row-end-[5] lg:row-end-[7] ">
         <Filters />
       </div>
       {products &&

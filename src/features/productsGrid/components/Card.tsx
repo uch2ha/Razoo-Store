@@ -11,7 +11,7 @@ interface ICardProps {
 
 const Card: FC<ICardProps> = ({ name, category, size, price }) => {
   return (
-    <div className="flex flex-col items-center border-2">
+    <div className="flex flex-col items-center border-2 rounded-md">
       <img src={img} className="h-[300px] mb-[-30px]" />
       <p className="text-2xl">{name}</p>
       <p className="text-2xl">
