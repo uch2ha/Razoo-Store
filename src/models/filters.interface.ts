@@ -13,4 +13,6 @@ export interface IFilters {
     '50ml': boolean
     '100ml': boolean
   }
+  // HIGHEST PRICE | LOWEST PRICE | Name A-Z | Name Z-A
+  sortBy: 'HP' | 'LP' | 'AZ' | 'ZA' | null
 }

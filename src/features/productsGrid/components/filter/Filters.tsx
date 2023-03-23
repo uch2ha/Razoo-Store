@@ -5,6 +5,7 @@ import { RootState } from '../../../../store/store'
 import { filtersActions } from '../../../../store/filters/filters.slice'
 import FilterCheckBoxs from './FilterCheckBoxs'
 import FilterButton from './FilterButton'
+import SortByButton from './SortByButton'
 
 const Filters: FC = () => {
   const [categoriesIsVisible, setCategoriesIsVisible] = useState(false)
@@ -24,6 +25,12 @@ const Filters: FC = () => {
     if (target instanceof HTMLButtonElement) {
       if (target.id === 'category') setCategoriesIsVisible((prev) => !prev)
       if (target.id === 'size') setSizeIsVisible((prev) => !prev)
+    }
+  }
+  const handleSortByClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement
+    if (target instanceof HTMLButtonElement) {
+      dispatch(filtersActions.setSortBy(target.id as 'HP' | 'LP' | 'AZ' | 'ZA'))
     }
   }
 
@@ -58,13 +65,20 @@ const Filters: FC = () => {
 
   return (
     <div className="border-2 border-l-0 w-full h-full flex flex-col justify-start items-start rounded-tr-md rounded-br-md">
-      <FilterButton id="category" handleClick={handleClick} styles="border-b-2" />
+      <span className="uppercase w-full pl-[30%] text-start py-2 border-b-2">SORT BY</span>
+      <div className="flex flex-col border-b-2 w-full">
+        <SortByButton id="HP" title="HIGHEST PRICE" handleClick={handleSortByClick} />
+        <SortByButton id="LP" title="LOWEST PRICE" handleClick={handleSortByClick} />
+        <SortByButton id="AZ" title="Name A-Z" handleClick={handleSortByClick} />
+        <SortByButton id="ZA" title="Name Z-A" handleClick={handleSortByClick} />
+      </div>
+      <FilterButton id="category" title="category" handleClick={handleClick} styles="border-b-2" />
       {categoriesIsVisible && (
         <FilterCheckBoxs handleClick={handleCategoriesCheck} filter={category} />
       )}
-      <FilterButton id="size" handleClick={handleClick} styles="border-b-2" />
+      <FilterButton id="size" title="size" handleClick={handleClick} styles="border-b-2" />
       {sizeIsVisible && <FilterCheckBoxs handleClick={handleSizeCheck} filter={size} />}
-      <FilterButton id="reset" handleClick={handleReset} />
+      <FilterButton id="reset" title="reset" handleClick={handleReset} />
     </div>
   )
 }
