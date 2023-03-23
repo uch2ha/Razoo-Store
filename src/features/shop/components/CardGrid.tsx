@@ -3,10 +3,11 @@ import Card from './Card'
 import Filters from './Filters'
 import { IProduct } from '../../../models'
 
-const CardGrid: FC = () => {
-  const [products, setProducts] = useState<IProduct[]>(
-    JSON.parse(localStorage.getItem('products') ?? '[]')
-  )
+interface ICardGridProps {
+  products: IProduct[]
+}
+
+const CardGrid: FC<ICardGridProps> = ({ products }) => {
   const [filters, setFilters] = useState({
     category: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
     size: { '10ml': false, '25ml': false, '50ml': false, '100ml': false }
@@ -14,7 +15,7 @@ const CardGrid: FC = () => {
 
   return (
     <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 w-full gap-2">
-      <div className="row-start-1 row-end-[100]">
+      <div className="row-start-1 xl:row-end-[5] lg:row-end-[7]  ">
         <Filters setFilters={setFilters} filters={filters} />
       </div>
       {products &&

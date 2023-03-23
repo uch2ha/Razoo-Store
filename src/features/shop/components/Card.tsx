@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import img from '../assets/shampoo_test.png'
+import img from '../../../assets/shampoo_test.png'
 
 interface ICardProps {
   name: string

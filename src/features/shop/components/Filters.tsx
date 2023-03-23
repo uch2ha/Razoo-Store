@@ -75,11 +75,11 @@ const Filters: FC<IFiltersProps> = ({ setFilters, filters }) => {
   }, [filters, categoriesIsVisible, sizeIsVisible])
 
   return (
-    <div className="bg-red-200 w-full h-full flex flex-col justify-start items-start">
+    <div className="border-2 border-l-0 w-full h-full flex flex-col justify-start items-start">
       <button
         id="categories"
         onClick={handleClick}
-        className="border-t-4 border-b-4 w-full pl-[30%] text-start">
+        className="border-t-2 border-b-4 w-full pl-[30%] text-start">
         CATEGORIES
       </button>
       {categoriesIsVisible && (
