@@ -1,9 +1,10 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import Grid from './Grid'
 import { usePaginate } from '../hooks/usePaginate'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { useFilterProducts } from '../hooks/useFilterProducts'
+import { IProduct } from '../../../models'
 
 const ProductsGridComponent: FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -17,6 +18,10 @@ const ProductsGridComponent: FC = () => {
   const filteredProducts = useFilterProducts(products, filters)
 
   const totalPages = Math.ceil(filteredProducts.length / 12)
+
+  // after filtering may happen that u will be on the not existing page number
+  // this fixes it
+  if (currentPage > totalPages) setCurrentPage(totalPages)
 
   // product list after pagination
   const productsAfterPaginate = usePaginate(filteredProducts, currentPage)
