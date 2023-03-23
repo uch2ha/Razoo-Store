@@ -6,7 +6,7 @@ import ShopComponent from '../features/shop/components/ShopComponent'
 
 const ShopPage: FC = () => {
   return (
-    <div className="bg-gray-600 w-screen h-full flex flex-col items-center  justify-start">
+    <div className="bg-gray-600 w-screen min-h-screen flex flex-col items-center  justify-start">
       <NavBar />
       <div className="h-full w-full flex justify-start items-center text-center flex-col">
         <img src={img} className="w-[82%] h-[200px] my-10" />

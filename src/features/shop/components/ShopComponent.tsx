@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import CardGrid from './CardGrid'
+import ProductsGrid from './ProductsGrid'
 import { IProduct } from '../../../models'
 import { usePaginate } from '../hooks/usePaginate'
 
@@ -28,7 +28,7 @@ const ShopComponent: FC = () => {
   }
 
   return (
-    <div className="w-full md:w-[91%] self-start flex flex-col mb-10">
+    <div className="w-full  md:w-[91%] self-start flex flex-col mb-10">
       <div className="w-fit self-end my-4">
         <button className="border-2 px-4 py-2" onClick={handlePrevPage}>
           «
@@ -40,7 +40,7 @@ const ShopComponent: FC = () => {
           »
         </button>
       </div>
-      <CardGrid products={productsAfterPaginate} />
+      <ProductsGrid products={productsAfterPaginate} />
     </div>
   )
 }
