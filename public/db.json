@@ -28,7 +28,7 @@
       "name": "Color-Protecting Shampoo",
       "description": "This color-protecting shampoo is designed to gently cleanse and protect color-treated hair. Formulated with a blend of natural extracts and antioxidants, it helps to prevent fading and maintain vibrancy while restoring moisture and shine. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
       "category": "shampoo",
-      "size": "250ml",
+      "size": "100ml",
       "price": 14.99
     },
     {
@@ -52,7 +52,7 @@
       "name": "Clarifying Shampoo",
       "description": "This clarifying shampoo is designed to remove build-up and impurities from hair, leaving it feeling fresh and clean. Formulated with gentle cleansing agents and a blend of essential oils, it helps to purify and balance the scalp while promoting healthy hair growth. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and repeat if necessary. For best results, follow with a conditioner or hair mask.",
       "category": "shampoo",
-      "size": "250ml",
+      "size": "25ml",
       "price": 12.99
     },
     {
@@ -84,7 +84,7 @@
       "name": "Clarifying Shampoo",
       "description": "This clarifying shampoo is designed to deeply cleanse and purify hair, removing buildup and residue from styling products, hard water, and pollution. Formulated with a blend of natural extracts and antioxidants, it helps to restore hair's natural balance and shine. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
       "category": "shampoo",
-      "size": "250ml",
+      "size": "100ml",
       "price": 12.99
     },
     {
@@ -100,7 +100,7 @@
       "name": "Scalp-Soothing Shampoo",
       "description": "This scalp-soothing shampoo is designed to calm and comfort sensitive or irritated scalps. Formulated with a blend of natural ingredients, it helps to reduce inflammation and redness while gently cleansing hair. To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
       "category": "shampoo",
-      "size": "250ml",
+      "size": "50ml",
       "price": 13.99
     },
     {
