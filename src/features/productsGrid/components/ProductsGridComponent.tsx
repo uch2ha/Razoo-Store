@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { useFilterProducts } from '../hooks/useFilterProducts'
 import { Rhombus } from '../../../assets/svg/Rhombus'
+import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
+import { ArrowRight } from '../../../assets/svg/ArrowRight'
 
 const ProductsGridComponent: FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -42,21 +44,21 @@ const ProductsGridComponent: FC = () => {
 
   return (
     <div className="w-full md:w-[91%] self-start flex flex-col mb-10">
-      <div className="flex self-end justify-between items-center xl:w-[calc(75%-0.5rem)] lg:w-[calc(70%-0.5rem)] w-[calc(65%-0.5rem)]">
-        <p className="flex items-center font-bold text-3xl">
+      <div className="flex self-end justify-between xl:w-[calc(75%-0.5rem)] lg:w-[calc(70%-0.5rem)] w-[calc(65%-0.5rem)]">
+        <p className="flex items-center font-bold text-2xl">
           Products
           <Rhombus className="text-base" />
           {filteredProducts.length}
         </p>
-        <div className="w-fit self-end my-4">
-          <button className="border-2 px-4 py-2" onClick={handlePrevPage}>
-            «
+        <div className="mb-2 text-2xl flex justify-center items-center border-2 rounded-md">
+          <button className="h-full p-2" onClick={handlePrevPage}>
+            <ArrowLeft />
           </button>
-          <button className="border-2 px-4 py-2 mx-4">
+          <p className="px-2 py-1 select-none text-lg">
             {currentPage} / {totalPages}
-          </button>
-          <button className="border-2 px-4 py-2" onClick={handleNextPage}>
-            »
+          </p>
+          <button className="h-full p-2" onClick={handleNextPage}>
+            <ArrowRight />
           </button>
         </div>
       </div>
