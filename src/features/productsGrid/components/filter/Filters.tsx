@@ -20,13 +20,20 @@ const Filters: FC = () => {
   const dispatch = useDispatch()
 
   // show or hide filter's categories
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const target = e.target as HTMLButtonElement
-    if (target instanceof HTMLButtonElement) {
-      if (target.id === 'category') setCategoriesIsVisible((prev) => !prev)
-      if (target.id === 'size') setSizeIsVisible((prev) => !prev)
+  const handleClick = (e: MouseEvent<HTMLButtonElement | SVGSVGElement>) => {
+    if (e.currentTarget) {
+      const target = e.currentTarget
+      if (target.id === 'category') return setCategoriesIsVisible((prev) => !prev)
+      if (target.id === 'size') return setSizeIsVisible((prev) => !prev)
+    }
+
+    if (e.target instanceof HTMLButtonElement) {
+      const target = e.target as HTMLButtonElement
+      if (target.id === 'category') return setCategoriesIsVisible((prev) => !prev)
+      if (target.id === 'size') return setSizeIsVisible((prev) => !prev)
     }
   }
+
   const handleSortByClick = (e: MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement
     if (target instanceof HTMLButtonElement) {
@@ -65,20 +72,34 @@ const Filters: FC = () => {
 
   return (
     <div className="border-2 border-l-0 w-full h-full flex flex-col justify-start items-start rounded-tr-md rounded-br-md">
-      <span className="uppercase w-full pl-[30%] text-start py-2 border-b-2">SORT BY</span>
+      <span className="uppercase w-full pl-[30%] text-start py-2 border-b-2 select-none">
+        SORT BY
+      </span>
       <div className="flex flex-col border-b-2 w-full">
         <SortByButton id="HP" title="HIGHEST PRICE" handleClick={handleSortByClick} />
         <SortByButton id="LP" title="LOWEST PRICE" handleClick={handleSortByClick} />
         <SortByButton id="AZ" title="Name A-Z" handleClick={handleSortByClick} />
         <SortByButton id="ZA" title="Name Z-A" handleClick={handleSortByClick} />
       </div>
-      <FilterButton id="category" title="category" handleClick={handleClick} styles="border-b-2" />
+      <FilterButton
+        id="category"
+        title="category"
+        handleClick={handleClick}
+        styles="border-b-2 w-full pl-[30%]"
+        visible={categoriesIsVisible}
+      />
       {categoriesIsVisible && (
         <FilterCheckBoxs handleClick={handleCategoriesCheck} filter={category} />
       )}
-      <FilterButton id="size" title="size" handleClick={handleClick} styles="border-b-2" />
+      <FilterButton
+        id="size"
+        title="size"
+        handleClick={handleClick}
+        styles="border-b-2 w-full pl-[30%]"
+        visible={sizeIsVisible}
+      />
       {sizeIsVisible && <FilterCheckBoxs handleClick={handleSizeCheck} filter={size} />}
-      <FilterButton id="reset" title="reset" handleClick={handleReset} />
+      <FilterButton title="reset" handleClick={handleReset} styles="ml-[calc(30%-16px)] px-4" />
     </div>
   )
 }

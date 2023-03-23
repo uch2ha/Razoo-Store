@@ -7,7 +7,7 @@ export interface FilterCheckBox extends FilterCheckBoxs {
 
 const FilterCheckBox: FC<FilterCheckBox> = ({ handleClick, filter, name }) => {
   return (
-    <div className="py-[4px] uppercase">
+    <div className="py-[4px] uppercase select-none">
       <input type="checkbox" id={name} name={name} onChange={handleClick} checked={filter[name]} />
       <label htmlFor={name} className="px-2">
         {name}
