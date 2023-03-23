@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Card from './Card'
-import Filters from './Filters'
+import Filters from './filter/Filters'
 import { IProduct } from '../../../models'
 
 interface IGridProps {
@@ -9,22 +9,24 @@ interface IGridProps {
 
 const Grid: FC<IGridProps> = ({ products }) => {
   return (
-    <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 w-full gap-2">
-      <div className="row-start-1 xl:row-end-[5] lg:row-end-[7] ">
+    <div className="flex">
+      <div className="xl:w-[35%] lg:w-[50%] w-[70%] mr-[0.5rem]">
         <Filters />
       </div>
-      {products &&
-        products.map((product) => {
-          return (
-            <Card
-              key={product.id}
-              category={product.category}
-              name={product.name}
-              price={product.price}
-              size={product.size}
-            />
-          )
-        })}
+      <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 w-full gap-2">
+        {products &&
+          products.map((product) => {
+            return (
+              <Card
+                key={product.id}
+                category={product.category}
+                name={product.name}
+                price={product.price}
+                size={product.size}
+              />
+            )
+          })}
+      </div>
     </div>
   )
 }

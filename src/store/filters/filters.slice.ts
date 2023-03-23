@@ -21,8 +21,8 @@ export const filtersSlice = createSlice({
       state[filter][name] = !state[filter][name]
     },
     toggleReset: (state) => {
-      state.category = initialState.category
       state.size = initialState.size
+      state.category = initialState.category
     },
     applyFiltersData: (state, action: PayloadAction<IFilters>) => {
       const newFilters = action.payload
