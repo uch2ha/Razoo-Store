@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import Card from './Card'
 import Filters from './Filters'
-import { IProduct } from '../models'
+import { IProduct } from '../../../models'
 
 const CardGrid: FC = () => {
   const [products, setProducts] = useState<IProduct[]>(

@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react'
-import { IFilters } from '../models/filters.interface'
-import { getFiltersDataFromLS, setFiltersDataToLS } from '../functions/localStorage'
+import { IFilters } from '../../../models/filters.interface'
+import { getFiltersDataFromLS, setFiltersDataToLS } from '../../../functions/localStorage'
 
 interface IFiltersProps {
   setFilters: (prev: (prev: IFilters) => IFilters) => void

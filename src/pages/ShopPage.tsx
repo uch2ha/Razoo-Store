@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import NavBar from '../components/NavBar'
 
 import img from '../assets/homePageBg.jpg'
-import ShopComponent from '../components/ShopComponent'
+import ShopComponent from '../features/shop/components/ShopComponent'
 
 const ShopPage: FC = () => {
   return (
