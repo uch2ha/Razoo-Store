@@ -4,14 +4,16 @@
       "id": 0,
       "firstName": "Admin",
       "lastName": "Admin",
-      "email": "admin@admin.com",
+      "email": "admin",
+      "password": "admin",
       "isAdmin": true
     },
     {
       "id": 1,
       "firstName": "Dmitry",
       "lastName": "Sinyavskiy",
-      "email": "sinyavskiy@gmail.com",
+      "email": "sinyavskiy.d@gmail.com",
+      "password": "dmitry",
       "isAdmin": false
     },
     {
@@ -19,6 +21,7 @@
       "firstName": "Diana",
       "lastName": "Sojanen",
       "email": "diana.sojanen@gmail.com",
+      "password": "diana",
       "isAdmin": false
     }
   ],

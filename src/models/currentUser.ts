@@ -4,4 +4,5 @@ export type ICurrentUser = {
   lastName: string
   email: string
   isAdmin: boolean
+  password?: string
 }
