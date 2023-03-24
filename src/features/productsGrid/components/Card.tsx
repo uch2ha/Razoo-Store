@@ -3,15 +3,19 @@ import React, { FC } from 'react'
 import img from '../../../assets/shampoo_test.png'
 
 interface ICardProps {
+  id: number
   name: string
   category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
-  size: '10ml' | '25ml' | '50ml' | '100ml'
+  size: '50ml' | '100ml' | '150ml' | '200ml'
   price: number
+  setProductId: (id: number) => void
 }
 
-const Card: FC<ICardProps> = ({ name, category, size, price }) => {
+const Card: FC<ICardProps> = ({ id, name, category, size, price, setProductId }) => {
   return (
-    <div className="flex flex-col items-center border-2 rounded-md">
+    <div
+      className="flex flex-col items-center border-2 rounded-md"
+      onClick={() => setProductId(id)}>
       <img src={img} className="h-[300px] mb-[-30px]" />
       <p className="text-2xl">{name}</p>
       <p className="text-2xl">

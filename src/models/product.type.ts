@@ -3,6 +3,6 @@ export type IProduct = {
   name: string
   description: string
   category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
-  size: '10ml' | '25ml' | '50ml' | '100ml'
+  size: '50ml' | '100ml' | '150ml' | '200ml'
   price: number
 }

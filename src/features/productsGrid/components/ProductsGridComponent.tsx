@@ -8,7 +8,11 @@ import { Rhombus } from '../../../assets/svg/Rhombus'
 import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
 
-const ProductsGridComponent: FC = () => {
+interface IProductsGridComponentProps {
+  setProductId: (id: number) => void
+}
+
+const ProductsGridComponent: FC<IProductsGridComponentProps> = ({ setProductId }) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   // get product list from global store
@@ -62,7 +66,7 @@ const ProductsGridComponent: FC = () => {
           </button>
         </div>
       </div>
-      <Grid products={productsAfterPaginate} />
+      <Grid products={productsAfterPaginate} setProductId={setProductId} />
     </div>
   )
 }
