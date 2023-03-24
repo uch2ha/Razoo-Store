@@ -1,9 +1,21 @@
 import React, { FC, useState } from 'react'
 import NavBar from '../components/NavBar'
-import LogInInvite from '../features/signUp-logIn/components/LogInInvite'
-import SignUpForm from '../features/signUp-logIn/components/SignUpForm'
-import SignUpInvite from '../features/signUp-logIn/components/SignUnInvite'
-import LogInForm from '../features/signUp-logIn/components/LogInForm'
+import LogInForm from '../features/logIn-signUp/components/LogInForm'
+import SignUpForm from '../features/logIn-signUp/components/SignUpForm'
+import Invite from '../features/logIn-signUp/components/Invite'
+
+const logInText = {
+  title: 'Welcome Back!',
+  description1: 'To keep connected with us pleas',
+  description2: 'login with your personal info',
+  btnLabel: 'SIGN IN'
+}
+const signUpText = {
+  title: 'New Here?',
+  description1: 'Sign up and discover a great amount',
+  description2: 'of organic haircare products!',
+  btnLabel: 'SIGN UP'
+}
 
 const LoginPage: FC = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -28,9 +40,9 @@ const LoginPage: FC = () => {
               isLogin ? 'translate-x-[0%]' : ' translate-x-[-200%]'
             }`}>
             {isLogin ? (
-              <SignUpInvite onClick={handleSwitch} />
+              <Invite texts={signUpText} onClick={handleSwitch} />
             ) : (
-              <LogInInvite onClick={handleSwitch} />
+              <Invite texts={logInText} onClick={handleSwitch} />
             )}
           </div>
         </div>
