@@ -28,12 +28,12 @@ const LogInForm: FC = () => {
   }
 
   return (
-    <div className="w-full h-full bg-white flex flex-col justify-center items-center">
+    <div className="w-full h-full bg-white flex flex-col justify-center items-center rounded-md">
       <h2>Login to Your Account</h2>
       <h4>Login using social networks!</h4>
       <span>Google</span>
       <p>OR</p>
-      {error && <h3 className="text-red-600 text-2xl font-bold py-4">{error}</h3>}
+      {error && <h3 className="text-red-600 font-bold py-4">{error}</h3>}
       <input
         type="email"
         className="border-4"

@@ -27,22 +27,22 @@ const LoginPage: FC = () => {
   return (
     <div className="bg-gray-400 w-screen h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center  justify-start">
       <NavBar />
-      <div className="h-full w-full flex justify-center items-center text-center flex-col">
-        <div className="relative flex w-2/3 h-3/4 bg-white">
+      <div className="h-full w-full flex justify-center items-center text-center flex-col ">
+        <div className="relative flex w-2/3 h-3/4 bg-white rounded-md">
           <div
-            className={`left-0 w-2/3 transform absolute h-full transition-transform  duration-700 ${
-              isLogin ? 'translate-x-[0%]' : ' translate-x-[50%]'
+            className={`left-0 w-2/3 transform absolute h-full transition-transform duration-700  ${
+              isLogin ? 'translate-x-[0%] ' : ' translate-x-[50%] '
             }`}>
             {isLogin ? <LogInForm /> : <SignUpForm />}
           </div>
           <div
-            className={`right-0 w-1/3 transform absolute h-full transition-transform  duration-700 ${
-              isLogin ? 'translate-x-[0%]' : ' translate-x-[-200%]'
-            }`}>
+            className={`right-0 w-1/3 transform absolute h-full transition-transform duration-700 ${
+              isLogin ? 'translate-x-[0%]' : 'translate-x-[-200%]'
+            } `}>
             {isLogin ? (
-              <Invite texts={signUpText} onClick={handleSwitch} />
+              <Invite texts={signUpText} onClick={handleSwitch} isLogin={isLogin} />
             ) : (
-              <Invite texts={logInText} onClick={handleSwitch} />
+              <Invite texts={logInText} onClick={handleSwitch} isLogin={isLogin} />
             )}
           </div>
         </div>
