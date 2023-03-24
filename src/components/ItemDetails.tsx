@@ -12,6 +12,7 @@ const initState: IProduct = {
   id: 0,
   name: 'Loading...',
   description: 'Loading...',
+  instruction: 'Loading...',
   category: 'shampoo',
   size: '50ml',
   price: 100
@@ -33,23 +34,24 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId }) => {
   }
 
   return (
-    <div className="fixed z-50 top-1/2 left-1/2 w-[70%] h-[70%] flex transform -translate-x-1/2 -translate-y-1/2 blur-none">
-      <div className="w-[53%] bg-red-300">123</div>
-      <div className="w-[47%] bg-red-700 flex justify-center items-center">
-        <div className="h-[70%] w-[80%] mx-auto">
-          <div className="border-b-2 h-1/3 flex flex-col justify-between px-[10%]">
-            <div className="text-3xl pt-[5%]">
+    <div className="fixed z-50 top-1/2 left-1/2 w-[85%] h-[80%] flex transform -translate-x-1/2 -translate-y-1/2 blur-none">
+      <div className="w-[52%] bg-red-300">123</div>
+      <div className="w-[48%] bg-red-700 flex justify-center items-center">
+        <div className="h-[80%] w-[80%] mx-auto">
+          <div className="border-b-2 h-1/3 flex flex-col justify-end px-[10%]">
+            <div className="text-3xl pb-[5%] uppercase">
               <p>{product.name}</p>
               <p>{product.category}</p>
             </div>
-            <p className="text-2xl pb-4">{product.price}$</p>
+            <p className="text-2xl pb-4">
+              {product.price}$ | <span>{product.size}</span>
+            </p>
           </div>
           <div className="px-[10%] h-2/3 flex flex-col justify-between items-start">
-            <div className="py-8">
-              <p className="pb-4">{product.description}</p>
-              <p>{product.size}</p>
+            <div className="py-8 text-lg">
+              <p>{product.description}</p>
+              <p className="pb-[5%]">{product.instruction}</p>
             </div>
-
             <button className="border-2 px-20 py-4">Click</button>
           </div>
         </div>
