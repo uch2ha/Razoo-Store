@@ -1,10 +1,7 @@
-import { getUsersFromLS } from '../../../functions/localStorage'
-import { ICurrentUser } from '../../../models/currentUser'
+import { IUser } from '../../../models'
+import { getUsersFromLS } from '../../../services/localStorage'
 
-export const useCheckLogIn = (
-  email: string,
-  pass: string
-): { err?: string; currentUser?: ICurrentUser } => {
+export const useCheckLogIn = (email: string, pass: string): { err?: string; user?: IUser } => {
   const users = getUsersFromLS()
 
   const user = users.filter((user) => user.email === email)
@@ -12,9 +9,7 @@ export const useCheckLogIn = (
   if (user.length === 0) return { err: 'Email or Password incorrect' }
   if (user[0].password !== pass) return { err: 'Email or Password incorrect' }
 
-  const currentUser: ICurrentUser = user[0]
+  delete user[0].password
 
-  delete currentUser.password
-
-  return { currentUser: currentUser }
+  return { user: user[0] }
 }

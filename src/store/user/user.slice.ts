@@ -1,8 +1,8 @@
 // packages
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ICurrentUser } from '../../models/currentUser'
+import { IUser } from '../../models'
 
-const initialState: ICurrentUser = {
+const initialState: IUser = {
   id: 0,
   firstName: '',
   lastName: '',
@@ -10,11 +10,11 @@ const initialState: ICurrentUser = {
   isAdmin: false
 }
 
-export const currentUserSlice = createSlice({
-  name: 'currentUser',
+export const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
-    setCurrentUser: (state, action: PayloadAction<ICurrentUser>) => {
+    setUser: (state, action: PayloadAction<IUser>) => {
       state.id = action.payload.id
       state.email = action.payload.email
       state.firstName = action.payload.firstName
@@ -24,5 +24,5 @@ export const currentUserSlice = createSlice({
   }
 })
 
-export const currentUserActions = currentUserSlice.actions
-export const currentUserReducer = currentUserSlice.reducer
+export const userActions = userSlice.actions
+export const userReducer = userSlice.reducer

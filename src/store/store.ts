@@ -3,7 +3,7 @@ import { dbApi } from './DB/db.api'
 import { UIReducer } from './UI/UI.slice'
 import { productsReducer } from './products/products.slice'
 import { filtersReducer } from './filters/filters.slice'
-import { currentUserReducer } from './currentUser/currentUser.slice'
+import { userReducer } from './user/user.slice'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +11,7 @@ export const store = configureStore({
     UI: UIReducer,
     products: productsReducer,
     filters: filtersReducer,
-    currentUser: currentUserReducer
+    user: userReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(dbApi.middleware)
 })

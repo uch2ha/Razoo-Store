@@ -1,5 +1,5 @@
 import { IUser } from '../models'
-import { IFilters } from '../models/filters.interface'
+import { IFilters } from '../models/filters.type'
 import { IDb } from '../store/DB/db.api'
 
 export const initLocalStorage = (data: IDb) => {

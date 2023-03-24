@@ -1,8 +1,8 @@
 import React, { ChangeEvent, FC, useState } from 'react'
 import { useCheckLogIn } from '../hooks/useCheckLogIn'
 import { useDispatch } from 'react-redux'
-import { currentUserActions } from '../../../store/currentUser/currentUser.slice'
 import { useNavigate } from 'react-router-dom'
+import { userActions } from '../../../store/user/user.slice'
 
 const LogInForm: FC = () => {
   const [email, setEmail] = useState('')
@@ -15,9 +15,9 @@ const LogInForm: FC = () => {
   const handleLogIn = () => {
     const result = useCheckLogIn(email, password)
     if (result.err) return setError(result.err)
-    if (result.currentUser) {
-      // set current user to currentUser store
-      dispatch(currentUserActions.setCurrentUser(result.currentUser))
+    if (result.user) {
+      // set current user to store
+      dispatch(userActions.setUser(result.user))
       navigate('/account')
     }
   }

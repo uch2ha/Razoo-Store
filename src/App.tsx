@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 // components
 import HomePage from './pages/HomePage'
 import ShopPage from './pages/ShopPage'
-import { initLocalStorage } from './functions/localStorage'
+import { initLocalStorage } from './services/localStorage'
 import { useGetAllDataQuery } from './store/DB/db.api'
 import AboutPage from './pages/AboutPage'
 import CartPage from './pages/CartPage'
