@@ -1,4 +1,4 @@
-export interface IFilters {
+export type IFilters = {
   category: {
     [key: string]: boolean
     shampoo: boolean

@@ -26,9 +26,15 @@ const NavBar: FC = () => {
       </div>
       <div className="w-1/3">
         <ul className="flex justify-end items-center space-x-5">
-          <li className="btn">MY ACCOUNT</li>
-          <li className="btn">LOGOUT</li>
-          <li className="btn">CART</li>
+          <li className={`${activePage === '/account' ? 'active-link' : ''} btn`}>
+            <Link to="/account">MY ACCOUNT</Link>
+          </li>
+          <li className={`${activePage === '/login' ? 'active-link' : ''} btn`}>
+            <Link to="/login">LOGIN</Link>
+          </li>
+          <li className={`${activePage === '/cart' ? 'active-link' : ''} btn`}>
+            <Link to="/cart">CART</Link>
+          </li>
         </ul>
       </div>
     </div>

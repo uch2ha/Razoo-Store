@@ -4,4 +4,5 @@ export type IUser = {
   lastName: string
   email: string
   isAdmin: boolean
+  password?: string
 }

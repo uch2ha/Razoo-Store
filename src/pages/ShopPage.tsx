@@ -46,7 +46,7 @@ const ShopPage: FC = () => {
           <ProductsGridComponent setProductId={setProductId} />
         </div>
       </div>
-      {itemIsVisible && <ItemDetails handleClose={handleClose} productId={productId} />}
+      <ItemDetails handleClose={handleClose} productId={productId} isVisible={itemIsVisible} />
     </div>
   )
 }

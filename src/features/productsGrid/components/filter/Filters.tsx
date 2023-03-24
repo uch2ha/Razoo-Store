@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react'
-import { getFiltersDataFromLS, setFiltersDataToLS } from '../../../../functions/localStorage'
+import { getFiltersDataFromLS, setFiltersDataToLS } from '../../../../services/localStorage'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/store'
 import { filtersActions } from '../../../../store/filters/filters.slice'
