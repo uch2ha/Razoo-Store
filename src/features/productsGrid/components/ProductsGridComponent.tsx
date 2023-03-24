@@ -1,0 +1,74 @@
+import { FC, useState } from 'react'
+import Grid from './Grid'
+import { usePaginate } from '../hooks/usePaginate'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
+import { useFilterProducts } from '../hooks/useFilterProducts'
+import { Rhombus } from '../../../assets/svg/Rhombus'
+import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
+import { ArrowRight } from '../../../assets/svg/ArrowRight'
+
+interface IProductsGridComponentProps {
+  setProductId: (id: number) => void
+}
+
+const ProductsGridComponent: FC<IProductsGridComponentProps> = ({ setProductId }) => {
+  const [currentPage, setCurrentPage] = useState(1)
+
+  // get product list from global store
+  const products = useSelector((state: RootState) => state.products) || []
+
+  // get filters from products store
+  const filters = useSelector((state: RootState) => state.filters) || {}
+
+  const filteredProducts = useFilterProducts(products, filters)
+
+  const totalPages = Math.ceil(filteredProducts.length / 12)
+
+  // after filtering may happen that u will be on the not existing page number
+  // this fixes it
+  if (currentPage > totalPages && currentPage !== 1) setCurrentPage(1)
+
+  // product list after pagination
+  const productsAfterPaginate = usePaginate(filteredProducts, currentPage)
+
+  const handlePrevPage = () => {
+    setCurrentPage((prev) => {
+      // don't allow u navigate to page 0
+      if (prev > 1) return --prev
+      return prev
+    })
+  }
+  const handleNextPage = () => {
+    setCurrentPage((prev) => {
+      if (prev < totalPages) return ++prev
+      return prev
+    })
+  }
+
+  return (
+    <div className="w-full md:w-[91%] self-start flex flex-col mb-10">
+      <div className="flex self-end justify-between xl:w-[calc(75%-0.5rem)] lg:w-[calc(70%-0.5rem)] w-[calc(65%-0.5rem)]">
+        <p className="flex items-center font-bold text-2xl">
+          Products
+          <Rhombus className="text-base" />
+          {filteredProducts.length}
+        </p>
+        <div className="mb-2 text-2xl flex justify-center items-center border-2 rounded-md">
+          <button className="h-full p-2" onClick={handlePrevPage}>
+            <ArrowLeft />
+          </button>
+          <p className="px-2 py-1 select-none text-lg">
+            {currentPage} / {totalPages}
+          </p>
+          <button className="h-full p-2" onClick={handleNextPage}>
+            <ArrowRight />
+          </button>
+        </div>
+      </div>
+      <Grid products={productsAfterPaginate} setProductId={setProductId} />
+    </div>
+  )
+}
+
+export default ProductsGridComponent
