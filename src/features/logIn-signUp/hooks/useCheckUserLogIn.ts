@@ -1,7 +1,7 @@
 import { IUser } from '../../../models'
-import { getUsersFromLS } from '../../../services/localStorage'
+import { getUsersFromLS } from '../services/localStorage'
 
-export const useCheckLogIn = (email: string, pass: string): { err?: string; user?: IUser } => {
+export const useCheckUserLogIn = (email: string, pass: string): { err?: string; user?: IUser } => {
   const users = getUsersFromLS()
 
   const user = users.filter((user) => user.email === email)
