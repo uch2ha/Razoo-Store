@@ -4,6 +4,8 @@ import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.ap
 import { IGoogleUser } from '../models/googleUser.type'
 import { checkGoogleUserInLS, saveGoogleUserToLS } from '../services/localStorage'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { userActions } from '../../../store/user/user.slice'
 
 interface IGoogleAuthProps {
   isLogin: boolean
@@ -17,6 +19,7 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
   const [trigger, result] = useLazyGetUserQuery()
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   // get google user data
   const login = useGoogleLogin({
@@ -38,6 +41,7 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
       // LOGIN functionality
       const res = checkGoogleUserInLS(result.data)
       if (res.success) {
+        dispatch(userActions.setUser(result.data))
         navigate('/account')
         setError('')
       }
@@ -46,6 +50,7 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
       // SIGN UP functionality
       const res = saveGoogleUserToLS(result.data)
       if (res.success) {
+        dispatch(userActions.setUser(result.data))
         navigate('/account')
         setError('')
       }

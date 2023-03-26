@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { IUser } from '../../models'
 
 const initialState: IUser = {
-  id: 0,
+  id: '',
   firstName: '',
   lastName: '',
   email: '',
@@ -20,6 +20,13 @@ export const userSlice = createSlice({
       state.firstName = action.payload.firstName
       state.lastName = action.payload.lastName
       state.isAdmin = action.payload.isAdmin
+    },
+    logOut: (state) => {
+      state.id = initialState.id
+      state.email = initialState.email
+      state.firstName = initialState.firstName
+      state.lastName = initialState.lastName
+      state.isAdmin = initialState.isAdmin
     }
   }
 })

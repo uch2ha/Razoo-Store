@@ -1,9 +1,11 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
 import { saveUserToLS } from '../services/localStorage'
 import { useNavigate } from 'react-router-dom'
 import GoogleAuthBtn from './GoogleAuthBtn'
+import { useDispatch } from 'react-redux'
+import { userActions } from '../../../store/user/user.slice'
 
 const SignUpForm: FC = () => {
   const [name, setName] = useState<string>('')
@@ -14,11 +16,7 @@ const SignUpForm: FC = () => {
   const [error, setError] = useState<string | null>(null)
 
   const navigate = useNavigate()
-
-  // // log out function to log the user out of google and set the profile array to null
-  // const logOut = () => {
-  //   googleLogout()
-  // }
+  const dispatch = useDispatch()
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.id === 'name') setName(e.target.value)
@@ -34,16 +32,19 @@ const SignUpForm: FC = () => {
     if (password.length < 6) return setError('Passwords must be at least 6 characters')
     if (password !== rePassword) return setError("Passwords don't match")
 
-    const res = saveUserToLS({
+    const user = {
       id: uuidv4(),
       firstName: name,
       lastName: lastName,
       email: email,
       password: password,
       isAdmin: false
-    })
+    }
+
+    const res = saveUserToLS(user)
 
     if (res.success) {
+      dispatch(userActions.setUser(user))
       navigate('/account')
       setError('')
     }
