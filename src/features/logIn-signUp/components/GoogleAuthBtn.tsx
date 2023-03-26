@@ -2,7 +2,11 @@ import React, { FC, useEffect, useState } from 'react'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.api'
 import { IGoogleUser } from '../models/googleUser.type'
-import { checkGoogleUserInLS, saveGoogleUserToLS } from '../services/localStorage'
+import {
+  checkGoogleUserInLS,
+  saveNewGoogleUserToLS,
+  setCurrentUserToLS
+} from '../services/localStorage'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
@@ -42,15 +46,17 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
       const res = checkGoogleUserInLS(result.data)
       if (res.success) {
         dispatch(userActions.setUser(result.data))
+        setCurrentUserToLS(result.data)
         navigate('/account')
         setError('')
       }
       if (res.err) setError(res.err)
     } else {
       // SIGN UP functionality
-      const res = saveGoogleUserToLS(result.data)
+      const res = saveNewGoogleUserToLS(result.data)
       if (res.success) {
         dispatch(userActions.setUser(result.data))
+        setCurrentUserToLS(result.data)
         navigate('/account')
         setError('')
       }

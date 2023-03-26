@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { userActions } from '../../../store/user/user.slice'
 import GoogleAuthBtn from './GoogleAuthBtn'
+import { setCurrentUserToLS } from '../services/localStorage'
 
 const LogInForm: FC = () => {
   const [email, setEmail] = useState('')
@@ -19,6 +20,7 @@ const LogInForm: FC = () => {
     if (result.user) {
       // set current user to store
       dispatch(userActions.setUser(result.user))
+      setCurrentUserToLS(result.user)
       navigate('/account')
     }
   }

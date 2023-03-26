@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
-import { saveUserToLS } from '../services/localStorage'
+import { saveNewUserToLS, setCurrentUserToLS } from '../services/localStorage'
 import { useNavigate } from 'react-router-dom'
 import GoogleAuthBtn from './GoogleAuthBtn'
 import { useDispatch } from 'react-redux'
@@ -41,10 +41,11 @@ const SignUpForm: FC = () => {
       isAdmin: false
     }
 
-    const res = saveUserToLS(user)
+    const res = saveNewUserToLS(user)
 
     if (res.success) {
       dispatch(userActions.setUser(user))
+      setCurrentUserToLS(user)
       navigate('/account')
       setError('')
     }

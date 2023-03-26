@@ -1,6 +1,7 @@
 // packages
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { IUser } from '../../models'
+import { getUsersFromLS } from '../../features/logIn-signUp/services/localStorage'
 
 const initialState: IUser = {
   id: '',
@@ -9,6 +10,9 @@ const initialState: IUser = {
   email: '',
   isAdmin: false
 }
+
+console.log('slice')
+getUsersFromLS()
 
 export const userSlice = createSlice({
   name: 'user',
