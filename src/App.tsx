@@ -14,18 +14,22 @@ import AdminPage from './pages/AdminPage'
 import { checkAuthStatus } from './utilities/auth'
 import MissingPage from './pages/MissingPage'
 
+interface IRouteProps {
+  children: React.ReactNode
+}
+
 const App: FC = () => {
   // get all fixed data from local database
   const { data } = useGetAllDataQuery()
 
   const isAuth = checkAuthStatus()
 
-  const ProtectedRoute: FC<any> = (props) => {
-    return isAuth.status ? props.children : <Navigate to="/login" />
+  const ProtectedRoute: FC<IRouteProps> = ({ children }) => {
+    return isAuth.status ? <>{children}</> : <Navigate to="/login" />
   }
 
-  const AdminRoute: FC<any> = (props) => {
-    return isAuth.isAdmin ? props.children : <Navigate to="/login" />
+  const AdminRoute: FC<IRouteProps> = ({ children }) => {
+    return isAuth.isAdmin ? <>{children}</> : <Navigate to="/login" />
   }
 
   useEffect(() => {
