@@ -21,7 +21,7 @@ const NavBar: FC = () => {
   }, [])
 
   return (
-    <div className="w-[82%] flex justify-between items-center mx-auto h-[80px] border-b-[3px]">
+    <div className="w-[82%] flex justify-between items-center mx-auto min-h-[80px] border-b-[3px]">
       <div className="w-1/3">LOGO</div>
       <div className="w-1/3">
         <ul className="flex justify-evenly items-center ">
