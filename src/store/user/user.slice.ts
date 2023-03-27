@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { IUser } from '../../types/user.type'
 import { getCurrentUserFromLS } from '../../features/logIn-signUp/utilities/localStorage'
 
-const currentUserFromLs: IUser = getCurrentUserFromLS()
+// const currentUserFromLs: IUser = getCurrentUserFromLS()
 
 const initialState: IUser = {
   id: '',
@@ -15,7 +15,8 @@ const initialState: IUser = {
 
 export const userSlice = createSlice({
   name: 'user',
-  initialState: currentUserFromLs ? currentUserFromLs : initialState,
+  // initialState: currentUserFromLs ? currentUserFromLs : initialState,
+  initialState,
   reducers: {
     setUser: (state, action: PayloadAction<IUser>) => {
       state.id = action.payload.id
