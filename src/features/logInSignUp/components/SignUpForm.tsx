@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import GoogleAuthBtn from './GoogleAuthBtn'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
+import { IUser } from '../../../types/user.type'
 
 const SignUpForm: FC = () => {
   const [name, setName] = useState<string>('')
@@ -32,12 +33,13 @@ const SignUpForm: FC = () => {
     if (password.length < 6) return setError('Passwords must be at least 6 characters')
     if (password !== rePassword) return setError("Passwords don't match")
 
-    const user = {
+    const user: IUser = {
       id: uuidv4(),
       firstName: name,
       lastName: lastName,
       email: email,
       password: password,
+      isGoogleLogin: false,
       isAdmin: false
     }
 
