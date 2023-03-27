@@ -24,7 +24,11 @@ const App: FC = () => {
 
   const isAuth = checkAuthStatus()
 
-  const ProtectedRoute: FC<IRouteProps> = ({ children }) => {
+  const UnknownUserRoute: FC<IRouteProps> = ({ children }) => {
+    return isAuth.status ? <Navigate to="/account" /> : <>{children}</>
+  }
+
+  const UserRoute: FC<IRouteProps> = ({ children }) => {
     return isAuth.status ? <>{children}</> : <Navigate to="/login" />
   }
 
@@ -46,13 +50,20 @@ const App: FC = () => {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={
+            <UnknownUserRoute>
+              <LoginPage />
+            </UnknownUserRoute>
+          }
+        />
         <Route
           path="/account"
           element={
-            <ProtectedRoute>
+            <UserRoute>
               <MyAccountPage />
-            </ProtectedRoute>
+            </UserRoute>
           }
         />
         <Route
