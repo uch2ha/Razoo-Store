@@ -7,12 +7,12 @@ const initialState: IUser = {
   firstName: '',
   lastName: '',
   email: '',
+  isGoogleLogin: null,
   isAdmin: false
 }
 
 export const userSlice = createSlice({
   name: 'user',
-  // initialState: currentUserFromLs ? currentUserFromLs : initialState,
   initialState,
   reducers: {
     logIn: (state, action: PayloadAction<IUser>) => {
@@ -21,6 +21,7 @@ export const userSlice = createSlice({
       state.firstName = action.payload.firstName
       state.lastName = action.payload.lastName
       state.isAdmin = action.payload.isAdmin
+      state.isGoogleLogin = action.payload.isGoogleLogin
     },
     logOut: (state) => {
       state.id = initialState.id
@@ -28,6 +29,7 @@ export const userSlice = createSlice({
       state.firstName = initialState.firstName
       state.lastName = initialState.lastName
       state.isAdmin = initialState.isAdmin
+      state.isGoogleLogin = initialState.isGoogleLogin
     }
   }
 })

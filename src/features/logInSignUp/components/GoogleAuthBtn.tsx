@@ -36,16 +36,19 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
 
   // save google user profile data to LS
   useEffect(() => {
-    if (!result.isSuccess) return
-    const res = handleGoogleUserLogIn(result.data)
+    if (!result.isSuccess) return setError('Something went wrong')
+
+    const user: IUser = {
+      id: result.data.id,
+      firstName: result.data.given_name,
+      lastName: result.data.family_name,
+      email: result.data.email,
+      isGoogleLogin: true,
+      isAdmin: false
+    }
+
+    const res = handleGoogleUserLogIn(user)
     if (res.success) {
-      const user: IUser = {
-        id: result.data.id,
-        firstName: result.data.given_name,
-        lastName: result.data.family_name,
-        email: result.data.email,
-        isAdmin: false
-      }
       dispatch(userActions.logIn(user))
       navigate('/account')
     } else {

@@ -4,5 +4,6 @@ export type IUser = {
   lastName: string
   email: string
   isAdmin: boolean
+  isGoogleLogin: boolean | null
   password?: string
 }

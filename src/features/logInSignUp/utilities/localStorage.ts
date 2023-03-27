@@ -18,20 +18,18 @@ export const saveNewUserToLS = (user: IUser): { success: boolean; err?: string }
 }
 // GOOGLE USERS -------------------------------------------------------------
 
-export const handleGoogleUserLogIn = (profile: IGoogleProfile): { success: boolean } => {
-  const googleUsers: IGoogleProfile[] = JSON.parse(localStorage.getItem('googleUsers') ?? '[]')
-  if (googleUsers.length === 0) return saveNewGoogleUserToLS(profile, googleUsers)
+export const handleGoogleUserLogIn = (user: IUser): { success: boolean } => {
+  const users: IUser[] = JSON.parse(localStorage.getItem('users') ?? '[]')
+  if (users.length > 0) {
+    const userExist = users.find((u) => u.id === user.id && u.email === user.email)
+    if (userExist) return { success: true }
+  }
 
-  const userExist = googleUsers.find(
-    (user) => user.id === profile.id && user.email === profile.email
-  )
-  if (userExist) return { success: true }
-
-  return saveNewGoogleUserToLS(profile, googleUsers)
+  return saveNewGoogleUserToLS(user, users)
 }
 
-export const saveNewGoogleUserToLS = (profile: IGoogleProfile, googleUsers: IGoogleProfile[]) => {
-  googleUsers.push(profile)
-  localStorage.setItem('googleUsers', JSON.stringify(googleUsers))
+export const saveNewGoogleUserToLS = (user: IUser, users: IUser[]) => {
+  users.push(user)
+  localStorage.setItem('users', JSON.stringify(users))
   return { success: true }
 }
