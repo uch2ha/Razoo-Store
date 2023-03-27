@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { IUser } from '../../types/user.type'
 import { getCurrentUserFromLS } from '../../features/logIn-signUp/utilities/localStorage'
 
-const currentUserFromLs = getCurrentUserFromLS()
+const currentUserFromLs: IUser = getCurrentUserFromLS()
 
 const initialState: IUser = {
   id: '',

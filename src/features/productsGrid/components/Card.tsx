@@ -1,7 +1,6 @@
 import React, { FC, MouseEvent } from 'react'
 
 import img from '../../../assets/shampoo_test.png'
-import Button from '../../../components/Button'
 
 interface ICardProps {
   id: number

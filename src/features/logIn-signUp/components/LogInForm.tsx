@@ -21,7 +21,9 @@ const LogInForm: FC = () => {
       // set current user to store
       dispatch(userActions.setUser(result.user))
       setCurrentUserToLS(result.user)
+      console.log('after login')
       navigate('/account')
+      console.log('after navigate')
     }
   }
 
