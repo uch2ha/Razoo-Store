@@ -1,6 +1,6 @@
 // packages
 import { useEffect, FC } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 // components
 import HomePage from './pages/HomePage'
 import ShopPage from './pages/ShopPage'
@@ -11,10 +11,22 @@ import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
 import MyAccountPage from './pages/MyAccountPage'
 import AdminPage from './pages/AdminPage'
+import { checkAuthStatus } from './utilities/auth'
+import MissingPage from './pages/MissingPage'
 
 const App: FC = () => {
   // get all fixed data from local database
   const { data } = useGetAllDataQuery()
+
+  const isAuth = checkAuthStatus()
+
+  const ProtectedRoute: FC<any> = (props) => {
+    return isAuth.status ? props.children : <Navigate to="/login" />
+  }
+
+  const AdminRoute: FC<any> = (props) => {
+    return isAuth.isAdmin ? props.children : <Navigate to="/login" />
+  }
 
   useEffect(() => {
     if (data) {
@@ -31,8 +43,23 @@ const App: FC = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/account" element={<MyAccountPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <MyAccountPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminPage />
+            </AdminRoute>
+          }
+        />
+        <Route path="*" element={<MissingPage />} />
       </Routes>
     </BrowserRouter>
   )
