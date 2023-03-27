@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { userActions } from '../../../store/user/user.slice'
 import GoogleAuthBtn from './GoogleAuthBtn'
-import { setCurrentUserToLS } from '../services/localStorage'
+import { setCurrentUserToLS } from '../utilities/localStorage'
 
 const LogInForm: FC = () => {
   const [email, setEmail] = useState('')

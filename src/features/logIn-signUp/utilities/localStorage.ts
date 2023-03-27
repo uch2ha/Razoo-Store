@@ -1,5 +1,5 @@
-import { IUser } from '../../../models'
-import { IGoogleProfile } from '../models/googleProfile.type'
+import { IUser } from '../../../types'
+import { IGoogleProfile } from '../types/googleProfile.type'
 
 // LOGIN ------------------------------------------------------------------
 export const getUsersFromLS = (): IUser[] => {

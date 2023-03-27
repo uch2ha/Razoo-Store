@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Card from './Card'
 import Filters from './filter/Filters'
-import { IProduct } from '../../../models'
+import { IProduct } from '../../../types'
 
 interface IGridProps {
   products: IProduct[]
@@ -14,7 +14,7 @@ const Grid: FC<IGridProps> = ({ products, setProductId }) => {
       <div className="xl:max-w-[25%] xl:min-w-[25%] lg:max-w-[30%] lg:min-w-[30%] max-w-[35%] min-w-[35%] mr-[0.5rem]">
         <Filters />
       </div>
-      <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 w-full gap-2">
+      <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 w-full border-[3px] gap-[3px] bg-black border-black">
         {products &&
           products.map((product) => {
             return (

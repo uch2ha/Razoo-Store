@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { IProduct } from '../models'
+import { IProduct } from '../types'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/store'
 import { CloseBtn } from '../assets/svg/CloseBtn'

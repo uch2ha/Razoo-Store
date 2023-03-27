@@ -1,4 +1,4 @@
-import { IFilters } from '../models/filters.type'
+import { IFilters } from '../types/filters.type'
 import { IDb } from '../store/api/DB/db.api'
 
 export const initLocalStorage = (data: IDb) => {

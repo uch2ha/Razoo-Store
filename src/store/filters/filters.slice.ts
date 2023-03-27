@@ -1,7 +1,7 @@
 // packages
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 // components
-import { IFilters } from '../../models/filters.type'
+import { IFilters } from '../../types/filters.type'
 
 const initialState: IFilters = {
   category: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },

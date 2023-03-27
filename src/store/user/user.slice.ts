@@ -1,7 +1,7 @@
 // packages
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { IUser } from '../../models'
-import { getCurrentUserFromLS } from '../../features/logIn-signUp/services/localStorage'
+import { IUser } from '../../types'
+import { getCurrentUserFromLS } from '../../features/logIn-signUp/utilities/localStorage'
 
 const currentUserFromLs = getCurrentUserFromLS()
 

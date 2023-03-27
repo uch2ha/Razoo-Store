@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
-import { saveNewUserToLS, setCurrentUserToLS } from '../services/localStorage'
+import { saveNewUserToLS, setCurrentUserToLS } from '../utilities/localStorage'
 import { useNavigate } from 'react-router-dom'
 import GoogleAuthBtn from './GoogleAuthBtn'
 import { useDispatch } from 'react-redux'
