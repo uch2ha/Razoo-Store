@@ -1,5 +1,5 @@
-import { IProduct } from '../../../models'
-import { IFilters } from '../../../models/filters.type'
+import { IProduct } from '../../../types/product.type'
+import { IFilters } from '../types/filters.type'
 
 export const useFilterProducts = (products: IProduct[], filters: IFilters) => {
   // remove all false filters

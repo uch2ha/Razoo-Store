@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Card from './Card'
 import Filters from './filter/Filters'
-import { IProduct } from '../../../models'
+import { IProduct } from '../../../types/product.type'
 
 interface IGridProps {
   products: IProduct[]

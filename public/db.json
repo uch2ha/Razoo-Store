@@ -1,27 +1,30 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": "0",
       "firstName": "Admin",
       "lastName": "Admin",
       "email": "admin",
       "password": "admin",
+      "isGoogleLogin": false,
       "isAdmin": true
     },
     {
-      "id": 1,
+      "id": "1",
       "firstName": "Dmitry",
       "lastName": "Sinyavskiy",
       "email": "sinyavskiy.d@gmail.com",
       "password": "dmitry",
+      "isGoogleLogin": false,
       "isAdmin": false
     },
     {
-      "id": 2,
+      "id": "2",
       "firstName": "Diana",
       "lastName": "Sojanen",
       "email": "diana.sojanen@gmail.com",
       "password": "diana",
+      "isGoogleLogin": false,
       "isAdmin": false
     }
   ],

@@ -1,19 +1,19 @@
 import React, { FC, useState } from 'react'
 import NavBar from '../components/NavBar'
-import LogInForm from '../features/logIn-signUp/components/LogInForm'
-import SignUpForm from '../features/logIn-signUp/components/SignUpForm'
-import Invite from '../features/logIn-signUp/components/Invite'
+import LogInForm from '../features/logInSignUp/components/LogInForm'
+import SignUpForm from '../features/logInSignUp/components/SignUpForm'
+import Invite from '../features/logInSignUp/components/Invite'
 
 const logInText = {
   title: 'Welcome Back!',
-  description1: 'To keep connected with us pleas',
-  description2: 'login with your personal info',
+  firstDescription: 'To keep connected with us pleas',
+  secondDescription: 'login with your personal info',
   btnLabel: 'SIGN IN'
 }
 const signUpText = {
   title: 'New Here?',
-  description1: 'Sign up and discover a great amount',
-  description2: 'of organic haircare products!',
+  firstDescription: 'Sign up and discover a great amount',
+  secondDescription: 'of organic haircare products!',
   btnLabel: 'SIGN UP'
 }
 
