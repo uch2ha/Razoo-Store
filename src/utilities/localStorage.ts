@@ -1,4 +1,4 @@
-import { IFilters } from '../types/filters.type'
+import { IFilters } from '../features/productsGrid/types/filters.type'
 import { IDb } from '../store/api/DB/db.api'
 
 export const initLocalStorage = (data: IDb) => {
