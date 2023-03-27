@@ -1,4 +1,4 @@
-import { IProduct } from '../../../types'
+import { IProduct } from '../../../types/product.type'
 
 export const usePaginate = (products: IProduct[], currentPage: number) => {
   const limitPerPage = 12

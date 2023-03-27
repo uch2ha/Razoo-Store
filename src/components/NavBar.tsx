@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { googleLogout } from '@react-oauth/google'
 import { RootState } from '../store/store'
 import { userActions } from '../store/user/user.slice'
-import { removeCurrentUserFromLS } from '../features/logIn-signUp/utilities/localStorage'
 
 const NavBar: FC = () => {
   const [activePage, setActivePage] = useState<string>('/')
@@ -15,7 +14,6 @@ const NavBar: FC = () => {
   const handleLogOut = () => {
     dispatch(userActions.logOut())
     googleLogout()
-    removeCurrentUserFromLS()
   }
 
   useEffect(() => {

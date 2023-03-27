@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FC, MouseEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/store'
 import { filtersActions } from '../../../../store/filters/filters.slice'

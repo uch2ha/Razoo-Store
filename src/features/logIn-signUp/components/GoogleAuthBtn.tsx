@@ -2,11 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.api'
 import { IGoogleUser } from '../types/googleUser.type'
-import {
-  checkGoogleUserInLS,
-  saveNewGoogleUserToLS,
-  setCurrentUserToLS
-} from '../utilities/localStorage'
+import { checkGoogleUserInLS, saveNewGoogleUserToLS } from '../utilities/localStorage'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
@@ -46,7 +42,6 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
       const res = checkGoogleUserInLS(result.data)
       if (res.success) {
         dispatch(userActions.setUser(result.data))
-        setCurrentUserToLS(result.data)
         navigate('/account')
         setError('')
       }
@@ -56,7 +51,6 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
       const res = saveNewGoogleUserToLS(result.data)
       if (res.success) {
         dispatch(userActions.setUser(result.data))
-        setCurrentUserToLS(result.data)
         navigate('/account')
         setError('')
       }

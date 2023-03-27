@@ -6,23 +6,3 @@ export const initLocalStorage = (data: IDb) => {
   localStorage.setItem('products', JSON.stringify(data.products))
   localStorage.setItem('orders', JSON.stringify(data.orders))
 }
-
-// // FILTERS --------------------------------------------------------------
-// export const setFiltersDataToLS = (
-//   filters: IFilters,
-//   categoriesIsVisible: boolean,
-//   sizeIsVisible: boolean
-// ): void => {
-//   const filtersData = { filters, categoriesIsVisible, sizeIsVisible }
-//   localStorage.setItem('filtersData', JSON.stringify(filtersData))
-// }
-
-// export const getFiltersDataFromLS = (): {
-//   filters: IFilters
-//   categoriesIsVisible: boolean
-//   sizeIsVisible: boolean
-// } => {
-//   const filtersData = localStorage.getItem('filtersData')
-//   return JSON.parse(filtersData ?? '{}')
-// }
-// // ------------------------------------------------------------------------

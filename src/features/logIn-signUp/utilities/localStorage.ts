@@ -1,4 +1,4 @@
-import { IUser } from '../../../types'
+import { IUser } from '../../../types/user.type'
 import { IGoogleProfile } from '../types/googleProfile.type'
 
 // LOGIN ------------------------------------------------------------------
@@ -35,24 +35,4 @@ export const saveNewGoogleUserToLS = (
   googleUsers.push(profile)
   localStorage.setItem('googleUsers', JSON.stringify(googleUsers))
   return { success: true }
-}
-
-// CURRENT USER -----------------------------------------------------------
-
-export const setCurrentUserToLS = (user: IUser): void => {
-  const res = JSON.parse(localStorage.getItem('user') ?? '{}')
-  // if user is already set in LS, then nothing do
-
-  if (res?.id) return
-  localStorage.setItem('user', JSON.stringify(user))
-}
-
-export const removeCurrentUserFromLS = (): void => {
-  localStorage.removeItem('user')
-}
-
-export const getCurrentUserFromLS = (): IUser | null => {
-  const user = JSON.parse(localStorage.getItem('user') ?? '{}')
-  if (user === undefined) return null
-  return user
 }
