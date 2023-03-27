@@ -19,9 +19,6 @@ interface IRouteProps {
 }
 
 const App: FC = () => {
-  // get all fixed data from local database
-  const { data } = useGetAllDataQuery()
-
   const isAuth = checkAuthStatus()
 
   const UnknownUserRoute: FC<IRouteProps> = ({ children }) => {
@@ -35,6 +32,9 @@ const App: FC = () => {
   const AdminRoute: FC<IRouteProps> = ({ children }) => {
     return isAuth.isAdmin ? <>{children}</> : <Navigate to="/login" />
   }
+
+  // get all fixed data from local database
+  const { data } = useGetAllDataQuery()
 
   useEffect(() => {
     if (data) {
