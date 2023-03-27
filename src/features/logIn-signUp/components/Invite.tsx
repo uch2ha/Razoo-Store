@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import Button from '../../../components/Button'
 
 interface IInviteProps {
   onClick: () => void
@@ -17,9 +18,7 @@ const Invite: FC<IInviteProps> = ({ onClick, texts, isLogin }) => {
         <p className="text-xl mb-2">{texts.description1}</p>
         <p className="text-xl">{texts.description2}</p>
       </div>
-      <button className="border-2 py-4 px-16" onClick={onClick}>
-        {texts.btnLabel}
-      </button>
+      <Button label={texts.btnLabel} clickHandler={onClick} styles="border-2 py-4 px-16" />
     </div>
   )
 }

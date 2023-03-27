@@ -1,8 +1,10 @@
 import React, { FC, useEffect, useState } from 'react'
-import { IProduct } from '../types'
+
 import { useSelector } from 'react-redux'
-import { RootState } from '../store/store'
-import { CloseBtn } from '../assets/svg/CloseBtn'
+import { RootState } from '../../../store/store'
+import { CloseBtn } from '../../../assets/svg/CloseBtn'
+import { IProduct } from '../../../types/product.type'
+import Button from '../../../components/Button'
 
 interface IItemDetailsProps {
   handleClose: () => void
@@ -34,6 +36,10 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
     setProduct(product[0])
   }
 
+  const click123 = () => {
+    console.log(123)
+  }
+
   return (
     <div
       className={`fixed left-1/2 w-[85%] h-[80%] flex transform -translate-x-1/2 -translate-y-1/2 blur-none transition-all duration-700 ${
@@ -56,7 +62,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
               <p>{product.description}</p>
               <p className="pb-[5%]">{product.instruction}</p>
             </div>
-            <button className="border-2 px-20 py-4">ADD TO CART</button>
+            <Button label="ADD TO CART" clickHandler={click123} styles="border-2 px-20 py-4" />
           </div>
         </div>
         <div className="fixed top-5 right-5">
