@@ -19,9 +19,7 @@ const LogInForm: FC = () => {
     if (result.user) {
       // set current user to store
       dispatch(userActions.logIn(result.user))
-      console.log('after login')
       navigate('/account')
-      console.log('after navigate')
     }
   }
 

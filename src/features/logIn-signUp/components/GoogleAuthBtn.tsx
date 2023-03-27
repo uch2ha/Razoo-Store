@@ -48,9 +48,9 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
       }
       dispatch(userActions.logIn(user))
       navigate('/account')
-      setError('')
+    } else {
+      setError('Something went wrong')
     }
-    if (res.err) setError(res.err)
   }, [result])
 
   return (

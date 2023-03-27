@@ -18,9 +18,7 @@ export const saveNewUserToLS = (user: IUser): { success: boolean; err?: string }
 }
 // GOOGLE USERS -------------------------------------------------------------
 
-export const handleGoogleUserLogIn = (
-  profile: IGoogleProfile
-): { success: boolean; err?: string } => {
+export const handleGoogleUserLogIn = (profile: IGoogleProfile): { success: boolean } => {
   const googleUsers: IGoogleProfile[] = JSON.parse(localStorage.getItem('googleUsers') ?? '[]')
   if (googleUsers.length === 0) return saveNewGoogleUserToLS(profile, googleUsers)
 

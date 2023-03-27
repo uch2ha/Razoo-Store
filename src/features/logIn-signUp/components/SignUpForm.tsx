@@ -46,7 +46,6 @@ const SignUpForm: FC = () => {
     if (res.success) {
       dispatch(userActions.logIn(user))
       navigate('/account')
-      setError('')
     }
     if (res.err) setError(res.err)
   }
