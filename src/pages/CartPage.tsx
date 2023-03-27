@@ -36,8 +36,8 @@ const CartPage: FC = () => {
           itemIsVisible && 'blur-sm'
         }`}>
         <NavBar />
-        <div className="h-full w-full flex justify-start items-center text-center flex-col my-2">
-          <h2 className="my-10">SHOPPING BAG</h2>
+        <div className="h-full  w-[82%] flex justify-start items-center text-center flex-col my-2">
+          <h2 className="my-10 font-[500]">SHOPPING BAG</h2>
           <Cart setProductId={setProductId} />
         </div>
       </div>

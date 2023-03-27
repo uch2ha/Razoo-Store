@@ -27,30 +27,35 @@ const Cart: FC<ICartProps> = ({ setProductId }) => {
   const test = () => console.log(123)
 
   return (
-    <div className="h-[85%] w-[80%]">
+    <div className="h-full w-full">
       {cartItems.length > 0 ? (
         <>
-          <div className="flex border-b-2 ">
-            <p className="w-[40%] text-start">PRODUCT</p>
-            <p className="w-[19%]">PRICE</p>
-            <p className="w-[19%]">AMOUNT</p>
-            <p className="w-[19%]">SUBTOTAL</p>
+          <div className="flex border-b-2">
+            <h5 className="w-[29%] text-start">PRODUCT</h5>
+            <h5 className="w-[23%]">PRICE</h5>
+            <h5 className="w-[23%]">AMOUNT</h5>
+            <h5 className="w-[23%]">SUBTOTAL</h5>
           </div>
-          {cartItems.map((item) => {
-            return (
-              <CartItem
-                key={item.productId}
-                itemId={item.productId}
-                amount={item.amount}
-                setProductId={setProductId}
-              />
-            )
-          })}
+          <div>
+            {cartItems.map((item) => {
+              return (
+                <CartItem
+                  key={item.productId}
+                  itemId={item.productId}
+                  amount={item.amount}
+                  setProductId={setProductId}
+                />
+              )
+            })}
+          </div>
 
           <div className="border-t-2 flex justify-end items-center">
-            <div>
-              <p>{total} $</p>
-              <Button label="CHECKOUT" clickHandler={test} styles="bg-red-200" />
+            <div className="mt-5 w-[19%] ">
+              <div className="mb-1 flex justify-between font-[500]">
+                <h3>TOTAL</h3>
+                <h3>{total} $</h3>
+              </div>
+              <Button label="CHECKOUT" clickHandler={test} styles="bg-red-200 w-full py-[8px]" />
             </div>
           </div>
         </>
