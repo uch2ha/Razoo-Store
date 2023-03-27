@@ -1,10 +1,9 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { useSelector } from 'react-redux'
-import { RootState } from '../../../store/store'
 import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import { IProduct } from '../../../types/product.type'
 import Button from '../../../components/Button'
+import { getAllProductsFromLS } from '../../../utilities/localStorage'
 
 interface IItemDetailsProps {
   handleClose: () => void
@@ -25,7 +24,8 @@ const initState: IProduct = {
 const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible }) => {
   const [product, setProduct] = useState<IProduct>(initState)
 
-  const products = useSelector((state: RootState) => state.products)
+  // get product list from LS
+  const products = getAllProductsFromLS()
 
   useEffect(() => {
     if (productId !== null) getProductById(productId)
