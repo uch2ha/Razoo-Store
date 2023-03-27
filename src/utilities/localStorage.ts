@@ -1,4 +1,3 @@
-import { IFilters } from '../features/productsGrid/types/filters.type'
 import { IDb } from '../store/api/DB/db.api'
 
 export const initLocalStorage = (data: IDb) => {
@@ -8,22 +7,22 @@ export const initLocalStorage = (data: IDb) => {
   localStorage.setItem('orders', JSON.stringify(data.orders))
 }
 
-// FILTERS --------------------------------------------------------------
-export const setFiltersDataToLS = (
-  filters: IFilters,
-  categoriesIsVisible: boolean,
-  sizeIsVisible: boolean
-): void => {
-  const filtersData = { filters, categoriesIsVisible, sizeIsVisible }
-  localStorage.setItem('filtersData', JSON.stringify(filtersData))
-}
+// // FILTERS --------------------------------------------------------------
+// export const setFiltersDataToLS = (
+//   filters: IFilters,
+//   categoriesIsVisible: boolean,
+//   sizeIsVisible: boolean
+// ): void => {
+//   const filtersData = { filters, categoriesIsVisible, sizeIsVisible }
+//   localStorage.setItem('filtersData', JSON.stringify(filtersData))
+// }
 
-export const getFiltersDataFromLS = (): {
-  filters: IFilters
-  categoriesIsVisible: boolean
-  sizeIsVisible: boolean
-} => {
-  const filtersData = localStorage.getItem('filtersData')
-  return JSON.parse(filtersData ?? '{}')
-}
-// ------------------------------------------------------------------------
+// export const getFiltersDataFromLS = (): {
+//   filters: IFilters
+//   categoriesIsVisible: boolean
+//   sizeIsVisible: boolean
+// } => {
+//   const filtersData = localStorage.getItem('filtersData')
+//   return JSON.parse(filtersData ?? '{}')
+// }
+// // ------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 // packages
 import { createSlice } from '@reduxjs/toolkit'
-import { IProduct } from '../../types'
+//types
+import { IProduct } from '../../types/product.type'
 // components
 import DB from '../../../public/db.json'
 
