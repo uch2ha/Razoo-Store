@@ -1,5 +1,4 @@
 import { ChangeEvent, FC, MouseEvent, useEffect, useState } from 'react'
-import { getFiltersDataFromLS, setFiltersDataToLS } from '../../../../utilities/localStorage'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../store/store'
 import { filtersActions } from '../../../../store/filters/filters.slice'
@@ -8,16 +7,18 @@ import FilterButton from './FilterButton'
 import SortByButton from './SortByButton'
 
 const Filters: FC = () => {
-  const [categoriesIsVisible, setCategoriesIsVisible] = useState(false)
-  const [sizeIsVisible, setSizeIsVisible] = useState(false)
-  const [firstLoading, setFirstLoading] = useState(true)
-
-  // get filters from products store
+  // get filters from store
   const filters = useSelector((state: RootState) => state.filters) || {}
+  const dispatch = useDispatch()
 
   const { category, size } = filters
 
-  const dispatch = useDispatch()
+  // if some of the filters are true
+  // set category or size to visible
+  const [categoriesIsVisible, setCategoriesIsVisible] = useState(
+    Object.values(category).includes(true)
+  )
+  const [sizeIsVisible, setSizeIsVisible] = useState(Object.values(size).includes(true))
 
   // show or hide filter's categories
   const handleClick = (e: MouseEvent<HTMLButtonElement | SVGSVGElement>) => {
@@ -55,20 +56,6 @@ const Filters: FC = () => {
   const handleReset = () => {
     dispatch(filtersActions.toggleReset())
   }
-
-  // get filters settings from LS
-  useEffect(() => {
-    const { filters, categoriesIsVisible, sizeIsVisible } = getFiltersDataFromLS()
-    if (filters) dispatch(filtersActions.applyFiltersData(filters))
-    if (categoriesIsVisible !== undefined) setCategoriesIsVisible(categoriesIsVisible)
-    if (sizeIsVisible !== undefined) setSizeIsVisible(sizeIsVisible)
-    setFirstLoading(false)
-  }, [])
-
-  // save filters settings to LS
-  useEffect(() => {
-    if (!firstLoading) setFiltersDataToLS(filters, categoriesIsVisible, sizeIsVisible)
-  }, [filters, categoriesIsVisible, sizeIsVisible])
 
   return (
     <div className="border-2 border-l-0 w-full h-full flex flex-col justify-start items-start rounded-tr-md rounded-br-md">
