@@ -17,13 +17,15 @@ import { UIReducer } from './UI/UI.slice'
 import { filtersReducer } from './filters/filters.slice'
 import { userReducer } from './user/user.slice'
 import { googleAuthApi } from './api/googleAuth/googleAuth.api'
+import { cartReducer } from './cart/cart.slice'
 
 const rootReducer = combineReducers({
   [dbApi.reducerPath]: dbApi.reducer,
   [googleAuthApi.reducerPath]: googleAuthApi.reducer,
   UI: UIReducer,
   filters: filtersReducer,
-  user: userReducer
+  user: userReducer,
+  cart: cartReducer
 })
 
 const persistConfig = {

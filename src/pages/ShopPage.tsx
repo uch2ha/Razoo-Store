@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from 'react'
 // components
 import NavBar from '../components/NavBar'
 import ProductsGridComponent from '../features/productsGrid/components/ProductsGridComponent'
-import ItemDetails from '../features/productsGrid/components/ItemDetails'
+import ItemDetails from '../components/ItemDetails'
 // files
 import img from '../assets/homePageBg.jpg'
 
@@ -34,7 +34,7 @@ const ShopPage: FC = () => {
   }, [itemIsVisible])
 
   return (
-    <div>
+    <>
       <div
         onClick={handleClose}
         className={`bg-gray-400 w-screen min-h-screen flex flex-col items-center justify-start ${
@@ -47,7 +47,7 @@ const ShopPage: FC = () => {
         </div>
       </div>
       <ItemDetails handleClose={handleClose} productId={productId} isVisible={itemIsVisible} />
-    </div>
+    </>
   )
 }
 

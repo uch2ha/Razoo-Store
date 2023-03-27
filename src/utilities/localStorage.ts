@@ -12,3 +12,10 @@ export const initLocalStorage = (data: IDb) => {
 export const getAllProductsFromLS = (): IProduct[] => {
   return JSON.parse(localStorage.getItem('products') ?? '[]')
 }
+
+export const getProductByIdFromLS = (id: number): IProduct | null => {
+  const products: IProduct[] = JSON.parse(localStorage.getItem('products') ?? '[]')
+  const product = products.find((product) => product.id === id)
+  if (product) return product
+  return null
+}
