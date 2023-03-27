@@ -2,17 +2,17 @@ import React, { FC, useEffect, useState } from 'react'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.api'
 import { IGoogleUser } from '../types/googleUser.type'
-import { checkGoogleUserInLS, saveNewGoogleUserToLS } from '../utilities/localStorage'
+import { handleGoogleUserLogIn } from '../utilities/localStorage'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
+import { IUser } from '../../../types/user.type'
 
 interface IGoogleAuthProps {
-  isLogin: boolean
   setError: (msg: string) => void
 }
 
-const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
+const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
   const [googleUser, setGoogleUser] = useState<IGoogleUser | null>(null)
 
   // fetch google user from google.api
@@ -37,25 +37,20 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ isLogin, setError }) => {
   // save google user profile data to LS
   useEffect(() => {
     if (!result.isSuccess) return
-    if (isLogin) {
-      // LOGIN functionality
-      const res = checkGoogleUserInLS(result.data)
-      if (res.success) {
-        dispatch(userActions.setUser(result.data))
-        navigate('/account')
-        setError('')
+    const res = handleGoogleUserLogIn(result.data)
+    if (res.success) {
+      const user: IUser = {
+        id: result.data.id,
+        firstName: result.data.given_name,
+        lastName: result.data.family_name,
+        email: result.data.email,
+        isAdmin: false
       }
-      if (res.err) setError(res.err)
-    } else {
-      // SIGN UP functionality
-      const res = saveNewGoogleUserToLS(result.data)
-      if (res.success) {
-        dispatch(userActions.setUser(result.data))
-        navigate('/account')
-        setError('')
-      }
-      if (res.err) setError(res.err)
+      dispatch(userActions.logIn(user))
+      navigate('/account')
+      setError('')
     }
+    if (res.err) setError(res.err)
   }, [result])
 
   return (

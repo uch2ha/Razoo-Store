@@ -18,7 +18,7 @@ const LogInForm: FC = () => {
     if (result.err) return setError(result.err)
     if (result.user) {
       // set current user to store
-      dispatch(userActions.setUser(result.user))
+      dispatch(userActions.logIn(result.user))
       console.log('after login')
       navigate('/account')
       console.log('after navigate')
@@ -34,7 +34,7 @@ const LogInForm: FC = () => {
     <div className="w-full h-full bg-white flex flex-col justify-center items-center rounded-md">
       <h2>Login to Your Account</h2>
       <h4>Login using social networks!</h4>
-      <GoogleAuthBtn isLogin={true} setError={setError} />
+      <GoogleAuthBtn setError={setError} />
       <p>OR</p>
       {error && <h3 className="text-red-600 font-bold py-4">{error}</h3>}
       <input

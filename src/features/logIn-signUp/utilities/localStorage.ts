@@ -7,15 +7,6 @@ export const getUsersFromLS = (): IUser[] => {
   return JSON.parse(users ?? '[]')
 }
 
-export const checkGoogleUserInLS = (
-  profile: IGoogleProfile
-): { success: boolean; err?: string } => {
-  const googleUsers: IGoogleProfile[] = JSON.parse(localStorage.getItem('googleUsers') ?? '[]')
-  const isExist = googleUsers.find((user) => user.id === profile.id)
-  if (!isExist) return { success: false, err: 'User not found, try SIGN UP' }
-  return { success: true }
-}
-
 // SIGNUP ------------------------------------------------------------------
 export const saveNewUserToLS = (user: IUser): { success: boolean; err?: string } => {
   const users: IUser[] = JSON.parse(localStorage.getItem('users') ?? '[]')
@@ -25,13 +16,23 @@ export const saveNewUserToLS = (user: IUser): { success: boolean; err?: string }
   localStorage.setItem('users', JSON.stringify(users))
   return { success: true }
 }
+// GOOGLE USERS -------------------------------------------------------------
 
-export const saveNewGoogleUserToLS = (
+export const handleGoogleUserLogIn = (
   profile: IGoogleProfile
 ): { success: boolean; err?: string } => {
   const googleUsers: IGoogleProfile[] = JSON.parse(localStorage.getItem('googleUsers') ?? '[]')
-  const duplicateUser = googleUsers.find((user) => user.id === profile.id)
-  if (duplicateUser) return { success: false, err: 'User already exists, try to sign in' }
+  if (googleUsers.length === 0) return saveNewGoogleUserToLS(profile, googleUsers)
+
+  const userExist = googleUsers.find(
+    (user) => user.id === profile.id && user.email === profile.email
+  )
+  if (userExist) return { success: true }
+
+  return saveNewGoogleUserToLS(profile, googleUsers)
+}
+
+export const saveNewGoogleUserToLS = (profile: IGoogleProfile, googleUsers: IGoogleProfile[]) => {
   googleUsers.push(profile)
   localStorage.setItem('googleUsers', JSON.stringify(googleUsers))
   return { success: true }

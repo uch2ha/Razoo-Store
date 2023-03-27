@@ -44,7 +44,7 @@ const SignUpForm: FC = () => {
     const res = saveNewUserToLS(user)
 
     if (res.success) {
-      dispatch(userActions.setUser(user))
+      dispatch(userActions.logIn(user))
       navigate('/account')
       setError('')
     }
@@ -54,7 +54,7 @@ const SignUpForm: FC = () => {
   return (
     <div className="w-full h-full bg-white flex flex-col justify-center items-center rounded-md">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, voluptatum.</p>
-      <GoogleAuthBtn isLogin={false} setError={setError} />
+      <GoogleAuthBtn setError={setError} />
       {error && <p>{error}</p>}
       <br />
       <input
