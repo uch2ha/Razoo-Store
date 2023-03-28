@@ -11,9 +11,13 @@ import { getAllProductsFromLS } from '../../../utilities/localStorage'
 
 interface IProductsGridComponentProps {
   setProductId: (id: number) => void
+  isAdmin?: boolean
 }
 
-const ProductsGridComponent: FC<IProductsGridComponentProps> = ({ setProductId }) => {
+const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
+  setProductId,
+  isAdmin = false
+}) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   // get product list from LS
@@ -67,7 +71,7 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({ setProductId }
           </button>
         </div>
       </div>
-      <Grid products={productsAfterPaginate} setProductId={setProductId} />
+      <Grid products={productsAfterPaginate} setProductId={setProductId} isAdmin={isAdmin} />
     </div>
   )
 }
