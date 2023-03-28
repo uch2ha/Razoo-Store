@@ -8,7 +8,7 @@ import img from '../assets/homePageBg.jpg'
 import { withItemDetails } from '../HoC/withItemDetails'
 
 interface IShopPageProps {
-  setProductId: (m: number | null) => void
+  setProductId?: (m: number | null) => void
 }
 
 const ShopPage: FC<IShopPageProps> = ({ setProductId }) => {
@@ -17,7 +17,7 @@ const ShopPage: FC<IShopPageProps> = ({ setProductId }) => {
       <NavBar />
       <div className="h-full w-full flex justify-start items-center text-center flex-col">
         <img src={img} className="w-[82%] h-[200px] my-10" />
-        <ProductsGridComponent setProductId={setProductId} />
+        {setProductId && <ProductsGridComponent setProductId={setProductId} />}
       </div>
     </>
   )
