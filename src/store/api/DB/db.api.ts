@@ -10,7 +10,7 @@ export type IDb = { users: IUser[]; orders: IOrder[]; products: IProduct[] }
 export const dbApi = createApi({
   reducerPath: 'db/api',
   baseQuery: fetchBaseQuery({
-    baseUrl: '../../../public/'
+    baseUrl: '/'
   }),
   endpoints: (build) => ({
     getAllData: build.query<IDb, void>({
