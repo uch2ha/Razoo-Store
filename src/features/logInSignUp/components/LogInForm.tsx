@@ -14,7 +14,7 @@ const LogInForm: FC = () => {
   const navigate = useNavigate()
 
   const handleLogIn = () => {
-    const result = useCheckUserLogIn(email, password)
+    const result = useCheckUserLogIn(email.toLowerCase(), password)
     if (result.err) return setError(result.err)
     if (result.user) {
       // set current user to store

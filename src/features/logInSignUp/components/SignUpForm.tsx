@@ -35,9 +35,9 @@ const SignUpForm: FC = () => {
 
     const user: IUser = {
       id: uuidv4(),
-      firstName: name,
-      lastName: lastName,
-      email: email,
+      firstName: name.toLocaleLowerCase(),
+      lastName: lastName.toLocaleLowerCase(),
+      email: email.toLocaleLowerCase(),
       password: password,
       isGoogleLogin: false,
       isAdmin: false
