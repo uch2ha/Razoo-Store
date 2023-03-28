@@ -3,6 +3,7 @@ import Button from '../../../components/Button'
 import CartItem from './CartItem'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
+import { withItemDetails } from '../../../HoC/withItemDetails'
 
 interface ICartProps {
   setProductId: (id: number) => void
