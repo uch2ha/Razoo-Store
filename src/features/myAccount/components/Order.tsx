@@ -1,17 +1,23 @@
 import React, { FC, useState } from 'react'
 import OrderDetails from './OrderDetails'
 import { IOrder } from '../../../types/order.type'
+import { ArrowDown } from '../../../assets/svg/ArrowDown'
+import { ArrowUp } from '../../../assets/svg/ArrowUp'
 
 interface IOrderProps {
   order: IOrder
 }
 
 const Order: FC<IOrderProps> = ({ order }) => {
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+
+  const handleVisible = () => {
+    setIsVisible((prev) => !prev)
+  }
 
   return (
-    <div className="pl-[10%] border-b-2  py-10">
-      <div className="flex justify-between">
+    <div className=" pl-[10%] border-b-2 py-8">
+      <div className="flex justify-between my-2">
         <div className="flex w-3/5 justify-between uppercase">
           <div>
             <p className="underline underline-offset-1">ORDER NUMBER</p>
@@ -26,9 +32,11 @@ const Order: FC<IOrderProps> = ({ order }) => {
             <p>{order.purchasedAt}</p>
           </div>
         </div>
-        <div className="mr-10 flex justify-center items-center">asd</div>
+        <div className="mr-7 p-2 text-3xl flex justify-center items-center" onClick={handleVisible}>
+          {isVisible ? <ArrowDown /> : <ArrowUp />}
+        </div>
       </div>
-      <OrderDetails products={order.products} totalPrice={order.totalPrice} />
+      <OrderDetails products={order.products} totalPrice={order.totalPrice} isVisible={isVisible} />
     </div>
   )
 }

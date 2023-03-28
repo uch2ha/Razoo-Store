@@ -9,7 +9,8 @@ const NavBar: FC = () => {
   const [activePage, setActivePage] = useState<string>('/')
 
   const dispatch = useDispatch()
-  const userID = useSelector((state: RootState) => state.user.id)
+  const user = useSelector((state: RootState) => state.user)
+  const { id, isAdmin } = user
 
   const handleLogOut = () => {
     dispatch(userActions.logOut())
@@ -38,23 +39,33 @@ const NavBar: FC = () => {
       </div>
       <div className="w-1/3">
         <ul className="flex justify-end items-center space-x-5">
-          {userID ? (
-            <>
+          {id &&
+            (isAdmin ? (
+              <>
+                <li className={`${activePage === '/admin' ? 'active-link' : ''} btn`}>
+                  <Link to="/admin">ADMIN</Link>
+                </li>
+                <li className={`${activePage === '/account' ? 'active-link' : ''} btn`}>
+                  <Link to="/account">MY ACCOUNT</Link>
+                </li>
+              </>
+            ) : (
               <li className={`${activePage === '/account' ? 'active-link' : ''} btn`}>
                 <Link to="/account">MY ACCOUNT</Link>
               </li>
-              <li className={`btn`}>
-                <button onClick={handleLogOut}>LOGOUT</button>
-              </li>
-            </>
+            ))}
+          <li className={`${activePage === '/cart' ? 'active-link' : ''} btn`}>
+            <Link to="/cart">CART</Link>
+          </li>
+          {id ? (
+            <li className={`btn`}>
+              <button onClick={handleLogOut}>LOGOUT</button>
+            </li>
           ) : (
             <li className={`${activePage === '/login' ? 'active-link' : ''} btn`}>
               <Link to="/login">LOGIN</Link>
             </li>
           )}
-          <li className={`${activePage === '/cart' ? 'active-link' : ''} btn`}>
-            <Link to="/cart">CART</Link>
-          </li>
         </ul>
       </div>
     </div>

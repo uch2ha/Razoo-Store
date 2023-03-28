@@ -47,7 +47,7 @@ const SignUpForm: FC = () => {
 
     if (res.success) {
       dispatch(userActions.logIn(user))
-      navigate('/account')
+      navigate('/shop')
     }
     if (res.err) setError(res.err)
   }

@@ -19,7 +19,7 @@ const LogInForm: FC = () => {
     if (result.user) {
       // set current user to store
       dispatch(userActions.logIn(result.user))
-      navigate('/account')
+      navigate('/shop')
     }
   }
 

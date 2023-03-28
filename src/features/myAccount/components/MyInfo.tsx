@@ -18,7 +18,7 @@ const MyInfo: FC = () => {
           <p>Manage your login information and password here.</p>
         </div>
       </div>
-      <div className="border-b-2 flex  justify-between pl-[10%]">
+      <div className="border-b-2 flex justify-between pl-[10%]">
         <div>
           <div className="py-5">
             <p className="underline underline-offset-1">Name</p>
