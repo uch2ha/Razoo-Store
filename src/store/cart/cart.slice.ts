@@ -45,6 +45,11 @@ export const cartSlice = createSlice({
       if (index !== -1) {
         state.splice(index, 1)
       }
+    },
+    clearCart: (state) => {
+      while (state.length > 0) {
+        state.pop()
+      }
     }
   }
 })
