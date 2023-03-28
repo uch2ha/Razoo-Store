@@ -22,11 +22,11 @@ const App: FC = () => {
   const isAuth = checkAuthStatus()
 
   const UnknownUserRoute: FC<IRouteProps> = ({ children }) => {
-    return isAuth.status ? <Navigate to="/account" /> : <>{children}</>
+    return isAuth.isLogIn ? <Navigate to="/account" /> : <>{children}</>
   }
 
   const UserRoute: FC<IRouteProps> = ({ children }) => {
-    return isAuth.status ? <>{children}</> : <Navigate to="/login" />
+    return isAuth.isLogIn ? <>{children}</> : <Navigate to="/login" />
   }
 
   const AdminRoute: FC<IRouteProps> = ({ children }) => {
