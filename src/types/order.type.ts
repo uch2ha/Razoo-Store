@@ -4,6 +4,8 @@ export type IOrder = {
     productId: number
     amount: number
   }[]
-  userId: number
+  userId: string
   purchasedAt: string
+  status: 'delivered' | 'pending' | 'canceled'
+  totalPrice: number
 }

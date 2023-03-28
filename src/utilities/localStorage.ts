@@ -1,4 +1,5 @@
 import { IDb } from '../store/api/DB/db.api'
+import { IOrder } from '../types/order.type'
 import { IProduct } from '../types/product.type'
 
 export const initLocalStorage = (data: IDb) => {
@@ -18,4 +19,12 @@ export const getProductByIdFromLS = (id: number): IProduct | null => {
   const product = products.find((product) => product.id === id)
   if (product) return product
   return null
+}
+
+// ORDERS --------------------------------
+export const getOrdersByUserIdFromLS = (id: string): IOrder[] | [] => {
+  const orders: IOrder[] = JSON.parse(localStorage.getItem('orders') ?? '[]')
+  const userOrders = orders.filter((order) => order.userId === id)
+  if (userOrders) return userOrders
+  return []
 }

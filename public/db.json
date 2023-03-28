@@ -188,8 +188,10 @@
           "amount": 1
         }
       ],
-      "userId": 1,
-      "purchasedAt": "date"
+      "userId": "1",
+      "purchasedAt": "date",
+      "status": "delivered",
+      "totalPrice": 116.95
     },
     {
       "orderId": 1,
@@ -203,8 +205,10 @@
           "amount": 10
         }
       ],
-      "userId": 2,
-      "purchasedAt": "date"
+      "userId": "2",
+      "purchasedAt": "date",
+      "status": "cancelled",
+      "totalPrice": 234.85
     },
     {
       "orderId": 2,
@@ -218,8 +222,27 @@
           "amount": 1
         }
       ],
-      "userId": 2,
-      "purchasedAt": "date"
+      "userId": "2",
+      "purchasedAt": "date",
+      "status": "delivered",
+      "totalPrice": 29.98
+    },
+    {
+      "orderId": 3,
+      "products": [
+        {
+          "productId": 4,
+          "amount": 1
+        },
+        {
+          "productId": 2,
+          "amount": 1
+        }
+      ],
+      "userId": "1",
+      "purchasedAt": "date",
+      "status": "delivered",
+      "totalPrice": 26.98
     }
   ]
 }
