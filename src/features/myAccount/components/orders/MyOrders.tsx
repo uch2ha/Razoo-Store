@@ -1,19 +1,14 @@
 import React, { FC } from 'react'
-import Button from '../../../components/Button'
+import Button from '../../../../components/Button'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../../store/store'
+import { RootState } from '../../../../store/store'
 import Order from './Order'
-import { getOrdersByUserIdFromLS } from '../../../utilities/localStorage'
+import { getOrdersByUserIdFromLS } from '../../../../utilities/localStorage'
 
 const MyOrders: FC = () => {
   const userId = useSelector((state: RootState) => state.user.id)
   const orders = getOrdersByUserIdFromLS(userId)
 
-  console.log(orders)
-
-  const test = () => {
-    console.log(12)
-  }
   return (
     <>
       <div className="border-b-2 min-h-[7rem] pl-[10%] flex flex-col justify-center">

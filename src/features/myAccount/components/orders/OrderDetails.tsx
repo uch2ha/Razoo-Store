@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import OrderDetailsRow from './OrderDetailsRow'
-import { IProduct } from '../../../types/product.type'
+import { IProduct } from '../../../../types/product.type'
 
 interface IOrderDetailsProps {
   products: {

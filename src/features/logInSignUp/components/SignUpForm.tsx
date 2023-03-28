@@ -1,12 +1,12 @@
 import { ChangeEvent, FC, useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
-import { saveNewUserToLS } from '../utilities/localStorage'
 import { useNavigate } from 'react-router-dom'
 import GoogleAuthBtn from './GoogleAuthBtn'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
 import { IUser } from '../../../types/user.type'
+import { saveNewUserToLS } from '../../../utilities/localStorage'
 
 const SignUpForm: FC = () => {
   const [name, setName] = useState<string>('')

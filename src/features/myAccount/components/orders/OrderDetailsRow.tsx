@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { getProductByIdFromLS } from '../../../utilities/localStorage'
+import { getProductByIdFromLS } from '../../../../utilities/localStorage'
 
 interface IOrderDetailsRowProps {
   itemId: number
