@@ -1,9 +1,5 @@
-export type ICart = {
-  userId: string | null
-  cart: [
-    {
-      productId: string
-      amount: number
-    }
-  ]
+export type ICartItem = {
+  productId: number
+  productPrice: number
+  amount: number
 }

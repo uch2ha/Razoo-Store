@@ -1,9 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { CloseBtn } from '../../../assets/svg/CloseBtn'
-import { IProduct } from '../../../types/product.type'
-import Button from '../../../components/Button'
-import { getAllProductsFromLS } from '../../../utilities/localStorage'
+import { CloseBtn } from '../assets/svg/CloseBtn'
+import { IProduct } from '../types/product.type'
+import Button from './Button'
+import { getAllProductsFromLS } from '../utilities/localStorage'
+import { useDispatch } from 'react-redux'
+import { cartActions } from '../store/cart/cart.slice'
 
 interface IItemDetailsProps {
   handleClose: () => void
@@ -24,6 +26,8 @@ const initState: IProduct = {
 const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible }) => {
   const [product, setProduct] = useState<IProduct>(initState)
 
+  const dispatch = useDispatch()
+
   // get product list from LS
   const products = getAllProductsFromLS()
 
@@ -36,8 +40,9 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
     setProduct(product[0])
   }
 
-  const click123 = () => {
-    console.log(123)
+  const handleAddItem = () => {
+    const { id, price } = product
+    dispatch(cartActions.addItem({ id, price }))
   }
 
   return (
@@ -62,7 +67,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
               <p>{product.description}</p>
               <p className="pb-[5%]">{product.instruction}</p>
             </div>
-            <Button label="ADD TO CART" clickHandler={click123} styles="border-2 px-20 py-4" />
+            <Button label="ADD TO CART" clickHandler={handleAddItem} styles="border-2 px-20 py-4" />
           </div>
         </div>
         <div className="fixed top-5 right-5">
