@@ -4,7 +4,6 @@ import { FC } from 'react'
 import NavBar from '../components/NavBar'
 import ProductsGridComponent from '../features/productsGrid/components/ProductsGridComponent'
 // files
-import img from '../assets/homePageBg.jpg'
 import { withItemDetails } from '../HoC/withItemDetails'
 
 interface IShopPageProps {
@@ -16,7 +15,10 @@ const ShopPage: FC<IShopPageProps> = ({ setProductId }) => {
     <>
       <NavBar />
       <div className="h-full w-full flex justify-start items-center text-center flex-col">
-        <img src={img} className="w-[82%] h-[200px] my-10" />
+        <img
+          src={`./src/assets/shopPageBanner.png`}
+          className="object-cover right-0 w-[82%] my-8"
+        />
         {setProductId && <ProductsGridComponent setProductId={setProductId} />}
       </div>
     </>

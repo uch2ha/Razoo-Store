@@ -7,8 +7,6 @@ import { getProductByIdFromLS } from '../../../utilities/localStorage'
 import { MinusBtn } from '../../../assets/svg/MinusBtn'
 import { PlusBtn } from '../../../assets/svg/PlusBtn'
 
-const img = 'shampoo'
-
 interface ICartItemProps {
   itemId: number
   amount: number
@@ -41,7 +39,7 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
     <div className="py-6 my-[3px]  border-b-2 flex items-center justify-center">
       <div className="w-[29%] h-[150px] flex items-center btn" onClick={() => setProductId(itemId)}>
         <div className="border-2">
-          <img src={`./src/assets/productImg/${img}.png`} className="max-w-[150px]" />
+          <img src={`./src/assets/productImgs/${itemId}.png`} className="max-w-[150px]" />
         </div>
         <div className="h-full ml-3 flex flex-col justify-evenly items-start uppercase text-start">
           <div>
