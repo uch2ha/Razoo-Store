@@ -62,7 +62,9 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
             {filteredProducts.length}
           </p>
           {setIsVisible && (
-            <button className="border-2 my-2 px-5" onClick={() => setIsVisible(true)}>
+            <button
+              className="border-2 rounded-md my-2 text-xl px-5"
+              onClick={() => setIsVisible(true)}>
               ADD PRODUCT
             </button>
           )}

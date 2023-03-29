@@ -36,7 +36,7 @@ const Card: FC<ICardProps> = ({
 
   return (
     <div
-      className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
+      className="flex flex-col h-fit justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center">
         <img src={`./src/assets/productImgs/${id}.png`} className="w-[90%]" />
