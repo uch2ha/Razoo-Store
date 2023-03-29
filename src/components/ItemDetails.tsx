@@ -3,9 +3,10 @@ import React, { FC, useEffect, useState } from 'react'
 import { CloseBtn } from '../assets/svg/CloseBtn'
 import { IProduct } from '../types/product.type'
 import Button from './Button'
-import { getAllProductsFromLS } from '../utilities/localStorage'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../store/cart/cart.slice'
+import { productsActions } from '../store/products/products.slice'
+import { RootState } from '../store/store'
 
 interface IItemDetailsProps {
   handleClose: () => void
@@ -28,8 +29,8 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
 
   const dispatch = useDispatch()
 
-  // get product list from LS
-  const products = getAllProductsFromLS()
+  // get product list from store
+  const products = useSelector((state: RootState) => state.products)
 
   useEffect(() => {
     if (productId !== null) getProductById(productId)

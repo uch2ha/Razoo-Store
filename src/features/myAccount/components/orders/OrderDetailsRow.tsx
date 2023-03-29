@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { getProductByIdFromLS } from '../../../../utilities/localStorage'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../../store/store'
 
 interface IOrderDetailsRowProps {
   itemId: number
@@ -7,7 +8,12 @@ interface IOrderDetailsRowProps {
 }
 
 const OrderDetailsRow: FC<IOrderDetailsRowProps> = ({ itemId, amount }) => {
-  const product = getProductByIdFromLS(itemId)
+  const products = useSelector((state: RootState) => state.products)
+  const getProductById = (id: number | null) => {
+    if (id === null) return
+    return products.find((product) => product.id === id)
+  }
+  const product = getProductById(itemId)
   return (
     <>
       <div className="col-span-3 border-b-2 py-5">{product?.name}</div>

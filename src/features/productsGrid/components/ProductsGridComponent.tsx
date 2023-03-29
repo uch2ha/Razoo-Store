@@ -7,7 +7,6 @@ import { useFilterProducts } from '../hooks/useFilterProducts'
 import { Rhombus } from '../../../assets/svg/Rhombus'
 import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
-import { getAllProductsFromLS } from '../../../utilities/localStorage'
 
 interface IProductsGridComponentProps {
   setProductId: (id: number) => void
@@ -24,8 +23,8 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
 
-  // get product list from LS
-  const products = getAllProductsFromLS()
+  // get product list from store
+  const products = useSelector((state: RootState) => state.products)
 
   // get filters from products store
   const filters = useSelector((state: RootState) => state.filters) || {}

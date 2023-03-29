@@ -2,7 +2,8 @@ import React, { FC, useState } from 'react'
 import { IProduct } from '../../../types/product.type'
 import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import ProductForm from './products/ProductForm'
-import { getProductByIdFromLS } from '../../../utilities/localStorage'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
 
 const initProduct: IProduct = {
   id: 0,
@@ -29,9 +30,14 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   isEditProductId,
   setIsEditProductId
 }) => {
+  const products = useSelector((state: RootState) => state.products)
+  const getProductById = (id: number | null) => {
+    if (id === null) return
+    return products.find((product) => product.id === id)
+  }
   // if isEditProductId is equal to number then fetch product by id
   // and set this product to useState
-  const productById = getProductByIdFromLS(isEditProductId !== null ? isEditProductId : 0)
+  const productById = getProductById(isEditProductId !== null ? isEditProductId : null)
   // if not use initProduct instead
   const [product, setProduct] = useState<IProduct>(
     isEditProductId !== null && productById ? productById : initProduct
