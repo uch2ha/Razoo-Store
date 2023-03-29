@@ -2,6 +2,7 @@ import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../../../store/cart/cart.slice'
 import { IProduct } from '../../../types/product.type'
+import { productsActions } from '../../../store/products/products.slice'
 
 // import img from '../../../assets/productImg/shampoo.png'
 
@@ -34,9 +35,13 @@ const Card: FC<ICardProps> = ({
     setProductId(id)
   }
 
+  const deleteProductId = () => {
+    dispatch(productsActions.deleteProductById(id))
+  }
+
   return (
     <div
-      className="flex flex-col h-fit justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
+      className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center">
         <img src={`./src/assets/productImgs/${id}.png`} className="w-[90%]" />
@@ -58,7 +63,10 @@ const Card: FC<ICardProps> = ({
               }}>
               Edit
             </button>
-            <button id="add-to-cart" className="border-2 w-[90%] my-3 py-2 hover:bg-red-400">
+            <button
+              id="add-to-cart"
+              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              onClick={deleteProductId}>
               Delete
             </button>
           </div>

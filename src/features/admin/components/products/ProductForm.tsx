@@ -17,7 +17,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           Id
         </label>
         <input
-          type="number"
+          type="text"
           name="id"
           id="id"
           value={product.id}

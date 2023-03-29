@@ -2,8 +2,9 @@ import React, { FC, useState } from 'react'
 import { IProduct } from '../../../types/product.type'
 import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import ProductForm from './products/ProductForm'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
+import { productsActions } from '../../../store/products/products.slice'
 
 const initProduct: IProduct = {
   id: '',
@@ -43,12 +44,12 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     isEditProductId !== null && productById ? productById : initProduct
   )
 
+  const dispatch = useDispatch()
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target
-
-    console.log(name, value)
 
     setProduct((prevProduct) => ({
       ...prevProduct,
@@ -58,8 +59,18 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log(product)
+
+    // handle product changes
+    if (isProduct) {
+      // edit
+      if (isEditProductId !== null) {
+        dispatch(productsActions.editProductById(product))
+      }
+      // add
+      if (isEditProductId === null) {
+        dispatch(productsActions.addProduct(product))
+      }
+    }
   }
 
   return (
