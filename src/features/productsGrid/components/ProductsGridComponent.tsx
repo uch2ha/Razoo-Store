@@ -12,11 +12,15 @@ import { getAllProductsFromLS } from '../../../utilities/localStorage'
 interface IProductsGridComponentProps {
   setProductId: (id: number) => void
   isAdmin?: boolean
+  setIsVisible?: (b: boolean) => void
+  setIsEditProductId?: (n: number) => void
 }
 
 const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
   setProductId,
-  isAdmin = false
+  isAdmin = false,
+  setIsVisible,
+  setIsEditProductId
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -54,11 +58,18 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
   return (
     <div className="w-full md:w-[91%] self-start flex flex-col mb-10">
       <div className="flex self-end justify-between xl:w-[calc(75%-0.5rem)] lg:w-[calc(70%-0.5rem)] w-[calc(65%-0.5rem)]">
-        <p className="flex items-center font-bold text-2xl">
-          Products
-          <Rhombus className="text-base" />
-          {filteredProducts.length}
-        </p>
+        <div className="flex space-x-5">
+          <p className="flex items-center font-bold text-2xl">
+            Products
+            <Rhombus className="text-base" />
+            {filteredProducts.length}
+          </p>
+          {isAdmin && setIsVisible && (
+            <button className="border-2 my-2 px-5" onClick={() => setIsVisible(true)}>
+              ADD PRODUCT
+            </button>
+          )}
+        </div>
         <div className="mb-2 text-2xl flex justify-center items-center border-2 rounded-md">
           <button className="h-full p-2" onClick={handlePrevPage}>
             <ArrowLeft />
@@ -71,7 +82,13 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
           </button>
         </div>
       </div>
-      <Grid products={productsAfterPaginate} setProductId={setProductId} isAdmin={isAdmin} />
+      <Grid
+        products={productsAfterPaginate}
+        setProductId={setProductId}
+        isAdmin={isAdmin}
+        setIsVisible={setIsVisible}
+        setIsEditProductId={setIsEditProductId}
+      />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../../../store/cart/cart.slice'
+import { IProduct } from '../../../types/product.type'
 
 // import img from '../../../assets/productImg/shampoo.png'
 
@@ -12,9 +13,21 @@ interface ICardProps {
   price: number
   setProductId: (id: number) => void
   isAdmin?: boolean
+  setIsEditProductId?: (n: number) => void
+  setIsVisible?: (b: boolean) => void
 }
 
-const Card: FC<ICardProps> = ({ id, name, category, size, price, setProductId, isAdmin }) => {
+const Card: FC<ICardProps> = ({
+  id,
+  name,
+  category,
+  size,
+  price,
+  setProductId,
+  isAdmin,
+  setIsEditProductId,
+  setIsVisible
+}) => {
   const dispatch = useDispatch()
 
   const handleClick = (e: MouseEvent) => {
@@ -36,13 +49,19 @@ const Card: FC<ICardProps> = ({ id, name, category, size, price, setProductId, i
       </div>
       <div className="w-full">
         <p className="text-xl font-bold mt-6">{price}$</p>
-        {isAdmin ? (
+        {setIsEditProductId && setIsVisible ? (
           <div className="flex px-4 space-x-4">
-            <button id="add-to-cart" className="border-2 w-[90%] my-3 py-2 hover:bg-red-400">
+            <button
+              id="add-to-cart"
+              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              onClick={() => {
+                setIsEditProductId(id)
+                setIsVisible(true)
+              }}>
               Edit
             </button>
             <button id="add-to-cart" className="border-2 w-[90%] my-3 py-2 hover:bg-red-400">
-              delete
+              Delete
             </button>
           </div>
         ) : (

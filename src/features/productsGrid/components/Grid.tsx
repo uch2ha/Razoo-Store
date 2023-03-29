@@ -7,9 +7,17 @@ interface IGridProps {
   products: IProduct[]
   setProductId: (id: number) => void
   isAdmin?: boolean
+  setIsVisible?: (b: boolean) => void
+  setIsEditProductId?: (n: number) => void
 }
 
-const Grid: FC<IGridProps> = ({ products, setProductId, isAdmin }) => {
+const Grid: FC<IGridProps> = ({
+  products,
+  setProductId,
+  isAdmin,
+  setIsEditProductId,
+  setIsVisible
+}) => {
   return (
     <div className="flex">
       <div className="xl:max-w-[25%] xl:min-w-[25%] lg:max-w-[30%] lg:min-w-[30%] max-w-[35%] min-w-[35%] mr-[0.5rem]">
@@ -27,6 +35,8 @@ const Grid: FC<IGridProps> = ({ products, setProductId, isAdmin }) => {
                 size={product.size}
                 id={product.id}
                 setProductId={setProductId}
+                setIsEditProductId={setIsEditProductId}
+                setIsVisible={setIsVisible}
                 isAdmin={isAdmin}
               />
             )

@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react'
 import NavBar from '../components/NavBar'
 import Button from '../components/Button'
-import AdminProducts from '../features/admin/components/AdminProducts'
-import AdminUsers from '../features/admin/components/AdminUsers'
-import AdminOrders from '../features/admin/components/AdminOrders'
+import AdminProducts from '../features/admin/components/products/AdminProducts'
+import AdminUsers from '../features/admin/components/users/AdminUsers'
+import AdminOrders from '../features/admin/components/orders/AdminOrders'
 
 const AdminPage: FC = () => {
   const [visible, setVisible] = useState<'PRODUCTS' | 'USERS' | 'ORDERS'>('PRODUCTS')
