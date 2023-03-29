@@ -22,11 +22,7 @@ const Grid: FC<IGridProps> = ({ products, setProductId, setIsEditProductId, setI
             return (
               <Card
                 key={product.id}
-                category={product.category}
-                name={product.name}
-                price={product.price}
-                size={product.size}
-                id={product.id}
+                product={product}
                 setProductId={setProductId}
                 setIsEditProductId={setIsEditProductId}
                 setIsVisible={setIsVisible}

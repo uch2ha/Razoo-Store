@@ -15,6 +15,7 @@ interface IItemDetailsProps {
 
 const initState: IProduct = {
   id: '',
+  img: 'none',
   name: 'Loading...',
   description: 'Loading...',
   instruction: 'Loading...',
@@ -51,7 +52,9 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
         isVisible ? 'z-50 top-1/2 ' : 'top-[-100%]'
       }`}>
       <div className="w-[52%] bg-red-300 rounded-tl-md rounded-bl-md flex justify-center items-center">
-        {productId && <img src={`./src/assets/productImgs/${productId}.png`} className="w-[90%]" />}
+        {productId && (
+          <img src={`./src/assets/productImg/${product.img}.png`} className="w-[90%]" />
+        )}
       </div>
       <div className="w-[48%] bg-red-700 flex justify-center items-center rounded-tr-md rounded-br-md">
         <div className="h-[80%] w-[80%] mx-auto">

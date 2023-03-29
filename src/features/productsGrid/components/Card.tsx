@@ -4,61 +4,48 @@ import { cartActions } from '../../../store/cart/cart.slice'
 import { IProduct } from '../../../types/product.type'
 import { productsActions } from '../../../store/products/products.slice'
 
-// import img from '../../../assets/productImg/shampoo.png'
-
 interface ICardProps {
-  id: string
-  name: string
-  category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
-  size: '50ml' | '100ml' | '150ml' | '200ml'
-  price: number
+  product: IProduct
   setProductId: (id: string) => void
   setIsEditProductId?: (n: string) => void
   setIsVisible?: (b: boolean) => void
 }
 
-const Card: FC<ICardProps> = ({
-  id,
-  name,
-  category,
-  size,
-  price,
-  setProductId,
-  setIsEditProductId,
-  setIsVisible
-}) => {
+const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIsVisible }) => {
   const dispatch = useDispatch()
 
   const handleClick = (e: MouseEvent) => {
     if ((e.target as HTMLDivElement).id === 'add-to-cart')
-      return dispatch(cartActions.addItem({ id, price }))
-    setProductId(id)
+      return dispatch(cartActions.addItem({ id: product.id, price: product.price }))
+    setProductId(product.id)
   }
 
   const deleteProductId = () => {
-    dispatch(productsActions.deleteProductById(id))
+    dispatch(productsActions.deleteProductById(product.id))
   }
+
+  console.log(product)
 
   return (
     <div
       className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center">
-        <img src={`./src/assets/productImgs/${id}.png`} className="w-[90%]" />
-        <p className="text-2xl">{name}</p>
+        <img src={`./src/assets/productImg/${product.img}.png`} className="w-[90%]" />
+        <p className="text-2xl">{product.name}</p>
         <p className="text-2xl">
-          {category} ({size})
+          {product.category} ({product.size})
         </p>
       </div>
       <div className="w-full">
-        <p className="text-xl font-bold mt-6">{price}$</p>
+        <p className="text-xl font-bold mt-6">{product.price}$</p>
         {setIsEditProductId && setIsVisible ? (
           <div className="flex px-4 space-x-4">
             <button
               id="add-to-cart"
               className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
               onClick={() => {
-                setIsEditProductId(id)
+                setIsEditProductId(product.id)
                 setIsVisible(true)
               }}>
               Edit

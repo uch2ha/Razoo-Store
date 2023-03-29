@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react'
+import React, { FC } from 'react'
 import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../../../store/cart/cart.slice'
@@ -44,7 +44,7 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
     <div className="py-6 my-[3px]  border-b-2 flex items-center justify-center">
       <div className="w-[29%] h-[150px] flex items-center btn" onClick={() => setProductId(itemId)}>
         <div className="border-2">
-          <img src={`./src/assets/productImgs/${itemId}.png`} className="max-w-[150px]" />
+          <img src={`./src/assets/productImg/${product?.img}.png`} className="max-w-[150px]" />
         </div>
         <div className="h-full ml-3 flex flex-col justify-evenly items-start uppercase text-start">
           <div>

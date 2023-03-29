@@ -8,6 +8,7 @@ import { productsActions } from '../../../store/products/products.slice'
 
 const initProduct: IProduct = {
   id: '',
+  img: 'none',
   name: '',
   description: '',
   instruction: '',

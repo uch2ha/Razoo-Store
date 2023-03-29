@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import NavBar from '../components/NavBar'
 
-import shampoo from '../assets/productImgs/1.png'
+import shampoo from '../assets/productImg/1.png'
 
 const HomePage: FC = () => {
   return (
