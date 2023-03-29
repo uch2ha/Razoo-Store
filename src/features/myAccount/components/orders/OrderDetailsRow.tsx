@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../../store/store'
 
 interface IOrderDetailsRowProps {
-  itemId: number
+  itemId: string
   amount: number
 }
 
 const OrderDetailsRow: FC<IOrderDetailsRowProps> = ({ itemId, amount }) => {
   const products = useSelector((state: RootState) => state.products)
-  const getProductById = (id: number | null) => {
+  const getProductById = (id: string | null) => {
     if (id === null) return
     return products.find((product) => product.id === id)
   }

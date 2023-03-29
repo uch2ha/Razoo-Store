@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 
 const initProduct: IProduct = {
-  id: 0,
+  id: '',
   name: '',
   description: '',
   instruction: '',
@@ -19,8 +19,8 @@ interface IAddEditComponentProps {
   isVisible: boolean
   setIsVisible: (b: boolean) => void
   isProduct: boolean
-  isEditProductId: number | null
-  setIsEditProductId: (b: number | null) => void
+  isEditProductId: string | null
+  setIsEditProductId: (b: string | null) => void
 }
 
 const AddEditComponent: FC<IAddEditComponentProps> = ({
@@ -31,7 +31,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   setIsEditProductId
 }) => {
   const products = useSelector((state: RootState) => state.products)
-  const getProductById = (id: number | null) => {
+  const getProductById = (id: string | null) => {
     if (id === null) return
     return products.find((product) => product.id === id)
   }

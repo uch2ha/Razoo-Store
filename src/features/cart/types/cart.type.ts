@@ -1,5 +1,5 @@
 export type ICartItem = {
-  productId: number
+  productId: string
   productPrice: number
   amount: number
 }

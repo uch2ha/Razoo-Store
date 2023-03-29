@@ -1,6 +1,5 @@
 import { IDb } from '../store/api/DB/db.api'
 import { IOrder } from '../types/order.type'
-import { IProduct } from '../types/product.type'
 import { IUser } from '../types/user.type'
 
 export const initLocalStorage = (data: IDb) => {

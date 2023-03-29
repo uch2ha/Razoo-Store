@@ -1,7 +1,7 @@
 export type IOrder = {
-  orderId: number
+  orderId: string
   products: {
-    productId: number
+    productId: string
     amount: number
   }[]
   userId: string

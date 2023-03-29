@@ -4,7 +4,7 @@ import Cart from '../features/cart/components/Cart'
 import { withItemDetails } from '../HoC/withItemDetails'
 
 interface ICartPageProps {
-  setProductId?: (m: number | null) => void
+  setProductId?: (m: string | null) => void
 }
 
 const CartPage: FC<ICartPageProps> = ({ setProductId }) => {

@@ -6,7 +6,7 @@ import { RootState } from '../../../store/store'
 import { withItemDetails } from '../../../HoC/withItemDetails'
 
 interface ICartProps {
-  setProductId: (id: number) => void
+  setProductId: (id: string) => void
 }
 
 const Cart: FC<ICartProps> = ({ setProductId }) => {

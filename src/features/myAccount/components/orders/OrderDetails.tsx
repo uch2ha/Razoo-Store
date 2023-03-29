@@ -4,7 +4,7 @@ import { IProduct } from '../../../../types/product.type'
 
 interface IOrderDetailsProps {
   products: {
-    productId: number
+    productId: string
     amount: number
   }[]
   totalPrice: number

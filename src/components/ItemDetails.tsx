@@ -5,17 +5,16 @@ import { IProduct } from '../types/product.type'
 import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../store/cart/cart.slice'
-import { productsActions } from '../store/products/products.slice'
 import { RootState } from '../store/store'
 
 interface IItemDetailsProps {
   handleClose: () => void
-  productId: number | null
+  productId: string | null
   isVisible: boolean
 }
 
 const initState: IProduct = {
-  id: 0,
+  id: '',
   name: 'Loading...',
   description: 'Loading...',
   instruction: 'Loading...',
@@ -36,7 +35,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
     if (productId !== null) getProductById(productId)
   }, [productId])
 
-  const getProductById = (id: number) => {
+  const getProductById = (id: string) => {
     const product = products.filter((product) => product.id === id)
     setProduct(product[0])
   }

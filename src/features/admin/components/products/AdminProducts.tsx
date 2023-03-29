@@ -4,19 +4,18 @@ import ProductsGridComponent from '../../../productsGrid/components/ProductsGrid
 import AddEditComponent from '../AddEditComponent'
 
 interface IAdminProductsProps {
-  setProductId?: (m: number | null) => void
+  setProductId?: (m: string | null) => void
 }
 
 const AdminProducts: FC<IAdminProductsProps> = ({ setProductId }) => {
   const [isVisible, setIsVisible] = useState(false)
-  const [isEditProductId, setIsEditProductId] = useState<number | null>(null)
+  const [isEditProductId, setIsEditProductId] = useState<string | null>(null)
 
   return (
     <div className="self-start text-center w-full mt-20">
       {setProductId && (
         <ProductsGridComponent
           setProductId={setProductId}
-          isAdmin={true}
           setIsVisible={setIsVisible}
           setIsEditProductId={setIsEditProductId}
         />

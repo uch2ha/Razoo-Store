@@ -6,14 +6,13 @@ import { IProduct } from '../../../types/product.type'
 // import img from '../../../assets/productImg/shampoo.png'
 
 interface ICardProps {
-  id: number
+  id: string
   name: string
   category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
   size: '50ml' | '100ml' | '150ml' | '200ml'
   price: number
-  setProductId: (id: number) => void
-  isAdmin?: boolean
-  setIsEditProductId?: (n: number) => void
+  setProductId: (id: string) => void
+  setIsEditProductId?: (n: string) => void
   setIsVisible?: (b: boolean) => void
 }
 
@@ -24,7 +23,6 @@ const Card: FC<ICardProps> = ({
   size,
   price,
   setProductId,
-  isAdmin,
   setIsEditProductId,
   setIsVisible
 }) => {

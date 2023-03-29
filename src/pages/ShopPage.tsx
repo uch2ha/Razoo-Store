@@ -7,7 +7,7 @@ import ProductsGridComponent from '../features/productsGrid/components/ProductsG
 import { withItemDetails } from '../HoC/withItemDetails'
 
 interface IShopPageProps {
-  setProductId?: (m: number | null) => void
+  setProductId?: (m: string | null) => void
 }
 
 const ShopPage: FC<IShopPageProps> = ({ setProductId }) => {

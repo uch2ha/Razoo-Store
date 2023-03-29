@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<{ id: number; price: number }>) => {
+    addItem: (state, action: PayloadAction<{ id: string; price: number }>) => {
       const isExist = state.some((item) => {
         if (item.productId === action.payload.id) {
           item.amount++

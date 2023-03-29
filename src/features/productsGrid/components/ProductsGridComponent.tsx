@@ -9,15 +9,13 @@ import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
 
 interface IProductsGridComponentProps {
-  setProductId: (id: number) => void
-  isAdmin?: boolean
+  setProductId: (id: string) => void
   setIsVisible?: (b: boolean) => void
-  setIsEditProductId?: (n: number) => void
+  setIsEditProductId?: (n: string) => void
 }
 
 const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
   setProductId,
-  isAdmin = false,
   setIsVisible,
   setIsEditProductId
 }) => {
@@ -63,7 +61,7 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
             <Rhombus className="text-base" />
             {filteredProducts.length}
           </p>
-          {isAdmin && setIsVisible && (
+          {setIsVisible && (
             <button className="border-2 my-2 px-5" onClick={() => setIsVisible(true)}>
               ADD PRODUCT
             </button>
@@ -84,7 +82,6 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
       <Grid
         products={productsAfterPaginate}
         setProductId={setProductId}
-        isAdmin={isAdmin}
         setIsVisible={setIsVisible}
         setIsEditProductId={setIsEditProductId}
       />
