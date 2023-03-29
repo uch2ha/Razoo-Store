@@ -28,7 +28,7 @@ const Card: FC<ICardProps> = ({ id, name, category, size, price, setProductId, i
       className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center">
-        <img src={`./src/assets/productImgs/${id}.png`} className="h-[300px] mb-[-30px]" />
+        <img src={`./src/assets/productImgs/${id}.png`} className="w-[90%]" />
         <p className="text-2xl">{name}</p>
         <p className="text-2xl">
           {category} ({size})
