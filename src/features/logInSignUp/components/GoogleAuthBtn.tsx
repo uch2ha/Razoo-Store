@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
 import { IUser } from '../../../types/user.type'
 import { handleGoogleUserLogIn } from '../../../utilities/localStorage'
-import { Google } from '../../../../assets/svg/Google'
+import { Google } from '../../../assets/svg/Google'
 
 interface IGoogleAuthProps {
   setError: (msg: string) => void

@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { CloseBtn } from '../../../../assets/svg/CloseBtn'
+import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../../../store/cart/cart.slice'
 import { RootState } from '../../../store/store'
-import { MinusBtn } from '../../../../assets/svg/MinusBtn'
-import { PlusBtn } from '../../../../assets/svg/PlusBtn'
+import { MinusBtn } from '../../../assets/svg/MinusBtn'
+import { PlusBtn } from '../../../assets/svg/PlusBtn'
 
 interface ICartItemProps {
   itemId: string

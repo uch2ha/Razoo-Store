@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react'
 import OrderDetails from './OrderDetails'
 import { IOrder } from '../../../../types/order.type'
-import { ArrowDown } from '../../../../../assets/svg/ArrowDown'
-import { ArrowUp } from '../../../../../assets/svg/ArrowUp'
+import { ArrowDown } from '../../../../assets/svg/ArrowDown'
+import { ArrowUp } from '../../../../assets/svg/ArrowUp'
 
 interface IOrderProps {
   order: IOrder
