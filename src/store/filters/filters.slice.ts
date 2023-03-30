@@ -5,7 +5,7 @@ import { IFilters } from '../../features/productsGrid/types/filters.type'
 
 const initialState: IFilters = {
   category: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
-  size: { '10ml': false, '25ml': false, '50ml': false, '100ml': false },
+  size: { '50ml': false, '100ml': false, '150ml': false, '200ml': false },
   sortBy: null
 }
 
