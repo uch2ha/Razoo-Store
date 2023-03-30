@@ -24,26 +24,24 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     dispatch(productsActions.deleteProductById(product.id))
   }
 
-  console.log(product)
-
   return (
     <div
-      className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
+      className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
-      <div className="w-full flex flex-col items-center">
-        <img src={`./src/assets/productImg/${product.img}.png`} className="w-[90%]" />
-        <p className="text-2xl">{product.name}</p>
-        <p className="text-2xl">
+      <div className="w-full flex flex-col items-center justify-center h-full">
+        <img src={`./src/assets/productImg/${product.img}.png`} className={`my-6 w-[50%]`} />
+        <p className="text-2xl uppercase">{product.name}</p>
+        <p className="text-2xl uppercase">
           {product.category} ({product.size})
         </p>
       </div>
-      <div className="w-full">
-        <p className="text-xl font-bold mt-6">{product.price}$</p>
+      <div className="w-full mb-4">
+        <p className="text-xl font-bold mt-8 mb-2">{product.price}$</p>
         {setIsEditProductId && setIsVisible ? (
           <div className="flex px-4 space-x-4">
             <button
               id="add-to-cart"
-              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]/50"
               onClick={() => {
                 setIsEditProductId(product.id)
                 setIsVisible(true)
@@ -52,13 +50,15 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
             </button>
             <button
               id="add-to-cart"
-              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]"
               onClick={deleteProductId}>
               Delete
             </button>
           </div>
         ) : (
-          <button id="add-to-cart" className="border-2 w-[90%] my-3 py-2 hover:bg-red-400">
+          <button
+            id="add-to-cart"
+            className="border-[1px] w-[90%] my-3 py-2 hover:bg-[#898e68]/50 font-[700] uppercase">
             Add to Cart
           </button>
         )}

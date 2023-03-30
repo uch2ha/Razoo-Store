@@ -53,15 +53,16 @@ const SignUpForm: FC = () => {
   }
 
   return (
-    <div className="w-full h-full bg-white flex flex-col justify-center items-center rounded-md">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, voluptatum.</p>
+    <div className="w-full h-full flex flex-col justify-center items-center ">
+      <h2 className="font-garamond text-[50px] mb-1">Create Account</h2>
+      <h4>using social networks</h4>
       <GoogleAuthBtn setError={setError} />
-      {error && <p>{error}</p>}
-      <br />
+      <p className="mb-4">OR</p>
+      {error && <h3 className="text-red-600 font-bold py-4">{error}</h3>}
       <input
         id="name"
         type="text"
-        className="border-4"
+        className="px-10 py-2 mb-[10px]"
         placeholder="Name"
         required
         onChange={handleInputChange}
@@ -69,7 +70,7 @@ const SignUpForm: FC = () => {
       <input
         id="last-name"
         type="text"
-        className="border-4"
+        className="px-10 py-2 mb-[10px]"
         placeholder="Last Name"
         required
         onChange={handleInputChange}
@@ -77,7 +78,7 @@ const SignUpForm: FC = () => {
       <input
         id="email"
         type="email"
-        className="border-4"
+        className="px-10 py-2 mb-[10px]"
         placeholder="Email"
         required
         onChange={handleInputChange}
@@ -85,7 +86,7 @@ const SignUpForm: FC = () => {
       <input
         id="password"
         type="password"
-        className="border-4"
+        className="px-10 py-2 mb-[10px]"
         placeholder="Password"
         required
         onChange={handleInputChange}
@@ -93,12 +94,12 @@ const SignUpForm: FC = () => {
       <input
         id="re-password"
         type="password"
-        className="border-4"
+        className="px-10 py-2 mb-4"
         placeholder="Repeat Password"
         required
         onChange={handleInputChange}
       />
-      <button className="border-2 px-10 py-4" onClick={handleSignUp}>
+      <button className="border-[1px] px-20 py-3" onClick={handleSignUp}>
         Sing In
       </button>
     </div>

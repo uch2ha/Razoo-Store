@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
 import { IUser } from '../../../types/user.type'
 import { handleGoogleUserLogIn } from '../../../utilities/localStorage'
+import { Google } from '../../../assets/svg/Google'
 
 interface IGoogleAuthProps {
   setError: (msg: string) => void
@@ -36,7 +37,7 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
 
   // save google user profile data to LS
   useEffect(() => {
-    if (!result.isSuccess) return setError('Something went wrong')
+    if (!result.isSuccess) return
 
     const user: IUser = {
       id: result.data.id,
@@ -57,8 +58,8 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
   }, [result])
 
   return (
-    <button onClick={() => login()} className="bg-red-300 border py-2 px-4">
-      Google 🚀
+    <button onClick={() => login()} className="my-3 ">
+      <Google className="text-3xl text-white hover:text-[#a0a772]" />
     </button>
   )
 }

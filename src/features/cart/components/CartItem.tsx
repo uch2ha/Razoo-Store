@@ -41,13 +41,15 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
   }
 
   return (
-    <div className="py-6 my-[3px]  border-b-2 flex items-center justify-center">
-      <div className="w-[29%] h-[150px] flex items-center btn" onClick={() => setProductId(itemId)}>
-        <div className="border-2">
-          <img src={`./src/assets/productImg/${product?.img}.png`} className="max-w-[150px]" />
+    <div className="py-6 my-[3px]  border-b-[1px] flex items-center justify-center">
+      <div
+        className="w-[29%] h-[150px] flex items-center justify-between btn"
+        onClick={() => setProductId(itemId)}>
+        <div className="h-full border-[1px]">
+          <img src={`./src/assets/productImg/${product?.img}.png`} className="h-[95%]" />
         </div>
-        <div className="h-full ml-3 flex flex-col justify-evenly items-start uppercase text-start">
-          <div>
+        <div className="h-full ml-3 flex flex-col justify-evenly items-end uppercase text-end">
+          <div className="font-[500]">
             <h3>{product?.name}</h3>
             <h3>{product?.category}</h3>
           </div>
@@ -55,21 +57,21 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
         </div>
       </div>
       <div className="w-[23%]">
-        <p className="text-[22px] font-[500]">{product?.price} $</p>
+        <p className="text-[22px] font-[700]">{product?.price} $</p>
       </div>
       <div className="w-[23%]">
-        <div className="w-fit flex justify-center items-center border-2 mx-auto">
+        <div className="w-fit flex justify-center items-center border-[1px] mx-auto">
           <button className="px-[10px]" onClick={handleDecrement}>
             <MinusBtn className="text-2xl" />
           </button>
-          <p className="w-8 text-[22px] font-[500]">{amount}</p>
+          <p className="w-8 text-[22px] font-[600]">{amount}</p>
           <button className="px-[10px]" onClick={handleIncrement}>
             <PlusBtn className="text-2xl" />
           </button>
         </div>
       </div>
       <div className="w-[23%]">
-        <p className="text-[22px] font-[500]">{calculateTotalPrice()} $</p>
+        <p className="text-[22px] font-[700]">{calculateTotalPrice()} $</p>
       </div>
       <div className="w-[2%] flex justify-end items-center" onClick={handleRemove}>
         <CloseBtn className="text-4xl btn" />

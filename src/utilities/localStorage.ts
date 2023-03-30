@@ -18,12 +18,22 @@ export const getOrdersByUserIdFromLS = (id: string): IOrder[] | [] => {
 }
 
 // USERS --------------------------------
+export const getUsersFromLS = (): IUser[] => {
+  const users = localStorage.getItem('users')
+  return JSON.parse(users ?? '[]')
+}
 
 export const getUserByIdFromLS = (id: string): IUser | null => {
   const users: IUser[] = JSON.parse(localStorage.getItem('users') ?? '[]')
   const user = users.find((user) => user.id === id)
   if (user) return user
   return null
+}
+
+export const setNewUserToLS = (user: IUser) => {
+  const users: IUser[] = JSON.parse(localStorage.getItem('users') ?? '[]')
+  users.unshift(user)
+  localStorage.setItem('users', JSON.stringify(users))
 }
 
 export const setNewUsersDataToLS = (user: IUser): boolean => {
@@ -36,10 +46,10 @@ export const setNewUsersDataToLS = (user: IUser): boolean => {
   return true
 }
 
-// LOGIN ------------------------------------------------------------------
-export const getUsersFromLS = (): IUser[] => {
-  const users = localStorage.getItem('users')
-  return JSON.parse(users ?? '[]')
+export const removeUserByIdFromLS = (id: string) => {
+  const users: IUser[] = JSON.parse(localStorage.getItem('users') ?? '[]')
+  const newUser = users.filter((user) => user.id !== id)
+  localStorage.setItem('users', JSON.stringify(newUser))
 }
 
 // SIGNUP ------------------------------------------------------------------

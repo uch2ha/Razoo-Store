@@ -17,7 +17,7 @@ const ShopPage: FC<IShopPageProps> = ({ setProductId }) => {
       <div className="h-full w-full flex justify-start items-center text-center flex-col">
         <img
           src={`./src/assets/shopPageBanner.png`}
-          className="object-cover right-0 w-[82%] my-8"
+          className="object-cover right-0 w-[82%] my-8 "
         />
         {setProductId && <ProductsGridComponent setProductId={setProductId} />}
       </div>

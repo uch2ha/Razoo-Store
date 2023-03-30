@@ -58,11 +58,11 @@ const Filters: FC = () => {
   }
 
   return (
-    <div className="border-2 border-l-0 w-full h-full flex flex-col justify-start items-start rounded-tr-md rounded-br-md">
-      <span className="uppercase w-full pl-[30%] text-start py-2 border-b-2 select-none">
+    <div className="border-[1px] border-l-0 w-full h-full flex flex-col justify-start items-start">
+      <span className="uppercase w-full pl-[30%] text-start py-2 border-b-[1px] select-none font-[700]">
         SORT BY
       </span>
-      <div className="flex flex-col border-b-2 w-full py-4">
+      <div className="flex flex-col border-b-[1px] w-full py-4 underline-offset-2">
         <SortByButton id="HP" title="HIGHEST PRICE" handleClick={handleSortByClick} />
         <SortByButton id="LP" title="LOWEST PRICE" handleClick={handleSortByClick} />
         <SortByButton id="AZ" title="Name A-Z" handleClick={handleSortByClick} />
@@ -72,7 +72,7 @@ const Filters: FC = () => {
         id="category"
         title="category"
         handleClick={handleClick}
-        styles="border-b-2 w-full pl-[30%]"
+        styles="border-b-[1px] w-full pl-[30%] font-[700]"
         visible={categoriesIsVisible}
       />
       <FilterCheckBoxs
@@ -84,11 +84,15 @@ const Filters: FC = () => {
         id="size"
         title="size"
         handleClick={handleClick}
-        styles="border-b-2 w-full pl-[30%]"
+        styles="border-b-[1px] w-full pl-[30%] font-[700]"
         visible={sizeIsVisible}
       />
       <FilterCheckBoxs handleClick={handleSizeCheck} filter={size} isVisible={sizeIsVisible} />
-      <FilterButton title="reset" handleClick={handleReset} styles="ml-[calc(30%-16px)] px-4" />
+      <FilterButton
+        title="reset"
+        handleClick={handleReset}
+        styles="ml-[calc(30%-16px)] px-4 underline underline-offset-2"
+      />
     </div>
   )
 }

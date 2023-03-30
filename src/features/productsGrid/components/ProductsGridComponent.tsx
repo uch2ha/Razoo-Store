@@ -7,6 +7,7 @@ import { useFilterProducts } from '../hooks/useFilterProducts'
 import { Rhombus } from '../../../assets/svg/Rhombus'
 import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
+import Card from './Card'
 
 interface IProductsGridComponentProps {
   setProductId: (id: string) => void
@@ -56,20 +57,20 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
     <div className="w-full md:w-[91%] self-start flex flex-col mb-10">
       <div className="flex self-end justify-between xl:w-[calc(75%-0.5rem)] lg:w-[calc(70%-0.5rem)] w-[calc(65%-0.5rem)]">
         <div className="flex space-x-5">
-          <p className="flex items-center font-bold text-2xl">
+          <p className="flex items-center font-bold text-xl">
             Products
             <Rhombus className="text-base" />
             {filteredProducts.length}
           </p>
           {setIsVisible && (
             <button
-              className="border-2 rounded-md my-2 text-xl px-5"
+              className="border-[1px] my-2 text-xl px-5 bg-[#898e68]/50"
               onClick={() => setIsVisible(true)}>
               ADD PRODUCT
             </button>
           )}
         </div>
-        <div className="mb-2 text-2xl flex justify-center items-center border-2 rounded-md">
+        <div className="mb-2 text-2xl flex justify-center items-center border-[1px]">
           <button className="h-full p-2" onClick={handlePrevPage}>
             <ArrowLeft />
           </button>
@@ -81,12 +82,20 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
           </button>
         </div>
       </div>
-      <Grid
-        products={productsAfterPaginate}
-        setProductId={setProductId}
-        setIsVisible={setIsVisible}
-        setIsEditProductId={setIsEditProductId}
-      />
+      <Grid>
+        {productsAfterPaginate &&
+          productsAfterPaginate.map((product) => {
+            return (
+              <Card
+                key={product.id}
+                product={product}
+                setProductId={setProductId}
+                setIsEditProductId={setIsEditProductId}
+                setIsVisible={setIsVisible}
+              />
+            )
+          })}
+      </Grid>
     </div>
   )
 }
