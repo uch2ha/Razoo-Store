@@ -8,9 +8,9 @@ const AboutPage: FC = () => {
         <NavBar isWhite={true} />
         <div className="h-full w-1/2 flex justify-start items-center flex-col">
           <div className="w-[80%] flex flex-col items-center mt-[10%]">
-            <div className="mb-10 text-[70px] h-fit">
-              <p className="font-garamond">HOW IT</p>
-              <p className="font-sulfates tracking-[4px]">STARTED...</p>
+            <div className="mb-10 text-[70px] w-[430px] h-fit">
+              <p className="font-garamond text-start">HOW IT</p>
+              <p className="font-sulfates tracking-[4px] text-end mt-[-45px]">STARTED...</p>
             </div>
             <div className="text-[22px]">
               <p className="mb-3">Razoo was born from a personal quest for healthier living.</p>
