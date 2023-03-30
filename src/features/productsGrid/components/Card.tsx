@@ -29,7 +29,14 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
       className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-end h-full">
-        <img src={`./src/assets/productImg/${product.img}.png`} className="w-[40%] my-6" />
+        <img
+          src={`./src/assets/productImg/${product.img}.png`}
+          className={`my-6 ${
+            (product.category === 'hairConditioner' || product.category === 'hairOil') && 'w-[20%]'
+          } ${product.category === 'shampoo' && 'w-[27%]'} ${
+            product.category === 'hairMask' && 'w-[35%]'
+          }`}
+        />
         <p className="text-2xl">{product.name}</p>
         <p className="text-2xl">
           {product.category} ({product.size})
