@@ -7,6 +7,7 @@ import { useFilterProducts } from '../hooks/useFilterProducts'
 import { Rhombus } from '../../../assets/svg/Rhombus'
 import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
+import Card from './Card'
 
 interface IProductsGridComponentProps {
   setProductId: (id: string) => void
@@ -81,12 +82,20 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
           </button>
         </div>
       </div>
-      <Grid
-        products={productsAfterPaginate}
-        setProductId={setProductId}
-        setIsVisible={setIsVisible}
-        setIsEditProductId={setIsEditProductId}
-      />
+      <Grid>
+        {products &&
+          products.map((product) => {
+            return (
+              <Card
+                key={product.id}
+                product={product}
+                setProductId={setProductId}
+                setIsEditProductId={setIsEditProductId}
+                setIsVisible={setIsVisible}
+              />
+            )
+          })}
+      </Grid>
     </div>
   )
 }
