@@ -8,14 +8,22 @@ const AboutPage: FC = () => {
         <NavBar />
         <div className="h-full w-1/2 flex justify-center  flex-col">
           <div>
-            <p>asdasd</p>
-            <p>asdasd</p>
+            <p>HOW IT</p>
+            <p>STARTED...</p>
           </div>
           <div>
+            <p>Razoo was born from a personal quest for healthier living.</p>
+            <p>Razoo was born from a personal quest for healthier living.</p>
+            <p>Our founder struggled with skin issues caused by conventional </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe maxime nulla natus iure
-              minus distinctio nesciunt tempora recusandae molestiae modi! Dolor tenetur perferendis
-              nam mollitia recusandae aut non unde tempora?
+              skincare products and decided to create a line of organic skincare that would be safe,
+              effective, and environmentally conscious. Our goal is to provide the best in organic
+              skincare
+            </p>
+            <p>by using high-quality ingredients and sustainable practices. </p>
+            <p>We believe beauty is more than skin deep and are committed </p>
+            <p>
+              to making a positive impact on the world. Thank you for joining us on this journey.
             </p>
           </div>
         </div>
