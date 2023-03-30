@@ -11,7 +11,7 @@ interface IProductFormProps {
 
 const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, product }) => {
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
+    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto my-auto">
       <div className="mb-4">
         <label htmlFor="id" className="block text-gray-700 font-bold mb-2">
           Id

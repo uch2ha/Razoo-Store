@@ -2,63 +2,27 @@ import React, { FC, useState } from 'react'
 import { IProduct } from '../../../types/product.type'
 import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import ProductForm from './products/ProductForm'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../../store/store'
+import { useDispatch } from 'react-redux'
 import { productsActions } from '../../../store/products/products.slice'
 import UserForm from './users/UserForm'
 import { IUser } from '../../../types/user.type'
-
-const initProduct: IProduct = {
-  id: '',
-  img: '',
-  name: '',
-  description: '',
-  instruction: '',
-  category: 'shampoo',
-  size: '50ml',
-  price: 0
-}
-
-const initUser: IUser = {
-  id: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  isAdmin: false,
-  isGoogleLogin: false,
-  password: ''
-}
+import { setNewUserToLS, setNewUsersDataToLS } from '../../../utilities/localStorage'
 
 interface IAddEditComponentProps {
   isVisible: boolean
-  setIsVisible: (b: boolean) => void
   isProduct: boolean
-  isEditProductId: string | null
-  isEditUserId: string | null
-  setIsEditProductId: (b: string | null) => void
+  propsItem: IProduct | IUser
+  handleClose: () => void
 }
 
 const AddEditComponent: FC<IAddEditComponentProps> = ({
   isVisible,
-  setIsVisible,
   isProduct,
-  isEditProductId,
-  isEditUserId,
-  setIsEditProductId
+  propsItem,
+  handleClose
 }) => {
-  const products = useSelector((state: RootState) => state.products)
-  const getProductById = (id: string | null) => {
-    if (id === null) return
-    return products.find((product) => product.id === id)
-  }
-  // if isEditProductId is equal to number then fetch product by id
-  // and set this product to useState
-  const productById = getProductById(isEditProductId !== null ? isEditProductId : null)
-  // if not use initProduct instead
-  const [product, setProduct] = useState<IProduct>(
-    isEditProductId !== null && productById ? productById : initProduct
-  )
-  const [user, setUser] = useState<IUser>(initUser)
+  const isEditMod = propsItem.id !== ''
+  const [item, setItem] = useState<IUser | IProduct>(propsItem)
 
   const dispatch = useDispatch()
 
@@ -70,13 +34,13 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     // Product changes
     if (isProduct) {
       if (name === 'category') {
-        setProduct((prevProduct) => ({
+        setItem((prevProduct) => ({
           ...prevProduct,
           img: value
         }))
       }
 
-      setProduct((prevProduct) => ({
+      setItem((prevProduct) => ({
         ...prevProduct,
         [name]: value
       }))
@@ -88,7 +52,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
       if (convertedValue === 'true') convertedValue = true
       if (convertedValue === 'false') convertedValue = false
 
-      setUser((prevUser) => ({
+      setItem((prevUser) => ({
         ...prevUser,
         [name]: convertedValue
       }))
@@ -101,30 +65,28 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     // handle product changes
     if (isProduct) {
       // edit
-      if (isEditProductId !== null) {
-        dispatch(productsActions.editProductById(product))
-        setIsVisible(false)
+      if (isEditMod) {
+        dispatch(productsActions.editProductById(item as IProduct))
+        handleClose()
       }
       // add
-      if (isEditProductId === null) {
-        dispatch(productsActions.addProduct(product))
-        setIsVisible(false)
+      if (!isEditMod) {
+        dispatch(productsActions.addProduct(item as IProduct))
+        handleClose()
       }
     }
 
     // handle user changes
     if (!isProduct) {
       // edit
-      if (isEditUserId !== null) {
-        console.log(user)
-
-        // dispatch(productsActions.editProductById(product))
+      if (isEditMod) {
+        setNewUsersDataToLS(item as IUser)
+        handleClose()
       }
       // add
-      if (isEditUserId === null) {
-        console.log(user)
-
-        // dispatch(productsActions.addProduct(product))
+      if (!isEditMod) {
+        setNewUserToLS(item as IUser)
+        handleClose()
       }
     }
   }
@@ -135,17 +97,17 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
         isVisible ? 'z-50 top-1/2' : 'top-[-100%]'
       }`}>
       {isProduct && (
-        <ProductForm handleChange={handleChange} handleSubmit={handleSubmit} product={product} />
+        <ProductForm
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          product={item as IProduct}
+        />
       )}
       {!isProduct && (
-        <UserForm handleChange={handleChange} handleSubmit={handleSubmit} user={user} />
+        <UserForm handleChange={handleChange} handleSubmit={handleSubmit} user={item as IUser} />
       )}
       <div className="absolute top-3 right-3">
-        <button
-          onClick={() => {
-            setIsVisible(false)
-            setIsEditProductId(null)
-          }}>
+        <button onClick={handleClose}>
           <CloseBtn className="text-3xl" />
         </button>
       </div>
