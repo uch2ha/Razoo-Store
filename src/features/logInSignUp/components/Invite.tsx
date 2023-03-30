@@ -11,7 +11,7 @@ const Invite: FC<IInviteProps> = ({ onClick, texts, isLogin }) => {
   return (
     <div
       className={`w-full h-full  flex flex-col justify-center items-center text-white ${
-        isLogin ? 'rounded-tr-md rounded-br-md' : 'rounded-tl-md rounded-bl-md'
+        isLogin ? '-tr-md -br-md' : '-tl-md -bl-md'
       }`}>
       <h2 className="font-bold">{texts.title}</h2>
       <div className="py-8">

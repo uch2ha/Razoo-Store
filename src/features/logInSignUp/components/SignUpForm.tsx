@@ -53,7 +53,7 @@ const SignUpForm: FC = () => {
   }
 
   return (
-    <div className="w-full h-full bg-white flex flex-col justify-center items-center rounded-md">
+    <div className="w-full h-full bg-white flex flex-col justify-center items-center ">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, voluptatum.</p>
       <GoogleAuthBtn setError={setError} />
       {error && <p>{error}</p>}

@@ -22,7 +22,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           id="id"
           value={product.id}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -36,7 +36,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           id="name"
           value={product.name}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -47,7 +47,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
         <select
           id="category"
           name="category"
-          className="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="w-full py-2 px-3 border border-gray-300 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           value={product.category}
           onChange={handleChange}>
           <option value="shampoo">Shampoo</option>
@@ -63,7 +63,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
         <select
           id="size"
           name="size"
-          className="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="w-full py-2 px-3 border border-gray-300  shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           value={product.size}
           onChange={handleChange}>
           <option value="50ml">50ml</option>
@@ -81,7 +81,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           id="description"
           value={product.description}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 min-h-[150px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 min-h-[150px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -94,7 +94,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           id="instruction"
           value={product.instruction}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 min-h-[100px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 min-h-[100px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -108,13 +108,13 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           id="price"
           value={product.price}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
       <button
         type="submit"
-        className="inline-block py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        className="inline-block py-3 px-10 border border-transparent text-sm font-medium  text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
         Create / Edit Product
       </button>
     </form>

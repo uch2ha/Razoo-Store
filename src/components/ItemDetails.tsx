@@ -51,13 +51,13 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
       className={`fixed left-1/2 w-[85%] h-[80%] flex transform -translate-x-1/2 -translate-y-1/2 blur-none transition-all duration-700 ${
         isVisible ? 'z-50 top-1/2 ' : 'top-[-100%]'
       }`}>
-      <div className="w-[52%] bg-[#eceae5] rounded-tl-md rounded-bl-md flex justify-center items-center">
+      <div className="w-[52%] bg-[#eceae5] -tl-md -bl-md flex justify-center items-center">
         {productId && (
           <img src={`./src/assets/productImg/${product.img}.png`} className="h-[70%]" />
         )}
         <img src={'./src/assets/logo-column.png'} className="absolute top-7 left-7 w-[90px]" />
       </div>
-      <div className="w-[48%] bg-[#f2f3f1] flex justify-center items-center rounded-tr-md rounded-br-md">
+      <div className="w-[48%] bg-[#f2f3f1] flex justify-center items-center -tr-md -br-md">
         <div className="h-[80%] w-[75%] mx-auto">
           <div className="border-b-[2px]  h-1/3 flex flex-col justify-end px-[8%]">
             <div className="text-3xl pb-[5%] uppercase font-[500]">

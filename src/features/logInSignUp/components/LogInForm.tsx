@@ -29,7 +29,7 @@ const LogInForm: FC = () => {
   }
 
   return (
-    <div className="w-full h-full bg-white flex flex-col justify-center items-center rounded-md">
+    <div className="w-full h-full bg-white flex flex-col justify-center items-center ">
       <h2>Login to Your Account</h2>
       <h4>Login using social networks!</h4>
       <GoogleAuthBtn setError={setError} />

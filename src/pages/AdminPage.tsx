@@ -6,7 +6,7 @@ import AdminUsers from '../features/admin/components/users/AdminUsers'
 import AdminOrders from '../features/admin/components/orders/AdminOrders'
 
 const AdminPage: FC = () => {
-  const [visible, setVisible] = useState<'PRODUCTS' | 'USERS' | 'ORDERS'>('USERS')
+  const [visible, setVisible] = useState<'PRODUCTS' | 'USERS' | 'ORDERS'>('PRODUCTS')
 
   const handleSwitch = (label: string) => {
     if (['PRODUCTS', 'USERS', 'ORDERS'].includes(label))

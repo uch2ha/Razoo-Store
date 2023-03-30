@@ -41,7 +41,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
           <div className="flex px-4 space-x-4">
             <button
               id="add-to-cart"
-              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400"
+              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]/50"
               onClick={() => {
                 setIsEditProductId(product.id)
                 setIsVisible(true)
@@ -50,7 +50,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
             </button>
             <button
               id="add-to-cart"
-              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400"
+              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]"
               onClick={deleteProductId}>
               Delete
             </button>

@@ -22,7 +22,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
           id="id"
           value={user.id}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -36,7 +36,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
           id="firstName"
           value={user.firstName}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -50,7 +50,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
           id="lastName"
           value={user.lastName}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -64,7 +64,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
           id="email"
           value={user.email}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -75,7 +75,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
         <select
           id="isAdmin"
           name="isAdmin"
-          className="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="w-full py-2 px-3 border border-gray-300  shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           value={user.isAdmin ? 'true' : 'false'}
           onChange={handleChange}>
           <option value="true">true</option>
@@ -89,7 +89,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
         <select
           id="isGoogleLogin"
           name="isGoogleLogin"
-          className="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="w-full py-2 px-3 border border-gray-300  shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           value={user.isGoogleLogin ? 'true' : 'false'}
           onChange={handleChange}>
           <option value="true">true</option>
@@ -106,13 +106,13 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
           id="password"
           value={user.password}
           onChange={handleChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         />
       </div>
       <button
         type="submit"
-        className="inline-block py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        className="inline-block py-3 px-10 border border-transparent text-sm font-medium  text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
         Create / Edit User
       </button>
     </form>
