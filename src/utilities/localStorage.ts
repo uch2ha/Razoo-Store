@@ -26,6 +26,12 @@ export const getUserByIdFromLS = (id: string): IUser | null => {
   return null
 }
 
+export const setNewUserToLS = (user: IUser) => {
+  const users: IUser[] = JSON.parse(localStorage.getItem('users') ?? '[]')
+  users.unshift(user)
+  localStorage.setItem('users', JSON.stringify(users))
+}
+
 export const setNewUsersDataToLS = (user: IUser): boolean => {
   const users: IUser[] = JSON.parse(localStorage.getItem('users') ?? '[]')
   const newUsers = users.map((u) => {
