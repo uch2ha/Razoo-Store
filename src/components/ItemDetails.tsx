@@ -6,6 +6,8 @@ import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../store/cart/cart.slice'
 import { RootState } from '../store/store'
+import Image from '../Image'
+import logo from '../assets/logo-column.png'
 
 interface IItemDetailsProps {
   handleClose: () => void
@@ -52,8 +54,8 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
         isVisible ? 'z-50 top-1/2 ' : 'top-[-100%]'
       }`}>
       <div className="w-[52%] bg-[#e2ded7] -tl-md -bl-md flex justify-center items-center">
-        {productId && <img src={`./assets/productImg/${product.img}.png`} className="h-[70%]" />}
-        <img src={'./assets/logo-column.png'} className="absolute top-7 left-7 w-[90px]" />
+        {productId && <Image src={productId} alt="My Image" className="h-[70%]" />}
+        <img src={logo} className="absolute top-7 left-7 w-[90px]" />
       </div>
       <div className="w-[48%] bg-[#f2f2f0] flex justify-center items-center -tr-md -br-md">
         <div className="h-[80%] w-[75%] mx-auto">

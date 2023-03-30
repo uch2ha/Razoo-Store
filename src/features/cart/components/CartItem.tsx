@@ -5,6 +5,7 @@ import { cartActions } from '../../../store/cart/cart.slice'
 import { RootState } from '../../../store/store'
 import { MinusBtn } from '../../../assets/svg/MinusBtn'
 import { PlusBtn } from '../../../assets/svg/PlusBtn'
+import Image from '../../../Image'
 
 interface ICartItemProps {
   itemId: string
@@ -46,7 +47,7 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
         className="w-[29%] h-[150px] flex items-center justify-between btn"
         onClick={() => setProductId(itemId)}>
         <div className="h-full border-[1px]">
-          <img src={`./assets/productImg/${product?.img}.png`} className="h-[95%]" />
+          {product?.img && <Image src={product?.img} alt="My Image" className="h-[95%]" />}
         </div>
         <div className="h-full ml-3 flex flex-col justify-evenly items-end uppercase text-end">
           <div className="font-[500]">

@@ -8,6 +8,9 @@ import { cartActions } from '../store/cart/cart.slice'
 import { MyAccountIcon } from '../assets/svg/MyAccount'
 import { Admin } from '../assets/svg/Admin'
 
+import logo from '../assets/logo-row.png'
+import logoWhite from '../assets/logo-row-white.png'
+
 interface INavBarProps {
   isWhite?: boolean
 }
@@ -33,9 +36,9 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
     <div className="w-[82%] flex justify-between items-center mx-auto min-h-[103px] border-b-[1.7px] text-xl font-[500]">
       <div className="w-1/3">
         {isWhite ? (
-          <img src="./assets/logo-row-white.png" className="w-[30%]" />
+          <img src={logoWhite} className="w-[30%]" />
         ) : (
-          <img src="./assets/logo-row.png" className="w-[30%]" />
+          <img src={logo} className="w-[30%]" />
         )}
       </div>
       <div className="w-1/3">
