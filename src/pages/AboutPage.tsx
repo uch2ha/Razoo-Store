@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import NavBar from '../components/NavBar'
 
+import aboutPageImg from '../assets/aboutPageImg.png'
+
 const AboutPage: FC = () => {
   return (
     <div className="relative">
@@ -29,7 +31,7 @@ const AboutPage: FC = () => {
         </div>
       </div>
       <img
-        src="./assets/aboutPageImg.png"
+        src={aboutPageImg}
         className="absolute top-0 left-0 object-cover h-full object-center w-1/2 z-[-1]"
       />
       <div className=" absolute top-0 right-0 w-1/2 z-[-1] h-full bg-[#434739]" />

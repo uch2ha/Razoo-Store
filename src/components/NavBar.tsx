@@ -5,8 +5,8 @@ import { googleLogout } from '@react-oauth/google'
 import { RootState } from '../store/store'
 import { userActions } from '../store/user/user.slice'
 import { cartActions } from '../store/cart/cart.slice'
-import { MyAccountIcon } from '../../assets/svg/MyAccount'
-import { Admin } from '../../assets/svg/Admin'
+import { MyAccountIcon } from '../assets/svg/MyAccount'
+import { Admin } from '../assets/svg/Admin'
 
 interface INavBarProps {
   isWhite?: boolean

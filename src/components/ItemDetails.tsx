@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { CloseBtn } from '../../assets/svg/CloseBtn'
+import { CloseBtn } from '../assets/svg/CloseBtn'
 import { IProduct } from '../types/product.type'
 import Button from './Button'
 import { useDispatch, useSelector } from 'react-redux'
