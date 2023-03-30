@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { userActions } from '../../../store/user/user.slice'
+import { EditIcon } from '../../../assets/svg/EditIcon'
 
 const MyInfo: FC = () => {
   const [name, setName] = useState('')

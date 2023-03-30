@@ -28,7 +28,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     <div
       className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
-      <div className="w-full flex flex-col items-center justify-end h-full">
+      <div className="w-full flex flex-col items-center justify-center h-full">
         <img src={`./src/assets/productImg/${product.img}.png`} className={`my-6 w-[50%]`} />
         <p className="text-2xl uppercase">{product.name}</p>
         <p className="text-2xl uppercase">
