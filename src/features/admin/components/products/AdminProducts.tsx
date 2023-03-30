@@ -8,7 +8,7 @@ import AddEditComponent from '../AddEditComponent'
 
 const initProduct: IProduct = {
   id: '',
-  img: '',
+  img: 'shampoo',
   name: '',
   description: '',
   instruction: '',

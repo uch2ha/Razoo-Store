@@ -94,7 +94,7 @@ const SignUpForm: FC = () => {
       <input
         id="re-password"
         type="password"
-        className="px-10 py-2 mb-[10px]"
+        className="px-10 py-2 mb-4"
         placeholder="Repeat Password"
         required
         onChange={handleInputChange}

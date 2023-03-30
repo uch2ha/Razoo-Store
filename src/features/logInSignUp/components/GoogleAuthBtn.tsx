@@ -58,8 +58,8 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
   }, [result])
 
   return (
-    <button onClick={() => login()} className="my-3">
-      <Google className="text-3xl text-white " />
+    <button onClick={() => login()} className="my-3 ">
+      <Google className="text-3xl text-white hover:text-[#a0a772]" />
     </button>
   )
 }

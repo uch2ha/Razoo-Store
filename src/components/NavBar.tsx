@@ -54,17 +54,14 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
       <div className="w-1/3">
         <ul className="flex justify-end items-center space-x-8">
           {isAdmin && (
-            <li className={`${activePage === '/admin' ? 'active-link' : ''} btn`}>
+            <li className={`${activePage === '/admin' ? 'text-[#a0a772]' : ''} btn`}>
               <Link to="/admin">
                 <Admin className="text-2xl" />
               </Link>
             </li>
           )}
           {id && (
-            <li
-              className={`p-1 w-[32px] ${
-                activePage === '/account' ? 'border-2' : 'border-none'
-              } btn`}>
+            <li className={`${activePage === '/account' ? 'text-[#a0a772]' : ''} btn`}>
               <Link to="/account">
                 <MyAccountIcon className="text-2xl" />
               </Link>

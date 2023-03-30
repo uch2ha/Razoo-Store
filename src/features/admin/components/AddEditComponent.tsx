@@ -34,6 +34,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     // Product changes
     if (isProduct) {
       if (name === 'category') {
+        console.log(name, value)
         setItem((prevProduct) => ({
           ...prevProduct,
           img: value

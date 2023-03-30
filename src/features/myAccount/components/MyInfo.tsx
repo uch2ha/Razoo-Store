@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { userActions } from '../../../store/user/user.slice'
-import { EditIcon } from '../../../assets/svg/EditIcon'
 
 const MyInfo: FC = () => {
   const [name, setName] = useState('')
@@ -41,14 +40,14 @@ const MyInfo: FC = () => {
 
   return (
     <>
-      <div className="border-b-[1px] min-h-[7rem] pl-[10%] flex flex-col justify-center">
+      <div className="border-b-[1px] min-h-[7rem] pl-[6%] flex flex-col justify-center">
         <h2 className="font-[600]">MY INFO</h2>
         <div className="flex mt-1">
           <p>Here you can view and update own information.</p>
           <p>Manage your login information and password here.</p>
         </div>
       </div>
-      <div className="border-b-[1px] flex justify-between pl-[10%]">
+      <div className="border-b-[1px] flex justify-between pl-[6%]">
         <div>
           <div className="py-5">
             <p className="underline underline-offset-1 font-[600]">Name</p>
@@ -90,7 +89,7 @@ const MyInfo: FC = () => {
           )}
         </div>
       </div>
-      <div className="border-b-[1px] flex justify-between pl-[10%]">
+      <div className="border-b-[1px] flex justify-between pl-[6%]">
         <div>
           <div className="py-5">
             <p className="underline underline-offset-1 font-[600]">E-mail</p>
@@ -122,7 +121,7 @@ const MyInfo: FC = () => {
           )}
         </div>
       </div>
-      <div className="border-b-[1px] flex justify-between pl-[10%]">
+      <div className="border-b-[1px] flex justify-between pl-[6%]">
         <div>
           <div className="py-5">
             <p className="underline underline-offset-1 font-[600]">Password</p>

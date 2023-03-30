@@ -17,7 +17,7 @@ const Order: FC<IOrderProps> = ({ order }) => {
 
   return (
     <>
-      <div className={`pl-[10%] py-8`} onClick={handleVisible}>
+      <div className={`pl-[6%] py-8`} onClick={handleVisible}>
         <div className="flex justify-between my-2">
           <div className="flex w-3/5 justify-between uppercase">
             <div>
@@ -38,7 +38,7 @@ const Order: FC<IOrderProps> = ({ order }) => {
           </div>
         </div>
       </div>
-      <div className={`pl-[10%] border-b-[1px]`}>
+      <div className={`pl-[6%] border-b-[1px]`}>
         <OrderDetails
           products={order.products}
           totalPrice={order.totalPrice}

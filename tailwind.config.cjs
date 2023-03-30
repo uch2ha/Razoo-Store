@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         mainPageBg: "url('./assets/mainPageBg.png')",
-        bg3: "url('./assets/aboutPageImg.jpg)"
+        loginPageBg: "url('./assets/loginPageBg.png')"
       }
     },
     colors: {
