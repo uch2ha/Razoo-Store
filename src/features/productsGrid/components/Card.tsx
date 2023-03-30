@@ -29,13 +29,13 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
       className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-end h-full">
-        <img src={`./src/assets/productImg/${product.img}.png`} className={`my-6 w-[48%]`} />
+        <img src={`./src/assets/productImg/${product.img}.png`} className={`my-6 w-[50%]`} />
         <p className="text-2xl uppercase">{product.name}</p>
         <p className="text-2xl uppercase">
           {product.category} ({product.size})
         </p>
       </div>
-      <div className="w-full mb-2">
+      <div className="w-full mb-4">
         <p className="text-xl font-bold mt-8 mb-2">{product.price}$</p>
         {setIsEditProductId && setIsVisible ? (
           <div className="flex px-4 space-x-4">
