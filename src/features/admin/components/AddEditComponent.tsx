@@ -5,10 +5,12 @@ import ProductForm from './products/ProductForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { productsActions } from '../../../store/products/products.slice'
+import UserForm from './users/UserForm'
+import { IUser } from '../../../types/user.type'
 
 const initProduct: IProduct = {
   id: '',
-  img: 'none',
+  img: '',
   name: '',
   description: '',
   instruction: '',
@@ -17,11 +19,22 @@ const initProduct: IProduct = {
   price: 0
 }
 
+const initUser: IUser = {
+  id: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  isAdmin: false,
+  isGoogleLogin: false,
+  password: ''
+}
+
 interface IAddEditComponentProps {
   isVisible: boolean
   setIsVisible: (b: boolean) => void
   isProduct: boolean
   isEditProductId: string | null
+  isEditUserId: string | null
   setIsEditProductId: (b: string | null) => void
 }
 
@@ -30,6 +43,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   setIsVisible,
   isProduct,
   isEditProductId,
+  isEditUserId,
   setIsEditProductId
 }) => {
   const products = useSelector((state: RootState) => state.products)
@@ -44,6 +58,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   const [product, setProduct] = useState<IProduct>(
     isEditProductId !== null && productById ? productById : initProduct
   )
+  const [user, setUser] = useState<IUser>(initUser)
 
   const dispatch = useDispatch()
 
@@ -52,10 +67,32 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   ) => {
     const { name, value } = e.target
 
-    setProduct((prevProduct) => ({
-      ...prevProduct,
-      [name]: value
-    }))
+    // Product changes
+    if (isProduct) {
+      if (name === 'category') {
+        setProduct((prevProduct) => ({
+          ...prevProduct,
+          img: value
+        }))
+      }
+
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        [name]: value
+      }))
+    }
+    // User changes
+    if (!isProduct) {
+      let convertedValue: string | boolean = value
+
+      if (convertedValue === 'true') convertedValue = true
+      if (convertedValue === 'false') convertedValue = false
+
+      setUser((prevUser) => ({
+        ...prevUser,
+        [name]: convertedValue
+      }))
+    }
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -66,10 +103,28 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
       // edit
       if (isEditProductId !== null) {
         dispatch(productsActions.editProductById(product))
+        setIsVisible(false)
       }
       // add
       if (isEditProductId === null) {
         dispatch(productsActions.addProduct(product))
+        setIsVisible(false)
+      }
+    }
+
+    // handle user changes
+    if (!isProduct) {
+      // edit
+      if (isEditUserId !== null) {
+        console.log(user)
+
+        // dispatch(productsActions.editProductById(product))
+      }
+      // add
+      if (isEditUserId === null) {
+        console.log(user)
+
+        // dispatch(productsActions.addProduct(product))
       }
     }
   }
@@ -81,6 +136,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
       }`}>
       {isProduct && (
         <ProductForm handleChange={handleChange} handleSubmit={handleSubmit} product={product} />
+      )}
+      {!isProduct && (
+        <UserForm handleChange={handleChange} handleSubmit={handleSubmit} user={user} />
       )}
       <div className="absolute top-3 right-3">
         <button
