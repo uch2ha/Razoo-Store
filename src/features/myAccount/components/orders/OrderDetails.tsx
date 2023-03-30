@@ -14,7 +14,7 @@ const OrderDetails: FC<IOrderDetailsProps> = ({ products, totalPrice, isVisible 
   return (
     <div
       className={`grid grid-cols-9 w-[80%] text-center max-h-0 transition-all ease-in-out duration-700 overflow-hidden ${
-        isVisible ? 'border-2 max-h-full mt-10' : ''
+        isVisible ? 'border-2 max-h-full my-10' : ''
       }`}>
       <div className="col-span-3 border-b-2 py-1">
         <p>PRODUCT</p>

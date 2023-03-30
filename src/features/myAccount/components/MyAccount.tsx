@@ -21,7 +21,7 @@ const MyAccount: FC = () => {
         </div>
         <img src={img} className="object-cover h-full" />
       </div>
-      <div className="border-2 border-b-0 rounded-md w-4/5">
+      <div className="border-2 border-b-0 rounded-tl-md rounded-tr-md w-4/5">
         {isMyInfo ? <MyInfo /> : <MyOrders />}
       </div>
     </div>

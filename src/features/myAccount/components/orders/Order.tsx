@@ -16,28 +16,36 @@ const Order: FC<IOrderProps> = ({ order }) => {
   }
 
   return (
-    <div className=" pl-[10%] border-b-2 py-8">
-      <div className="flex justify-between my-2">
-        <div className="flex w-3/5 justify-between uppercase">
-          <div>
-            <p className="underline underline-offset-1">ORDER NUMBER</p>
-            <p>{order.orderId}</p>
+    <>
+      <div className={`pl-[10%] py-8`} onClick={handleVisible}>
+        <div className="flex justify-between my-2">
+          <div className="flex w-3/5 justify-between uppercase">
+            <div>
+              <p className="underline underline-offset-1">ORDER NUMBER</p>
+              <p>{order.orderId}</p>
+            </div>
+            <div>
+              <p className="underline underline-offset-1">STATUS</p>
+              <p>{order.status}</p>
+            </div>
+            <div>
+              <p className="underline underline-offset-1">DATE</p>
+              <p>{order.purchasedAt}</p>
+            </div>
           </div>
-          <div>
-            <p className="underline underline-offset-1">STATUS</p>
-            <p>{order.status}</p>
+          <div className="mr-7 p-2 text-3xl flex justify-center items-center">
+            {isVisible ? <ArrowDown /> : <ArrowUp />}
           </div>
-          <div>
-            <p className="underline underline-offset-1">DATE</p>
-            <p>{order.purchasedAt}</p>
-          </div>
-        </div>
-        <div className="mr-7 p-2 text-3xl flex justify-center items-center" onClick={handleVisible}>
-          {isVisible ? <ArrowDown /> : <ArrowUp />}
         </div>
       </div>
-      <OrderDetails products={order.products} totalPrice={order.totalPrice} isVisible={isVisible} />
-    </div>
+      <div className={`pl-[10%] border-b-2`}>
+        <OrderDetails
+          products={order.products}
+          totalPrice={order.totalPrice}
+          isVisible={isVisible}
+        />
+      </div>
+    </>
   )
 }
 

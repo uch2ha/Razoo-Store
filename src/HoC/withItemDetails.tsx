@@ -36,7 +36,7 @@ export const withItemDetails = <P extends object>(WrappedComponent: React.Compon
       <>
         <div
           onClick={handleClose}
-          className={`bg-gray-400 w-screen min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center  justify-start ${
+          className={`bg-gray-400 w-screen min-h-screen flex flex-col items-center  justify-start ${
             itemIsVisible && 'blur-sm'
           }`}>
           <WrappedComponent {...(props as P)} setProductId={setProductId} />
