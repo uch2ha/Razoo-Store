@@ -38,7 +38,7 @@ const Order: FC<IOrderProps> = ({ order }) => {
           </div>
         </div>
       </div>
-      <div className={`pl-[10%] border-b-2`}>
+      <div className={`pl-[10%] border-b-[1px]`}>
         <OrderDetails
           products={order.products}
           totalPrice={order.totalPrice}

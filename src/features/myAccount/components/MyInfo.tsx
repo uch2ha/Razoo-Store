@@ -40,14 +40,14 @@ const MyInfo: FC = () => {
 
   return (
     <>
-      <div className="border-b-2 min-h-[7rem] pl-[10%] flex flex-col justify-center">
+      <div className="border-b-[1px] min-h-[7rem] pl-[10%] flex flex-col justify-center">
         <h2>MY INFO</h2>
         <div className="flex">
           <p>Here you can view and update own information.</p>
           <p>Manage your login information and password here.</p>
         </div>
       </div>
-      <div className="border-b-2 flex justify-between pl-[10%]">
+      <div className="border-b-[1px] flex justify-between pl-[10%]">
         <div>
           <div className="py-5">
             <p className="underline underline-offset-1">Name</p>
@@ -89,7 +89,7 @@ const MyInfo: FC = () => {
           )}
         </div>
       </div>
-      <div className="border-b-2 flex justify-between pl-[10%]">
+      <div className="border-b-[1px] flex justify-between pl-[10%]">
         <div>
           <div className="py-5">
             <p className="underline underline-offset-1">E-mail</p>
@@ -121,7 +121,7 @@ const MyInfo: FC = () => {
           )}
         </div>
       </div>
-      <div className="border-b-2 flex justify-between pl-[10%]">
+      <div className="border-b-[1px] flex justify-between pl-[10%]">
         <div>
           <div className="py-5">
             <p className="underline underline-offset-1">Password</p>

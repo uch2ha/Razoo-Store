@@ -12,7 +12,7 @@ const UsersList: FC<IUsersListProps> = ({ handleEditMod }) => {
   return (
     <div className="w-full h-full flex flex-col text-center items-center justify-start">
       <button
-        className="border-2 px-5 text-2xl py-2 mb-5 rounded-md"
+        className="border-[1px] px-5 text-2xl py-2 mb-5 rounded-md"
         onClick={() => handleEditMod(null)}>
         ADD USER
       </button>

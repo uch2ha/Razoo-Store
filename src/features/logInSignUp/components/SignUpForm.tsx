@@ -98,7 +98,7 @@ const SignUpForm: FC = () => {
         required
         onChange={handleInputChange}
       />
-      <button className="border-2 px-10 py-4" onClick={handleSignUp}>
+      <button className="border-[1px] px-10 py-4" onClick={handleSignUp}>
         Sing In
       </button>
     </div>

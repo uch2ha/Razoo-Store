@@ -14,18 +14,18 @@ const OrderDetails: FC<IOrderDetailsProps> = ({ products, totalPrice, isVisible 
   return (
     <div
       className={`grid grid-cols-9 w-[80%] text-center max-h-0 transition-all ease-in-out duration-700 overflow-hidden ${
-        isVisible ? 'border-2 max-h-full my-10' : ''
+        isVisible ? 'border-[1px] max-h-full my-10' : ''
       }`}>
-      <div className="col-span-3 border-b-2 py-1">
+      <div className="col-span-3 border-b-[1px] py-1">
         <p>PRODUCT</p>
       </div>
-      <div className="col-span-2 border-b-2 border-l-2 border-r-2 py-1">
+      <div className="col-span-2 border-b-[1px] border-l-[1px] border-r-[1px] py-1">
         <p>SIZE</p>
       </div>
-      <div className="col-span-2 border-b-2 border-r-2 py-1">
+      <div className="col-span-2 border-b-[1px] border-r-[1px] py-1">
         <p>AMOUNT</p>
       </div>
-      <div className="col-span-2 border-b-2 py-1">
+      <div className="col-span-2 border-b-[1px] py-1">
         <p>PRICE</p>
       </div>
       {products?.map((product) => {

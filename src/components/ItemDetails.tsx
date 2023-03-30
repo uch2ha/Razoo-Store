@@ -58,7 +58,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
       </div>
       <div className="w-[48%] flex justify-center items-center rounded-tr-md rounded-br-md">
         <div className="h-[80%] w-[80%] mx-auto">
-          <div className="border-b-2 h-1/3 flex flex-col justify-end px-[10%]">
+          <div className="border-b-[1px] h-1/3 flex flex-col justify-end px-[10%]">
             <div className="text-3xl pb-[5%] uppercase">
               <p>{product.name}</p>
               <p>{product.category}</p>
@@ -72,7 +72,11 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
               <p>{product.description}</p>
               <p className="pb-[5%]">{product.instruction}</p>
             </div>
-            <Button label="ADD TO CART" clickHandler={handleAddItem} styles="border-2 px-20 py-4" />
+            <Button
+              label="ADD TO CART"
+              clickHandler={handleAddItem}
+              styles="border-[1px] px-20 py-4"
+            />
           </div>
         </div>
         <div className="fixed top-5 right-5">

@@ -18,7 +18,7 @@ const Invite: FC<IInviteProps> = ({ onClick, texts, isLogin }) => {
         <p className="text-xl mb-2">{texts.firstDescription}</p>
         <p className="text-xl">{texts.secondDescription}</p>
       </div>
-      <Button label={texts.btnLabel} clickHandler={onClick} styles="border-2 py-4 px-16" />
+      <Button label={texts.btnLabel} clickHandler={onClick} styles="border-[1px] py-4 px-16" />
     </div>
   )
 }

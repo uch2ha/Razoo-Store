@@ -51,7 +51,7 @@ const LogInForm: FC = () => {
         required
         onChange={handleInputChange}
       />
-      <button className="border-2 px-10 py-4" onClick={handleLogIn}>
+      <button className="border-[1px] px-10 py-4" onClick={handleLogIn}>
         Sing In
       </button>
     </div>

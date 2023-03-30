@@ -10,7 +10,7 @@ const MyOrders: FC = () => {
 
   return (
     <>
-      <div className="border-b-2 min-h-[7rem] pl-[10%] flex flex-col justify-center ">
+      <div className="border-b-[1px] min-h-[7rem] pl-[10%] flex flex-col justify-center ">
         <h2>ORDERS</h2>
       </div>
       <div className="">

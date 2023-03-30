@@ -13,7 +13,7 @@ const UserCard: FC<IUserCardProps> = ({ user, handleEditMod }) => {
   }
 
   return (
-    <div className="border-2 px-6 py-4 flex mb-4 text-2xl rounded-md ">
+    <div className="border-[1px] px-6 py-4 flex mb-4 text-2xl rounded-md ">
       <div className="flex flex-col justify-around text-start w-1/6">
         <p>Id: {user.id}</p>
         <p>IsAdmin: {user.isAdmin ? 'true' : 'false'}</p>
@@ -30,12 +30,12 @@ const UserCard: FC<IUserCardProps> = ({ user, handleEditMod }) => {
         <p>isGoogleLogin: {user.isGoogleLogin ? 'true' : 'false'}</p>
         <div className="flex ">
           <button
-            className="border-2 px-5 text-xl py-2 rounded-md mr-5 mt-5"
+            className="border-[1px] px-5 text-xl py-2 rounded-md mr-5 mt-5"
             onClick={handleDelete}>
             DELETE
           </button>
           <button
-            className="border-2 px-5 text-xl py-2 rounded-md mt-5"
+            className="border-[1px] px-5 text-xl py-2 rounded-md mt-5"
             onClick={() => handleEditMod(user.id)}>
             EDIT
           </button>
