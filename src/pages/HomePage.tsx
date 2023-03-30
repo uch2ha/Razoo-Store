@@ -8,7 +8,7 @@ const HomePage: FC = () => {
       <div className="relative text-5xl  h-full w-full flex justify-center items-center text-center flex-col ">
         <img
           className="absolute top-[20%] rotate-10 w-[500px]"
-          src="./src/assets/mainPageProductImg.png"
+          src="./assets/mainPageProductImg.png"
         />
         <div className="absolute top-[15%]">
           <p className="font-poppins text-xl mb-2">100% organic</p>

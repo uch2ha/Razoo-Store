@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import Button from '../../../components/Button'
 
-import img from '../../../assets/myAccountImg.jpg'
+import img from '../../../../assets/myAccountImg.jpg'
 import MyInfo from './MyInfo'
 import MyOrders from './orders/MyOrders'
 
