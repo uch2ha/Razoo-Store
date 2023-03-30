@@ -112,7 +112,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
       </div>
       <button
         type="submit"
-        className="inline-block py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        className="inline-block py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
         Create / Edit User
       </button>
     </form>

@@ -4,9 +4,9 @@ import MyAccount from '../features/myAccount/components/MyAccount'
 
 const MyAccountPage: FC = () => {
   return (
-    <div className="bg-gray-400 w-screen max-h-screen min-h-screen flex flex-col items-center  justify-start">
+    <div className="w-screen max-h-screen min-h-screen flex flex-col items-center  justify-start">
       <NavBar />
-      <div className="h-[calc(100vh-80px-48px)] w-[91%] mt-12 flex place-self-start flex-col">
+      <div className="h-[calc(100vh-103px-48px)] w-[91%] mt-12 flex place-self-start flex-col">
         <MyAccount />
       </div>
     </div>

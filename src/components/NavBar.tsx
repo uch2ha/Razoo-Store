@@ -6,7 +6,11 @@ import { RootState } from '../store/store'
 import { userActions } from '../store/user/user.slice'
 import { cartActions } from '../store/cart/cart.slice'
 
-const NavBar: FC = () => {
+interface INavBarProps {
+  isWhite?: boolean
+}
+
+const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
   const [activePage, setActivePage] = useState<string>('/')
 
   const dispatch = useDispatch()
@@ -24,8 +28,14 @@ const NavBar: FC = () => {
   }, [])
 
   return (
-    <div className="w-[82%] flex justify-between items-center mx-auto min-h-[80px] border-b-[3px]">
-      <div className="w-1/3">LOGO</div>
+    <div className="w-[82%] flex justify-between items-center mx-auto min-h-[103px] border-b-[1.7px] text-xl font-[500]">
+      <div className="w-1/3">
+        {isWhite ? (
+          <img src="./src/assets/logo-row-white.png" className="w-[30%]" />
+        ) : (
+          <img src="./src/assets/logo-row.png" className="w-[30%]" />
+        )}
+      </div>
       <div className="w-1/3">
         <ul className="flex justify-evenly items-center ">
           <li className={`${activePage === '/' ? 'active-link' : ''} btn`}>
@@ -35,12 +45,12 @@ const NavBar: FC = () => {
             <Link to="/shop">SHOP</Link>
           </li>
           <li className={`${activePage === '/about' ? 'active-link' : ''} btn`}>
-            <Link to="/about">ABOUT US</Link>
+            <Link to="/about">ABOUT</Link>
           </li>
         </ul>
       </div>
       <div className="w-1/3">
-        <ul className="flex justify-end items-center space-x-5">
+        <ul className="flex justify-end items-center space-x-8">
           {id &&
             (isAdmin ? (
               <>

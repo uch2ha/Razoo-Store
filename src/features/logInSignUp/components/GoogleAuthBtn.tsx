@@ -57,7 +57,7 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
   }, [result])
 
   return (
-    <button onClick={() => login()} className="bg-red-300 border py-2 px-4">
+    <button onClick={() => login()} className=" border py-2 px-4">
       Google 🚀
     </button>
   )

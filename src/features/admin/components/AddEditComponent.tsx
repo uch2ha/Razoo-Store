@@ -93,7 +93,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
 
   return (
     <div
-      className={`bg-red-400 py-5 fixed left-1/2 w-[55%] h-[95%] flex flex-col overflow-scroll scrollbar-hide transform -translate-x-1/2 -translate-y-1/2 blur-none transition-all duration-700 ${
+      className={`py-5 fixed left-1/2 w-[55%] h-[95%] flex flex-col overflow-scroll scrollbar-hide transform -translate-x-1/2 -translate-y-1/2 blur-none transition-all duration-700 ${
         isVisible ? 'z-50 top-1/2' : 'top-[-100%]'
       }`}>
       {isProduct && (
