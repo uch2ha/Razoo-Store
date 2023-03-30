@@ -3,18 +3,19 @@ import React, { FC, useEffect, useState } from 'react'
 import { CloseBtn } from '../assets/svg/CloseBtn'
 import { IProduct } from '../types/product.type'
 import Button from './Button'
-import { getAllProductsFromLS } from '../utilities/localStorage'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../store/cart/cart.slice'
+import { RootState } from '../store/store'
 
 interface IItemDetailsProps {
   handleClose: () => void
-  productId: number | null
+  productId: string | null
   isVisible: boolean
 }
 
 const initState: IProduct = {
-  id: 0,
+  id: '',
+  img: 'none',
   name: 'Loading...',
   description: 'Loading...',
   instruction: 'Loading...',
@@ -28,14 +29,14 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
 
   const dispatch = useDispatch()
 
-  // get product list from LS
-  const products = getAllProductsFromLS()
+  // get product list from store
+  const products = useSelector((state: RootState) => state.products)
 
   useEffect(() => {
     if (productId !== null) getProductById(productId)
   }, [productId])
 
-  const getProductById = (id: number) => {
+  const getProductById = (id: string) => {
     const product = products.filter((product) => product.id === id)
     setProduct(product[0])
   }
@@ -50,7 +51,11 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
       className={`fixed left-1/2 w-[85%] h-[80%] flex transform -translate-x-1/2 -translate-y-1/2 blur-none transition-all duration-700 ${
         isVisible ? 'z-50 top-1/2 ' : 'top-[-100%]'
       }`}>
-      <div className="w-[52%] bg-red-300 rounded-tl-md rounded-bl-md">123</div>
+      <div className="w-[52%] bg-red-300 rounded-tl-md rounded-bl-md flex justify-center items-center">
+        {productId && (
+          <img src={`./src/assets/productImg/${product.img}.png`} className="w-[90%]" />
+        )}
+      </div>
       <div className="w-[48%] bg-red-700 flex justify-center items-center rounded-tr-md rounded-br-md">
         <div className="h-[80%] w-[80%] mx-auto">
           <div className="border-b-2 h-1/3 flex flex-col justify-end px-[10%]">

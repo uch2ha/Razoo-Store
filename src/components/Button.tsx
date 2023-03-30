@@ -1,14 +1,15 @@
 import { FC, MouseEventHandler } from 'react'
 
 interface IButtonProps {
-  clickHandler: MouseEventHandler<HTMLButtonElement>
+  clickHandler: (label: string) => void
   label: string
   styles?: string
+  id?: string
 }
 
-const Button: FC<IButtonProps> = ({ label, clickHandler, styles }) => {
+const Button: FC<IButtonProps> = ({ id, label, clickHandler, styles }) => {
   return (
-    <button onClick={clickHandler} className={` ${styles}`}>
+    <button onClick={() => clickHandler(label)} className={` ${styles}`}>
       {label}
     </button>
   )

@@ -7,7 +7,7 @@ export const withItemDetails = <P extends object>(WrappedComponent: React.Compon
 
   // return a new component that renders the wrapped component with additional props and components
   const WithItemDetails: React.FC<Props> = (props: Props) => {
-    const [productId, setProductId] = useState<number | null>(null)
+    const [productId, setProductId] = useState<string | null>(null)
     const [itemIsVisible, setItemIsVisible] = useState(false)
 
     const handleClose = () => {

@@ -13,6 +13,8 @@ import MyAccountPage from './pages/MyAccountPage'
 import AdminPage from './pages/AdminPage'
 import { checkAuthStatus } from './utilities/auth'
 import MissingPage from './pages/MissingPage'
+import { useDispatch } from 'react-redux'
+import { productsActions } from './store/products/products.slice'
 
 interface IRouteProps {
   children: React.ReactNode
@@ -22,16 +24,18 @@ const App: FC = () => {
   const isAuth = checkAuthStatus()
 
   const UnknownUserRoute: FC<IRouteProps> = ({ children }) => {
-    return isAuth.status ? <Navigate to="/account" /> : <>{children}</>
+    return isAuth.isLogIn ? <Navigate to="/account" /> : <>{children}</>
   }
 
   const UserRoute: FC<IRouteProps> = ({ children }) => {
-    return isAuth.status ? <>{children}</> : <Navigate to="/login" />
+    return isAuth.isLogIn ? <>{children}</> : <Navigate to="/login" />
   }
 
   const AdminRoute: FC<IRouteProps> = ({ children }) => {
     return isAuth.isAdmin ? <>{children}</> : <Navigate to="/login" />
   }
+
+  const dispatch = useDispatch()
 
   // get all fixed data from local database
   const { data } = useGetAllDataQuery()
@@ -40,6 +44,7 @@ const App: FC = () => {
     if (data) {
       //set all fixed data to LS
       initLocalStorage(data)
+      dispatch(productsActions.setAllProducts(data.products))
     }
   }, [data])
 

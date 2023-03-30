@@ -1,5 +1,5 @@
 import { IUser } from '../../../types/user.type'
-import { getUsersFromLS } from '../utilities/localStorage'
+import { getUsersFromLS } from '../../../utilities/localStorage'
 
 export const useCheckUserLogIn = (email: string, pass: string): { err?: string; user?: IUser } => {
   const users = getUsersFromLS()

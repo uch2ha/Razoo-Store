@@ -30,6 +30,13 @@ export const userSlice = createSlice({
       state.lastName = initialState.lastName
       state.isAdmin = initialState.isAdmin
       state.isGoogleLogin = initialState.isGoogleLogin
+    },
+    changeFirstLastName: (
+      state,
+      action: PayloadAction<{ firstName: string; lastName: string }>
+    ) => {
+      state.firstName = action.payload.firstName
+      state.lastName = action.payload.lastName
     }
   }
 })

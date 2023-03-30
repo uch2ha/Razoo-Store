@@ -1,9 +1,11 @@
 export type IOrder = {
-  orderId: number
+  orderId: string
   products: {
-    productId: number
+    productId: string
     amount: number
   }[]
-  userId: number
+  userId: string
   purchasedAt: string
+  status: 'delivered' | 'pending' | 'canceled'
+  totalPrice: number
 }

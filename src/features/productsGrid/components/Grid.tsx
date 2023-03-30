@@ -5,10 +5,12 @@ import { IProduct } from '../../../types/product.type'
 
 interface IGridProps {
   products: IProduct[]
-  setProductId: (id: number) => void
+  setProductId: (id: string) => void
+  setIsVisible?: (b: boolean) => void
+  setIsEditProductId?: (n: string) => void
 }
 
-const Grid: FC<IGridProps> = ({ products, setProductId }) => {
+const Grid: FC<IGridProps> = ({ products, setProductId, setIsEditProductId, setIsVisible }) => {
   return (
     <div className="flex">
       <div className="xl:max-w-[25%] xl:min-w-[25%] lg:max-w-[30%] lg:min-w-[30%] max-w-[35%] min-w-[35%] mr-[0.5rem]">
@@ -20,12 +22,10 @@ const Grid: FC<IGridProps> = ({ products, setProductId }) => {
             return (
               <Card
                 key={product.id}
-                category={product.category}
-                name={product.name}
-                price={product.price}
-                size={product.size}
-                id={product.id}
+                product={product}
                 setProductId={setProductId}
+                setIsEditProductId={setIsEditProductId}
+                setIsVisible={setIsVisible}
               />
             )
           })}

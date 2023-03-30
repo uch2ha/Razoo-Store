@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<{ id: number; price: number }>) => {
+    addItem: (state, action: PayloadAction<{ id: string; price: number }>) => {
       const isExist = state.some((item) => {
         if (item.productId === action.payload.id) {
           item.amount++
@@ -44,6 +44,11 @@ export const cartSlice = createSlice({
       const index = state.findIndex((item) => item.productId === action.payload)
       if (index !== -1) {
         state.splice(index, 1)
+      }
+    },
+    clearCart: (state) => {
+      while (state.length > 0) {
+        state.pop()
       }
     }
   }

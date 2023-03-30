@@ -7,17 +7,22 @@ import { useFilterProducts } from '../hooks/useFilterProducts'
 import { Rhombus } from '../../../assets/svg/Rhombus'
 import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
-import { getAllProductsFromLS } from '../../../utilities/localStorage'
 
 interface IProductsGridComponentProps {
-  setProductId: (id: number) => void
+  setProductId: (id: string) => void
+  setIsVisible?: (b: boolean) => void
+  setIsEditProductId?: (n: string) => void
 }
 
-const ProductsGridComponent: FC<IProductsGridComponentProps> = ({ setProductId }) => {
+const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
+  setProductId,
+  setIsVisible,
+  setIsEditProductId
+}) => {
   const [currentPage, setCurrentPage] = useState(1)
 
-  // get product list from LS
-  const products = getAllProductsFromLS()
+  // get product list from store
+  const products = useSelector((state: RootState) => state.products)
 
   // get filters from products store
   const filters = useSelector((state: RootState) => state.filters) || {}
@@ -50,11 +55,20 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({ setProductId }
   return (
     <div className="w-full md:w-[91%] self-start flex flex-col mb-10">
       <div className="flex self-end justify-between xl:w-[calc(75%-0.5rem)] lg:w-[calc(70%-0.5rem)] w-[calc(65%-0.5rem)]">
-        <p className="flex items-center font-bold text-2xl">
-          Products
-          <Rhombus className="text-base" />
-          {filteredProducts.length}
-        </p>
+        <div className="flex space-x-5">
+          <p className="flex items-center font-bold text-2xl">
+            Products
+            <Rhombus className="text-base" />
+            {filteredProducts.length}
+          </p>
+          {setIsVisible && (
+            <button
+              className="border-2 rounded-md my-2 text-xl px-5"
+              onClick={() => setIsVisible(true)}>
+              ADD PRODUCT
+            </button>
+          )}
+        </div>
         <div className="mb-2 text-2xl flex justify-center items-center border-2 rounded-md">
           <button className="h-full p-2" onClick={handlePrevPage}>
             <ArrowLeft />
@@ -67,7 +81,12 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({ setProductId }
           </button>
         </div>
       </div>
-      <Grid products={productsAfterPaginate} setProductId={setProductId} />
+      <Grid
+        products={productsAfterPaginate}
+        setProductId={setProductId}
+        setIsVisible={setIsVisible}
+        setIsEditProductId={setIsEditProductId}
+      />
     </div>
   )
 }

@@ -1,12 +1,12 @@
 import { ChangeEvent, FC, useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
-import { saveNewUserToLS } from '../utilities/localStorage'
 import { useNavigate } from 'react-router-dom'
 import GoogleAuthBtn from './GoogleAuthBtn'
 import { useDispatch } from 'react-redux'
 import { userActions } from '../../../store/user/user.slice'
 import { IUser } from '../../../types/user.type'
+import { saveNewUserToLS } from '../../../utilities/localStorage'
 
 const SignUpForm: FC = () => {
   const [name, setName] = useState<string>('')
@@ -35,9 +35,9 @@ const SignUpForm: FC = () => {
 
     const user: IUser = {
       id: uuidv4(),
-      firstName: name,
-      lastName: lastName,
-      email: email,
+      firstName: name.toLocaleLowerCase(),
+      lastName: lastName.toLocaleLowerCase(),
+      email: email.toLocaleLowerCase(),
       password: password,
       isGoogleLogin: false,
       isAdmin: false
@@ -47,7 +47,7 @@ const SignUpForm: FC = () => {
 
     if (res.success) {
       dispatch(userActions.logIn(user))
-      navigate('/account')
+      navigate('/shop')
     }
     if (res.err) setError(res.err)
   }

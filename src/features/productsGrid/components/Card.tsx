@@ -1,45 +1,67 @@
 import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../../../store/cart/cart.slice'
-
-// import img from '../../../assets/productImg/shampoo.png'
-
-const img = 'shampoo'
+import { IProduct } from '../../../types/product.type'
+import { productsActions } from '../../../store/products/products.slice'
 
 interface ICardProps {
-  id: number
-  name: string
-  category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
-  size: '50ml' | '100ml' | '150ml' | '200ml'
-  price: number
-  setProductId: (id: number) => void
+  product: IProduct
+  setProductId: (id: string) => void
+  setIsEditProductId?: (n: string) => void
+  setIsVisible?: (b: boolean) => void
 }
 
-const Card: FC<ICardProps> = ({ id, name, category, size, price, setProductId }) => {
+const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIsVisible }) => {
   const dispatch = useDispatch()
 
   const handleClick = (e: MouseEvent) => {
     if ((e.target as HTMLDivElement).id === 'add-to-cart')
-      return dispatch(cartActions.addItem({ id, price }))
-    setProductId(id)
+      return dispatch(cartActions.addItem({ id: product.id, price: product.price }))
+    setProductId(product.id)
   }
+
+  const deleteProductId = () => {
+    dispatch(productsActions.deleteProductById(product.id))
+  }
+
+  console.log(product)
 
   return (
     <div
       className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center">
-        <img src={`./src/assets/productImg/${img}.png`} className="h-[300px] mb-[-30px]" />
-        <p className="text-2xl">{name}</p>
+        <img src={`./src/assets/productImg/${product.img}.png`} className="w-[90%]" />
+        <p className="text-2xl">{product.name}</p>
         <p className="text-2xl">
-          {category} ({size})
+          {product.category} ({product.size})
         </p>
       </div>
       <div className="w-full">
-        <p className="text-xl font-bold mt-6">{price}$</p>
-        <button id="add-to-cart" className="border-2 w-[90%] my-3 py-2 hover:bg-red-400">
-          Add to Cart
-        </button>
+        <p className="text-xl font-bold mt-6">{product.price}$</p>
+        {setIsEditProductId && setIsVisible ? (
+          <div className="flex px-4 space-x-4">
+            <button
+              id="add-to-cart"
+              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              onClick={() => {
+                setIsEditProductId(product.id)
+                setIsVisible(true)
+              }}>
+              Edit
+            </button>
+            <button
+              id="add-to-cart"
+              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              onClick={deleteProductId}>
+              Delete
+            </button>
+          </div>
+        ) : (
+          <button id="add-to-cart" className="border-2 w-[90%] my-3 py-2 hover:bg-red-400">
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   )
