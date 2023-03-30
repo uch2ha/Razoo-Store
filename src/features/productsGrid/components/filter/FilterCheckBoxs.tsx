@@ -13,7 +13,7 @@ const FilterCheckBoxs: FC<FilterCheckBoxs> = ({ handleClick, filter, isVisible }
   return (
     <div
       className={`flex flex-col items-start pl-[30%] w-full transition-all ease-in-out duration-500 max-h-0 overflow-hidden ${
-        isVisible ? 'max-h-full border-b-2 py-4' : ''
+        isVisible ? 'max-h-full border-b-[1px] py-4' : ''
       }`}>
       <FilterCheckBox handleClick={handleClick} filter={filter} name={names[0]} />
       <FilterCheckBox handleClick={handleClick} filter={filter} name={names[1]} />

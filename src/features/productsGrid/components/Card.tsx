@@ -26,7 +26,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
 
   return (
     <div
-      className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
+      className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-end h-full">
         <img
@@ -48,7 +48,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
           <div className="flex px-4 space-x-4">
             <button
               id="add-to-cart"
-              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400"
               onClick={() => {
                 setIsEditProductId(product.id)
                 setIsVisible(true)
@@ -57,13 +57,13 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
             </button>
             <button
               id="add-to-cart"
-              className="border-2 w-[90%] my-3 py-2 hover:bg-red-400"
+              className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400"
               onClick={deleteProductId}>
               Delete
             </button>
           </div>
         ) : (
-          <button id="add-to-cart" className="border-2 w-[90%] my-3 py-2 hover:bg-red-400">
+          <button id="add-to-cart" className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400">
             Add to Cart
           </button>
         )}

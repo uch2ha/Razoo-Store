@@ -12,12 +12,12 @@ const SortByButton: FC<ISortByButtonProps> = ({ title, handleClick, id }) => {
   // get filters from products store
   const filters = useSelector((state: RootState) => state.filters) || {}
   let active = ''
-  if (filters.sortBy === id) active = 'bg-red-100'
+  if (filters.sortBy === id) active = 'bg-[#898e68]'
 
   return (
     <button
       id={id}
-      className={'py-2 text-start pl-[30%] w-full hover:bg-red-200' + ' ' + active}
+      className={'py-2 text-start pl-[30%] w-full hover:bg-[#898e68]/50' + ' ' + active}
       onClick={handleClick}>
       {title}
     </button>
