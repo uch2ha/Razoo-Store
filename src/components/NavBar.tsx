@@ -5,6 +5,8 @@ import { googleLogout } from '@react-oauth/google'
 import { RootState } from '../store/store'
 import { userActions } from '../store/user/user.slice'
 import { cartActions } from '../store/cart/cart.slice'
+import { MyAccountIcon } from '../assets/svg/MyAccount'
+import { Admin } from '../assets/svg/Admin'
 
 interface INavBarProps {
   isWhite?: boolean
@@ -51,21 +53,23 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
       </div>
       <div className="w-1/3">
         <ul className="flex justify-end items-center space-x-8">
-          {id &&
-            (isAdmin ? (
-              <>
-                <li className={`${activePage === '/admin' ? 'active-link' : ''} btn`}>
-                  <Link to="/admin">ADMIN</Link>
-                </li>
-                <li className={`${activePage === '/account' ? 'active-link' : ''} btn`}>
-                  <Link to="/account">MY ACCOUNT</Link>
-                </li>
-              </>
-            ) : (
-              <li className={`${activePage === '/account' ? 'active-link' : ''} btn`}>
-                <Link to="/account">MY ACCOUNT</Link>
-              </li>
-            ))}
+          {isAdmin && (
+            <li className={`${activePage === '/admin' ? 'active-link' : ''} btn`}>
+              <Link to="/admin">
+                <Admin className="text-2xl" />
+              </Link>
+            </li>
+          )}
+          {id && (
+            <li
+              className={`p-1 w-[32px] ${
+                activePage === '/account' ? 'border-2' : 'border-none'
+              } btn`}>
+              <Link to="/account">
+                <MyAccountIcon className="text-2xl" />
+              </Link>
+            </li>
+          )}
           <li className={`${activePage === '/cart' ? 'active-link' : ''} btn`}>
             <Link to="/cart">CART</Link>
           </li>

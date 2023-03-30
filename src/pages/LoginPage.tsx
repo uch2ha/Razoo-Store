@@ -25,10 +25,10 @@ const LoginPage: FC = () => {
   }
 
   return (
-    <div className=" w-screen h-screen  flex flex-col items-center  justify-start">
+    <div className=" w-screen h-screen flex flex-col items-center  justify-start ">
       <NavBar />
-      <div className="h-full w-full flex justify-center items-center text-center flex-col ">
-        <div className="relative flex w-2/3 h-3/4 bg-white ">
+      <div className="h-full w-full flex justify-center items-center text-center flex-col text-white">
+        <div className="relative flex w-2/3 h-3/4 bg-mainPageBg ">
           <div
             className={`left-0 w-2/3 transform absolute h-full transition-transform duration-700  ${
               isLogin ? 'translate-x-[0%] ' : ' translate-x-[50%] '
