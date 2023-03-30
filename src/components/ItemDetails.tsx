@@ -53,7 +53,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
       }`}>
       <div className="w-[52%] bg-red-300 rounded-tl-md rounded-bl-md flex justify-center items-center">
         {productId && (
-          <img src={`./src/assets/productImg/${product.img}.png`} className="w-[90%]" />
+          <img src={`./src/assets/productImg/${product.img}.png`} className="h-[70%]" />
         )}
       </div>
       <div className="w-[48%] bg-red-700 flex justify-center items-center rounded-tr-md rounded-br-md">

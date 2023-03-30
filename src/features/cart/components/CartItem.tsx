@@ -42,11 +42,13 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
 
   return (
     <div className="py-6 my-[3px]  border-b-2 flex items-center justify-center">
-      <div className="w-[29%] h-[150px] flex items-center btn" onClick={() => setProductId(itemId)}>
-        <div className="border-2">
-          <img src={`./src/assets/productImg/${product?.img}.png`} className="max-w-[150px]" />
+      <div
+        className="w-[29%] h-[150px] flex items-center justify-between btn"
+        onClick={() => setProductId(itemId)}>
+        <div className="h-full">
+          <img src={`./src/assets/productImg/${product?.img}.png`} className="h-[95%]" />
         </div>
-        <div className="h-full ml-3 flex flex-col justify-evenly items-start uppercase text-start">
+        <div className="h-full ml-3 flex flex-col justify-evenly items-end uppercase text-end">
           <div>
             <h3>{product?.name}</h3>
             <h3>{product?.category}</h3>

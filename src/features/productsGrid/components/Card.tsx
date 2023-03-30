@@ -24,14 +24,12 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     dispatch(productsActions.deleteProductById(product.id))
   }
 
-  console.log(product)
-
   return (
     <div
       className="flex flex-col justify-between items-center border-2 rounded-md shadow-lg hover:scale-[1.015] btn"
       onClick={handleClick}>
-      <div className="w-full flex flex-col items-center">
-        <img src={`./src/assets/productImg/${product.img}.png`} className="w-[90%]" />
+      <div className="w-full flex flex-col items-center justify-end h-full">
+        <img src={`./src/assets/productImg/${product.img}.png`} className="w-[40%] my-6" />
         <p className="text-2xl">{product.name}</p>
         <p className="text-2xl">
           {product.category} ({product.size})

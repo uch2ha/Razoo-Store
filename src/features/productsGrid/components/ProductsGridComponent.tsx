@@ -83,8 +83,8 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
         </div>
       </div>
       <Grid>
-        {products &&
-          products.map((product) => {
+        {productsAfterPaginate &&
+          productsAfterPaginate.map((product) => {
             return (
               <Card
                 key={product.id}
