@@ -13,7 +13,7 @@ const MyAccount: FC = () => {
     return setIsMyInfo(false)
   }
   return (
-    <div className="flex w-full h-full space-x-3">
+    <div className="flex w-full h-full space-x-3 ">
       <div className="border-t-2 border-r-2 w-1/5 flex flex-col rounded-tr-md">
         <div className="flex flex-col min-h-[7rem]">
           <Button label="MY INFO" clickHandler={handleSideClick} styles="border-b-2 h-1/2" />
@@ -21,7 +21,7 @@ const MyAccount: FC = () => {
         </div>
         <img src={img} className="object-cover h-full" />
       </div>
-      <div className="border-2 border-b-0 rounded-tl-md rounded-tr-md w-4/5">
+      <div className="border-2 border-b-0 rounded-tl-md rounded-tr-md w-4/5 overflow-x-scroll scrollbar-hide">
         {isMyInfo ? <MyInfo /> : <MyOrders />}
       </div>
     </div>

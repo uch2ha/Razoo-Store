@@ -13,7 +13,7 @@ const MyOrders: FC = () => {
       <div className="border-b-2 min-h-[7rem] pl-[10%] flex flex-col justify-center ">
         <h2>ORDERS</h2>
       </div>
-      <div>
+      <div className="">
         {orders &&
           orders.map((order) => {
             return <Order key={order.orderId} order={order} />
