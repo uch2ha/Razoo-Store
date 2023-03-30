@@ -29,21 +29,14 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
       className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-end h-full">
-        <img
-          src={`./src/assets/productImg/${product.img}.png`}
-          className={`my-6 ${
-            (product.category === 'hairConditioner' || product.category === 'hairOil') && 'w-[20%]'
-          } ${product.category === 'shampoo' && 'w-[27%]'} ${
-            product.category === 'hairMask' && 'w-[35%]'
-          }`}
-        />
-        <p className="text-2xl">{product.name}</p>
-        <p className="text-2xl">
+        <img src={`./src/assets/productImg/${product.img}.png`} className={`my-6 w-[48%]`} />
+        <p className="text-2xl uppercase">{product.name}</p>
+        <p className="text-2xl uppercase">
           {product.category} ({product.size})
         </p>
       </div>
-      <div className="w-full">
-        <p className="text-xl font-bold mt-6">{product.price}$</p>
+      <div className="w-full mb-2">
+        <p className="text-xl font-bold mt-8 mb-2">{product.price}$</p>
         {setIsEditProductId && setIsVisible ? (
           <div className="flex px-4 space-x-4">
             <button
@@ -63,7 +56,9 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
             </button>
           </div>
         ) : (
-          <button id="add-to-cart" className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400">
+          <button
+            id="add-to-cart"
+            className="border-[1px] w-[90%] my-3 py-2 hover:bg-[#898e68]/50 font-[700] uppercase">
             Add to Cart
           </button>
         )}

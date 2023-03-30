@@ -41,8 +41,8 @@ const MyInfo: FC = () => {
   return (
     <>
       <div className="border-b-[1px] min-h-[7rem] pl-[10%] flex flex-col justify-center">
-        <h2>MY INFO</h2>
-        <div className="flex">
+        <h2 className="font-[600]">MY INFO</h2>
+        <div className="flex mt-1">
           <p>Here you can view and update own information.</p>
           <p>Manage your login information and password here.</p>
         </div>
@@ -50,7 +50,7 @@ const MyInfo: FC = () => {
       <div className="border-b-[1px] flex justify-between pl-[10%]">
         <div>
           <div className="py-5">
-            <p className="underline underline-offset-1">Name</p>
+            <p className="underline underline-offset-1 font-[600]">Name</p>
             {isEditPersonalData ? (
               <input
                 id="name"
@@ -65,11 +65,11 @@ const MyInfo: FC = () => {
             )}
           </div>
           <div className="py-5">
-            <p className="underline underline-offset-1">Address</p>
+            <p className="underline underline-offset-1 font-[600]">Address</p>
             <p>SomethingStreet 1A 55, 00100 Helsinki</p>
           </div>
           <div className="py-5">
-            <p className="underline underline-offset-1">Phone number</p>
+            <p className="underline underline-offset-1 font-[600]">Phone number</p>
             <p>0450101010</p>
           </div>
         </div>
@@ -92,7 +92,7 @@ const MyInfo: FC = () => {
       <div className="border-b-[1px] flex justify-between pl-[10%]">
         <div>
           <div className="py-5">
-            <p className="underline underline-offset-1">E-mail</p>
+            <p className="underline underline-offset-1 font-[600]">E-mail</p>
             {isEditEmail ? (
               <input
                 id="email"
@@ -124,7 +124,7 @@ const MyInfo: FC = () => {
       <div className="border-b-[1px] flex justify-between pl-[10%]">
         <div>
           <div className="py-5">
-            <p className="underline underline-offset-1">Password</p>
+            <p className="underline underline-offset-1 font-[600]">Password</p>
             <p>####</p>
           </div>
         </div>

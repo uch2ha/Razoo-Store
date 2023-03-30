@@ -21,15 +21,15 @@ const Order: FC<IOrderProps> = ({ order }) => {
         <div className="flex justify-between my-2">
           <div className="flex w-3/5 justify-between uppercase">
             <div>
-              <p className="underline underline-offset-1">ORDER NUMBER</p>
+              <p className="underline underline-offset-1 font-[600]">ORDER NUMBER</p>
               <p>{order.orderId}</p>
             </div>
             <div>
-              <p className="underline underline-offset-1">STATUS</p>
+              <p className="underline underline-offset-1 font-[600]">STATUS</p>
               <p>{order.status}</p>
             </div>
             <div>
-              <p className="underline underline-offset-1">DATE</p>
+              <p className="underline underline-offset-1 font-[600]">DATE</p>
               <p>{order.purchasedAt}</p>
             </div>
           </div>

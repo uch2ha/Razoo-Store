@@ -37,7 +37,7 @@ const OrderDetails: FC<IOrderDetailsProps> = ({ products, totalPrice, isVisible 
           />
         )
       })}
-      <div className="col-span-9 text-right py-3">
+      <div className="col-span-9 text-right py-3 mr-5">
         <p className="underline underline-offset-2">Total: {totalPrice} $</p>
       </div>
     </div>
