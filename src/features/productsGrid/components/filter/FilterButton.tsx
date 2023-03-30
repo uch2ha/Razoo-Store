@@ -1,6 +1,6 @@
 import React, { FC, MouseEvent } from 'react'
-import { ArrowDown } from '../../../../assets/svg/ArrowDown'
-import { ArrowUp } from '../../../../assets/svg/ArrowUp'
+import { ArrowDown } from '../../../../../assets/svg/ArrowDown'
+import { ArrowUp } from '../../../../../assets/svg/ArrowUp'
 
 interface IFilterButtonProps {
   handleClick: (e: MouseEvent<HTMLButtonElement | SVGSVGElement>) => void

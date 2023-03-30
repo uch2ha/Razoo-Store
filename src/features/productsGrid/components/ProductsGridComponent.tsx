@@ -4,9 +4,9 @@ import { usePaginate } from '../hooks/usePaginate'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { useFilterProducts } from '../hooks/useFilterProducts'
-import { Rhombus } from '../../../assets/svg/Rhombus'
-import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
-import { ArrowRight } from '../../../assets/svg/ArrowRight'
+import { Rhombus } from '../../../../assets/svg/Rhombus'
+import { ArrowLeft } from '../../../../assets/svg/ArrowLeft'
+import { ArrowRight } from '../../../../assets/svg/ArrowRight'
 import Card from './Card'
 
 interface IProductsGridComponentProps {

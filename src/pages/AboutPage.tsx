@@ -29,7 +29,7 @@ const AboutPage: FC = () => {
         </div>
       </div>
       <img
-        src="./src/assets/aboutPageImg.png"
+        src="./assets/aboutPageImg.png"
         className="absolute top-0 left-0 object-cover h-full object-center w-1/2 z-[-1]"
       />
       <div className=" absolute top-0 right-0 w-1/2 z-[-1] h-full bg-[#434739]" />

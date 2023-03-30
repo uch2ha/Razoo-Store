@@ -5,8 +5,8 @@ import { googleLogout } from '@react-oauth/google'
 import { RootState } from '../store/store'
 import { userActions } from '../store/user/user.slice'
 import { cartActions } from '../store/cart/cart.slice'
-import { MyAccountIcon } from '../assets/svg/MyAccount'
-import { Admin } from '../assets/svg/Admin'
+import { MyAccountIcon } from '../../assets/svg/MyAccount'
+import { Admin } from '../../assets/svg/Admin'
 
 interface INavBarProps {
   isWhite?: boolean
@@ -33,9 +33,9 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
     <div className="w-[82%] flex justify-between items-center mx-auto min-h-[103px] border-b-[1.7px] text-xl font-[500]">
       <div className="w-1/3">
         {isWhite ? (
-          <img src="./src/assets/logo-row-white.png" className="w-[30%]" />
+          <img src="./assets/logo-row-white.png" className="w-[30%]" />
         ) : (
-          <img src="./src/assets/logo-row.png" className="w-[30%]" />
+          <img src="./assets/logo-row.png" className="w-[30%]" />
         )}
       </div>
       <div className="w-1/3">
