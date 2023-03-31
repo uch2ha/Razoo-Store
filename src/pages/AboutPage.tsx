@@ -2,6 +2,10 @@ import React, { FC } from 'react'
 import NavBar from '../components/NavBar'
 
 import aboutPageImg from '../assets/aboutPageImg.png'
+import { Linkedin } from '../assets/svg/LinkedIn'
+import { Github } from '../assets/svg/Github'
+import { Behance } from '../assets/svg/Behance'
+import { Instagram } from '../assets/svg/Instagram'
 
 const AboutPage: FC = () => {
   return (
@@ -26,6 +30,18 @@ const AboutPage: FC = () => {
               <p className="mb-3">We believe beauty is more than skin deep and are committed</p>
               <p className="mb-3">to making a positive impact on the world.</p>
               <p>Thank you for joining us on this journey.</p>
+            </div>
+          </div>
+          <div className="mt-10 pt-5 flex border-t-[1px] w-[80%]">
+            <div className="border-[1px] px-3 py-2 w-1/2 text-center flex items-center justify-center space-x-3">
+              <p>DEVELOPER</p>
+              <Linkedin className="text-2xl" />
+              <Github className="text-2xl" />
+            </div>
+            <div className="border-[1px] px-3 py-2 w-1/2 text-center flex items-center justify-center space-x-3">
+              <p>DESIGNER</p>
+              <Behance className="text-2xl" />
+              <Instagram className="text-2xl" />
             </div>
           </div>
         </div>
