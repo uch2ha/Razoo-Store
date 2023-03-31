@@ -57,12 +57,12 @@ const SignUpForm: FC = () => {
       <h2 className="font-garamond text-[50px] mb-1">Create Account</h2>
       <h4>using social networks</h4>
       <GoogleAuthBtn setError={setError} />
-      <p className="mb-4">OR</p>
+      <p>OR</p>
       {error && <h3 className="text-red-600 font-bold py-4">{error}</h3>}
       <input
         id="name"
         type="text"
-        className="px-10 py-2 mb-[10px]"
+        className="px-10 py-2 mb-[10px] mt-2 text-black"
         placeholder="Name"
         required
         onChange={handleInputChange}
@@ -70,7 +70,7 @@ const SignUpForm: FC = () => {
       <input
         id="last-name"
         type="text"
-        className="px-10 py-2 mb-[10px]"
+        className="px-10 py-2 mb-[10px] text-black"
         placeholder="Last Name"
         required
         onChange={handleInputChange}
@@ -78,7 +78,7 @@ const SignUpForm: FC = () => {
       <input
         id="email"
         type="email"
-        className="px-10 py-2 mb-[10px]"
+        className="px-10 py-2 mb-[10px] text-black"
         placeholder="Email"
         required
         onChange={handleInputChange}
@@ -86,7 +86,7 @@ const SignUpForm: FC = () => {
       <input
         id="password"
         type="password"
-        className="px-10 py-2 mb-[10px]"
+        className="px-10 py-2 mb-[10px] text-black"
         placeholder="Password"
         required
         onChange={handleInputChange}
@@ -94,8 +94,8 @@ const SignUpForm: FC = () => {
       <input
         id="re-password"
         type="password"
-        className="px-10 py-2 mb-4"
-        placeholder="Repeat Password"
+        className="px-10 py-2 mb-4 text-black"
+        placeholder="Repeat Password "
         required
         onChange={handleInputChange}
       />
