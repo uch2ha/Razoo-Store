@@ -33,7 +33,10 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
   }, [])
 
   return (
-    <div className="w-[82%] flex justify-between items-center mx-auto min-h-[103px] border-b-[1.7px] text-xl font-[500]">
+    <div
+      className={`w-[82%] flex justify-between items-center mx-auto min-h-[103px] border-b-[1.7px]  text-xl font-[500] ${
+        isWhite ? 'border-white' : 'border-black'
+      }`}>
       <div className="w-1/3">
         {isWhite ? (
           <img src={logoWhite} className="w-[30%]" />

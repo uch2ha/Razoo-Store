@@ -13,7 +13,7 @@ const AdminPage: FC = () => {
       setVisible(label as 'PRODUCTS' | 'USERS' | 'ORDERS')
   }
   return (
-    <div className=" w-screen min-h-screen  flex flex-col items-center  justify-start">
+    <div className="w-screen min-h-screen  flex flex-col items-center  justify-start">
       <NavBar />
       <div className="h-full w-full flex flex-col">
         <div className="flex justify-evenly items-center self-center w-[50%] py-5">

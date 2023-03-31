@@ -42,7 +42,7 @@ const AdminProducts: FC<IAdminProductsProps> = ({ setProductId }) => {
   }
 
   return (
-    <div className="self-start text-center w-full mt-10">
+    <div className="self-start text-center w-full mt-10 ">
       {setProductId && (
         <ProductsGridComponent
           setProductId={setProductId}
