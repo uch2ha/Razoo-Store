@@ -8,9 +8,6 @@ import App from './App'
 import './index.scss'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 
-console.log(import.meta.env.VITE_GOOGLE_CLIENT_ID)
-// console.log(process.env.VITE_GOOGLE_CLIENT_ID)
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
