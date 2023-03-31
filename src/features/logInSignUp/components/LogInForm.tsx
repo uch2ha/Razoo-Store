@@ -33,12 +33,12 @@ const LogInForm: FC = () => {
       <h2 className="font-garamond text-[50px] mb-1">Login to Your Account</h2>
       <h4>using social networks</h4>
       <GoogleAuthBtn setError={setError} />
-      <p className="mb-4">OR</p>
-      {error && <h3 className="text-red-600 font-bold py-4">{error}</h3>}
+      <p>OR</p>
+      {error && <h3 className="text-red-600 font-bold py-2 ">{error}</h3>}
       <input
         id="email"
         type="email"
-        className="px-10 py-2 mb-4"
+        className="px-10 py-2 mb-4 mt-4 text-black"
         placeholder="Email"
         required
         onChange={handleInputChange}
@@ -46,7 +46,7 @@ const LogInForm: FC = () => {
       <input
         id="password"
         type="password"
-        className="px-10 py-2 mb-8"
+        className="px-10 py-2 mb-8 text-black"
         placeholder="Password"
         required
         onChange={handleInputChange}
