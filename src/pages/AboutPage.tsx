@@ -11,10 +11,10 @@ import { Link } from 'react-router-dom'
 const AboutPage: FC = () => {
   return (
     <div className="relative">
-      <div className="w-screen h-screen flex flex-col items-end justify-start text-white">
+      <div className="w-screen min-h-screen flex flex-col items-end justify-start text-white">
         <NavBar isWhite={true} />
         <div className="h-full w-1/2 flex justify-start items-center flex-col">
-          <div className="w-[70%] flex flex-col items-center mt-[5%]">
+          <div className="w-[70%] flex flex-col items-center my-[5%]">
             <div className="mb-10 text-[70px] w-[430px] h-fit">
               <p className="font-garamond text-start">HOW IT</p>
               <p className="font-sulfates tracking-[4px] text-end mt-[-45px]">STARTED...</p>

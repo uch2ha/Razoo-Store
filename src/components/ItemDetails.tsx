@@ -50,7 +50,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
 
   return (
     <div
-      className={`fixed left-1/2 w-[85%] h-[80%] flex transform -translate-x-1/2 -translate-y-1/2 blur-none transition-all duration-700 ${
+      className={`fixed left-1/2 w-[85%] min-h-[80%] flex transform -translate-x-1/2 -translate-y-1/2 blur-none transition-all duration-700 ${
         isVisible ? 'z-50 top-1/2 ' : 'top-[-100%]'
       }`}>
       <div className="w-[52%] bg-[#e2ded7] -tl-md -bl-md flex justify-center items-center">

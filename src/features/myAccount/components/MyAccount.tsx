@@ -19,7 +19,7 @@ const MyAccount: FC = () => {
           <Button label="MY INFO" clickHandler={handleSideClick} styles="border-b-[1px] h-1/2" />
           <Button label="ORDERS" clickHandler={handleSideClick} styles="border-b-[1px] h-1/2" />
         </div>
-        <img src={img} className="object-cover h-full" />
+        <img src={img} className="object-cover overflow-hidden h-full" />
       </div>
       <div className="border-[1px] border-b-0 -tl-md -tr-md w-4/5 overflow-x-scroll scrollbar-hide">
         {isMyInfo ? <MyInfo /> : <MyOrders />}
