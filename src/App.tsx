@@ -23,15 +23,16 @@ interface IRouteProps {
 const App: FC = () => {
   const isAuth = checkAuthStatus()
 
-  const UnknownUserRoute: FC<IRouteProps> = ({ children }) => {
-    return isAuth.isLogIn ? <Navigate to="/account" /> : <>{children}</>
+  // don't allow logged user pass to logIn page
+  const LoggedUserProtectedRoute: FC<IRouteProps> = ({ children }) => {
+    return isAuth.isLogIn ? <Navigate to="/shop" /> : <>{children}</>
   }
 
-  const UserRoute: FC<IRouteProps> = ({ children }) => {
+  const UserProtectedRoute: FC<IRouteProps> = ({ children }) => {
     return isAuth.isLogIn ? <>{children}</> : <Navigate to="/login" />
   }
 
-  const AdminRoute: FC<IRouteProps> = ({ children }) => {
+  const AdminProtectedRoute: FC<IRouteProps> = ({ children }) => {
     return isAuth.isAdmin ? <>{children}</> : <Navigate to="/login" />
   }
 
@@ -58,25 +59,25 @@ const App: FC = () => {
         <Route
           path="/login"
           element={
-            <UnknownUserRoute>
+            <LoggedUserProtectedRoute>
               <LoginPage />
-            </UnknownUserRoute>
+            </LoggedUserProtectedRoute>
           }
         />
         <Route
           path="/account"
           element={
-            <UserRoute>
+            <UserProtectedRoute>
               <MyAccountPage />
-            </UserRoute>
+            </UserProtectedRoute>
           }
         />
         <Route
           path="/admin"
           element={
-            <AdminRoute>
+            <AdminProtectedRoute>
               <AdminPage />
-            </AdminRoute>
+            </AdminProtectedRoute>
           }
         />
         <Route path="*" element={<MissingPage />} />
