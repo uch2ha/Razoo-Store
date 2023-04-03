@@ -1,6 +1,7 @@
 // packages
 import { useEffect, FC } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 // components
 import HomePage from './pages/HomePage'
 import ShopPage from './pages/ShopPage'
@@ -13,7 +14,6 @@ import MyAccountPage from './pages/MyAccountPage'
 import AdminPage from './pages/AdminPage'
 import { checkAuthStatus } from './utilities/auth'
 import MissingPage from './pages/MissingPage'
-import { useDispatch } from 'react-redux'
 import { productsActions } from './store/products/products.slice'
 
 interface IRouteProps {

@@ -1,12 +1,12 @@
+// packages
 import React, { FC } from 'react'
+// components
 import NavBar from '../components/NavBar'
-
 import aboutPageImg from '../assets/aboutPageImg.png'
 import { Linkedin } from '../assets/svg/LinkedIn'
 import { Github } from '../assets/svg/Github'
 import { Behance } from '../assets/svg/Behance'
 import { Instagram } from '../assets/svg/Instagram'
-import { Link } from 'react-router-dom'
 
 const AboutPage: FC = () => {
   return (

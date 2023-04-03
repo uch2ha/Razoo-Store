@@ -1,5 +1,7 @@
+// packages
 import { ChangeEvent, FC, MouseEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+// components
 import { RootState } from '../../../../store/store'
 import { filtersActions } from '../../../../store/filters/filters.slice'
 import FilterCheckBoxs from './FilterCheckBoxs'

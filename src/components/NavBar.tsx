@@ -1,13 +1,15 @@
-import React, { FC, useEffect, useState } from 'react'
+// packages
+import { FC, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { googleLogout } from '@react-oauth/google'
+// components
 import { RootState } from '../store/store'
 import { userActions } from '../store/user/user.slice'
 import { cartActions } from '../store/cart/cart.slice'
 import { MyAccountIcon } from '../assets/svg/MyAccount'
 import { Admin } from '../assets/svg/Admin'
-
+// files
 import logo from '../assets/logo-row.png'
 import logoWhite from '../assets/logo-row-white.png'
 

@@ -3,8 +3,8 @@ import { FC } from 'react'
 // components
 import NavBar from '../components/NavBar'
 import ProductsGridComponent from '../features/productsGrid/components/ProductsGridComponent'
-// files
 import { withItemDetails } from '../HoC/withItemDetails'
+// files
 import bannerImg from '../assets/shopPageBanner.png'
 
 interface IShopPageProps {

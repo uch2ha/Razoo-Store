@@ -1,5 +1,7 @@
-import React, { FC, useState } from 'react'
+// packages
+import { FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+// components
 import { RootState } from '../../../store/store'
 import { userActions } from '../../../store/user/user.slice'
 

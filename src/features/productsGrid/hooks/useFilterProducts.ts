@@ -1,4 +1,4 @@
-import { IProduct } from '../../../types/product.type'
+import { IProduct } from '../../../types'
 import { IFilters } from '../types/filters.type'
 
 export const useFilterProducts = (products: IProduct[], filters: IFilters) => {

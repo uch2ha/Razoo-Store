@@ -1,9 +1,11 @@
-import React, { FC, useState } from 'react'
+// packages
+import { FC, useState } from 'react'
+// components
 import Button from '../../../components/Button'
-
-import img from '../../../assets/myAccountImg.jpg'
 import MyInfo from './MyInfo'
 import MyOrders from './orders/MyOrders'
+// files
+import img from '../../../assets/myAccountImg.jpg'
 
 const MyAccount: FC = () => {
   const [isMyInfo, setIsMyInfo] = useState(true)

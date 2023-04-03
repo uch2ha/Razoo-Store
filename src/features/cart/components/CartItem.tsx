@@ -1,6 +1,8 @@
-import React, { FC } from 'react'
-import { CloseBtn } from '../../../assets/svg/CloseBtn'
+// packages
+import { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+// components
+import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import { cartActions } from '../../../store/cart/cart.slice'
 import { RootState } from '../../../store/store'
 import { MinusBtn } from '../../../assets/svg/MinusBtn'

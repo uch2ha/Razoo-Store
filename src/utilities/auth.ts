@@ -1,4 +1,6 @@
+// packages
 import { useSelector } from 'react-redux'
+// components
 import { RootState } from '../store/store'
 
 export const checkAuthStatus = (): { isAdmin: boolean; isLogIn: boolean } => {

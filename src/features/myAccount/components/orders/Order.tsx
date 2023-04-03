@@ -1,6 +1,8 @@
-import React, { FC, useState } from 'react'
+// packages
+import { FC, useState } from 'react'
+// components
 import OrderDetails from './OrderDetails'
-import { IOrder } from '../../../../types/order.type'
+import { IOrder } from '../../../../types'
 import { ArrowDown } from '../../../../assets/svg/ArrowDown'
 import { ArrowUp } from '../../../../assets/svg/ArrowUp'
 

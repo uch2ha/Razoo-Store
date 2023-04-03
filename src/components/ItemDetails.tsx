@@ -1,12 +1,14 @@
-import React, { FC, useEffect, useState } from 'react'
-
-import { CloseBtn } from '../assets/svg/CloseBtn'
-import { IProduct } from '../types/product.type'
-import Button from './Button'
+// packages
+import { FC, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { cartActions } from '../store/cart/cart.slice'
+// components
+import { IProduct } from '../types'
 import { RootState } from '../store/store'
+import { cartActions } from '../store/cart/cart.slice'
+import { CloseBtn } from '../assets/svg/CloseBtn'
+import Button from './Button'
 import Image from '../Image'
+// files
 import logo from '../assets/logo-column.png'
 
 interface IItemDetailsProps {

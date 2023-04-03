@@ -1,5 +1,7 @@
-import React, { FC } from 'react'
-import { IUser } from '../../../../types/user.type'
+// packages
+import { FC } from 'react'
+// components
+import { IUser } from '../../../../types'
 import { removeUserByIdFromLS } from '../../../../utilities/localStorage'
 
 interface IUserCardProps {

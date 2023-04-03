@@ -1,9 +1,11 @@
-import React, { FC, useState } from 'react'
+// packages
+import { FC, useState } from 'react'
+import { useSelector } from 'react-redux'
+// components
 import { withItemDetails } from '../../../../HoC/withItemDetails'
 import ProductsGridComponent from '../../../productsGrid/components/ProductsGridComponent'
 import { RootState } from '../../../../store/store'
-import { useSelector } from 'react-redux'
-import { IProduct } from '../../../../types/product.type'
+import { IProduct } from '../../../../types'
 import AddEditComponent from '../AddEditComponent'
 
 const initProduct: IProduct = {

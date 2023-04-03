@@ -1,5 +1,7 @@
-import React, { FC, MouseEvent } from 'react'
+// packages
+import { FC, MouseEvent } from 'react'
 import { useSelector } from 'react-redux'
+// components
 import { RootState } from '../../../../store/store'
 
 interface ISortByButtonProps {

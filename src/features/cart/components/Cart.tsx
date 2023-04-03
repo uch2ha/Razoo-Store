@@ -1,7 +1,9 @@
-import React, { FC, useEffect, useState } from 'react'
+// packages
+import { FC, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+// components
 import Button from '../../../components/Button'
 import CartItem from './CartItem'
-import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 
 interface ICartProps {

@@ -1,8 +1,7 @@
 // packages
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ICartItem } from '../../features/cart/types/cart.type'
-import { IProduct } from '../../types/product.type'
 // components
+import { ICartItem } from '../../features/cart/types/cart.type'
 
 const initialState: ICartItem[] = []
 

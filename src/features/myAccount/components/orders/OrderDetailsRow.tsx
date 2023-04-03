@@ -1,5 +1,7 @@
-import React, { FC } from 'react'
+// packages
+import { FC } from 'react'
 import { useSelector } from 'react-redux'
+// components
 import { RootState } from '../../../../store/store'
 import Image from '../../../../Image'
 

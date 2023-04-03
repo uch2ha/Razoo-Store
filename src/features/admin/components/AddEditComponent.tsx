@@ -1,11 +1,13 @@
+// packages
 import React, { FC, useState } from 'react'
-import { IProduct } from '../../../types/product.type'
+import { useDispatch } from 'react-redux'
+// components
+import { IProduct } from '../../../types'
 import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import ProductForm from './products/ProductForm'
-import { useDispatch } from 'react-redux'
 import { productsActions } from '../../../store/products/products.slice'
 import UserForm from './users/UserForm'
-import { IUser } from '../../../types/user.type'
+import { IUser } from '../../../types'
 import { setNewUserToLS, setNewUsersDataToLS } from '../../../utilities/localStorage'
 
 interface IAddEditComponentProps {

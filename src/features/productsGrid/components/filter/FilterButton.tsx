@@ -1,4 +1,6 @@
-import React, { FC, MouseEvent } from 'react'
+// packages
+import { FC, MouseEvent } from 'react'
+// components
 import { ArrowDown } from '../../../../assets/svg/ArrowDown'
 import { ArrowUp } from '../../../../assets/svg/ArrowUp'
 

@@ -1,4 +1,6 @@
-import React, { ChangeEvent, FC } from 'react'
+// packages
+import { ChangeEvent, FC } from 'react'
+// components
 import FilterCheckBox from './FilterCheckBox'
 
 export interface FilterCheckBoxs {

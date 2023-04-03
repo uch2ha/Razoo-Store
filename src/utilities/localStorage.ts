@@ -1,6 +1,6 @@
 import { IDb } from '../store/api/DB/db.api'
-import { IOrder } from '../types/order.type'
-import { IUser } from '../types/user.type'
+import { IOrder } from '../types'
+import { IUser } from '../types'
 
 export const initLocalStorage = (data: IDb) => {
   //set all fixed data to LS, while first loading

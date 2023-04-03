@@ -1,6 +1,8 @@
-import React, { FC, useState } from 'react'
+// packages
+import { FC, useState } from 'react'
+// components
 import AddEditComponent from '../AddEditComponent'
-import { IUser } from '../../../../types/user.type'
+import { IUser } from '../../../../types'
 import { getUserByIdFromLS } from '../../../../utilities/localStorage'
 import UsersList from './UsersList'
 

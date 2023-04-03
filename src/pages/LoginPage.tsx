@@ -1,4 +1,6 @@
-import React, { FC, useState } from 'react'
+// packages
+import { FC, useState } from 'react'
+// components
 import NavBar from '../components/NavBar'
 import LogInForm from '../features/logInSignUp/components/LogInForm'
 import SignUpForm from '../features/logInSignUp/components/SignUpForm'

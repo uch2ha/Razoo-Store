@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+// packages
+import { useState } from 'react'
+// components
 import ItemDetails from '../components/ItemDetails'
 
 export const withItemDetails = <P extends object>(WrappedComponent: React.ComponentType<P>) => {

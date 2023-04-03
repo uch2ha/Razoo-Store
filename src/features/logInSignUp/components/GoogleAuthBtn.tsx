@@ -1,11 +1,13 @@
-import React, { FC, useEffect, useState } from 'react'
+// packages
+import { FC, useEffect, useState } from 'react'
 import { useGoogleLogin } from '@react-oauth/google'
-import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.api'
-import { IGoogleUser } from '../types/googleUser.type'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+// components
+import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.api'
+import { IGoogleUser } from '../types/googleUser.type'
 import { userActions } from '../../../store/user/user.slice'
-import { IUser } from '../../../types/user.type'
+import { IUser } from '../../../types'
 import { handleGoogleUserLogIn } from '../../../utilities/localStorage'
 import { Google } from '../../../assets/svg/Google'
 

@@ -1,7 +1,9 @@
-import React, { FC, MouseEvent } from 'react'
+// packages
+import { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
+// components
 import { cartActions } from '../../../store/cart/cart.slice'
-import { IProduct } from '../../../types/product.type'
+import { IProduct } from '../../../types'
 import { productsActions } from '../../../store/products/products.slice'
 import Image from '../../../Image'
 

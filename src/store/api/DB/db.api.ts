@@ -1,9 +1,9 @@
 // packages
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IOrder } from '../../../types/order.type'
-import { IUser } from '../../../types/user.type'
-import { IProduct } from '../../../types/product.type'
-// components
+// types
+import { IOrder } from '../../../types'
+import { IUser } from '../../../types'
+import { IProduct } from '../../../types'
 
 export type IDb = { users: IUser[]; orders: IOrder[]; products: IProduct[] }
 

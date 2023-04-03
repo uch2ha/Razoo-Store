@@ -1,4 +1,6 @@
-import React, { FC } from 'react'
+// packages
+import { FC } from 'react'
+// components
 import NavBar from '../components/NavBar'
 import MyAccount from '../features/myAccount/components/MyAccount'
 

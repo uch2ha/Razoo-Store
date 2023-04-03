@@ -1,6 +1,8 @@
-import React, { FC } from 'react'
+// packages
+import { FC } from 'react'
+// components
 import NavBar from '../components/NavBar'
-
+// files
 import productImg from '../assets/mainPageProductImg.png'
 
 const HomePage: FC = () => {

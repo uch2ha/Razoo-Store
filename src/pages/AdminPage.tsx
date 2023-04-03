@@ -1,4 +1,6 @@
-import React, { FC, useState } from 'react'
+// packages
+import { FC, useState } from 'react'
+// components
 import NavBar from '../components/NavBar'
 import Button from '../components/Button'
 import AdminProducts from '../features/admin/components/products/AdminProducts'

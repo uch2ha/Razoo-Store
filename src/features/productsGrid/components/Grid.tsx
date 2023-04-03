@@ -1,4 +1,6 @@
+// packages
 import React, { FC } from 'react'
+// components
 import Filters from './filter/Filters'
 
 interface IGridProps {

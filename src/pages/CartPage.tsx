@@ -1,4 +1,6 @@
+// packages
 import { FC } from 'react'
+// components
 import NavBar from '../components/NavBar'
 import Cart from '../features/cart/components/Cart'
 import { withItemDetails } from '../HoC/withItemDetails'

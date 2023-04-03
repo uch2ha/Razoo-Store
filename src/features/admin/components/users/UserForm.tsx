@@ -1,5 +1,7 @@
+// packages
 import React, { FC } from 'react'
-import { IUser } from '../../../../types/user.type'
+// components
+import { IUser } from '../../../../types'
 
 interface IUserFormProps {
   handleChange: (

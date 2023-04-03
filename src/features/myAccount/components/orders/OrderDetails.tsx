@@ -1,4 +1,6 @@
-import React, { FC } from 'react'
+// packages
+import { FC } from 'react'
+// components
 import OrderDetailsRow from './OrderDetailsRow'
 
 interface IOrderDetailsProps {

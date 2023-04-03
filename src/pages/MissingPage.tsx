@@ -1,7 +1,9 @@
-import React from 'react'
+// packages
+import { FC } from 'react'
+// components
 import NavBar from '../components/NavBar'
 
-const MissingPage = () => {
+const MissingPage: FC = () => {
   return (
     <div className=" w-screen h-screen  flex flex-col items-center  justify-start">
       <NavBar />

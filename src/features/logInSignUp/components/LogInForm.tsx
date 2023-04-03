@@ -1,7 +1,9 @@
-import React, { ChangeEvent, FC, useState } from 'react'
-import { useCheckUserLogIn } from '../hooks/useCheckUserLogIn'
+// packages
+import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+// components
+import { useCheckUserLogIn } from '../hooks/useCheckUserLogIn'
 import { userActions } from '../../../store/user/user.slice'
 import GoogleAuthBtn from './GoogleAuthBtn'
 

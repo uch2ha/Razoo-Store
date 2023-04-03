@@ -1,7 +1,9 @@
+// packages
 import { FC, useState } from 'react'
+import { useSelector } from 'react-redux'
+// components
 import Grid from './Grid'
 import { usePaginate } from '../hooks/usePaginate'
-import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { useFilterProducts } from '../hooks/useFilterProducts'
 import { Rhombus } from '../../../assets/svg/Rhombus'

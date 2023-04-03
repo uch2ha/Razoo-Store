@@ -1,5 +1,7 @@
+// packages
 import React, { FC } from 'react'
-import { IProduct } from '../../../../types/product.type'
+// components
+import { IProduct } from '../../../../types'
 
 interface IProductFormProps {
   handleChange: (
