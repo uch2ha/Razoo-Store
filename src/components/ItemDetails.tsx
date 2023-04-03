@@ -39,8 +39,8 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
   }, [productId])
 
   const getProductById = (id: string) => {
-    const product = products.filter((product) => product.id === id)
-    setProduct(product[0])
+    const product = products.find((product) => product.id === id)
+    if (product) setProduct(product)
   }
 
   const handleAddItem = () => {

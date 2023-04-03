@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react'
 import ItemDetails from '../components/ItemDetails'
 
 export const withItemDetails = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
-  // define the props for the HoC component
   type Props = Omit<P, keyof object>
 
-  // return a new component that renders the wrapped component with additional props and components
   const WithItemDetails: React.FC<Props> = (props: Props) => {
     const [productId, setProductId] = useState<string | null>(null)
     const [itemIsVisible, setItemIsVisible] = useState(false)
