@@ -6,29 +6,29 @@ export const withItemDetails = <P extends object>(WrappedComponent: React.Compon
 
   const WithItemDetails: React.FC<Props> = (props: Props) => {
     const [productId, setProductId] = useState<string | null>(null)
+    const [prevProduct, setPrevProduct] = useState<string | null>(null)
     const [itemIsVisible, setItemIsVisible] = useState(false)
+
+    // if itemId was changed open modal
+    if (productId !== null && prevProduct !== productId) {
+      setItemIsVisible(true)
+      setPrevProduct(productId)
+    }
+
+    // don't allow u to scroll when modal is opened
+    if (itemIsVisible) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
 
     const handleClose = () => {
       if (itemIsVisible) {
         setItemIsVisible(false)
         setProductId(null)
+        setPrevProduct(null)
       }
     }
-
-    // if itemId was changed open modal
-    useEffect(() => {
-      if (productId !== null) setItemIsVisible(true)
-    }, [productId])
-
-    // don't allow u to scroll when modal is opened
-    useEffect(() => {
-      // Set overflow to hidden on the body element when the modal is open
-      if (itemIsVisible) {
-        document.body.style.overflow = 'hidden'
-      } else {
-        document.body.style.overflow = ''
-      }
-    }, [itemIsVisible])
 
     return (
       <>
