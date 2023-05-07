@@ -1,5 +1,16 @@
 version: '3.1'
 services:
+  db:
+    container_name: eShopDB
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+      POSTGRES_DB: eShopDB
+    ports:
+      - "2345:5432"
+    restart: unless-stopped
+
   backend:
     container_name: backend
     build:
@@ -15,16 +26,18 @@ services:
       - SPRING_DATASOURCE_PASSWORD=postgres123
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-  db:
-    container_name: eShopDB
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres123
-      POSTGRES_DB: eShopDB
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
     ports:
-      - "2345:5432"
-    restart: unless-stopped
+      - "5173:5173"
+    volumes:
+      - './frontend:/frontend'
+      - '/frontend/node_modules'
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
 
 #networks:
