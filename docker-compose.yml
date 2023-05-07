@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   db:
-    container_name: eShopDB
+    container_name: db
     image: postgres
     environment:
       POSTGRES_USER: postgres
