@@ -10,7 +10,7 @@ public class UserController {
 
     @GetMapping
     public String hello(){
-        System.out.println("HELLOO!");
-        return "Hello";
+        System.out.println("HELLOO234!");
+        return "Test me";
     }
 }
