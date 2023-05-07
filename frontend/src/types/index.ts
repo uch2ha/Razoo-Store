@@ -1,0 +1,32 @@
+export type IOrder = {
+  orderId: string
+  products: {
+    productId: string
+    amount: number
+  }[]
+  userId: string
+  purchasedAt: string
+  status: 'delivered' | 'pending' | 'canceled'
+  totalPrice: number
+}
+
+export type IProduct = {
+  id: string
+  img: string
+  name: string
+  description: string
+  instruction: string
+  category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
+  size: '50ml' | '100ml' | '150ml' | '200ml'
+  price: number
+}
+
+export type IUser = {
+  id: string
+  firstName: string
+  lastName: string
+  email: string
+  isAdmin: boolean
+  isGoogleLogin: boolean | null
+  password?: string
+}
