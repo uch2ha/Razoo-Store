@@ -1,6 +1,7 @@
 package com.student.backend.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class User
   @Column(unique = true, nullable = false)
   @NotBlank(message = "Email is mandatory")
   @Size(min = 3, max = 100, message = "Email must be between 3 and 100 characters")
+  @Email
   private String email;
 
   @Column(nullable = false)
