@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -16,17 +15,18 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    @Id
-    @GeneratedValue
-    private UUID userId;
+public class User
+{
+  @Id
+  @GeneratedValue
+  private UUID userId;
 
-    @Column(unique = true)
-    private String email;
-    private String fistName;
-    private String lastName;
-    private String password;
-    private boolean isGoogleLogin;
-    private String createdAt = String.valueOf(System.currentTimeMillis());
+  @Column(unique = true)
+  private String email;
+  private String firstName;
+  private String lastName;
+  private String password;
+  private boolean isGoogleLogin = false;
+  private LocalDateTime createdAt = LocalDateTime.now();
 
 }

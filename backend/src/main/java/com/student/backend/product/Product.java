@@ -10,12 +10,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity(name = "product")
-@Table(name = "product")
+@Table(name = "_product")
 @Data
 @Builder
 @NoArgsConstructor
@@ -34,6 +33,7 @@ public class Product
   private int price;
   private LocalDateTime createdAt = LocalDateTime.now();
 
+  //todo add IMG column/link
 
 }
 

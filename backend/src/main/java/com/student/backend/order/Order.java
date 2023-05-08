@@ -1,14 +1,11 @@
 package com.student.backend.order;
 
 import com.student.backend.user.User;
-import com.student.backend.user.UserRepository;
-import com.student.backend.user.UserService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -31,6 +28,6 @@ public class Order
   private User user;
 
   private String status;
-  private LocalDateTime purchasedAt = LocalDateTime.now();
+  private LocalDateTime createdAt = LocalDateTime.now();
 
 }
