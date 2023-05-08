@@ -1,5 +1,6 @@
 package com.student.backend.user;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class UserService
             .collect(Collectors.toList());
   }
 
-  public ResponseEntity<Object> saveOne(User user)
+  public ResponseEntity<Object> saveOne(@Valid User user)
   {
     Optional<User> existingUser = userRepo.findByEmail(user.getEmail());
     if (existingUser.isPresent()) {
