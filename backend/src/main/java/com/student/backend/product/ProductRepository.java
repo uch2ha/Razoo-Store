@@ -1,4 +1,4 @@
-package com.student.backend.user;
+package com.student.backend.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID>
+public interface ProductRepository extends JpaRepository<Product, UUID>
 {
-  Optional<User> findByEmail(String email);
+  Optional<Product> findByName(String name);
 }
