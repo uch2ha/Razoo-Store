@@ -12,12 +12,10 @@ public class App
   }
 }
 
-
-//TODO how to handle pwrong inut while creating DB row
-
-//TODO how to create timestamp in constructor
-//TODO Autowired to ?
 //TODO how to handle ManytoOne constructor
 
+//todo ResponseEntity<Object> -> ResponseEntity<User>?
+//todo validation only for creating?
+//todo ResponseEntity<Object> for get methods
 
-//DTO
+

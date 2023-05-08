@@ -15,7 +15,6 @@ public class UserService
 {
 
   private final UserRepository userRepo;
-  private final UserDTOMapper userDTOMapper;
 
   public List<User> findAll()
   {
@@ -33,7 +32,7 @@ public class UserService
     return userRepo.findById(id);
   }
 
-  public void deleteById(User user)
+  public void delete(User user)
   {
     userRepo.delete(user);
   }

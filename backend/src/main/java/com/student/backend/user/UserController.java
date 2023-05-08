@@ -65,7 +65,7 @@ public class UserController
       return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
     }
 
-    userService.deleteById(user.get());
+    userService.delete(user.get());
 
     return new ResponseEntity<>(user.map(userDTOMapper), HttpStatus.OK);
   }
