@@ -2,10 +2,7 @@ package com.student.backend.product;
 
 import com.student.backend.product.Emuns.Category;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +23,7 @@ public class Product
   @GeneratedValue
   private UUID productId;
 
-  @Column(nullable = false)
+  @Column(nullable = false, unique = true)
   @NotBlank(message = "Product name is mandatory")
   @Size(min = 3, max = 50, message = "Product name must be between 3 and 50 characters")
   private String name;
@@ -47,13 +44,12 @@ public class Product
   private String size;
 
   @Column(nullable = false)
-  @NotBlank(message = "Price is mandatory")
   @Min(value = 0L, message = "Price must be greater than zero")
   @Max(value = 100_000L, message = "Price mustn't be greater than 100_000")
-  private int price;
+  private Integer price;
 
   @Column(nullable = false)
-  @NotBlank(message = "Category is mandatory")
+  @NotNull(message = "Category is mandatory")
   private Category category;
 
   private LocalDateTime createdAt = LocalDateTime.now();
