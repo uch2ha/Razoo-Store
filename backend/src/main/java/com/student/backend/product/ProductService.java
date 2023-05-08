@@ -1,5 +1,6 @@
 package com.student.backend.product;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class ProductService
     return productRepo.findAll();
   }
 
-  public Product saveOne(Product product)
+  public Product saveOne(@Valid Product product)
   {
     return productRepo.save(product);
   }

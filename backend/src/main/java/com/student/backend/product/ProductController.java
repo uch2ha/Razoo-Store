@@ -65,38 +65,33 @@ public class ProductController
   @PatchMapping("/{productId}")
   public ResponseEntity<Object> updateOne(@PathVariable UUID productId, @RequestBody Product product)
   {
-    Optional<Product> existingProductByName = productRepo.findByName(product.getName());
 
-    if (existingProductByName.isPresent()) {
-      return new ResponseEntity<>("Product with same name already exist", HttpStatus.BAD_REQUEST);
-    }
+    Optional<Product> existingProduct = productRepo.findById(productId);
 
-    Optional<Product> existingProductById = productRepo.findById(productId);
-
-    if (existingProductById.isEmpty()) {
+    if (existingProduct.isEmpty()) {
       return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
     }
 
     if (product.getName() != null) {
-      existingProductById.get().setName(product.getName());
+      existingProduct.get().setName(product.getName());
     }
     if (product.getDescription() != null) {
-      existingProductById.get().setDescription(product.getDescription());
+      existingProduct.get().setDescription(product.getDescription());
     }
     if (product.getInstruction() != null) {
-      existingProductById.get().setInstruction(product.getInstruction());
+      existingProduct.get().setInstruction(product.getInstruction());
     }
     if (product.getSize() != null) {
-      existingProductById.get().setSize(product.getSize());
+      existingProduct.get().setSize(product.getSize());
     }
     if (product.getPrice() != null) {
-      existingProductById.get().setPrice(product.getPrice());
+      existingProduct.get().setPrice(product.getPrice());
     }
     if (product.getCategory() != null) {
-      existingProductById.get().setCategory(product.getCategory());
+      existingProduct.get().setCategory(product.getCategory());
     }
 
-    Product result = productService.updateOne(existingProductById.get());
+    Product result = productService.updateOne(existingProduct.get());
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
