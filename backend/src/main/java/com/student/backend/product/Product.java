@@ -23,7 +23,7 @@ public class Product
   @GeneratedValue
   private UUID productId;
 
-  @Column(nullable = false, unique = true)
+  @Column(nullable = false)
   @NotBlank(message = "Product name is mandatory")
   @Size(min = 3, max = 50, message = "Product name must be between 3 and 50 characters")
   private String name;
