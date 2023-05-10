@@ -95,6 +95,7 @@ public class UserController
     return new ResponseEntity<>(userDTOMapper.apply(updatedUser), HttpStatus.OK);
   }
 
+  // Validation
   @ExceptionHandler(ConstraintViolationException.class)
   public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex)
   {

@@ -95,6 +95,7 @@ public class ProductController
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
+  // validation
   @ExceptionHandler(ConstraintViolationException.class)
   public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex)
   {
