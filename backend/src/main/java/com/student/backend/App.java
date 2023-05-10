@@ -16,6 +16,6 @@ public class App
 
 //todo ResponseEntity<Object> -> ResponseEntity<User>?
 //todo validation only for creating?
-//todo ResponseEntity<Object> for get methods
+//todo ResponseEntity<Object> for get methods ++++++++++++++++
 
 
