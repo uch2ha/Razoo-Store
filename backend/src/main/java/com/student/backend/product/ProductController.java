@@ -17,9 +17,10 @@ public class ProductController
   private final ProductRepository productRepo;
 
   @GetMapping
-  public List<Product> findAll()
+  public ResponseEntity<Object> findAll()
   {
-    return productService.findAll();
+    List<Product> products = productService.findAll();
+    return new ResponseEntity<>(products, HttpStatus.OK);
   }
 
   @PostMapping

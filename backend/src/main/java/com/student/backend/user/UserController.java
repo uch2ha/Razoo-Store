@@ -20,11 +20,13 @@ public class UserController
   private final UserDTOMapper userDTOMapper;
 
   @GetMapping
-  public List<UserDTO> findAll()
+  public ResponseEntity<Object> findAll()
   {
-    return userService.findAll().stream()
+    List<UserDTO> users = userService.findAll().stream()
             .map(userDTOMapper)
             .collect(Collectors.toList());
+
+    return new ResponseEntity<>(users, HttpStatus.OK);
   }
 
   @PostMapping
