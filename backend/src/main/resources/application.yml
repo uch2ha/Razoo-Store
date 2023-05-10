@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:2345/eShopDB
+    username: postgres
+    password: postgres123
+
+  
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: false
+    defer-datasource-initialization: true
+
+  devtools:
+    remote:
+      secret: mysecret
+  sql:
+    init:
+      mode: always
+
+#logging:
+#  level:
+#    org.springframework.data: debug
+
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+##spring.datasource.hikari.connectionTimeout=20000
+##spring.datasource.hikari.maximumPoolSize=5
+##
+##spring.jpa.hibernate.properties.hibernate.temp.use_jdbc_metadata_defaults=false
