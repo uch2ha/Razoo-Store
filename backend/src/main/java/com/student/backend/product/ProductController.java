@@ -26,11 +26,11 @@ public class ProductController
   @PostMapping
   public ResponseEntity<Object> saveOne(@RequestBody Product product)
   {
-    Optional<Product> existingProduct = productRepo.findByName(product.getName());
-
-    if (existingProduct.isPresent()) {
-      return new ResponseEntity<>("Product with same name already exist", HttpStatus.BAD_REQUEST);
-    }
+//    Optional<Product> existingProduct = productRepo.findByName(product.getName());
+//
+//    if (existingProduct.isPresent()) {
+//      return new ResponseEntity<>("Product with same name already exist", HttpStatus.BAD_REQUEST);
+//    }
 
     Product newProduct = productService.saveOne(product);
 
