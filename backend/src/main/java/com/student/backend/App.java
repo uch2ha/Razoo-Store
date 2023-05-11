@@ -11,6 +11,7 @@ public class App
 {
   public static void main(String[] args)
   {
+
     SpringApplication.run(App.class, args);
   }
 
@@ -21,6 +22,7 @@ public class App
 // ResponseEntity vs Throw Exception?
 // OrderProduct dont have Controller
 // 1 req that returns everything(user, products...) or just IDs and after another fetch hmmm? not?
+// dotenv
 
 
 
