@@ -39,9 +39,14 @@ public class OrderService
     return orderRepo.findById(id);
   }
 
-  public Order updateOne(Order order)
+  public List<Order> findAllByUser(User user)
   {
-    return orderRepo.save(order);
+    return orderRepo.findAllByUser(user);
+  }
+
+  public void updateOne(Order order)
+  {
+    orderRepo.save(order);
   }
 
   public void delete(Order order)
