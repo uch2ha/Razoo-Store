@@ -50,7 +50,9 @@ public class Product
 
   @Column(nullable = false)
   @NotNull(message = "Category is mandatory")
+  @Enumerated(EnumType.STRING) //  save as String in db
   private Category category;
+
 
   private LocalDateTime createdAt = LocalDateTime.now();
 

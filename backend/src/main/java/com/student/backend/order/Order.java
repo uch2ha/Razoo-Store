@@ -1,5 +1,6 @@
 package com.student.backend.order;
 
+import com.student.backend.order.Enums.Status;
 import com.student.backend.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Order
 {
-
   @Id
   @GeneratedValue
   private UUID orderId;
@@ -27,7 +27,7 @@ public class Order
   @JoinColumn(name = "user_id")
   private User user;
 
-  private String status;
+  private Status status;
   private LocalDateTime createdAt = LocalDateTime.now();
 
 }

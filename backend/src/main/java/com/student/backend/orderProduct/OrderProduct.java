@@ -1,9 +1,8 @@
 package com.student.backend.orderProduct;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.student.backend.order.Order;
+import com.student.backend.product.Product;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,8 +22,13 @@ public class OrderProduct
   @GeneratedValue
   private UUID orderProductId;
 
-//  @OneToMany(mappedBy = "product")
-//  private List<Product> products;
+  @ManyToOne
+  @JoinColumn(name = "order_id")
+  private Order order;
+
+  @ManyToOne
+  @JoinColumn(name = "product_id")
+  private Product product;
 
   private int quantity;
 }

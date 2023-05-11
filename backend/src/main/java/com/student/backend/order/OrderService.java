@@ -1,12 +1,15 @@
 package com.student.backend.order;
 
+import com.student.backend.order.Enums.Status;
 import com.student.backend.user.User;
 import com.student.backend.user.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -14,21 +17,36 @@ public class OrderService
 {
   private final OrderRepository orderRepo;
   private final UserRepository userRepository;
-  private final OrderDTOMapper orderDTOMapper;
 
-  public List<OrderDTO> findAll()
+
+  public List<Order> findAll()
   {
-    return orderRepo.findAll().stream().map(orderDTOMapper)
-            .collect(Collectors.toList());
+    return orderRepo.findAll();
   }
 
-  public OrderDTO createOrder(OrderDTO order) throws Exception
+  public Order createOrder(User user)
   {
-    User user = userRepository.findById(order.userId()).orElseThrow(() -> new Exception("User " +
-            "not found"));
-    Order newOrder = Order.builder().user(user).status(order.status()).build();
-    Order savedOrder = orderRepo.save(newOrder);
-    return orderDTOMapper.apply(savedOrder);
+    Order newOrder = Order.builder()
+            .user(user)
+            .createdAt(LocalDateTime.now())
+            .status(Status.IN_PROCESS)
+            .build();
+    return orderRepo.save(newOrder);
+  }
+
+  public Optional<Order> findOneById(UUID id)
+  {
+    return orderRepo.findById(id);
+  }
+
+  public Order updateOne(Order order)
+  {
+    return orderRepo.save(order);
+  }
+
+  public void delete(Order order)
+  {
+    orderRepo.delete(order);
   }
 
 }
