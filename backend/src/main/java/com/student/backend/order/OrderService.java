@@ -41,7 +41,7 @@ public class OrderService
 
   public List<Order> findAllByUser(User user)
   {
-    return orderRepo.findAllByUser(user);
+    return orderRepo.findAllByUser(user); // userId
   }
 
   public void updateOne(Order order)
