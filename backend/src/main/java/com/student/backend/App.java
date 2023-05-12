@@ -11,13 +11,16 @@ public class App
 {
   public static void main(String[] args)
   {
-
     SpringApplication.run(App.class, args);
   }
 
 }
 
-//TODO asd
+//TODO
 
+//-----------------------------
+//todo Abraham
+// userDetails interface
+// PostConstruct + env
 
 

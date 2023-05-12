@@ -10,7 +10,7 @@ import com.student.backend.product.ProductRepository;
 import com.student.backend.user.User;
 import com.student.backend.user.UserRepository;
 import com.student.backend.user.UserService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/orders")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderController
 {
   private final OrderDTOMapper orderDTOMapper;

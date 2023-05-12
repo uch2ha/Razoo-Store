@@ -5,7 +5,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import lombok.AllArgsConstructor;
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -15,12 +17,18 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class JwtUtils
 {
   private final EnvConfig envConfig;
 
-  private final String SECRET_KEY = envConfig.get("JWT_SECRET");
+  private String SECRET_KEY;
+
+  @PostConstruct
+  public void init()
+  {
+    SECRET_KEY = envConfig.get("JWT_SECRET");
+  }
 
   public String extractUsername(String token)
   {
