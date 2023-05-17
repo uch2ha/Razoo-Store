@@ -1,6 +1,5 @@
 package com.student.backend.order;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.student.backend.order.Enums.Status;
 import com.student.backend.order.requestBody.OrderCreateRequestBody;
 import com.student.backend.order.requestBody.OrderStatusRequestBody;
@@ -10,17 +9,19 @@ import com.student.backend.product.ProductRepository;
 import com.student.backend.user.User;
 import com.student.backend.user.UserRepository;
 import com.student.backend.user.UserService;
-import lombok.AllArgsConstructor;
+import com.student.backend.utils.CheckRoleAccess;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/orders")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderController
 {
   private final OrderDTOMapper orderDTOMapper;
@@ -29,10 +30,15 @@ public class OrderController
   private final OrderService orderService;
   private final UserService userService;
   private final OrderProductService orderProductService;
+  private final CheckRoleAccess checkRoleAccess;
 
   @GetMapping
-  public ResponseEntity<Object> findAll()
+  public ResponseEntity<Object> findAll(Principal principal)
   {
+    if (!checkRoleAccess.onlyAdmin(principal)) {
+      return new ResponseEntity<>("no access", HttpStatus.FORBIDDEN);
+    }
+    
     List<OrderDTO> orders = orderService.findAll().stream().map(orderDTOMapper)
             .collect(Collectors.toList());
 
@@ -57,12 +63,18 @@ public class OrderController
   }
 
   @GetMapping("/{orderId}")
-  public ResponseEntity<Object> getAllByOrderId(@PathVariable UUID orderId) throws JsonProcessingException
+  public ResponseEntity<Object> getAllByOrderId(Principal principal, @PathVariable UUID orderId)
   {
     Optional<Order> order = orderService.findOneById(orderId);
 
     if (order.isEmpty()) {
       return new ResponseEntity<>("Order not found", HttpStatus.NOT_FOUND);
+    }
+
+    UUID userId = order.get().getUser().getUserId();
+
+    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
+      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
     }
 
     Map<UUID, Integer> productList = orderProductService.getAllByOrder(order.get());
@@ -77,8 +89,12 @@ public class OrderController
   }
 
   @GetMapping("/user/{userId}")
-  public ResponseEntity<Object> getAllByUserId(@PathVariable UUID userId)
+  public ResponseEntity<Object> getAllByUserId(Principal principal, @PathVariable UUID userId)
   {
+    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
+      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
+    }
+
     Optional<User> user = userService.findById(userId);
 
     if (user.isEmpty()) {

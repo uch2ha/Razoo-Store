@@ -1,11 +1,13 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:2345/eShopDB
-    username: postgres
-    password: postgres123
+    url: jdbc:postgresql://${PSQL_LOCATION}:${PSQL_PORT}/${PSQL_DB_NAME}
+    username: ${PSQL_USERNAME}
+    password: ${PSQL_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 
-  
   jpa:
+    hibernate:
+      ddl-auto: create-drop
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
@@ -14,8 +16,6 @@ spring:
           lob:
             non_contextual_creation: true
     show-sql: false
-    hibernate:
-      ddl-auto: create-drop
     generate-ddl: false
     defer-datasource-initialization: true
 
@@ -25,6 +25,8 @@ spring:
   sql:
     init:
       mode: always
+  config:
+    import: optional:file:./backend/.env[.properties]
 
 #logging:
 #  level:

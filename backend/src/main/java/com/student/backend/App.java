@@ -16,11 +16,15 @@ public class App
 
 }
 
-//TODO multiple checks for existing "user"
-// arguments as entity or just UUID
-// ResponseEntity vs Throw Exception?
-// OrderProduct dont have Controller
-// 1 req that returns everything(user, products...) or just IDs and after another fetch hmmm? not?
+//TODO
+// routs w/o auth throw HTML err template
 
+//-----------------------------
+//todo Abraham
+// userDetails interface
+// PostConstruct + env
+
+//todo
+// delete order dont work, because of ref to bridge table
 
 

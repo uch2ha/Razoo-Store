@@ -1,11 +1,13 @@
 package com.student.backend.user;
 
+import com.student.backend.utils.CheckRoleAccess;
 import jakarta.validation.ConstraintViolationException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,10 +20,15 @@ public class UserController
   private final UserService userService;
   private final UserRepository userRepo;
   private final UserDTOMapper userDTOMapper;
+  private final CheckRoleAccess checkRoleAccess;
 
   @GetMapping
-  public ResponseEntity<Object> findAll()
+  public ResponseEntity<Object> findAll(Principal principal)
   {
+    if (!checkRoleAccess.onlyAdmin(principal)) {
+      return new ResponseEntity<>("no access", HttpStatus.FORBIDDEN);
+    }
+
     List<UserDTO> users = userService.findAll().stream()
             .map(userDTOMapper)
             .collect(Collectors.toList());
@@ -47,8 +54,12 @@ public class UserController
   }
 
   @GetMapping("/{userId}")
-  public ResponseEntity<Object> findById(@PathVariable UUID userId)
+  public ResponseEntity<Object> findById(Principal principal, @PathVariable UUID userId)
   {
+    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
+      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
+    }
+
     Optional<User> user = userService.findById(userId);
 
     if (user.isEmpty()) {
@@ -73,8 +84,13 @@ public class UserController
   }
 
   @PatchMapping("/{userId}")
-  public ResponseEntity<Object> updateOne(@PathVariable UUID userId, @RequestBody User user)
+  public ResponseEntity<Object> updateOne(Principal principal, @PathVariable UUID userId,
+                                          @RequestBody User user)
   {
+    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
+      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
+    }
+
     Optional<User> existingUser = userRepo.findById(userId);
 
     if (existingUser.isEmpty()) {
@@ -109,4 +125,5 @@ public class UserController
     });
     return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
   }
+
 }
