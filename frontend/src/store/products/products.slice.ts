@@ -17,8 +17,8 @@ export const productsSlice = createSlice({
     },
     editProductById: (state, action: PayloadAction<IProduct>) => {
       state.forEach((product) => {
-        if (product.id === action.payload.id) {
-          product.id = action.payload.id
+        if (product.productId === action.payload.productId) {
+          product.productId = action.payload.productId
           product.name = action.payload.name
           product.description = action.payload.description
           product.instruction = action.payload.instruction
@@ -29,7 +29,7 @@ export const productsSlice = createSlice({
       })
     },
     deleteProductById: (state, action: PayloadAction<string>) => {
-      const index = state.findIndex((product) => product.id === action.payload)
+      const index = state.findIndex((product) => product.productId === action.payload)
       state.splice(index, 1)
     }
   }

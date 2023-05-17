@@ -11,12 +11,12 @@ export type IOrder = {
 }
 
 export type IProduct = {
-  id: string
+  productId: string
   img: string
   name: string
   description: string
   instruction: string
-  category: 'shampoo' | 'hairConditioner' | 'hairMask' | 'hairOil'
+  category: 'SHAMPOO' | 'HAIRCONDITIONER' | 'HAIRMASK' | 'HAIROIL'
   size: '50ml' | '100ml' | '150ml' | '200ml'
   price: number
 }

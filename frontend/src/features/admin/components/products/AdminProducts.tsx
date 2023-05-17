@@ -9,7 +9,7 @@ import { IProduct } from '../../../../types'
 import AddEditComponent from '../AddEditComponent'
 
 const initProduct: IProduct = {
-  id: '',
+  productId: '',
   img: 'shampoo',
   name: '',
   description: '',
@@ -30,7 +30,7 @@ const AdminProducts: FC<IAdminProductsProps> = ({ setProductId }) => {
   const products = useSelector((state: RootState) => state.products)
   const getProductById = (id: string | null) => {
     if (id === null) return
-    return products.find((product) => product.id === id)
+    return products.find((product) => product.productId === id)
   }
   // if isEditProductId is equal to number then fetch product by id
   // and set this product to useState

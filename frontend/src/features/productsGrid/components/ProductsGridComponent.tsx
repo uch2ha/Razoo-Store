@@ -1,6 +1,6 @@
 // packages
-import { FC, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { FC, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 // components
 import Grid from './Grid'
 import { usePaginate } from '../hooks/usePaginate'
@@ -10,6 +10,8 @@ import { Rhombus } from '../../../assets/svg/Rhombus'
 import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
 import Card from './Card'
+import { useGetAllProductsQuery } from '../../../store/api/products.api'
+import { productsActions, productsSlice } from '../../../store/products/products.slice'
 
 interface IProductsGridComponentProps {
   setProductId: (id: string) => void
@@ -24,8 +26,20 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
 
-  // get product list from store
-  const products = useSelector((state: RootState) => state.products)
+  const { data, isError, isLoading } = useGetAllProductsQuery()
+  const dispatch = useDispatch()
+
+  console.log(isLoading)
+
+  useEffect(() => {
+    console.log('useEffect')
+
+    if (data !== undefined) {
+      dispatch(productsActions.setAllProducts(data))
+    }
+  }, [isLoading])
+
+  const products = data ? data : []
 
   // get filters from products store
   const filters = useSelector((state: RootState) => state.filters) || {}
@@ -85,11 +99,16 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
         </div>
       </div>
       <Grid>
-        {productsAfterPaginate &&
+        {isLoading && <h1 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Loading...</h1>}
+        {isError && (
+          <h1 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Something went wrong...</h1>
+        )}
+        {!isLoading &&
+          !isError &&
           productsAfterPaginate.map((product) => {
             return (
               <Card
-                key={product.id}
+                key={product.productId}
                 product={product}
                 setProductId={setProductId}
                 setIsEditProductId={setIsEditProductId}
