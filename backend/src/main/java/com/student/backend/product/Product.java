@@ -30,12 +30,12 @@ public class Product
 
   @Column(nullable = false)
   @NotBlank(message = "Description is mandatory")
-  @Size(min = 3, max = 200, message = "Description must be between 3 and 200 characters")
+  @Size(min = 3, max = 300, message = "Description must be between 3 and 200 characters")
   private String description;
 
   @Column(nullable = false)
   @NotBlank(message = "Instruction is mandatory")
-  @Size(min = 3, max = 100, message = "Instruction must be between 3 and 100 characters")
+  @Size(min = 3, max = 300, message = "Instruction must be between 3 and 100 characters")
   private String instruction;
 
   @Column(nullable = false)
@@ -46,12 +46,15 @@ public class Product
   @Column(nullable = false)
   @Min(value = 0L, message = "Price must be greater than zero")
   @Max(value = 100_000L, message = "Price mustn't be greater than 100_000")
-  private Integer price;
+  private Float price;
 
   @Column(nullable = false)
   @NotNull(message = "Category is mandatory")
   @Enumerated(EnumType.STRING) //  save as String in db
   private Category category;
+
+  @Column(nullable = false)
+  private String img;
 
 
   private LocalDateTime createdAt = LocalDateTime.now();
