@@ -23,7 +23,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   propsItem,
   handleClose
 }) => {
-  const isEditMod = propsItem.id !== ''
+  const isEditMod = propsItem.productId !== ''
   const [item, setItem] = useState<IUser | IProduct>(propsItem)
 
   const dispatch = useDispatch()

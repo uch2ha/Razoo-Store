@@ -18,7 +18,7 @@ interface IItemDetailsProps {
 }
 
 const initState: IProduct = {
-  id: '',
+  productId: '',
   img: 'none',
   name: 'Loading...',
   description: 'Loading...',
@@ -41,12 +41,12 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
   }, [productId])
 
   const getProductById = (id: string) => {
-    const product = products.find((product) => product.id === id)
+    const product = products.find((product) => product.productId === id)
     if (product) setProduct(product)
   }
 
   const handleAddItem = () => {
-    const { id, price } = product
+    const { productId: id, price } = product
     dispatch(cartActions.addItem({ id, price }))
   }
 

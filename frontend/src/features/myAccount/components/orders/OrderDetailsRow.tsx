@@ -14,7 +14,7 @@ const OrderDetailsRow: FC<IOrderDetailsRowProps> = ({ itemId, amount }) => {
   const products = useSelector((state: RootState) => state.products)
   const getProductById = (id: string | null) => {
     if (id === null) return
-    return products.find((product) => product.id === id)
+    return products.find((product) => product.productId === id)
   }
   const product = getProductById(itemId)
   return (

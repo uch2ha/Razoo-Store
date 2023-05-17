@@ -45,7 +45,7 @@ const App: FC = () => {
     if (data) {
       //set all fixed data to LS
       initLocalStorage(data)
-      dispatch(productsActions.setAllProducts(data.products))
+      // dispatch(productsActions.setAllProducts(data.products))
     }
   }, [data])
 

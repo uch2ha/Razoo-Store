@@ -19,12 +19,12 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
 
   const handleClick = (e: MouseEvent) => {
     if ((e.target as HTMLDivElement).id === 'add-to-cart')
-      return dispatch(cartActions.addItem({ id: product.id, price: product.price }))
-    setProductId(product.id)
+      return dispatch(cartActions.addItem({ id: product.productId, price: product.price }))
+    setProductId(product.productId)
   }
 
   const deleteProductId = () => {
-    dispatch(productsActions.deleteProductById(product.id))
+    dispatch(productsActions.deleteProductById(product.productId))
   }
 
   return (
@@ -46,7 +46,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
               id="add-to-cart"
               className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]/50"
               onClick={() => {
-                setIsEditProductId(product.id)
+                setIsEditProductId(product.productId)
                 setIsVisible(true)
               }}>
               Edit

@@ -22,7 +22,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           type="text"
           name="id"
           id="id"
-          value={product.id}
+          value={product.productId}
           onChange={handleChange}
           className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required

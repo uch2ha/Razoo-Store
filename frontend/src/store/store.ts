@@ -19,8 +19,10 @@ import { userReducer } from './user/user.slice'
 import { googleAuthApi } from './api/googleAuth/googleAuth.api'
 import { cartReducer } from './cart/cart.slice'
 import { productsReducer } from './products/products.slice'
+import { productsApi } from './api/products.api'
 
 const rootReducer = combineReducers({
+  [productsApi.reducerPath]: productsApi.reducer,
   [dbApi.reducerPath]: dbApi.reducer,
   [googleAuthApi.reducerPath]: googleAuthApi.reducer,
   UI: UIReducer,
@@ -32,7 +34,8 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage: storage,
+  blacklist: ['products']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -45,6 +48,7 @@ const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
     })
+      .concat(productsApi.middleware)
       .concat(dbApi.middleware)
       .concat(googleAuthApi.middleware)
 })
