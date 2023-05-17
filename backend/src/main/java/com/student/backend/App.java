@@ -17,10 +17,14 @@ public class App
 }
 
 //TODO
+// routs w/o auth throw HTML err template
 
 //-----------------------------
 //todo Abraham
 // userDetails interface
 // PostConstruct + env
+
+//todo
+// delete order dont work, because of ref to bridge table
 
 

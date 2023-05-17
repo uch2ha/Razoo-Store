@@ -30,7 +30,8 @@ public class AuthenticationService
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
             .createdAt(LocalDateTime.now())
-            .role(Role.USER)
+            // by default all user's role is USER
+            .role(request.getRole() == Role.ADMIN ? Role.ADMIN : Role.USER)
             .build();
     userRepository.save(user);
     String jwtToken = jwtUtils.generateToken(user);
