@@ -12,6 +12,7 @@ import { Admin } from '../assets/svg/Admin'
 // files
 import logo from '../assets/logo-row.png'
 import logoWhite from '../assets/logo-row-white.png'
+import { deleteTokenFromLS } from '../utilities/localStorage'
 
 interface INavBarProps {
   isWhite?: boolean
@@ -22,11 +23,11 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
 
   const dispatch = useDispatch()
   const user = useSelector((state: RootState) => state.user)
-  const { id, role } = user
+  const { email, role } = user
 
   const handleLogOut = () => {
     dispatch(userActions.logOut())
-    dispatch(cartActions.clearCart())
+    deleteTokenFromLS()
     googleLogout()
   }
 
@@ -68,7 +69,7 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
               </Link>
             </li>
           )}
-          {id && (
+          {email && (
             <li className={`${activePage === '/account' ? 'text-[#a0a772]' : ''} btn`}>
               <Link to="/account">
                 <MyAccountIcon className="text-2xl" />
@@ -78,7 +79,7 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
           <li className={`${activePage === '/cart' ? 'active-link' : ''} btn`}>
             <Link to="/cart">CART</Link>
           </li>
-          {id ? (
+          {email ? (
             <li className={`btn`}>
               <button onClick={handleLogOut}>LOGOUT</button>
             </li>

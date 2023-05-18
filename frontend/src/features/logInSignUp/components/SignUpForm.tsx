@@ -1,16 +1,18 @@
 // packages
 import { ChangeEvent, FC, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import jwt_decode from 'jwt-decode'
 // components
-import GoogleAuthBtn from './GoogleAuthBtn'
+// import GoogleAuthBtn from './GoogleAuthBtn'
 import { userActions } from '../../../store/user/user.slice'
+import { IDecodedToken, IRegister, IToken } from '../../../types/authentication.type'
+import { useRegisterMutation } from '../../../store/api/authentication.api'
+import { setTokenToLS } from '../../../utilities/localStorage'
 import { IUser } from '../../../types'
-import { saveNewUserToLS } from '../../../utilities/localStorage'
 
 const SignUpForm: FC = () => {
-  const [name, setName] = useState<string>('')
+  const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -20,56 +22,77 @@ const SignUpForm: FC = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  // register new user
+  const [trigger] = useRegisterMutation()
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.id === 'name') setName(e.target.value)
-    if (e.target.id === 'last-name') setLastName(e.target.value)
+    if (e.target.id === 'firstName') setFirstName(e.target.value)
+    if (e.target.id === 'lastName') setLastName(e.target.value)
     if (e.target.id === 'email') setEmail(e.target.value)
     if (e.target.id === 'password') setPassword(e.target.value)
-    if (e.target.id === 're-password') setRePassword(e.target.value)
+    if (e.target.id === 'rePassword') setRePassword(e.target.value)
   }
 
-  const handleSignUp = () => {
-    if (!name || !lastName || !email || !password || !rePassword)
-      return setError('Please enter all fields')
-    if (password.length < 6) return setError('Passwords must be at least 6 characters')
-    if (password !== rePassword) return setError("Passwords don't match")
+  const handleSignUp = async () => {
+    validation()
 
-    const user: IUser = {
-      id: uuidv4(),
-      firstName: name.toLocaleLowerCase(),
-      lastName: lastName.toLocaleLowerCase(),
+    const user: IRegister = {
+      firstName: capitalizeFirstLetter(firstName),
+      lastName: capitalizeFirstLetter(lastName),
       email: email.toLocaleLowerCase(),
-      password: password,
-      isGoogleLogin: false,
-      role: 'USER'
+      password: password
     }
 
-    const res = saveNewUserToLS(user)
+    const result = await trigger(user)
 
-    if (res.success) {
+    if (result.data) {
+      const token: IToken = result.data
+      const decoded: IDecodedToken = jwt_decode(token.token)
+
+      const user: IUser = {
+        firstName: decoded.firstName,
+        lastName: decoded.lastName,
+        email: decoded.sub,
+        role: decoded.role
+      }
+
+      setTokenToLS(token)
       dispatch(userActions.logIn(user))
       navigate('/shop')
     }
-    if (res.err) setError(res.err)
+    if (result.error) setError(result.error.error)
+  }
+
+  const validation = () => {
+    if (!firstName || !lastName || !email || !password || !rePassword)
+      return setError('Please enter all fields')
+    if (firstName.length < 3) return setError('First Name must be at least 3 characters')
+    if (lastName.length < 3) return setError('Last Name must be at least 3 characters')
+    if (password.length < 6) return setError('Passwords must be at least 6 characters')
+    if (password !== rePassword) return setError("Passwords don't match")
+  }
+
+  const capitalizeFirstLetter = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
   }
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center ">
       <h2 className="font-garamond text-[50px] mb-1">Create Account</h2>
       <h4>using social networks</h4>
-      <GoogleAuthBtn setError={setError} />
+      {/* <GoogleAuthBtn setError={setError} /> */}
       <p>OR</p>
       {error && <h3 className="text-red-600 font-bold py-4">{error}</h3>}
       <input
-        id="name"
+        id="firstName"
         type="text"
         className="px-10 py-2 mb-[10px] mt-2 text-black"
-        placeholder="Name"
+        placeholder="First Name"
         required
         onChange={handleInputChange}
       />
       <input
-        id="last-name"
+        id="lastName"
         type="text"
         className="px-10 py-2 mb-[10px] text-black"
         placeholder="Last Name"
@@ -93,7 +116,7 @@ const SignUpForm: FC = () => {
         onChange={handleInputChange}
       />
       <input
-        id="re-password"
+        id="rePassword"
         type="password"
         className="px-10 py-2 mb-4 text-black"
         placeholder="Repeat Password "

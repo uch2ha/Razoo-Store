@@ -2,27 +2,47 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 // components
-import { useCheckUserLogIn } from '../hooks/useCheckUserLogIn'
 import { userActions } from '../../../store/user/user.slice'
-import GoogleAuthBtn from './GoogleAuthBtn'
+import { useAuthenticateMutation } from '../../../store/api/authentication.api'
+import { IAuthenticate, IDecodedToken, IToken } from '../../../types/authentication.type'
+import { setTokenToLS } from '../../../utilities/localStorage'
+import { IUser } from '../../../types'
 
 const LogInForm: FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
+  const [trigger] = useAuthenticateMutation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleLogIn = () => {
-    const result = useCheckUserLogIn(email.toLowerCase(), password)
-    if (result.err) return setError(result.err)
-    if (result.user) {
-      // set current user to store
-      dispatch(userActions.logIn(result.user))
+  const handleLogIn = async () => {
+    const userLogInData: IAuthenticate = {
+      email,
+      password
+    }
+
+    const result = await trigger(userLogInData)
+
+    if (result.data) {
+      const token: IToken = result.data
+      const decoded: IDecodedToken = jwt_decode(token.token)
+
+      const user: IUser = {
+        firstName: decoded.firstName,
+        lastName: decoded.lastName,
+        email: decoded.sub,
+        role: decoded.role
+      }
+
+      setTokenToLS(token)
+      dispatch(userActions.logIn(user))
       navigate('/shop')
     }
+    if (result.error) setError(result.error.error)
   }
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +54,7 @@ const LogInForm: FC = () => {
     <div className="w-full h-full flex flex-col justify-center items-center ">
       <h2 className="font-garamond text-[50px] mb-1">Login to Your Account</h2>
       <h4>using social networks</h4>
-      <GoogleAuthBtn setError={setError} />
+      {/* <GoogleAuthBtn setError={setError} /> */}
       <p>OR</p>
       {error && <h3 className="text-red-600 font-bold py-2 ">{error}</h3>}
       <input

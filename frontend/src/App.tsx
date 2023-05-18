@@ -8,7 +8,6 @@ import AboutPage from './pages/AboutPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
 import MyAccountPage from './pages/MyAccountPage'
-import AdminPage from './pages/AdminPage'
 import { checkAuthStatus } from './utilities/auth'
 import MissingPage from './pages/MissingPage'
 
@@ -57,11 +56,7 @@ const App: FC = () => {
         />
         <Route
           path="/admin"
-          element={
-            <AdminProtectedRoute>
-              <AdminPage />
-            </AdminProtectedRoute>
-          }
+          element={<AdminProtectedRoute>{/* <AdminPage /> */}</AdminProtectedRoute>}
         />
         <Route path="*" element={<MissingPage />} />
       </Routes>
