@@ -49,7 +49,7 @@ public class User implements UserDetails
 
   @Column(nullable = false)
   @NotBlank(message = "Password is mandatory")
-  @Size(min = 3, max = 150, message = "Password must be between 3 and 150 characters")
+  @Size(min = 6, max = 150, message = "Password must be between 3 and 150 characters")
   private String password;
 
   @Column(nullable = false)

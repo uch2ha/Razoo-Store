@@ -22,6 +22,8 @@ public class App
 // redux undefined after refresh page (problem in SHOP page)
 // uudi conflict from sql file
 // hashed psw always new
+// const result = await trigger(user) err in SignUP
+// valid dont work with auth
 
 //-----------------------------
 //todo Abraham
