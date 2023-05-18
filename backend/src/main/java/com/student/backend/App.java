@@ -20,6 +20,8 @@ public class App
 // routs w/o auth throw HTML err template
 // ec2 http://ec2-16-16-91-123.eu-north-1.compute.amazonaws.com:8080, remove 8080 or?
 // redux undefined after refresh page (problem in SHOP page)
+// uudi conflict from sql file
+// hashed psw always new
 
 //-----------------------------
 //todo Abraham

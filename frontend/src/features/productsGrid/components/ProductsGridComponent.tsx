@@ -11,7 +11,7 @@ import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
 import Card from './Card'
 import { useGetAllProductsQuery } from '../../../store/api/products.api'
-import { productsActions, productsSlice } from '../../../store/products/products.slice'
+import { productsActions } from '../../../store/products/products.slice'
 
 interface IProductsGridComponentProps {
   setProductId: (id: string) => void
@@ -29,11 +29,8 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
   const { data, isError, isLoading } = useGetAllProductsQuery()
   const dispatch = useDispatch()
 
-  console.log(isLoading)
-
+  // set fetched data to product store
   useEffect(() => {
-    console.log('useEffect')
-
     if (data !== undefined) {
       dispatch(productsActions.setAllProducts(data))
     }
