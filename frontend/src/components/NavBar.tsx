@@ -22,7 +22,7 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
 
   const dispatch = useDispatch()
   const user = useSelector((state: RootState) => state.user)
-  const { id, isAdmin } = user
+  const { id, role } = user
 
   const handleLogOut = () => {
     dispatch(userActions.logOut())
@@ -61,7 +61,7 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
       </div>
       <div className="w-1/3">
         <ul className="flex justify-end items-center space-x-8">
-          {isAdmin && (
+          {role === 'ADMIN' && (
             <li className={`${activePage === '/admin' ? 'text-[#a0a772]' : ''} btn`}>
               <Link to="/admin">
                 <Admin className="text-2xl" />

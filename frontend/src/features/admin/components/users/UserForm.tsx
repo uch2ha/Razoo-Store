@@ -71,17 +71,17 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="isAdmin" className="block text-gray-700 font-medium mb-2">
-          IsAdmin
+        <label htmlFor="role" className="block text-gray-700 font-medium mb-2">
+          role
         </label>
         <select
-          id="isAdmin"
-          name="isAdmin"
+          id="role"
+          name="role"
           className="w-full py-2 px-3 border border-gray-300  shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-          value={user.isAdmin ? 'true' : 'false'}
+          value={user.role}
           onChange={handleChange}>
-          <option value="true">true</option>
-          <option value="false">false</option>
+          <option value="ADMIN">ADMIN</option>
+          <option value="USER">USER</option>
         </select>
       </div>
       <div className="mb-4">

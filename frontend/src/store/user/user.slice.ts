@@ -9,7 +9,7 @@ const initialState: IUser = {
   lastName: '',
   email: '',
   isGoogleLogin: null,
-  isAdmin: false
+  role: 'USER'
 }
 
 export const userSlice = createSlice({
@@ -21,7 +21,7 @@ export const userSlice = createSlice({
       state.email = action.payload.email
       state.firstName = action.payload.firstName
       state.lastName = action.payload.lastName
-      state.isAdmin = action.payload.isAdmin
+      state.role = action.payload.role
       state.isGoogleLogin = action.payload.isGoogleLogin
     },
     logOut: (state) => {
@@ -29,7 +29,7 @@ export const userSlice = createSlice({
       state.email = initialState.email
       state.firstName = initialState.firstName
       state.lastName = initialState.lastName
-      state.isAdmin = initialState.isAdmin
+      state.role = initialState.role
       state.isGoogleLogin = initialState.isGoogleLogin
     },
     changeFirstLastName: (

@@ -18,7 +18,7 @@ const UserCard: FC<IUserCardProps> = ({ user, handleEditMod }) => {
     <div className="border-[1px] px-6 py-4 flex mb-4 text-2xl  ">
       <div className="flex flex-col justify-around text-start w-1/6">
         <p>Id: {user.id}</p>
-        <p>IsAdmin: {user.isAdmin ? 'true' : 'false'}</p>
+        <p>Role: {user.role}</p>
       </div>
       <div className="flex flex-col justify-around  text-start w-2/6">
         <p>Email: {user.email}</p>

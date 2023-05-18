@@ -11,7 +11,7 @@ const initUser: IUser = {
   firstName: '',
   lastName: '',
   email: '',
-  isAdmin: false,
+  role: 'USER',
   isGoogleLogin: false,
   password: ''
 }

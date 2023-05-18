@@ -12,8 +12,6 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 // components
-import { dbApi } from './api/DB/db.api'
-import { UIReducer } from './UI/UI.slice'
 import { filtersReducer } from './filters/filters.slice'
 import { userReducer } from './user/user.slice'
 import { googleAuthApi } from './api/googleAuth/googleAuth.api'
@@ -23,9 +21,7 @@ import { productsApi } from './api/products.api'
 
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
-  [dbApi.reducerPath]: dbApi.reducer,
   [googleAuthApi.reducerPath]: googleAuthApi.reducer,
-  UI: UIReducer,
   filters: filtersReducer,
   user: userReducer,
   cart: cartReducer,
@@ -49,7 +45,6 @@ const store = configureStore({
       }
     })
       .concat(productsApi.middleware)
-      .concat(dbApi.middleware)
       .concat(googleAuthApi.middleware)
 })
 

@@ -41,7 +41,7 @@ const SignUpForm: FC = () => {
       email: email.toLocaleLowerCase(),
       password: password,
       isGoogleLogin: false,
-      isAdmin: false
+      role: 'USER'
     }
 
     const res = saveNewUserToLS(user)

@@ -47,7 +47,7 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
       lastName: result.data.family_name,
       email: result.data.email,
       isGoogleLogin: true,
-      isAdmin: false
+      role: 'USER'
     }
 
     const res = handleGoogleUserLogIn(user)
