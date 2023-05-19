@@ -33,7 +33,7 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
   const authHandler = async (googleUser: IGoogleUser) => {
     const result = await trigger(googleUser)
 
-    if (result.data) {
+    if ('data' in result) {
       const token: IToken = result.data
       const user: IUser = handleTokenDecode(token)
 
@@ -41,7 +41,13 @@ const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
       dispatch(userActions.logIn(user))
       navigate('/shop')
     }
-    if (result.error) setError(result.error.error)
+    // not best "if statement"
+    // I know
+    if ('error' in result) {
+      if ('error' in result.error) {
+        setError(result.error.error)
+      }
+    }
   }
 
   return (

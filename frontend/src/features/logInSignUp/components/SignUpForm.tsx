@@ -48,7 +48,7 @@ const SignUpForm: FC = () => {
 
     const result = await trigger(user)
 
-    if (result.data) {
+    if ('data' in result) {
       const token: IToken = result.data
       const user: IUser = handleTokenDecode(token)
 
@@ -56,7 +56,13 @@ const SignUpForm: FC = () => {
       dispatch(userActions.logIn(user))
       navigate('/shop')
     }
-    if (result.error) setError(result.error.error)
+    // not best "if statement"
+    // I know
+    if ('error' in result) {
+      if ('error' in result.error) {
+        setError(result.error.error)
+      }
+    }
   }
 
   const validation = () => {
