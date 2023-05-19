@@ -40,32 +40,33 @@ public class OAuth2Controller
 
     Optional<User> user = userService.findByEmail(userData.getString("email"));
 
+    // if user dont exist, register him
+    if (user.isEmpty()) {
+      RegisterRequest regRequest = RegisterRequest.builder()
+              .firstName(userData.getString("given_name"))
+              .lastName(userData.getString("family_name"))
+              .email(userData.getString("email"))
+              .password("")
+              .isGoogleLogin(true)
+              .build();
+
+      return ResponseEntity.ok(authService.register(regRequest));
+    }
+
+    User presentUser = user.get();
+
     // if user exists, and it was logged by google, just authenticate him
-    if (user.isPresent() && user.get().isGoogleLogin()) {
-      return ResponseEntity.ok(authService.googleAuthenticate(user.get()));
+    if (presentUser.isGoogleLogin()) {
+      return ResponseEntity.ok(authService.googleAuthenticate(presentUser));
     }
 
     // if user exists, but it wasn't logged by Google
     // take user's data from Google and
     // override DB user firstName, lastName and isGoogleLogin properties
-    if (user.isPresent()) {
-      user.get().setFirstName(userData.getString("given_name"));
-      user.get().setLastName(userData.getString("family_name"));
-      user.get().setGoogleLogin(true);
-      return ResponseEntity.ok(authService.concatAuthAndOAuth2(user.get()));
-    }
-
-    // if user dont exist, register him
-    RegisterRequest regRequest = RegisterRequest.builder()
-            .firstName(userData.getString("given_name"))
-            .lastName(userData.getString("family_name"))
-            .email(userData.getString("email"))
-            .password("")
-            .isGoogleLogin(true)
-            .build();
-
-    return ResponseEntity.ok(authService.register(regRequest));
-
+    presentUser.setFirstName(userData.getString("given_name"));
+    presentUser.setLastName(userData.getString("family_name"));
+    presentUser.setGoogleLogin(true);
+    return ResponseEntity.ok(authService.concatAuthAndOAuth2(presentUser));
   }
 
   private JSONObject fetchUserData(String accessToken) throws IOException, InterruptedException
