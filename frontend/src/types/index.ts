@@ -22,11 +22,8 @@ export type IProduct = {
 }
 
 export type IUser = {
-  id: string
+  email: string
   firstName: string
   lastName: string
-  email: string
-  isAdmin: boolean
-  isGoogleLogin: boolean | null
-  password?: string
+  role: 'ADMIN' | 'USER' | ''
 }

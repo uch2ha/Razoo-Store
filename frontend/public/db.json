@@ -7,7 +7,7 @@
       "email": "admin",
       "password": "admin",
       "isGoogleLogin": false,
-      "isAdmin": true
+      "role": "ADMIN"
     },
     {
       "id": "1",
@@ -16,7 +16,7 @@
       "email": "sinyavskiy.d@gmail.com",
       "password": "dmitry",
       "isGoogleLogin": false,
-      "isAdmin": false
+      "role": "USER"
     },
     {
       "id": "2",
@@ -25,7 +25,7 @@
       "email": "diana.sojanen@gmail.com",
       "password": "diana",
       "isGoogleLogin": false,
-      "isAdmin": false
+      "role": "USER"
     }
   ],
   "products": [

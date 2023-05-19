@@ -2,32 +2,58 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 // components
-import { useCheckUserLogIn } from '../hooks/useCheckUserLogIn'
 import { userActions } from '../../../store/user/user.slice'
+import { useAuthenticateMutation } from '../../../store/api/authentication.api'
+import { IAuthenticate, IDecodedToken, IToken } from '../../../types/authentication.type'
+import { setTokenToLS } from '../../../utilities/localStorage'
+import { IUser } from '../../../types'
 import GoogleAuthBtn from './GoogleAuthBtn'
+import { handleTokenDecode } from '../utilities/handleToken'
 
 const LogInForm: FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
+  const [trigger] = useAuthenticateMutation()
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleLogIn = () => {
-    const result = useCheckUserLogIn(email.toLowerCase(), password)
-    if (result.err) return setError(result.err)
-    if (result.user) {
-      // set current user to store
-      dispatch(userActions.logIn(result.user))
+  const handleLogIn = async () => {
+    if (!validation()) {
+      return
+    }
+
+    const userLogInData: IAuthenticate = {
+      email,
+      password
+    }
+
+    const result = await trigger(userLogInData)
+
+    if (result.data) {
+      const token: IToken = result.data
+      const user: IUser = handleTokenDecode(token)
+
+      setTokenToLS(token)
+      dispatch(userActions.logIn(user))
       navigate('/shop')
     }
+    if (result.error) setError(result.error.error)
   }
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.id === 'email') setEmail(e.target.value)
     if (e.target.id === 'password') setPassword(e.target.value)
+  }
+
+  const validation = () => {
+    if (!email || !password) return setError('Please enter all fields')
+    if (password.length < 6) return setError('Passwords must be at least 6 characters')
+    return true
   }
 
   return (

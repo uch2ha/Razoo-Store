@@ -28,6 +28,7 @@ spring:
       data-locations: classpath:users.sql, classpath:products.sql
   config:
     import: optional:file:./backend/.env[.properties]
+  
 
 #logging:
 #  level:

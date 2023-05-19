@@ -22,13 +22,18 @@ public class App
 // redux undefined after refresh page (problem in SHOP page)
 // uudi conflict from sql file
 // hashed psw always new
+// const result = await trigger(user) err in SignUP
+// valid dont work with auth
+// multiple similar services (created new "private final" everytime)
+// in other services, user only userService or I can use userRepo?
+// Does user.get() take much memory/"power"? (OAuth2Controller)
 
 //-----------------------------
-//todo Abraham
-// userDetails interface
-// PostConstruct + env
 
 //todo
 // delete order dont work, because of ref to bridge table
+// make err msg red color
+// DONT use repo in controllers, only services
+// change isGooglelogin to isGoogleUser
 
 

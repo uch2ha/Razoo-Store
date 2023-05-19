@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux'
 // components
 import { RootState } from '../store/store'
 
-export const checkAuthStatus = (): { isAdmin: boolean; isLogIn: boolean } => {
+export const checkAuthStatus = (): { role?: 'ADMIN' | 'USER'; isLogIn: boolean } => {
+  console.log('Checking')
+
   const user = useSelector((state: RootState) => state.user)
-  if (user?.id === '') return { isAdmin: false, isLogIn: false }
-  if (user?.isAdmin) return { isAdmin: true, isLogIn: true }
-  return { isAdmin: false, isLogIn: true }
+  if (user?.email === '') return { isLogIn: false }
+  return { role: user.role, isLogIn: true }
 }

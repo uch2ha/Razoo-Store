@@ -4,60 +4,45 @@ import { useGoogleLogin } from '@react-oauth/google'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 // components
-import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.api'
 import { IGoogleUser } from '../types/googleUser.type'
 import { userActions } from '../../../store/user/user.slice'
 import { IUser } from '../../../types'
-import { handleGoogleUserLogIn } from '../../../utilities/localStorage'
 import { Google } from '../../../assets/svg/Google'
+import { useOAuth2AuthenticateMutation } from '../../../store/api/oAuth2Google.api'
+import { handleTokenDecode } from '../utilities/handleToken'
+import { IToken } from '../../../types/authentication.type'
+import { setTokenToLS } from '../../../utilities/localStorage'
 
 interface IGoogleAuthProps {
   setError: (msg: string) => void
 }
 
 const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
-  const [googleUser, setGoogleUser] = useState<IGoogleUser | null>(null)
+  // auth google user
+  const [trigger] = useOAuth2AuthenticateMutation()
 
-  // fetch google user from google.api
-  const [trigger, result] = useLazyGetUserQuery()
-
-  const navigate = useNavigate()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   // get google user data
   const login = useGoogleLogin({
-    onSuccess: (codeResponse) => setGoogleUser(codeResponse as IGoogleUser),
+    onSuccess: (codeResponse) => authHandler(codeResponse as IGoogleUser),
     onError: (error) => console.log('Login Failed:', error)
   })
 
-  // get google user Profile
-  useEffect(() => {
-    if (googleUser) {
-      trigger(googleUser.access_token)
-    }
-  }, [googleUser])
+  const authHandler = async (googleUser: IGoogleUser) => {
+    const result = await trigger(googleUser)
 
-  // save google user profile data to LS
-  useEffect(() => {
-    if (!result.isSuccess) return
+    if (result.data) {
+      const token: IToken = result.data
+      const user: IUser = handleTokenDecode(token)
 
-    const user: IUser = {
-      id: result.data.id,
-      firstName: result.data.given_name,
-      lastName: result.data.family_name,
-      email: result.data.email,
-      isGoogleLogin: true,
-      isAdmin: false
-    }
-
-    const res = handleGoogleUserLogIn(user)
-    if (res.success) {
+      setTokenToLS(token)
       dispatch(userActions.logIn(user))
       navigate('/shop')
-    } else {
-      setError('Something went wrong')
     }
-  }, [result])
+    if (result.error) setError(result.error.error)
+  }
 
   return (
     <button onClick={() => login()} className="my-3 ">
