@@ -26,5 +26,6 @@ public class App
 // make err msg red color
 // DONT use repo in controllers, only services
 // change isGooglelogin to isGoogleUser
+// make validation for all tables
 
 
