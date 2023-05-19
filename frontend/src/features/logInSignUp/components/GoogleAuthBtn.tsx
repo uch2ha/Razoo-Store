@@ -1,69 +1,54 @@
-// // packages
-// import { FC, useEffect, useState } from 'react'
-// import { useGoogleLogin } from '@react-oauth/google'
-// import { useNavigate } from 'react-router-dom'
-// import { useDispatch } from 'react-redux'
-// // components
-// import { useLazyGetUserQuery } from '../../../store/api/googleAuth/googleAuth.api'
-// import { IGoogleUser } from '../types/googleUser.type'
-// import { userActions } from '../../../store/user/user.slice'
-// import { IUser } from '../../../types'
-// import { handleGoogleUserLogIn } from '../../../utilities/localStorage'
-// import { Google } from '../../../assets/svg/Google'
+// packages
+import { FC, useEffect, useState } from 'react'
+import { useGoogleLogin } from '@react-oauth/google'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+// components
+import { IGoogleUser } from '../types/googleUser.type'
+import { userActions } from '../../../store/user/user.slice'
+import { IUser } from '../../../types'
+import { Google } from '../../../assets/svg/Google'
+import { useOAuth2AuthenticateMutation } from '../../../store/api/oAuth2Google.api'
+import { handleTokenDecode } from '../utilities/handleToken'
+import { IToken } from '../../../types/authentication.type'
+import { setTokenToLS } from '../../../utilities/localStorage'
 
-// interface IGoogleAuthProps {
-//   setError: (msg: string) => void
-// }
+interface IGoogleAuthProps {
+  setError: (msg: string) => void
+}
 
-// const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
-//   const [googleUser, setGoogleUser] = useState<IGoogleUser | null>(null)
+const GoogleAuthBtn: FC<IGoogleAuthProps> = ({ setError }) => {
+  // auth google user
+  const [trigger] = useOAuth2AuthenticateMutation()
 
-//   // fetch google user from google.api
-//   const [trigger, result] = useLazyGetUserQuery()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-//   const navigate = useNavigate()
-//   const dispatch = useDispatch()
+  // get google user data
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => authHandler(codeResponse as IGoogleUser),
+    onError: (error) => console.log('Login Failed:', error)
+  })
 
-//   // get google user data
-//   const login = useGoogleLogin({
-//     onSuccess: (codeResponse) => setGoogleUser(codeResponse as IGoogleUser),
-//     onError: (error) => console.log('Login Failed:', error)
-//   })
+  const authHandler = async (googleUser: IGoogleUser) => {
+    const result = await trigger(googleUser)
 
-//   // get google user Profile
-//   useEffect(() => {
-//     if (googleUser) {
-//       trigger(googleUser.access_token)
-//     }
-//   }, [googleUser])
+    if (result.data) {
+      const token: IToken = result.data
+      const user: IUser = handleTokenDecode(token)
 
-//   // save google user profile data to LS
-//   useEffect(() => {
-//     if (!result.isSuccess) return
+      setTokenToLS(token)
+      dispatch(userActions.logIn(user))
+      navigate('/shop')
+    }
+    if (result.error) setError(result.error.error)
+  }
 
-//     const user: IUser = {
-//       id: result.data.id,
-//       firstName: result.data.given_name,
-//       lastName: result.data.family_name,
-//       email: result.data.email,
-//       isGoogleLogin: true,
-//       role: 'USER'
-//     }
+  return (
+    <button onClick={() => login()} className="my-3 ">
+      <Google className="text-3xl text-white hover:text-[#a0a772]" />
+    </button>
+  )
+}
 
-//     const res = handleGoogleUserLogIn(user)
-//     if (res.success) {
-//       dispatch(userActions.logIn(user))
-//       navigate('/shop')
-//     } else {
-//       setError('Something went wrong')
-//     }
-//   }, [result])
-
-//   return (
-//     <button onClick={() => login()} className="my-3 ">
-//       <Google className="text-3xl text-white hover:text-[#a0a772]" />
-//     </button>
-//   )
-// }
-
-// export default GoogleAuthBtn
+export default GoogleAuthBtn

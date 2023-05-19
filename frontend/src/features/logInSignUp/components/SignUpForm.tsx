@@ -10,6 +10,7 @@ import { IDecodedToken, IRegister, IToken } from '../../../types/authentication.
 import { useRegisterMutation } from '../../../store/api/authentication.api'
 import { setTokenToLS } from '../../../utilities/localStorage'
 import { IUser } from '../../../types'
+import { handleTokenDecode } from '../utilities/handleToken'
 
 const SignUpForm: FC = () => {
   const [firstName, setFirstName] = useState<string>('')
@@ -34,7 +35,9 @@ const SignUpForm: FC = () => {
   }
 
   const handleSignUp = async () => {
-    validation()
+    if (!validation()) {
+      return
+    }
 
     const user: IRegister = {
       firstName: capitalizeFirstLetter(firstName),
@@ -47,14 +50,7 @@ const SignUpForm: FC = () => {
 
     if (result.data) {
       const token: IToken = result.data
-      const decoded: IDecodedToken = jwt_decode(token.token)
-
-      const user: IUser = {
-        firstName: decoded.firstName,
-        lastName: decoded.lastName,
-        email: decoded.sub,
-        role: decoded.role
-      }
+      const user: IUser = handleTokenDecode(token)
 
       setTokenToLS(token)
       dispatch(userActions.logIn(user))
@@ -70,6 +66,7 @@ const SignUpForm: FC = () => {
     if (lastName.length < 3) return setError('Last Name must be at least 3 characters')
     if (password.length < 6) return setError('Passwords must be at least 6 characters')
     if (password !== rePassword) return setError("Passwords don't match")
+    return true
   }
 
   const capitalizeFirstLetter = (str: string) => {

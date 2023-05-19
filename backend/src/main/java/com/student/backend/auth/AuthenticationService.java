@@ -35,10 +35,11 @@ public class AuthenticationService
             .createdAt(LocalDateTime.now())
             // by default all user's role is USER
             .role(request.getRole() == Role.ADMIN ? Role.ADMIN : Role.USER)
+            .isGoogleLogin(request.getIsGoogleLogin() != null)
             .build();
     userRepository.save(user);
 
-    String jwtToken = jwtUtils.generateToken(createExtraClaims(user), user);
+    String jwtToken = getJwtToken(user);
     return AuthenticationResponse.builder().token(jwtToken).build();
   }
 
@@ -51,8 +52,27 @@ public class AuthenticationService
     User user = userRepository.findByEmail(request.getEmail())
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-    String jwtToken = jwtUtils.generateToken(createExtraClaims(user), user);
+    String jwtToken = getJwtToken(user);
     return AuthenticationResponse.builder().token(jwtToken).build();
+  }
+
+  public AuthenticationResponse googleAuthenticate(User user)
+  {
+    String jwtToken = getJwtToken(user);
+    return AuthenticationResponse.builder().token(jwtToken).build();
+  }
+
+  public AuthenticationResponse concatAuthAndOAuth2(User user)
+  {
+    userRepository.save(user);
+    String jwtToken = getJwtToken(user);
+    return AuthenticationResponse.builder().token(jwtToken).build();
+  }
+
+
+  private String getJwtToken(User user)
+  {
+    return jwtUtils.generateToken(createExtraClaims(user), user);
   }
 
   private Map<String, Object> createExtraClaims(User user)

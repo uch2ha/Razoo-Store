@@ -32,6 +32,11 @@ public class UserService
     return userRepo.findById(id);
   }
 
+  public Optional<User> findByEmail(String email)
+  {
+    return userRepo.findByEmail(email);
+  }
+
   public void delete(User user)
   {
     userRepo.delete(user);
