@@ -14,7 +14,6 @@ import storage from 'redux-persist/lib/storage'
 // components
 import { filtersReducer } from './filters/filters.slice'
 import { userReducer } from './user/user.slice'
-import { googleAuthApi } from './api/googleAuth/googleAuth.api'
 import { cartReducer } from './cart/cart.slice'
 import { productsReducer } from './products/products.slice'
 import { productsApi } from './api/products.api'
@@ -22,10 +21,9 @@ import { authenticationApi } from './api/authentication.api'
 import { oAuth2Google } from './api/oAuth2Google.api'
 
 const rootReducer = combineReducers({
-  [productsApi.reducerPath]: productsApi.reducer,
   [authenticationApi.reducerPath]: authenticationApi.reducer,
   [oAuth2Google.reducerPath]: oAuth2Google.reducer,
-  [googleAuthApi.reducerPath]: googleAuthApi.reducer,
+  [productsApi.reducerPath]: productsApi.reducer,
   filters: filtersReducer,
   user: userReducer,
   cart: cartReducer,
@@ -48,10 +46,9 @@ const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
     })
-      .concat(productsApi.middleware)
       .concat(authenticationApi.middleware)
       .concat(oAuth2Google.middleware)
-      .concat(googleAuthApi.middleware)
+      .concat(productsApi.middleware)
 })
 
 export const persistor = persistStore(store)
