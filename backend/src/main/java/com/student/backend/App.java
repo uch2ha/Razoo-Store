@@ -17,7 +17,9 @@ public class App
 }
 
 //TODO
-//
+// Admin EDit losing focus FE
+// Cant input float in ProductEdit price
+// Admin-Users FE cannot get token from LS
 
 //-----------------------------
 

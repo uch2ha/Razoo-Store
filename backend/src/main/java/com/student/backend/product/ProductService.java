@@ -2,6 +2,7 @@ package com.student.backend.product;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,8 @@ public class ProductService
 
   public List<Product> findAll()
   {
-    return productRepo.findAll();
+    Sort sortByCreatedAt = Sort.by(Sort.Direction.DESC, "createdAt");
+    return productRepo.findAll(sortByCreatedAt);
   }
 
   public Product saveOne(@Valid Product product)

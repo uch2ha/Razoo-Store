@@ -26,6 +26,8 @@ export type IProduct = {
 }
 
 export type IUser = {
+  userId?: string
+  password?: string
   email: string
   firstName: string
   lastName: string
