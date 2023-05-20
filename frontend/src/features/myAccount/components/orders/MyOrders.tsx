@@ -1,14 +1,18 @@
 // packages
 import { FC } from 'react'
-import { useSelector } from 'react-redux'
 // components
-import { RootState } from '../../../../store/store'
 import Order from './Order'
-import { getOrdersByUserIdFromLS } from '../../../../utilities/localStorage'
+import { useGetAllMineOrdersQuery } from '../../../../store/api/orders.api'
+import { useOrderDataFilter } from '../../hooks/useOrderDataFiler'
+import { IOrder } from '../../../../types'
 
 const MyOrders: FC = () => {
-  const userId = useSelector((state: RootState) => state.user.id)
-  const orders = getOrdersByUserIdFromLS(userId)
+  const { data, isLoading, isError } = useGetAllMineOrdersQuery()
+  let orders: IOrder[] = []
+
+  if (data) {
+    orders = useOrderDataFilter(data)
+  }
 
   return (
     <>
@@ -16,8 +20,13 @@ const MyOrders: FC = () => {
         <h2 className="font-[600]">ORDERS</h2>
       </div>
       <div className="">
-        {orders &&
-          orders.map((order) => {
+        {isLoading && <h2 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Loading...</h2>}
+        {isError && (
+          <h2 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Something went wrong...</h2>
+        )}
+        {!isLoading &&
+          !isError &&
+          orders?.map((order) => {
             return <Order key={order.orderId} order={order} />
           })}
       </div>

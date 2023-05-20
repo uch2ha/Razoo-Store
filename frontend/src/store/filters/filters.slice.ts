@@ -4,7 +4,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { IFilters } from '../../features/productsGrid/types/filters.type'
 
 const initialState: IFilters = {
-  category: { shampoo: false, hairConditioner: false, hairMask: false, hairOil: false },
+  category: { SHAMPOO: false, HAIRCONDITIONER: false, HAIRMASK: false, HAIROIL: false },
   size: { '50ml': false, '100ml': false, '150ml': false, '200ml': false },
   sortBy: null
 }

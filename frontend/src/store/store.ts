@@ -19,11 +19,13 @@ import { productsReducer } from './products/products.slice'
 import { productsApi } from './api/products.api'
 import { authenticationApi } from './api/authentication.api'
 import { oAuth2Google } from './api/oAuth2Google.api'
+import { ordersApi } from './api/orders.api'
 
 const rootReducer = combineReducers({
   [authenticationApi.reducerPath]: authenticationApi.reducer,
   [oAuth2Google.reducerPath]: oAuth2Google.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
+  [ordersApi.reducerPath]: ordersApi.reducer,
   filters: filtersReducer,
   user: userReducer,
   cart: cartReducer,
@@ -49,6 +51,7 @@ const store = configureStore({
       .concat(authenticationApi.middleware)
       .concat(oAuth2Google.middleware)
       .concat(productsApi.middleware)
+      .concat(ordersApi.middleware)
 })
 
 export const persistor = persistStore(store)

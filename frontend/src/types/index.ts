@@ -1,13 +1,17 @@
 export type IOrder = {
   orderId: string
-  products: {
-    productId: string
-    amount: number
-  }[]
-  userId: string
-  purchasedAt: string
-  status: 'delivered' | 'pending' | 'canceled'
-  totalPrice: number
+  status: 'IN_PROCESS' | 'IN_TRANSIT' | 'DELIVERED' | 'REJECTED'
+  createdAt: string
+  products: IOrderProduct[]
+}
+
+export type IOrderProduct = {
+  productId: string
+  name: string
+  img: string
+  size: '50ml' | '100ml' | '150ml' | '200ml'
+  price: number
+  quantity: number
 }
 
 export type IProduct = {

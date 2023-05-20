@@ -1,22 +1,14 @@
 // packages
 import { FC } from 'react'
-import { useSelector } from 'react-redux'
 // components
-import { RootState } from '../../../../store/store'
 import Image from '../../../../Image'
+import { IOrderProduct } from '../../../../types'
 
 interface IOrderDetailsRowProps {
-  itemId: string
-  amount: number
+  product: IOrderProduct
 }
 
-const OrderDetailsRow: FC<IOrderDetailsRowProps> = ({ itemId, amount }) => {
-  const products = useSelector((state: RootState) => state.products)
-  const getProductById = (id: string | null) => {
-    if (id === null) return
-    return products.find((product) => product.productId === id)
-  }
-  const product = getProductById(itemId)
+const OrderDetailsRow: FC<IOrderDetailsRowProps> = ({ product }) => {
   return (
     <>
       <div className="col-span-3 border-b-[1px] py-5 px-2 flex justify-start items-center ">
@@ -27,7 +19,7 @@ const OrderDetailsRow: FC<IOrderDetailsRowProps> = ({ itemId, amount }) => {
         <p>{product?.size}</p>
       </div>
       <div className="col-span-2 border-b-[1px]  border-r-[1px] py-5 flex justify-center items-center">
-        <p>{amount}X</p>
+        <p>{product.quantity}X</p>
       </div>
       <div className="col-span-2 border-b-[1px] py-5 flex justify-center items-center">
         <p>{product?.price} $</p>

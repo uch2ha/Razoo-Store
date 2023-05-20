@@ -22,10 +22,12 @@ public class App
 //-----------------------------
 
 //todo
+// JinOIN TABLES  orders
 // delete order dont work, because of ref to bridge table
 // make err msg red color
 // DONT use repo in controllers, only services
 // change isGooglelogin to isGoogleUser
 // make validation for all tables
+// order details make scrollable
 
 

@@ -24,6 +24,8 @@ public class SecurityConfiguration
   {
 
     http.csrf().disable()
+            .cors()
+            .and()
             .authorizeHttpRequests()
             // WHITELIST
             .requestMatchers(AUTH_WHITELIST).permitAll()

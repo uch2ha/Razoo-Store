@@ -11,6 +11,10 @@ export const deleteTokenFromLS = (): void => {
   localStorage.removeItem('token')
 }
 
+export const getTokenFromLS = (): string => {
+  return localStorage.getItem('token') ?? ''
+}
+
 // export const initLocalStorage = (data: IDb) => {
 //   //set all fixed data to LS, while first loading
 //   localStorage.setItem('users', JSON.stringify(data.users))

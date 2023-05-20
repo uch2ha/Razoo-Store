@@ -1,10 +1,10 @@
 export type IFilters = {
   category: {
     [key: string]: boolean
-    shampoo: boolean
-    hairConditioner: boolean
-    hairMask: boolean
-    hairOil: boolean
+    SHAMPOO: boolean
+    HAIRCONDITIONER: boolean
+    HAIRMASK: boolean
+    HAIROIL: boolean
   }
   size: {
     [key: string]: boolean

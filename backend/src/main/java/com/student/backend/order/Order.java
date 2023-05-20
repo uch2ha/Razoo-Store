@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity(name = "order")
+@Entity(name = "_order")
 @Table(name = "_order")
 @Data
 @Builder

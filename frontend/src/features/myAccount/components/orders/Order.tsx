@@ -21,18 +21,18 @@ const Order: FC<IOrderProps> = ({ order }) => {
     <>
       <div className={`pl-[6%] py-8`} onClick={handleVisible}>
         <div className="flex justify-between my-2">
-          <div className="flex w-3/5 justify-between uppercase">
-            <div>
+          <div className="flex w-full space-x-2 uppercase">
+            <div className="w-1/3">
               <p className="underline underline-offset-1 font-[600]">ORDER NUMBER</p>
               <p>{order.orderId}</p>
             </div>
-            <div>
+            <div className="w-1/3">
               <p className="underline underline-offset-1 font-[600]">STATUS</p>
               <p>{order.status}</p>
             </div>
-            <div>
+            <div className="w-1/3">
               <p className="underline underline-offset-1 font-[600]">DATE</p>
-              <p>{order.purchasedAt}</p>
+              <p>{order.createdAt}</p>
             </div>
           </div>
           <div className="mr-7 p-2 text-3xl flex justify-center items-center">
@@ -41,11 +41,7 @@ const Order: FC<IOrderProps> = ({ order }) => {
         </div>
       </div>
       <div className={`pl-[6%] border-b-[1px]`}>
-        <OrderDetails
-          products={order.products}
-          totalPrice={order.totalPrice}
-          isVisible={isVisible}
-        />
+        <OrderDetails products={order.products} isVisible={isVisible} />
       </div>
     </>
   )
