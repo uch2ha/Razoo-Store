@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderController
 {
-  private final OrderDTOMapper orderDTOMapper;
   private final UserRepository userRepository;
   private final ProductRepository productRepository;
   private final OrderService orderService;
@@ -41,7 +40,7 @@ public class OrderController
       return new ResponseEntity<>("no access", HttpStatus.FORBIDDEN);
     }
 
-    List<OrderDTO> orders = orderService.findAll().stream().map(orderDTOMapper)
+    List<OrderDTO> orders = orderService.findAll().stream().map(OrderMapper.INSTANCE::orderToOrderDTO)
             .collect(Collectors.toList());
 
     return new ResponseEntity<>(orders, HttpStatus.OK);
@@ -77,59 +76,60 @@ public class OrderController
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 
-  @GetMapping("/{orderId}")
-  public ResponseEntity<Object> getAllByOrderId(Principal principal, @PathVariable UUID orderId)
-  {
-    Optional<Order> order = orderService.findOneById(orderId);
+  //todo FIX ME
+//  @GetMapping("/{orderId}")
+//  public ResponseEntity<Object> getAllByOrderId(Principal principal, @PathVariable UUID orderId)
+//  {
+//    Optional<Order> order = orderService.findOneById(orderId);
+//
+//    if (order.isEmpty()) {
+//      return new ResponseEntity<>("Order not found", HttpStatus.NOT_FOUND);
+//    }
+//
+//    UUID userId = order.get().getUser().getUserId();
+//
+//    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
+//      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
+//    }
+//
+//    Map<UUID, Integer> productList = orderProductService.getAllByOrder(order.get());
+//
+//    Map<String, Object> result =
+//            new HashMap<>();
+//
+//    result.put("order", orderDTOMapper.apply(order.get()));
+//    result.put("products", productList);
+//
+//    return new ResponseEntity<>(result, HttpStatus.OK);
+//  }
 
-    if (order.isEmpty()) {
-      return new ResponseEntity<>("Order not found", HttpStatus.NOT_FOUND);
-    }
-
-    UUID userId = order.get().getUser().getUserId();
-
-    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
-      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
-    }
-
-    Map<UUID, Integer> productList = orderProductService.getAllByOrder(order.get());
-
-    Map<String, Object> result =
-            new HashMap<>();
-
-    result.put("order", orderDTOMapper.apply(order.get()));
-    result.put("products", productList);
-
-    return new ResponseEntity<>(result, HttpStatus.OK);
-  }
-
-  @GetMapping("/user/{userId}")
-  public ResponseEntity<Object> getAllByUserId(Principal principal, @PathVariable UUID userId)
-  {
-    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
-      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
-    }
-
-    Optional<User> user = userService.findById(userId);
-
-    if (user.isEmpty()) {
-      return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
-    }
-
-    List<Order> orderList = orderService.findAllByUser(user.get());
-    List<Map<String, Object>> result = new ArrayList<>();
-
-    orderList.forEach(o -> {
-      Map<String, Object> oneOrder = new HashMap<>();
-      Map<UUID, Integer> productList = orderProductService.getAllByOrder(o);
-      oneOrder.put("order", orderDTOMapper.apply(o));
-      oneOrder.put("products", productList);
-
-      result.add(oneOrder);
-    });
-
-    return new ResponseEntity<>(result, HttpStatus.OK);
-  }
+//  @GetMapping("/user/{userId}")
+//  public ResponseEntity<Object> getAllByUserId(Principal principal, @PathVariable UUID userId)
+//  {
+//    if (!checkRoleAccess.adminOrUserById(principal, userId)) {
+//      return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
+//    }
+//
+//    Optional<User> user = userService.findById(userId);
+//
+//    if (user.isEmpty()) {
+//      return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+//    }
+//
+//    List<Order> orderList = orderService.findAllByUser(user.get());
+//    List<Map<String, Object>> result = new ArrayList<>();
+//
+//    orderList.forEach(o -> {
+//      Map<String, Object> oneOrder = new HashMap<>();
+//      Map<UUID, Integer> productList = orderProductService.getAllByOrder(o);
+//      oneOrder.put("order", orderDTOMapper.apply(o));
+//      oneOrder.put("products", productList);
+//
+//      result.add(oneOrder);
+//    });
+//
+//    return new ResponseEntity<>(result, HttpStatus.OK);
+//  }
 
   @PatchMapping("/{orderId}")
   public ResponseEntity<Object> changeStatus(@PathVariable UUID orderId,
@@ -147,7 +147,7 @@ public class OrderController
     updatedOrder.setStatus(status);
     orderService.updateOne(updatedOrder);
 
-    return new ResponseEntity<>(orderDTOMapper.apply(updatedOrder), HttpStatus.OK);
+    return new ResponseEntity<>(OrderMapper.INSTANCE.orderToOrderDTO(updatedOrder), HttpStatus.OK);
   }
 
   @DeleteMapping("/{orderId}")
@@ -161,7 +161,7 @@ public class OrderController
 
     orderService.delete(order.get());
 
-    return new ResponseEntity<>(orderDTOMapper.apply(order.get()), HttpStatus.OK);
+    return new ResponseEntity<>(OrderMapper.INSTANCE.orderToOrderDTO(order.get()), HttpStatus.OK);
   }
 
   //check productsList for existing of productId

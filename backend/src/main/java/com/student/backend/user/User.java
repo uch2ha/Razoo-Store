@@ -4,7 +4,6 @@ import com.student.backend.user.Enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,10 +51,8 @@ public class User implements UserDetails
   @Size(min = 6, max = 150, message = "Password must be between 3 and 150 characters")
   private String password;
 
-  @Column(nullable = false)
-  @NotNull(message = "Role is mandatory")
   @Enumerated(EnumType.STRING)
-  private Role role;
+  private Role role = Role.USER;
 
   private boolean isGoogleLogin = false;
   private LocalDateTime createdAt = LocalDateTime.now();

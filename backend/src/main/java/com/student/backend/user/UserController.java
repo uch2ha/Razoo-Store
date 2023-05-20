@@ -19,7 +19,6 @@ public class UserController
 
   private final UserService userService;
   private final UserRepository userRepo;
-  private final UserDTOMapper userDTOMapper;
   private final CheckRoleAccess checkRoleAccess;
 
   @GetMapping
@@ -30,7 +29,7 @@ public class UserController
     }
 
     List<UserDTO> users = userService.findAll().stream()
-            .map(userDTOMapper)
+            .map(UserMapper.INSTANCE::userToUserDTO)
             .collect(Collectors.toList());
 
     return new ResponseEntity<>(users, HttpStatus.OK);
@@ -47,7 +46,7 @@ public class UserController
 
     User newUser = userService.saveOne(user);
 
-    UserDTO result = userDTOMapper.apply(newUser);
+    UserDTO result = UserMapper.INSTANCE.userToUserDTO(newUser);
 
     return new ResponseEntity<>(result, HttpStatus.CREATED);
 
@@ -66,7 +65,7 @@ public class UserController
       return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
     }
 
-    return new ResponseEntity<>(user.map(userDTOMapper), HttpStatus.OK);
+    return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(user.get()), HttpStatus.OK);
   }
 
   @DeleteMapping("/{userId}")
@@ -83,7 +82,7 @@ public class UserController
 
     userService.delete(user.get());
 
-    return new ResponseEntity<>(user.map(userDTOMapper), HttpStatus.OK);
+    return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(user.get()), HttpStatus.OK);
   }
 
   @PatchMapping("/{userId}")
@@ -116,7 +115,7 @@ public class UserController
 
     User updatedUser = userService.updateOne(existingUser.get());
 
-    return new ResponseEntity<>(userDTOMapper.apply(updatedUser), HttpStatus.OK);
+    return new ResponseEntity<>(UserMapper.INSTANCE.userToUserDTO(updatedUser), HttpStatus.OK);
   }
 
   // Validation
