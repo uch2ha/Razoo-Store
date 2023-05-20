@@ -1,24 +1,26 @@
-// packages
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IProduct } from '../../types'
+import { IUser } from '../../types'
 import { getTokenFromLS } from '../../utilities/localStorage'
 
 const token = getTokenFromLS()
 
-export const productsApi = createApi({
-  reducerPath: 'api/products',
+export const usersApi = createApi({
+  reducerPath: 'api/users',
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_URL + import.meta.env.VITE_API_VERSION
+    baseUrl: import.meta.env.VITE_BASE_URL + import.meta.env.VITE_API_VERSION + '/users'
   }),
   endpoints: (build) => ({
-    getAllProducts: build.query<IProduct[], void>({
+    getAllUsers: build.query<IUser[], void>({
       query: () => ({
-        url: '/products'
+        url: '',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
     }),
-    saveProduct: build.mutation<IProduct, IProduct>({
+    saveUser: build.mutation<IUser, IUser>({
       query: (body) => ({
-        url: `/products`,
+        url: '',
         method: 'POST',
         body,
         headers: {
@@ -27,9 +29,9 @@ export const productsApi = createApi({
         }
       })
     }),
-    editProduct: build.mutation<IProduct, IProduct>({
+    editUser: build.mutation<IUser, IUser>({
       query: (body) => ({
-        url: `/products/${body.productId}`,
+        url: `/${body.userId}`,
         method: 'PATCH',
         body,
         headers: {
@@ -38,9 +40,9 @@ export const productsApi = createApi({
         }
       })
     }),
-    deleteProduct: build.mutation<IProduct, string>({
+    deleteUser: build.mutation<IUser, string>({
       query: (productId) => ({
-        url: `/products/${productId}`,
+        url: `/${productId}`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -52,8 +54,8 @@ export const productsApi = createApi({
 })
 
 export const {
-  useGetAllProductsQuery,
-  useEditProductMutation,
-  useSaveProductMutation,
-  useDeleteProductMutation
-} = productsApi
+  useGetAllUsersQuery,
+  useEditUserMutation,
+  useDeleteUserMutation,
+  useSaveUserMutation
+} = usersApi

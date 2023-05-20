@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage'
 import MyAccountPage from './pages/MyAccountPage'
 import { checkAuthStatus } from './utilities/auth'
 import MissingPage from './pages/MissingPage'
+import AdminPage from './pages/AdminPage'
 
 interface IRouteProps {
   children: React.ReactNode
@@ -56,7 +57,11 @@ const App: FC = () => {
         />
         <Route
           path="/admin"
-          element={<AdminProtectedRoute>{/* <AdminPage /> */}</AdminProtectedRoute>}
+          element={
+            <AdminProtectedRoute>
+              <AdminPage />
+            </AdminProtectedRoute>
+          }
         />
         <Route path="*" element={<MissingPage />} />
       </Routes>

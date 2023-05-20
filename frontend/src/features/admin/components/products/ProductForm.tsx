@@ -15,20 +15,6 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto my-auto">
       <div className="mb-4">
-        <label htmlFor="id" className="block text-gray-700 font-bold mb-2">
-          Id
-        </label>
-        <input
-          type="text"
-          name="id"
-          id="id"
-          value={product.productId}
-          onChange={handleChange}
-          className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          required
-        />
-      </div>
-      <div className="mb-4">
         <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
           Name
         </label>
@@ -52,10 +38,10 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           className="w-full py-2 px-3 border border-gray-300 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           value={product.category}
           onChange={handleChange}>
-          <option value="shampoo">Shampoo</option>
-          <option value="hairConditioner">Hair Conditioner</option>
-          <option value="hairMask">Hair Mask</option>
-          <option value="hairOil">Hair Oil</option>
+          <option value="SHAMPOO">Shampoo</option>
+          <option value="HAIRCONDITIONER">Hair Conditioner</option>
+          <option value="HAIRMASK">Hair Mask</option>
+          <option value="HAIROIL">Hair Oil</option>
         </select>
       </div>
       <div className="mb-4">
@@ -105,7 +91,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
           Price
         </label>
         <input
-          type="number"
+          type="text"
           name="price"
           id="price"
           value={product.price}

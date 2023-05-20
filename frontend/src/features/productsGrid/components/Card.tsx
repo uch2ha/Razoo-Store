@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux'
 // components
 import { cartActions } from '../../../store/cart/cart.slice'
 import { IProduct } from '../../../types'
-import { productsActions } from '../../../store/products/products.slice'
 import Image from '../../../Image'
+import { useDeleteProductMutation } from '../../../store/api/products.api'
 
 interface ICardProps {
   product: IProduct
@@ -16,6 +16,7 @@ interface ICardProps {
 
 const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIsVisible }) => {
   const dispatch = useDispatch()
+  const [triggerDeleteProduct] = useDeleteProductMutation()
 
   const handleClick = (e: MouseEvent) => {
     if ((e.target as HTMLDivElement).id === 'add-to-cart')
@@ -24,7 +25,8 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
   }
 
   const deleteProductId = () => {
-    dispatch(productsActions.deleteProductById(product.productId))
+    triggerDeleteProduct(product.productId)
+    window.location.reload()
   }
 
   return (

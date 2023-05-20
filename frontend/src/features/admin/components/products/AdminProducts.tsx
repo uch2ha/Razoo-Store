@@ -7,6 +7,7 @@ import ProductsGridComponent from '../../../productsGrid/components/ProductsGrid
 import { RootState } from '../../../../store/store'
 import { IProduct } from '../../../../types'
 import AddEditComponent from '../AddEditComponent'
+import { useGetAllProductsQuery } from '../../../../store/api/products.api'
 
 const initProduct: IProduct = {
   productId: '',
@@ -14,7 +15,7 @@ const initProduct: IProduct = {
   name: '',
   description: '',
   instruction: '',
-  category: 'shampoo',
+  category: 'SHAMPOO',
   size: '50ml',
   price: 0
 }
@@ -28,10 +29,12 @@ const AdminProducts: FC<IAdminProductsProps> = ({ setProductId }) => {
   const [isEditProductId, setIsEditProductId] = useState<string | null>(null)
 
   const products = useSelector((state: RootState) => state.products)
+
   const getProductById = (id: string | null) => {
     if (id === null) return
     return products.find((product) => product.productId === id)
   }
+
   // if isEditProductId is equal to number then fetch product by id
   // and set this product to useState
   const productById = getProductById(isEditProductId !== null ? isEditProductId : null)

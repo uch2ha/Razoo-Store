@@ -41,6 +41,16 @@ public class CheckRoleAccess
     return false;
   }
 
+  public boolean notAdminHimSelf(Principal principal, UUID userId)
+  {
+    if (principal instanceof Authentication authentication) {
+      User userDetails = (User) authentication.getPrincipal();
+      return !userDetails.getUserId().equals(userId);
+
+    }
+    return false;
+  }
+
   // Retrieve the user's role
   private Role getRole(UserDetails userDetails)
   {

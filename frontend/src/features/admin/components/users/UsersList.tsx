@@ -1,16 +1,16 @@
 // packages
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 // components
-import { getUsersFromLS } from '../../../../utilities/localStorage'
 import UserCard from './UserCard'
+import { IUser } from '../../../../types'
+import { useGetAllUsersQuery } from '../../../../store/api/users.api'
 
 interface IUsersListProps {
   handleEditMod: (id: string | null) => void
+  users: IUser[]
 }
 
-const UsersList: FC<IUsersListProps> = ({ handleEditMod }) => {
-  const users = getUsersFromLS()
-
+const UsersList: FC<IUsersListProps> = ({ handleEditMod, users }) => {
   return (
     <div className="w-full h-full flex flex-col text-center items-center justify-start">
       <button
@@ -19,9 +19,10 @@ const UsersList: FC<IUsersListProps> = ({ handleEditMod }) => {
         ADD USER
       </button>
       <div className="w-[82%]">
-        {users.map((user) => {
-          return <UserCard key={user.id} user={user} handleEditMod={handleEditMod} />
-        })}
+        {users &&
+          users.map((user) => {
+            return <UserCard key={user.email} user={user} handleEditMod={handleEditMod} />
+          })}
       </div>
     </div>
   )

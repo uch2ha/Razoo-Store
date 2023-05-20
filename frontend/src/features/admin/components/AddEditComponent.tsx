@@ -1,14 +1,13 @@
 // packages
 import React, { FC, useState } from 'react'
-import { useDispatch } from 'react-redux'
 // components
 import { IProduct } from '../../../types'
 import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import ProductForm from './products/ProductForm'
-import { productsActions } from '../../../store/products/products.slice'
 import UserForm from './users/UserForm'
 import { IUser } from '../../../types'
-import { setNewUserToLS, setNewUsersDataToLS } from '../../../utilities/localStorage'
+import { useEditProductMutation, useSaveProductMutation } from '../../../store/api/products.api'
+import { useEditUserMutation, useSaveUserMutation } from '../../../store/api/users.api'
 
 interface IAddEditComponentProps {
   isVisible: boolean
@@ -23,10 +22,20 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   propsItem,
   handleClose
 }) => {
-  const isEditMod = propsItem.productId !== ''
   const [item, setItem] = useState<IUser | IProduct>(propsItem)
 
-  const dispatch = useDispatch()
+  const [triggerEditProduct] = useEditProductMutation()
+  const [triggerSaveProduct] = useSaveProductMutation()
+  const [triggerEditUser] = useEditUserMutation()
+  const [triggerSaveUser] = useSaveUserMutation()
+
+  const checkIsEditMode = (propsItem: IProduct | IUser) => {
+    if ('productId' in propsItem) return propsItem.productId !== ''
+    if ('userId' in propsItem) return propsItem.userId !== ''
+    return false
+  }
+
+  const isEditMod = checkIsEditMode(propsItem)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -36,10 +45,16 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     // Product changes
     if (isProduct) {
       if (name === 'category') {
-        console.log(name, value)
         setItem((prevProduct) => ({
           ...prevProduct,
           img: value
+        }))
+      }
+
+      if (name === 'price') {
+        return setItem((prevProduct) => ({
+          ...prevProduct,
+          [name]: value === '' ? 0 : parseFloat(value)
         }))
       }
 
@@ -50,14 +65,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     }
     // User changes
     if (!isProduct) {
-      let convertedValue: string | boolean = value
-
-      if (convertedValue === 'true') convertedValue = true
-      if (convertedValue === 'false') convertedValue = false
-
       setItem((prevUser) => ({
         ...prevUser,
-        [name]: convertedValue
+        [name]: value
       }))
     }
   }
@@ -69,13 +79,11 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     if (isProduct) {
       // edit
       if (isEditMod) {
-        dispatch(productsActions.editProductById(item as IProduct))
-        handleClose()
+        triggerEditProduct(item as IProduct)
       }
       // add
       if (!isEditMod) {
-        dispatch(productsActions.addProduct(item as IProduct))
-        handleClose()
+        triggerSaveProduct(item as IProduct)
       }
     }
 
@@ -83,15 +91,15 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     if (!isProduct) {
       // edit
       if (isEditMod) {
-        setNewUsersDataToLS(item as IUser)
-        handleClose()
+        triggerEditUser(item as IUser)
       }
       // add
       if (!isEditMod) {
-        setNewUserToLS(item as IUser)
-        handleClose()
+        triggerSaveUser(item as IUser)
       }
     }
+    handleClose()
+    window.location.reload()
   }
 
   return (

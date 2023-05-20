@@ -70,8 +70,11 @@ public class UserController
   }
 
   @DeleteMapping("/{userId}")
-  public ResponseEntity<Object> deleteById(@PathVariable UUID userId)
+  public ResponseEntity<Object> deleteById(Principal principal, @PathVariable UUID userId)
   {
+    if (!checkRoleAccess.notAdminHimSelf(principal, userId)) {
+      return ResponseEntity.badRequest().body("Admin cannot delete himself");
+    }
     Optional<User> user = userRepo.findById(userId);
 
     if (user.isEmpty()) {
@@ -104,8 +107,11 @@ public class UserController
     if (user.getLastName() != null) {
       existingUser.get().setLastName(user.getLastName());
     }
-    if (user.getPassword() != null) {
-      existingUser.get().setPassword(user.getPassword());
+    // Admin CANNOT make himself to not ADMIN
+    if (checkRoleAccess.notAdminHimSelf(principal, userId)) {
+      if (user.getRole() != null) {
+        existingUser.get().setRole(user.getRole());
+      }
     }
 
     User updatedUser = userService.updateOne(existingUser.get());
