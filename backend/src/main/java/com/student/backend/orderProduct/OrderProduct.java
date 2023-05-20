@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@Entity(name = "orderProduct")
+@Entity(name = "_orderProduct")
 @Table(name = "_orderProduct")
 @Data
 @Builder

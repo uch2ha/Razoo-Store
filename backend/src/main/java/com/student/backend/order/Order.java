@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity(name = "order")
+@Entity(name = "_order")
 @Table(name = "_order")
 @Data
 @Builder
@@ -27,6 +27,7 @@ public class Order
   @JoinColumn(name = "user_id")
   private User user;
 
+  @Enumerated(EnumType.STRING)
   private Status status;
   private LocalDateTime createdAt = LocalDateTime.now();
 

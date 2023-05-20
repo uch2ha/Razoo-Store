@@ -12,6 +12,7 @@ import { ArrowRight } from '../../../assets/svg/ArrowRight'
 import Card from './Card'
 import { useGetAllProductsQuery } from '../../../store/api/products.api'
 import { productsActions } from '../../../store/products/products.slice'
+import { IProduct } from '../../../types'
 
 interface IProductsGridComponentProps {
   setProductId: (id: string) => void
@@ -25,6 +26,7 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
   setIsEditProductId
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
+  const [products, setProducts] = useState<IProduct[]>([])
 
   const { data, isError, isLoading } = useGetAllProductsQuery()
   const dispatch = useDispatch()
@@ -33,10 +35,9 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
   useEffect(() => {
     if (data !== undefined) {
       dispatch(productsActions.setAllProducts(data))
+      setProducts(data)
     }
   }, [isLoading])
-
-  const products = data ? data : []
 
   // get filters from products store
   const filters = useSelector((state: RootState) => state.filters) || {}

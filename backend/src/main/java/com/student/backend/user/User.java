@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "user")
+@Entity(name = "_user")
 @Table(name = "_user")
 @Data
 @Builder

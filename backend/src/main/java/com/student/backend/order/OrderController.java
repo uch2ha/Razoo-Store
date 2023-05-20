@@ -13,6 +13,7 @@ import com.student.backend.utils.CheckRoleAccess;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -31,6 +32,7 @@ public class OrderController
   private final UserService userService;
   private final OrderProductService orderProductService;
   private final CheckRoleAccess checkRoleAccess;
+  private final OrderRepository orderRepository;
 
   @GetMapping
   public ResponseEntity<Object> findAll(Principal principal)
@@ -38,11 +40,24 @@ public class OrderController
     if (!checkRoleAccess.onlyAdmin(principal)) {
       return new ResponseEntity<>("no access", HttpStatus.FORBIDDEN);
     }
-    
+
     List<OrderDTO> orders = orderService.findAll().stream().map(orderDTOMapper)
             .collect(Collectors.toList());
 
     return new ResponseEntity<>(orders, HttpStatus.OK);
+  }
+
+  @GetMapping("/mine")
+  public ResponseEntity<Object> findAllMine(Principal principal)
+  {
+
+    if (principal instanceof Authentication authentication) {
+      User user = (User) authentication.getPrincipal();
+      List<MineOrderDTO> test = orderRepository.testMe(user.getUserId());
+
+      return new ResponseEntity<>(test, HttpStatus.OK);
+    }
+    return null;
   }
 
   @PostMapping()
