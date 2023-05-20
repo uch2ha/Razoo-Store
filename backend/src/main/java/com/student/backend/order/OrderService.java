@@ -54,4 +54,9 @@ public class OrderService
     orderRepo.delete(order);
   }
 
+  public List<MineOrderDTO> findAllMineOrders(UUID userId)
+  {
+    return orderRepo.findAllMineOrders(userId);
+  }
+
 }

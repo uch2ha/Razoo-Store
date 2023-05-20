@@ -14,7 +14,6 @@ import java.util.*;
 public class ProductController
 {
   private final ProductService productService;
-  private final ProductRepository productRepo;
 
   @GetMapping
   public ResponseEntity<Object> findAll()
@@ -52,7 +51,7 @@ public class ProductController
   @DeleteMapping("/{productId}")
   public ResponseEntity<Object> deleteById(@PathVariable UUID productId)
   {
-    Optional<Product> product = productRepo.findById(productId);
+    Optional<Product> product = productService.findById(productId);
 
     if (product.isEmpty()) {
       return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
@@ -67,7 +66,7 @@ public class ProductController
   public ResponseEntity<Object> updateOne(@PathVariable UUID productId, @RequestBody Product product)
   {
 
-    Optional<Product> existingProduct = productRepo.findById(productId);
+    Optional<Product> existingProduct = productService.findById(productId);
 
     if (existingProduct.isEmpty()) {
       return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);

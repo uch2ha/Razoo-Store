@@ -22,6 +22,6 @@ public interface OrderRepository extends JpaRepository<Order, UUID>
           "JOIN _product p ON op.product.productId = p.productId " +
           "WHERE o.user.userId = :userId " +
           "ORDER BY o.createdAt DESC")
-  List<MineOrderDTO> testMe(@Param("userId") UUID userId);
+  List<MineOrderDTO> findAllMineOrders(@Param("userId") UUID userId);
 }
 

@@ -18,7 +18,6 @@ public class UserController
 {
 
   private final UserService userService;
-  private final UserRepository userRepo;
   private final CheckRoleAccess checkRoleAccess;
 
   @GetMapping
@@ -38,7 +37,7 @@ public class UserController
   @PostMapping
   public ResponseEntity<Object> saveOne(@RequestBody User user)
   {
-    Optional<User> existingUser = userRepo.findByEmail(user.getEmail());
+    Optional<User> existingUser = userService.findByEmail(user.getEmail());
     if (existingUser.isPresent()) {
       return new ResponseEntity<>("User with same email already exist",
               HttpStatus.BAD_REQUEST);
@@ -74,7 +73,7 @@ public class UserController
     if (!checkRoleAccess.notAdminHimSelf(principal, userId)) {
       return ResponseEntity.badRequest().body("Admin cannot delete himself");
     }
-    Optional<User> user = userRepo.findById(userId);
+    Optional<User> user = userService.findById(userId);
 
     if (user.isEmpty()) {
       return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
@@ -93,7 +92,7 @@ public class UserController
       return new ResponseEntity<>("No access", HttpStatus.FORBIDDEN);
     }
 
-    Optional<User> existingUser = userRepo.findById(userId);
+    Optional<User> existingUser = userService.findById(userId);
 
     if (existingUser.isEmpty()) {
       return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);

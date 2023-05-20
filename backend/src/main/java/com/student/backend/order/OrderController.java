@@ -5,9 +5,8 @@ import com.student.backend.order.requestBody.OrderCreateRequestBody;
 import com.student.backend.order.requestBody.OrderStatusRequestBody;
 import com.student.backend.orderProduct.OrderProductService;
 import com.student.backend.product.Product;
-import com.student.backend.product.ProductRepository;
+import com.student.backend.product.ProductService;
 import com.student.backend.user.User;
-import com.student.backend.user.UserRepository;
 import com.student.backend.user.UserService;
 import com.student.backend.utils.CheckRoleAccess;
 import lombok.RequiredArgsConstructor;
@@ -25,13 +24,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderController
 {
-  private final UserRepository userRepository;
-  private final ProductRepository productRepository;
   private final OrderService orderService;
   private final UserService userService;
+  private final ProductService productService;
   private final OrderProductService orderProductService;
   private final CheckRoleAccess checkRoleAccess;
-  private final OrderRepository orderRepository;
 
   @GetMapping
   public ResponseEntity<Object> findAll(Principal principal)
@@ -49,10 +46,9 @@ public class OrderController
   @GetMapping("/mine")
   public ResponseEntity<Object> findAllMine(Principal principal)
   {
-
     if (principal instanceof Authentication authentication) {
       User user = (User) authentication.getPrincipal();
-      List<MineOrderDTO> test = orderRepository.testMe(user.getUserId());
+      List<MineOrderDTO> test = orderService.findAllMineOrders(user.getUserId());
 
       return new ResponseEntity<>(test, HttpStatus.OK);
     }
@@ -62,11 +58,12 @@ public class OrderController
   @PostMapping()
   public ResponseEntity<Object> createOrder(@RequestBody OrderCreateRequestBody data)
   {
-    Optional<User> user = userRepository.findById(data.getUserId());
+    Optional<User> user = userService.findById(data.getUserId());
     if (user.isEmpty()) {
       return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
     }
 
+    //todo mb checkForExisting while creating, next fn???
     Map<Product, Integer> productList = checkProductIdForExisting(data.getProducts());
 
     Order order = orderService.createOrder(user.get());
@@ -171,7 +168,7 @@ public class OrderController
 
     products.forEach(p -> {
       UUID productId = p.getProductId();
-      Optional<Product> productOptional = productRepository.findById(productId);
+      Optional<Product> productOptional = productService.findById(productId);
       if (productOptional.isEmpty()) {
         throw new IllegalArgumentException("Product not found with id: " + productId);
       }
