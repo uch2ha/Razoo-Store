@@ -2,15 +2,15 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import jwt_decode from 'jwt-decode'
 // components
 // import GoogleAuthBtn from './GoogleAuthBtn'
 import { userActions } from '../../../store/user/user.slice'
-import { IDecodedToken, IRegister, IToken } from '../../../types/authentication.type'
+import { IRegister, IToken } from '../../../types/authentication.type'
 import { useRegisterMutation } from '../../../store/api/authentication.api'
 import { setTokenToLS } from '../../../utilities/localStorage'
 import { IUser } from '../../../types'
 import { handleTokenDecode } from '../utilities/handleToken'
+import GoogleAuthBtn from './GoogleAuthBtn'
 
 const SignUpForm: FC = () => {
   const [firstName, setFirstName] = useState<string>('')
@@ -83,7 +83,7 @@ const SignUpForm: FC = () => {
     <div className="w-full h-full flex flex-col justify-center items-center ">
       <h2 className="font-garamond text-[50px] mb-1">Create Account</h2>
       <h4>using social networks</h4>
-      {/* <GoogleAuthBtn setError={setError} /> */}
+      <GoogleAuthBtn setError={setError} />
       <p>OR</p>
       {error && <h3 className="text-red-600 font-bold py-4">{error}</h3>}
       <input

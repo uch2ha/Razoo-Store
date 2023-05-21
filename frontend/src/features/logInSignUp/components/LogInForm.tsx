@@ -2,11 +2,10 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import jwt_decode from 'jwt-decode'
 // components
 import { userActions } from '../../../store/user/user.slice'
 import { useAuthenticateMutation } from '../../../store/api/authentication.api'
-import { IAuthenticate, IDecodedToken, IToken } from '../../../types/authentication.type'
+import { IAuthenticate, IToken } from '../../../types/authentication.type'
 import { setTokenToLS } from '../../../utilities/localStorage'
 import { IUser } from '../../../types'
 import GoogleAuthBtn from './GoogleAuthBtn'
