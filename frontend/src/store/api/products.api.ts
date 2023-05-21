@@ -15,7 +15,7 @@ export const productsApi = createApi({
       query: () => ({
         url: '/products',
         headers: {
-          'Access-Control-Allow-Origin': 'http://16.16.91.123:5173'
+          'Access-Control-Allow-Origin': 'http://16.16.91.123:5173/'
         }
       })
     }),
