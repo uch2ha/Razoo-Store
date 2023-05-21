@@ -23,7 +23,7 @@ const initState: IProduct = {
   name: 'Loading...',
   description: 'Loading...',
   instruction: 'Loading...',
-  category: 'shampoo',
+  category: 'SHAMPOO',
   size: '50ml',
   price: 100
 }

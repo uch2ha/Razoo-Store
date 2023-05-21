@@ -19,8 +19,5 @@ RUN yarn build
 # Expose the app's port
 EXPOSE 5173
 
-# Set environment variable for production
-ENV VITE_GOOGLE_CLIENT_ID=465239718285-7jlb2sld852tlau1o5hbqgl8f9tevko9.apps.googleusercontent.com
-
 # Start the app
 CMD ["yarn", "dev"]
