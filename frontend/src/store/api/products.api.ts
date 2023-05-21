@@ -13,7 +13,10 @@ export const productsApi = createApi({
   endpoints: (build) => ({
     getAllProducts: build.query<IProduct[], void>({
       query: () => ({
-        url: '/products'
+        url: '/products',
+        headers: {
+          'Access-Control-Allow-Origin': 'http://16.16.91.123:5173'
+        }
       })
     }),
     saveProduct: build.mutation<IProduct, IProduct>({
