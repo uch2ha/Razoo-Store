@@ -14,8 +14,6 @@ export type IMineOrderData = {
   productQuantity: number
 }
 
-const token = getTokenFromLS()
-
 export const ordersApi = createApi({
   reducerPath: 'api/orders',
   baseQuery: fetchBaseQuery({
@@ -26,7 +24,7 @@ export const ordersApi = createApi({
       query: () => ({
         url: '/orders/mine',
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${getTokenFromLS()}`
         }
       })
     })

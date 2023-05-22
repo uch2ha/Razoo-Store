@@ -5,18 +5,6 @@ import { getTokenFromLS } from '../../utilities/localStorage'
 import { useGetProductImg } from '../../hooks/useGetProductImg'
 import { IServerProduct } from '../../features/admin/components/products/AdminProducts'
 
-const token = getTokenFromLS()
-
-// const parseProductImageResult = (result: any) => {
-//   // Perform any data transformation or parsing here
-//   const blobData = URL.createObjectURL(result)
-//   // Perform any additional processing or parsing of the blob data
-//   const parsedData = blobData
-//   console.log(blobData)
-
-//   return parsedData
-// }
-
 export const productsApi = createApi({
   reducerPath: 'api/products',
   baseQuery: fetchBaseQuery({
@@ -49,7 +37,7 @@ export const productsApi = createApi({
         method: 'POST',
         body,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })
@@ -60,7 +48,7 @@ export const productsApi = createApi({
         method: 'PATCH',
         body,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })
@@ -70,7 +58,7 @@ export const productsApi = createApi({
         url: `/products/${productId}`,
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })
@@ -79,7 +67,7 @@ export const productsApi = createApi({
       query: () => ({
         url: `/products/7d77ebf6-563a-4f2e-8bc3-3c9be0fb3c10/product-image`,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json',
           Accept: 'application/json, text/plain, */*'
         }
@@ -91,7 +79,7 @@ export const productsApi = createApi({
         method: 'POST',
         body: data.formData,
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${getTokenFromLS()}`
         }
       })
     })
