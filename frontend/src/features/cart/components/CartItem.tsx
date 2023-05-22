@@ -7,7 +7,6 @@ import { cartActions } from '../../../store/cart/cart.slice'
 import { RootState } from '../../../store/store'
 import { MinusBtn } from '../../../assets/svg/MinusBtn'
 import { PlusBtn } from '../../../assets/svg/PlusBtn'
-import Image from '../../../Image'
 
 interface ICartItemProps {
   itemId: string
@@ -48,15 +47,19 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
       <div
         className="w-[29%] h-[150px] flex items-center justify-between btn"
         onClick={() => setProductId(itemId)}>
-        <div className="h-full border-[1px]">
-          {product?.img && <Image src={product?.img} alt="My Image" className="h-[95%]" />}
-        </div>
-        <div className="h-full ml-3 flex flex-col justify-evenly items-end uppercase text-end">
-          <div className="font-[500]">
-            <h3>{product?.name}</h3>
-            <h3>{product?.category}</h3>
+        <div className="w-1/3 ">
+          <div className="h-fit w-fit border-[1px] p-2">
+            {product?.imgBlob && <img src={product?.imgBlob} alt="My Image" className="w-[100%]" />}
           </div>
-          <p>{product?.size}</p>
+        </div>
+        <div className="w-2/3 overflow-hidden">
+          <div className="h-full ml-3 flex flex-col justify-evenly items-end uppercase text-end">
+            <div className="font-[500]">
+              <h3>{product?.name}</h3>
+              <h3>{product?.category}</h3>
+            </div>
+            <p>{product?.size}</p>
+          </div>
         </div>
       </div>
       <div className="w-[23%]">

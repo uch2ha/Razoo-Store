@@ -7,7 +7,6 @@ import { RootState } from '../store/store'
 import { cartActions } from '../store/cart/cart.slice'
 import { CloseBtn } from '../assets/svg/CloseBtn'
 import Button from './Button'
-import Image from '../Image'
 // files
 import logo from '../assets/logo-column.png'
 
@@ -19,7 +18,7 @@ interface IItemDetailsProps {
 
 const initState: IProduct = {
   productId: '',
-  img: 'none',
+  imgBlob: '',
   name: 'Loading...',
   description: 'Loading...',
   instruction: 'Loading...',
@@ -56,7 +55,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
         isVisible ? 'z-50 top-1/2 ' : 'top-[-100%]'
       }`}>
       <div className="w-[52%] bg-[#e2ded7] -tl-md -bl-md flex justify-center items-center">
-        {productId && <Image src={product?.img} alt="My Image" className="max-h-[70%]" />}
+        {productId && <img src={product?.imgBlob} alt="My Image" className="max-h-[70%]" />}
         <img src={logo} className="absolute top-7 left-7 w-[90px]" />
       </div>
       <div className="w-[48%] bg-[#f2f2f0] flex justify-center items-center -tr-md -br-md">

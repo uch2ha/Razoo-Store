@@ -8,11 +8,12 @@ import UserForm from './users/UserForm'
 import { IUser } from '../../../types'
 import { useEditProductMutation, useSaveProductMutation } from '../../../store/api/products.api'
 import { useEditUserMutation, useSaveUserMutation } from '../../../store/api/users.api'
+import { IServerProduct } from './products/AdminProducts'
 
 interface IAddEditComponentProps {
   isVisible: boolean
   isProduct: boolean
-  propsItem: IProduct | IUser
+  propsItem: IServerProduct | IUser
   handleClose: () => void
 }
 
@@ -22,14 +23,14 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   propsItem,
   handleClose
 }) => {
-  const [item, setItem] = useState<IUser | IProduct>(propsItem)
+  const [item, setItem] = useState<IUser | IServerProduct>(propsItem)
 
   const [triggerEditProduct] = useEditProductMutation()
   const [triggerSaveProduct] = useSaveProductMutation()
   const [triggerEditUser] = useEditUserMutation()
   const [triggerSaveUser] = useSaveUserMutation()
 
-  const checkIsEditMode = (propsItem: IProduct | IUser) => {
+  const checkIsEditMode = (propsItem: IServerProduct | IUser) => {
     if ('productId' in propsItem) return propsItem.productId !== ''
     if ('userId' in propsItem) return propsItem.userId !== ''
     return false
@@ -46,8 +47,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     if (isProduct) {
       if (name === 'category') {
         setItem((prevProduct) => ({
-          ...prevProduct,
-          img: value
+          ...prevProduct
         }))
       }
 
@@ -79,11 +79,11 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     if (isProduct) {
       // edit
       if (isEditMod) {
-        triggerEditProduct(item as IProduct)
+        triggerEditProduct(item as IServerProduct)
       }
       // add
       if (!isEditMod) {
-        triggerSaveProduct(item as IProduct)
+        triggerSaveProduct(item as IServerProduct)
       }
     }
 
@@ -111,7 +111,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
         <ProductForm
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          product={item as IProduct}
+          product={item as IServerProduct}
         />
       )}
       {!isProduct && (

@@ -48,11 +48,11 @@ public class OrderController
   {
     if (principal instanceof Authentication authentication) {
       User user = (User) authentication.getPrincipal();
-      List<MineOrderDTO> test = orderService.findAllMineOrders(user.getUserId());
+      List<MineOrderDTO> result = orderService.findAllMineOrders(user.getUserId());
 
-      return new ResponseEntity<>(test, HttpStatus.OK);
+      return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    return null;
+    return new ResponseEntity<>("no data", HttpStatus.BAD_REQUEST);
   }
 
   @PostMapping()

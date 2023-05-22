@@ -2,8 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IUser } from '../../types'
 import { getTokenFromLS } from '../../utilities/localStorage'
 
-const token = getTokenFromLS()
-
 export const usersApi = createApi({
   reducerPath: 'api/users',
   baseQuery: fetchBaseQuery({
@@ -14,7 +12,7 @@ export const usersApi = createApi({
       query: () => ({
         url: '',
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${getTokenFromLS()}`
         }
       })
     }),
@@ -24,7 +22,7 @@ export const usersApi = createApi({
         method: 'POST',
         body,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })
@@ -35,7 +33,7 @@ export const usersApi = createApi({
         method: 'PATCH',
         body,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })
@@ -45,7 +43,7 @@ export const usersApi = createApi({
         url: `/${productId}`,
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })

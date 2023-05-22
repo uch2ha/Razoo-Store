@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 // components
 import { cartActions } from '../../../store/cart/cart.slice'
 import { IProduct } from '../../../types'
-import Image from '../../../Image'
 import { useDeleteProductMutation } from '../../../store/api/products.api'
 
 interface ICardProps {
@@ -34,7 +33,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
       className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-center h-full">
-        <Image src={product.img} alt="My Image" className="my-6 w-[50%]" />
+        <img src={product.imgBlob} alt="My Image" className="my-6 w-[50%]" />
         <p className="text-2xl uppercase">{product.name}</p>
         <p className="text-2xl uppercase">
           {product.category} ({product.size})

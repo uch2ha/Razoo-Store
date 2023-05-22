@@ -1,5 +1,5 @@
 // packages
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 // components
 import HomePage from './pages/HomePage'
@@ -11,12 +11,25 @@ import MyAccountPage from './pages/MyAccountPage'
 import { checkAuthStatus } from './utilities/auth'
 import MissingPage from './pages/MissingPage'
 import AdminPage from './pages/AdminPage'
+import { useGetAllProductsQuery } from './store/api/products.api'
+import { useDispatch } from 'react-redux'
+import { productsActions } from './store/products/products.slice'
 
 interface IRouteProps {
   children: React.ReactNode
 }
 
 const App: FC = () => {
+  const { data, isLoading } = useGetAllProductsQuery()
+  const dispatch = useDispatch()
+
+  // set fetched data to product store
+  useEffect(() => {
+    if (data !== undefined) {
+      dispatch(productsActions.setAllProducts(data))
+    }
+  }, [isLoading])
+
   const isAuth = checkAuthStatus()
 
   // don't allow logged user pass to logIn page

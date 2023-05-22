@@ -2,8 +2,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IProduct } from '../../types'
 import { getTokenFromLS } from '../../utilities/localStorage'
-
-const token = getTokenFromLS()
+import { useGetProductImg } from '../../hooks/useGetProductImg'
+import { IServerProduct } from '../../features/admin/components/products/AdminProducts'
 
 export const productsApi = createApi({
   reducerPath: 'api/products',
@@ -14,26 +14,41 @@ export const productsApi = createApi({
     getAllProducts: build.query<IProduct[], void>({
       query: () => ({
         url: '/products'
-      })
+      }),
+      transformResponse: async (res: IProduct[]) => {
+        const transformedProducts: Promise<IProduct>[] = res.map(async (product) => {
+          try {
+            const imgBlob = await useGetProductImg(product.productId)
+
+            if (imgBlob) product.imgBlob = imgBlob
+          } catch (error) {
+            console.log(error)
+          }
+
+          return product
+        })
+
+        return Promise.all(transformedProducts)
+      }
     }),
-    saveProduct: build.mutation<IProduct, IProduct>({
+    saveProduct: build.mutation<IProduct, IServerProduct>({
       query: (body) => ({
         url: `/products`,
         method: 'POST',
         body,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })
     }),
-    editProduct: build.mutation<IProduct, IProduct>({
+    editProduct: build.mutation<IProduct, IServerProduct>({
       query: (body) => ({
         url: `/products/${body.productId}`,
         method: 'PATCH',
         body,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
         }
       })
@@ -43,8 +58,18 @@ export const productsApi = createApi({
         url: `/products/${productId}`,
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${getTokenFromLS()}`,
           'Content-Type': 'application/json'
+        }
+      })
+    }),
+    uploadProductImage: build.mutation<FormData, { productId: string; formData: FormData }>({
+      query: (data) => ({
+        url: `/products/${data.productId}/product-image`,
+        method: 'POST',
+        body: data.formData,
+        headers: {
+          Authorization: `Bearer ${getTokenFromLS()}`
         }
       })
     })
@@ -55,5 +80,6 @@ export const {
   useGetAllProductsQuery,
   useEditProductMutation,
   useSaveProductMutation,
-  useDeleteProductMutation
+  useDeleteProductMutation,
+  useUploadProductImageMutation
 } = productsApi
