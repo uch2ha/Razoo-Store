@@ -63,16 +63,6 @@ export const productsApi = createApi({
         }
       })
     }),
-    getProductImage: build.query<any, void>({
-      query: () => ({
-        url: `/products/7d77ebf6-563a-4f2e-8bc3-3c9be0fb3c10/product-image`,
-        headers: {
-          Authorization: `Bearer ${getTokenFromLS()}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json, text/plain, */*'
-        }
-      })
-    }),
     uploadProductImage: build.mutation<FormData, { productId: string; formData: FormData }>({
       query: (data) => ({
         url: `/products/${data.productId}/product-image`,
@@ -91,6 +81,5 @@ export const {
   useEditProductMutation,
   useSaveProductMutation,
   useDeleteProductMutation,
-  useUploadProductImageMutation,
-  useGetProductImageQuery
+  useUploadProductImageMutation
 } = productsApi
