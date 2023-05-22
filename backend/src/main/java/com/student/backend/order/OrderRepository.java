@@ -15,8 +15,8 @@ public interface OrderRepository extends JpaRepository<Order, UUID>
 {
   List<Order> findAllByUser(User user);
 
-  @Query("SELECT NEW com.student.backend.order.MineOrderDTO(o.orderId, o.status, o.createdAt, p" +
-          ".productId, p.name, p.img, p.size, p.price, op.quantity) " +
+  @Query("SELECT NEW com.student.backend.order.MineOrderDTO(o.orderId, o.status, o.createdAt," +
+          "p.productId, p.name, p.size, p.price, op.quantity) " +
           "FROM _order o " +
           "JOIN _orderProduct op ON o.orderId = op.order.orderId " +
           "JOIN _product p ON op.product.productId = p.productId " +

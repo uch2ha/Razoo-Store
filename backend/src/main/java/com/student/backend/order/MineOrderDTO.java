@@ -18,7 +18,6 @@ public class MineOrderDTO
   private LocalDateTime createdAt;
   private UUID productId;
   private String productName;
-  private String productImage;
   private String productSize;
   private Float productPrice;
   private int productQuantity;
