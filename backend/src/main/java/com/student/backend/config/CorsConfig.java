@@ -12,7 +12,8 @@ public class CorsConfig implements WebMvcConfigurer
   {
     registry.addMapping("/**")
             .allowedOrigins("http://localhost:5173", "http://16.16.91.123:5173",
-                    "http://ec2-16-16-91-123.eu-north-1.compute.amazonaws.com:5173")
+                    "http://ec2-16-16-91-123.eu-north-1.compute.amazonaws.com:5173",
+                    "https://razoo-store.netlify.app")
             .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
             .allowedHeaders("*")
             .exposedHeaders("Access-Control-Allow-Origin");
