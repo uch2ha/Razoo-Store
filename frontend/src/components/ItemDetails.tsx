@@ -58,7 +58,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
         {productId && <img src={product?.imgBlob} alt="My Image" className="max-h-[70%]" />}
         <img src={logo} className="absolute top-7 left-7 w-[90px]" />
       </div>
-      <div className="w-[48%] bg-[#f2f2f0] flex justify-center items-center -tr-md -br-md">
+      <div className="w-[48%] bg-[#f2f2f0] flex justify-center items-center -tr-md -br-md overflow-x-scroll">
         <div className="h-[80%] w-[75%] mx-auto">
           <div className="border-b-[2px]  h-1/3 flex flex-col justify-end px-[8%]">
             <div className="text-3xl pb-[5%] uppercase font-[500]">
@@ -69,8 +69,8 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
               {product.price}$ &nbsp;&nbsp;|&nbsp;&nbsp; <span>{product.size}</span>
             </p>
           </div>
-          <div className="px-[8%] h-2/3 flex flex-col justify-start items-start">
-            <div className="py-8 xl:text-lg lg:text-base">
+          <div className="px-[8%] pb-10 flex flex-col justify-start items-start ">
+            <div className="py-8 xl:text-lg lg:text-base ">
               <p>{product.description}</p>
               <p className="pb-[5%]">{product.instruction}</p>
             </div>
