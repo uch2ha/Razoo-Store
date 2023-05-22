@@ -29,7 +29,11 @@ spring:
   config:
     import: optional:file:./backend/.env[.properties]
 
-
+aws:
+  region: eu-north-1
+  s3:
+    buckets:
+      bucket: razoo-store
 #logging:
 #  level:
 #    org.springframework.data: debug

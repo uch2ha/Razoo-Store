@@ -16,7 +16,7 @@ export type IOrderProduct = {
 
 export type IProduct = {
   productId: string
-  img: string
+  imgBlob: string
   name: string
   description: string
   instruction: string

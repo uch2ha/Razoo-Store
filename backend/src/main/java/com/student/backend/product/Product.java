@@ -53,8 +53,11 @@ public class Product
   @Enumerated(EnumType.STRING) //  save as String in db
   private Category category;
 
-  @Column(nullable = false)
-  private String img;
+  private UUID img;
+
+  // all fixed products' img store in fixed folder on s3
+  // all non-fixed will be store in "new" folder
+  private boolean isFixedProduct = false;
 
 
   private LocalDateTime createdAt = LocalDateTime.now();

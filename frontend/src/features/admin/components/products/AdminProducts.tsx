@@ -7,17 +7,22 @@ import ProductsGridComponent from '../../../productsGrid/components/ProductsGrid
 import { RootState } from '../../../../store/store'
 import { IProduct } from '../../../../types'
 import AddEditComponent from '../AddEditComponent'
-import { useGetAllProductsQuery } from '../../../../store/api/products.api'
 
-const initProduct: IProduct = {
-  productId: '',
-  img: 'shampoo',
-  name: '',
-  description: '',
-  instruction: '',
-  category: 'SHAMPOO',
-  size: '50ml',
-  price: 0
+export type IServerProduct = IProduct & {
+  img?: string
+}
+
+const initProduct: IServerProduct = {
+  ...{
+    productId: '',
+    imgBlob: '',
+    name: '',
+    description: '',
+    instruction: '',
+    category: 'SHAMPOO',
+    size: '50ml',
+    price: 0
+  }
 }
 
 interface IAdminProductsProps {
@@ -38,6 +43,7 @@ const AdminProducts: FC<IAdminProductsProps> = ({ setProductId }) => {
   // if isEditProductId is equal to number then fetch product by id
   // and set this product to useState
   const productById = getProductById(isEditProductId !== null ? isEditProductId : null)
+
   // if not use initProduct instead
   const product = isEditProductId !== null && productById ? productById : initProduct
 

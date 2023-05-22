@@ -31,7 +31,7 @@
   "products": [
     {
       "id": "0",
-      "img": "0",
+      "img": "a6674e0d-251e-473a-906c-d59942421306",
       "name": "Color-Protecting",
       "description": "This color-protecting shampoo is designed to gently cleanse and protect color-treated hair. Formulated with a blend of natural extracts and antioxidants, it helps to prevent fading and maintain vibrancy while restoring moisture and shine.",
       "instruction": "To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
@@ -41,7 +41,7 @@
     },
     {
       "id": "1",
-      "img": "1",
+      "img": "c3964fd4-3bb9-4ba3-8d02-66bea7b246ee",
       "name": "Nourishing",
       "description": "This deeply nourishing hair mask is designed to revive and restore dry, damaged hair. Formulated with a blend of natural oils and proteins, it helps to strengthen and protect hair while delivering intense moisture to each strand.",
       "instruction": "To use, apply a generous amount to clean, damp hair and comb through from root to tip. Leave on for 5-10 minutes, then rinse thoroughly with warm water. For best results, use once or twice a week.",
@@ -51,7 +51,7 @@
     },
     {
       "id": "2",
-      "img": "2",
+      "img": "ba5d9368-3878-4a50-ba8c-a59bb68eb820",
       "name": "Smoothing",
       "description": "This lightweight, non-greasy hair serum is designed to smooth frizz, tame flyaways, and add shine to hair. Formulated with a blend of nourishing oils and vitamins, it helps to protect hair from heat damage and environmental stressors.",
       "instruction": "To use, apply a small amount to clean, damp hair and work through from mid-lengths to ends. Style as desired.",
@@ -61,7 +61,7 @@
     },
     {
       "id": "3",
-      "img": "3",
+      "img": "8b0f1ba3-a6a0-4c2e-ae73-44d4d62ff817",
       "name": "Clarifying",
       "description": "This clarifying shampoo is designed to remove build-up and impurities from hair, leaving it feeling fresh and clean. Formulated with gentle cleansing agents and a blend of essential oils, it helps to purify and balance the scalp while promoting healthy hair growth.",
       "instruction": "To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and repeat if necessary. For best results, follow with a conditioner or hair mask.",
@@ -71,7 +71,7 @@
     },
     {
       "id": "4",
-      "img": "4",
+      "img": "a6c1f72d-7252-4a2c-a5fa-0d75d1c6c1f5",
       "name": "Hydrating Leave-In",
       "description": "This hydrating leave-in conditioner is designed to detangle, smooth, and nourish hair without weighing it down. Formulated with a blend of natural oils and plant-based proteins, it helps to strengthen and protect hair while delivering essential moisture to each strand.",
       "instruction": "To use, apply a small amount to clean, damp hair and comb through from mid-lengths to ends. Style as desired.",
@@ -81,7 +81,7 @@
     },
     {
       "id": "5",
-      "img": "5",
+      "img": "3ffaa99b-343f-48fa-838d-13946eeba541",
       "name": "Repairing",
       "description": "This repairing hair oil is designed to restore and revitalize damaged hair, leaving it looking and feeling healthier. Formulated with a blend of nourishing oils and vitamins, it helps to strengthen and protect hair while delivering intense moisture and shine.",
       "instruction": "To use, apply a small amount to clean, damp hair and work through from mid-lengths to ends. Style as desired.",
@@ -91,7 +91,7 @@
     },
     {
       "id": "6",
-      "img": "6",
+      "img": "507faaf2-681c-4782-b0f6-9c0247b9d589",
       "name": "Volumizing Hair Mousse",
       "description": "This volumizing hair mousse is designed to add body and fullness to fine or limp hair. Formulated with a blend of lightweight ingredients, it provides flexible hold and volume without weighing hair down.",
       "instruction": "To use, shake can well and dispense a small amount into palm. Apply evenly to damp hair and style as desired.",
@@ -101,7 +101,7 @@
     },
     {
       "id": "7",
-      "img": "7",
+      "img": "fb6806b5-0c1f-42e8-b161-18158e4ca3bf",
       "name": "Clarifying",
       "description": "This clarifying shampoo is designed to deeply cleanse and purify hair, removing buildup and residue from styling products, hard water, and pollution. Formulated with a blend of natural extracts and antioxidants, it helps to restore hair's natural balance and shine.",
       "instruction": "To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
@@ -111,7 +111,7 @@
     },
     {
       "id": "8",
-      "img": "8",
+      "img": "e792e721-53f8-4be4-bc57-9a15b3b1ff6a",
       "name": "Curl-Defining Cream",
       "description": "This curl-defining cream is designed to enhance and define natural curls, leaving them soft, bouncy, and frizz-free. Formulated with a blend of moisturizing oils and botanicals, it helps to nourish and protect hair while providing flexible hold and definition.",
       "instruction": "To use, apply a small amount to clean, damp hair and scrunch or twist curls. Allow to air dry or diffuse for best results.",
@@ -121,7 +121,7 @@
     },
     {
       "id": "9",
-      "img": "9",
+      "img": "3417ba88-df2f-4694-8e29-3162533ac8ca",
       "name": "Scalp-Soothing",
       "description": "This scalp-soothing shampoo is designed to calm and comfort sensitive or irritated scalps. Formulated with a blend of natural ingredients, it helps to reduce inflammation and redness while gently cleansing hair.",
       "instruction": "To use, apply a small amount to wet hair and massage into the scalp and roots. Rinse thoroughly and follow with a conditioner or hair mask.",
@@ -131,7 +131,7 @@
     },
     {
       "id": "10",
-      "img": "10",
+      "img": "ef29daac-fa4a-4d82-a2b7-661726447012",
       "name": "Repairing",
       "description": "This repairing hair mask is designed to deeply nourish and repair damaged hair, leaving it feeling soft, smooth, and healthy. Formulated with a blend of proteins and natural oils, it helps to strengthen and protect hair while restoring moisture and shine.",
       "instruction": "To use, apply a generous amount to clean, damp hair and comb through from root to tip. Leave on for 5-10 minutes, then rinse thoroughly with warm water. For best results, use once or twice a week.",
@@ -141,7 +141,7 @@
     },
     {
       "id": "11",
-      "img": "11",
+      "img": "51bae1d9-e537-41c8-a9c7-e79cf826fc60",
       "name": "Smoothing Hair Serum",
       "description": "This smoothing hair mask is designed to tame frizz and flyaways while leaving hair soft, silky, and manageable. Formulated with a blend of natural oils and butters, it helps to hydrate and nourish hair while smoothing the cuticle.",
       "instruction": "To use, apply a generous amount to clean, damp hair and comb through from root to tip. Leave on for 5-10 minutes, then rinse thoroughly with warm water. For best results, use once a week.",
@@ -151,7 +151,7 @@
     },
     {
       "id": "12",
-      "img": "12",
+      "img": "704a2c90-d055-4c18-b68c-cbf662e6edb9",
       "name": "Leave-In",
       "description": "This leave-in conditioner is designed to hydrate, detangle, and protect hair from heat and environmental damage. Formulated with a blend of natural oils and proteins, it helps to nourish and strengthen hair while leaving it soft and manageable.",
       "instruction": "To use, apply a small amount to clean, damp hair and comb through from root to tip. Style as desired.",
@@ -161,7 +161,7 @@
     },
     {
       "id": "13",
-      "img": "13",
+      "img": "d104a55d-db0a-4409-b812-c73d02d9a8a8",
       "name": "Dry Shampoo",
       "description": "This dry shampoo is designed to refresh and revive hair between washes, absorbing excess oil and sweat while adding volume and texture. Formulated with a blend of natural powders and fragrances, it leaves hair feeling clean and refreshed.",
       "instruction": "To use, shake can well and hold 6-8 inches from scalp. Spray evenly onto roots and massage with fingertips. Brush through hair to distribute product.",
@@ -171,7 +171,7 @@
     },
     {
       "id": "14",
-      "img": "14",
+      "img": "02219fd6-b9fd-4347-8bf0-98c46edad4a9",
       "name": "Intensive Hair Serum",
       "description": "This intensive hair serum is designed to repair and protect hair from damage caused by heat, styling, and environmental stressors. Formulated with a blend of natural oils and antioxidants, it helps to strengthen and nourish hair while smoothing the cuticle and reducing frizz.",
       "instruction": "To use, apply a small amount to clean, damp hair and comb through from root to tip. Style as desired.",
@@ -181,7 +181,7 @@
     },
     {
       "id": "15",
-      "img": "15",
+      "img": "5f8bf7e7-527c-4e9c-bd71-9303819dd3ef",
       "name": "Curl Defining",
       "description": "This curl defining hair gel is designed to enhance and define natural curls, providing long-lasting hold and frizz control. Formulated with a blend of natural ingredients and polymers, it helps to shape and sculpt curls while adding shine and bounce.",
       "instruction": "To use, apply a small amount to clean, damp hair and scrunch from the ends to the roots. Diffuse or air dry hair for best results.",

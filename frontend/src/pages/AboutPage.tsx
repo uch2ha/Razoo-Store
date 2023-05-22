@@ -1,5 +1,5 @@
 // packages
-import React, { FC } from 'react'
+import { FC } from 'react'
 // components
 import NavBar from '../components/NavBar'
 import aboutPageImg from '../assets/aboutPageImg.png'
