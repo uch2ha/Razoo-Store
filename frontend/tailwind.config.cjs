@@ -13,7 +13,10 @@ module.exports = {
     colors: {
       bgColor: '#e9e7e2',
       white: '#f9f9f9',
-      black: '#070707'
+      black: '#070707',
+      gray: '#666666',
+      transparent: 'transparent',
+      none: 'none'
     },
     fontFamily: {
       garamond: ['Cormorant Garamond', 'serif'],

@@ -18,9 +18,8 @@ public class App
 }
 
 //TODO
+// BE SECURITY PART connectionTimeout=20000, maximumPoolSize=5
 // Admin EDit losing focus FE
-// Cant input float in ProductEdit price
-// Admin-Users FE cannot get token from LS
 // Docker FE yarn dev change to -> ???? production
 
 //-----------------------------

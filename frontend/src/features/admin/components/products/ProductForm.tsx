@@ -123,7 +123,7 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
         </div>
         <button
           type="submit"
-          className="inline-block py-3 px-10 border border-transparent text-sm font-medium  text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          className="inline-block py-4 px-10 border border-black text-sm font-medium  text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           Create / Edit Product
         </button>
       </form>

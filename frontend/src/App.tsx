@@ -14,6 +14,7 @@ import AdminPage from './pages/AdminPage'
 import { useGetAllProductsQuery } from './store/api/products.api'
 import { useDispatch } from 'react-redux'
 import { productsActions } from './store/products/products.slice'
+import CheckoutPage from './pages/CheckoutPage'
 
 interface IRouteProps {
   children: React.ReactNode
@@ -74,6 +75,14 @@ const App: FC = () => {
             <AdminProtectedRoute>
               <AdminPage />
             </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <UserProtectedRoute>
+              <CheckoutPage />
+            </UserProtectedRoute>
           }
         />
         <Route path="*" element={<MissingPage />} />

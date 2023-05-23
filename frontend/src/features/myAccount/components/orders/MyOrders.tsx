@@ -1,5 +1,5 @@
 // packages
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 // components
 import Order from './Order'
 import { useGetAllMineOrdersQuery } from '../../../../store/api/orders.api'
@@ -7,12 +7,15 @@ import { useOrderDataFilter } from '../../hooks/useOrderDataFiler'
 import { IOrder } from '../../../../types'
 
 const MyOrders: FC = () => {
-  const { data, isLoading, isError } = useGetAllMineOrdersQuery()
-  let orders: IOrder[] = []
+  const [orders, setOrders] = useState<IOrder[]>([])
 
-  if (data) {
-    orders = useOrderDataFilter(data)
-  }
+  const { data, isLoading, isError } = useGetAllMineOrdersQuery()
+
+  useEffect(() => {
+    if (data) {
+      setOrders(useOrderDataFilter(data))
+    }
+  }, [isLoading])
 
   return (
     <>

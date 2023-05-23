@@ -20,7 +20,7 @@ VALUES ('7e25398e-2931-4216-aa4a-2ed7a0a96eab', 'e7c7f82f-8a7b-4b84-bb63-5a21abf
         'fae37726-8a6a-4b09-9989-8247242d38f1', '2');
 INSERT INTO _order_product (order_product_id, order_id, product_id, quantity)
 VALUES ('1c749e13-1ff5-4919-a4b4-17f35a0d542d', 'e7c7f82f-8a7b-4b84-bb63-5a21abf3d58d',
-        'f4c78b10-2a9c-4f4c-bd30-18f26a7d1504', '2');
+        '835549f1-53c8-43df-b5c2-04bbbef1aee5', '2');
 
 -- Dmitry's order 2
 INSERT INTO _order (order_id, user_id, status, created_at)

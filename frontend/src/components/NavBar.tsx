@@ -29,6 +29,7 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
     dispatch(userActions.logOut())
     deleteTokenFromLS()
     googleLogout()
+    window.location.reload()
   }
 
   useEffect(() => {

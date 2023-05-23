@@ -1,6 +1,7 @@
 // packages
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getTokenFromLS } from '../../utilities/localStorage'
+import { ICreateOrder } from '../../features/checkuot/components/Checkout'
 
 export type IMineOrderData = {
   orderId: string
@@ -27,8 +28,18 @@ export const ordersApi = createApi({
           Authorization: `Bearer ${getTokenFromLS()}`
         }
       })
+    }),
+    createOrder: build.mutation<any, ICreateOrder>({
+      query: (body) => ({
+        url: '/orders',
+        method: 'POST',
+        body,
+        headers: {
+          Authorization: `Bearer ${getTokenFromLS()}`
+        }
+      })
     })
   })
 })
 
-export const { useGetAllMineOrdersQuery } = ordersApi
+export const { useGetAllMineOrdersQuery, useCreateOrderMutation } = ordersApi

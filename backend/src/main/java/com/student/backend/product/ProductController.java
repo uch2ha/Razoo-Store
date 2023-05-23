@@ -45,7 +45,9 @@ public class ProductController
       return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
     }
 
-    return new ResponseEntity<>(product, HttpStatus.OK);
+    ProductDTO result = ProductMapper.INSTANCE.productToProductDTO(product.get());
+
+    return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
   @DeleteMapping("/{productId}")

@@ -6,6 +6,7 @@ export type IDecodedToken = {
   sub: string
   firstName: string
   lastName: string
+  userId: string
   role: 'ADMIN' | 'USER'
   exp: number
   iat: number

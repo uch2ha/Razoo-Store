@@ -78,6 +78,7 @@ public class AuthenticationService
   private Map<String, Object> createExtraClaims(User user)
   {
     Map<String, Object> extraClaims = new HashMap<String, Object>();
+    extraClaims.put("userId", user.getUserId());
     extraClaims.put("firstName", user.getFirstName());
     extraClaims.put("lastName", user.getLastName());
     extraClaims.put("role", user.getRole());
