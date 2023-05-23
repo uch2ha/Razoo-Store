@@ -25,21 +25,21 @@ export const cartSlice = createSlice({
         })
       }
     },
-    increaseItemAmount: (state, action: PayloadAction<any>) => {
+    increaseItemAmount: (state, action: PayloadAction<string>) => {
       state.forEach((item) => {
         if (item.productId === action.payload) {
           item.amount++
         }
       })
     },
-    decreaseItemAmount: (state, action: PayloadAction<any>) => {
+    decreaseItemAmount: (state, action: PayloadAction<string>) => {
       state.forEach((item) => {
         if (item.productId === action.payload) {
           if (item.amount !== 1) item.amount--
         }
       })
     },
-    removeItem: (state, action: PayloadAction<any>) => {
+    removeItem: (state, action: PayloadAction<string>) => {
       const index = state.findIndex((item) => item.productId === action.payload)
       if (index !== -1) {
         state.splice(index, 1)

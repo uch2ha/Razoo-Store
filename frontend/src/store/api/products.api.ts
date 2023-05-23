@@ -36,6 +36,11 @@ export const productsApi = createApi({
         url: '/products'
       })
     }),
+    getProductById: build.query<IProduct, string>({
+      query: (id) => ({
+        url: `/products/${id}`
+      })
+    }),
     saveProduct: build.mutation<IProduct, IServerProduct>({
       query: (body) => ({
         url: `/products`,
@@ -87,5 +92,7 @@ export const {
   useSaveProductMutation,
   useDeleteProductMutation,
   useUploadProductImageMutation,
-  useGetAllProductsWOImgQuery
+  useGetAllProductsWOImgQuery,
+  useGetProductByIdQuery,
+  useLazyGetProductByIdQuery
 } = productsApi

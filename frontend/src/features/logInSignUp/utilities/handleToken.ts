@@ -7,6 +7,7 @@ export const handleTokenDecode = (token: IToken): IUser => {
   const decoded: IDecodedToken = jwt_decode(token.token)
 
   const user: IUser = {
+    userId: decoded.userId,
     firstName: decoded.firstName,
     lastName: decoded.lastName,
     email: decoded.sub,

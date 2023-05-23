@@ -1,50 +1,69 @@
 import React, { FC, useEffect, useState } from 'react'
 import CartSide from './ProductSide'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
-import { useGetAllProductsWOImgQuery } from '../../../store/api/products.api'
+import { useLazyGetProductByIdQuery } from '../../../store/api/products.api'
 import { IProduct } from '../../../types'
 import UserInfoSide from './UserInfoSide'
 import Button from '../../../components/Button'
 import { useNavigate } from 'react-router-dom'
+import { cartActions } from '../../../store/cart/cart.slice'
+import { useCreateOrderMutation } from '../../../store/api/orders.api'
 
 export type ICartItemsProduct = {
   amount: number
   product: IProduct
-  productPrice: number
+}
+
+export type ICreateOrder = {
+  userId: string
+  products: {
+    productId: string
+    quantity: number
+  }[]
 }
 
 const Checkout: FC = () => {
-  const [existingProducts, setExistingProducts] = useState<ICartItemsProduct[]>([])
+  const [fetchedItems, setFetchedItems] = useState<ICartItemsProduct[]>([])
 
   const cartItems = useSelector((state: RootState) => state.cart)
   const user = useSelector((state: RootState) => state.user)
-  const { data, isLoading, isError } = useGetAllProductsWOImgQuery()
 
+  const [triggerGetProductById] = useLazyGetProductByIdQuery()
+  const [triggerCreateOrder] = useCreateOrderMutation()
+
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // fetch products from BE and
-  // remove all not existing products
+  // check if product exist
+  // if yes, add it to new array
+  // if no, delete from cart
   useEffect(() => {
-    if (data) {
-      const updatedProducts: ICartItemsProduct[] = []
-      cartItems.forEach((cartItem) => {
-        const existingProduct = data.find((d) => d.productId === cartItem.productId)
-        if (existingProduct) {
-          const { productId, ...itemWithoutProductId } = cartItem // Destructure and omit 'productId'
-          const updatedItem: ICartItemsProduct = {
-            ...itemWithoutProductId,
-            product: existingProduct
-          } // Add 'product'
-          updatedProducts.push(updatedItem)
+    const fetchData = async () => {
+      const updatedItems: ICartItemsProduct[] = []
+      for (const item of cartItems) {
+        const { data } = await triggerGetProductById(item.productId)
+        if (data) {
+          updatedItems.push({ amount: item.amount, product: data })
+        } else {
+          dispatch(cartActions.removeItem(item.productId))
         }
-      })
-      setExistingProducts(updatedProducts)
+      }
+      setFetchedItems(updatedItems)
     }
-  }, [isLoading])
 
-  function handlePayMent(label: string): void {
-    throw new Error('Function not implemented.')
+    fetchData()
+  }, [cartItems])
+
+  const handlePayMent = () => {
+    if (cartItems && user.userId) {
+      const orderRequest: ICreateOrder = { userId: user.userId, products: [] }
+      cartItems.forEach((item) => {
+        orderRequest.products.push({ productId: item.productId, quantity: item.amount })
+      })
+
+      console.log(triggerCreateOrder(orderRequest))
+    }
   }
 
   const handleReturn = () => {
@@ -55,11 +74,11 @@ const Checkout: FC = () => {
     <div className="w-full h-[calc(100vh-103px-168px)] border-t-[1px] flex justify-between">
       <div className="w-[60%] border-r-[1px] pr-10 overflow-y-scroll">
         <UserInfoSide user={user} />
-        <div className="flex flex-col items-start space-y-4">
+        <div className="flex flex-col items-start space-y-4 mb-12">
           <Button
             clickHandler={handlePayMent}
             label="Complete payment"
-            styles="w-[30%] bg-[#898e68] py-4 text-white text-lg"
+            styles="w-fit bg-[#898e68] py-4 px-10 text-white text-lg"
           />
           <Button
             clickHandler={handleReturn}
@@ -68,13 +87,7 @@ const Checkout: FC = () => {
           />
         </div>
       </div>
-      <div className="w-[40%]">
-        {isLoading && <h1 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Loading...</h1>}
-        {isError && (
-          <h1 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Something went wrong...</h1>
-        )}
-        {!isLoading && !isError && <CartSide products={existingProducts} />}
-      </div>
+      <div className="w-[40%]">{fetchedItems && <CartSide products={fetchedItems} />}</div>
     </div>
   )
 }

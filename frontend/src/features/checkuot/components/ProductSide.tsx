@@ -10,7 +10,7 @@ const SHIPPING_PRICE = 14
 
 const CartSide: FC<ICardSide> = ({ products }) => {
   const subTotal = products
-    .reduce((sum, product) => sum + product.productPrice * product.amount, 0)
+    .reduce((sum, product) => sum + product.product.price * product.amount, 0)
     .toFixed(2)
 
   const totalPrice = (parseFloat(subTotal) + SHIPPING_PRICE).toFixed(2)

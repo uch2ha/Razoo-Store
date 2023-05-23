@@ -47,7 +47,7 @@ const CartItem: FC<ICartItemProps> = ({ itemId, amount, setProductId }) => {
       <div
         className="w-[29%] h-[150px] flex items-center justify-between btn"
         onClick={() => setProductId(itemId)}>
-        <div className="w-1/3 ">
+        <div className="w-1/3 flex justify-center">
           <div className="h-fit w-fit border-[1px] p-2">
             {product?.imgBlob && <img src={product?.imgBlob} alt="My Image" className="w-[100%]" />}
           </div>

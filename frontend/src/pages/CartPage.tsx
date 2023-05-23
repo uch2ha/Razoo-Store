@@ -13,7 +13,7 @@ const CartPage: FC<ICartPageProps> = ({ setProductId }) => {
   return (
     <>
       <NavBar />
-      <div className="h-full w-[82%] flex justify-start items-center text-center flex-col my-2">
+      <div className="h-full w-[82%] flex justify-start items-center text-center flex-col">
         <h2 className="my-16 font-[700]">SHOPPING BAG</h2>
         {setProductId && <Cart setProductId={setProductId} />}
       </div>
