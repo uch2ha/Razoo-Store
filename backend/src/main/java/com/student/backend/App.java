@@ -18,7 +18,8 @@ public class App
 }
 
 //TODO
-// BE SECURITY PART connectionTimeout=20000, maximumPoolSize=5
+// img sometimes not uploaded, mb size problem
+// SECURITY PART connectionTimeout=20000, maximumPoolSize=5
 // Admin EDit losing focus FE
 // Docker FE yarn dev change to -> ???? production
 
