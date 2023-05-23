@@ -46,8 +46,6 @@ const Filters: FC = () => {
 
   // handle check or uncheck for filter's categories
   const handleCategoriesCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.id)
-
     dispatch(filtersActions.toggleCategory({ filter: 'category', name: e.target.id }))
   }
 

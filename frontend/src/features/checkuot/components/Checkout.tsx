@@ -62,7 +62,7 @@ const Checkout: FC = () => {
         orderRequest.products.push({ productId: item.productId, quantity: item.amount })
       })
 
-      console.log(triggerCreateOrder(orderRequest))
+      triggerCreateOrder(orderRequest)
     }
   }
 
