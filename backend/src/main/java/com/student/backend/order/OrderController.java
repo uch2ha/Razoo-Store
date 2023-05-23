@@ -48,11 +48,26 @@ public class OrderController
   {
     if (principal instanceof Authentication authentication) {
       User user = (User) authentication.getPrincipal();
-      List<MineOrderDTO> result = orderService.findAllMineOrders(user.getUserId());
+      List<OrderDTObyUserId> result = orderService.findAllOrdersByUserId(user.getUserId());
 
       return new ResponseEntity<>(result, HttpStatus.OK);
     }
     return new ResponseEntity<>("no data", HttpStatus.BAD_REQUEST);
+  }
+
+  @GetMapping("/user/{userId}")
+  public ResponseEntity<Object> findAllByUserId(@PathVariable UUID userId)
+  {
+    Optional<User> user = userService.findById(userId);
+
+    if (user.isEmpty()) {
+      return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
+    }
+
+    List<OrderDTObyUserId> result = orderService.findAllOrdersByUserId(user.get().getUserId());
+
+    return new ResponseEntity<>(result, HttpStatus.OK);
+
   }
 
   @PostMapping()

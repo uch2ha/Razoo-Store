@@ -11,7 +11,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MineOrderDTO
+public class OrderDTObyUserId
 {
   private UUID orderId;
   private Status status;
