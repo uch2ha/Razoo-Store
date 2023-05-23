@@ -21,6 +21,11 @@ public class UserService
     return userRepo.findAll();
   }
 
+  public List<UUID> findAllUsersId()
+  {
+    return userRepo.findAllUsersId();
+  }
+
   public User saveOne(@Valid User user)
   {
     return userRepo.save(user);
