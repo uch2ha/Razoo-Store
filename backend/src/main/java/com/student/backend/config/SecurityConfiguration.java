@@ -57,6 +57,7 @@ public class SecurityConfiguration
           "/api/v*/oauth2/**",
           "/swagger-ui/**",
           "/swagger-ui.html",
+          "/",
           "/v3/api-docs/**"
   };
 
