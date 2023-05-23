@@ -31,6 +31,11 @@ export const productsApi = createApi({
         return Promise.all(transformedProducts)
       }
     }),
+    getAllProductsWOImg: build.query<IProduct[], void>({
+      query: () => ({
+        url: '/products'
+      })
+    }),
     saveProduct: build.mutation<IProduct, IServerProduct>({
       query: (body) => ({
         url: `/products`,
@@ -81,5 +86,6 @@ export const {
   useEditProductMutation,
   useSaveProductMutation,
   useDeleteProductMutation,
-  useUploadProductImageMutation
+  useUploadProductImageMutation,
+  useGetAllProductsWOImgQuery
 } = productsApi

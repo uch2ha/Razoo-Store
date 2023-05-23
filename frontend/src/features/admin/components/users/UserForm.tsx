@@ -13,7 +13,7 @@ interface IUserFormProps {
 
 const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto my-auto">
+    <form onSubmit={handleSubmit} className="w-full py-16 max-w-lg mx-auto my-auto">
       {!user.userId && (
         <>
           <div className="mb-4">
@@ -90,7 +90,7 @@ const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
       </div>
       <button
         type="submit"
-        className="inline-block py-3 px-10 border border-transparent text-sm font-medium  text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        className="inline-block py-4 px-10 border border-black text-sm font-medium  text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
         Create / Edit User
       </button>
     </form>

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import Button from '../../../components/Button'
 import CartItem from './CartItem'
 import { RootState } from '../../../store/store'
+import { useNavigate } from 'react-router-dom'
 
 interface ICartProps {
   setProductId: (id: string) => void
@@ -13,6 +14,8 @@ interface ICartProps {
 const Cart: FC<ICartProps> = ({ setProductId }) => {
   const [total, setTotal] = useState('')
   const cartItems = useSelector((state: RootState) => state.cart)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     calculateTotalPrice()
@@ -26,17 +29,19 @@ const Cart: FC<ICartProps> = ({ setProductId }) => {
     setTotal(total.toFixed(2))
   }
 
-  const test = () => console.log(123)
+  const checkoutHandler = () => {
+    navigate('/checkout')
+  }
 
   return (
     <div className="h-full w-full mb-20">
       {cartItems.length > 0 ? (
         <>
           <div className="flex border-b-[1px] ">
-            <h5 className="w-[29%] text-start text-[#666666]">PRODUCT</h5>
-            <h5 className="w-[23%] text-[#666666]">PRICE</h5>
-            <h5 className="w-[23%] text-[#666666]">AMOUNT</h5>
-            <h5 className="w-[23%] text-[#666666]">SUBTOTAL</h5>
+            <h5 className="w-[29%] text-start text-gray">PRODUCT</h5>
+            <h5 className="w-[23%] text-gray">PRICE</h5>
+            <h5 className="w-[23%] text-gray">AMOUNT</h5>
+            <h5 className="w-[23%] text-gray">SUBTOTAL</h5>
           </div>
           <div>
             {cartItems.map((item) => {
@@ -50,17 +55,16 @@ const Cart: FC<ICartProps> = ({ setProductId }) => {
               )
             })}
           </div>
-
           <div className="border-t-[1px] flex justify-end items-center">
-            <div className="mt-5 w-[19%] ">
-              <div className="mb-1 flex justify-between font-[700]">
+            <div className="mt-5 w-fit ">
+              <div className="mb-1 flex justify-between font-[700] space-x-4">
                 <h3>TOTAL</h3>
                 <h3>{total} $</h3>
               </div>
               <Button
                 label="CHECKOUT"
-                clickHandler={test}
-                styles="bg-[#a0a772] w-full py-[8px] text-white"
+                clickHandler={checkoutHandler}
+                styles="bg-[#a0a772] w-full py-[8px] mt-2 text-white"
               />
             </div>
           </div>
