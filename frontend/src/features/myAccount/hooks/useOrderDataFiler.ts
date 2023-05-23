@@ -1,10 +1,10 @@
-import { IMineOrderData } from '../../../store/api/orders.api'
+import { IAllUsersOrderData } from '../../../store/api/orders.api'
 import { IOrder } from '../../../types'
 
-export const useOrderDataFilter = (data: IMineOrderData[]): IOrder[] => {
+export const useOrderDataFilter = (data: IAllUsersOrderData[]): IOrder[] => {
   const result: IOrder[] = []
 
-  const createOneOrder = (order: IMineOrderData): IOrder => {
+  const createOneOrder = (order: IAllUsersOrderData): IOrder => {
     return {
       orderId: order.orderId,
       status: order.status,
@@ -22,7 +22,7 @@ export const useOrderDataFilter = (data: IMineOrderData[]): IOrder[] => {
     }
   }
 
-  const addNewProduct = (existingOrder: IOrder, order: IMineOrderData) => {
+  const addNewProduct = (existingOrder: IOrder, order: IAllUsersOrderData) => {
     existingOrder.products.push({
       productId: order.productId,
       name: order.productName,

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getTokenFromLS } from '../../utilities/localStorage'
 import { ICreateOrder } from '../../features/checkuot/components/Checkout'
 
-export type IMineOrderData = {
+export type IAllUsersOrderData = {
   orderId: string
   status: 'IN_PROCESS' | 'IN_TRANSIT' | 'DELIVERED' | 'REJECTED'
   createdAt: string
@@ -21,9 +21,17 @@ export const ordersApi = createApi({
     baseUrl: import.meta.env.VITE_BASE_URL + import.meta.env.VITE_API_VERSION
   }),
   endpoints: (build) => ({
-    getAllMineOrders: build.query<IMineOrderData[], void>({
+    getAllMineOrders: build.query<IAllUsersOrderData[], void>({
       query: () => ({
         url: '/orders/mine',
+        headers: {
+          Authorization: `Bearer ${getTokenFromLS()}`
+        }
+      })
+    }),
+    getAllOrdersByUserId: build.query<IAllUsersOrderData[], string>({
+      query: (userId) => ({
+        url: `/orders/user/${userId}`,
         headers: {
           Authorization: `Bearer ${getTokenFromLS()}`
         }
@@ -42,4 +50,8 @@ export const ordersApi = createApi({
   })
 })
 
-export const { useGetAllMineOrdersQuery, useCreateOrderMutation } = ordersApi
+export const {
+  useGetAllMineOrdersQuery,
+  useCreateOrderMutation,
+  useLazyGetAllOrdersByUserIdQuery
+} = ordersApi

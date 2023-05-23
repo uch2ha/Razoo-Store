@@ -34,6 +34,18 @@ public class UserController
     return new ResponseEntity<>(users, HttpStatus.OK);
   }
 
+  @GetMapping("/ids")
+  public ResponseEntity<Object> findAllUsersId(Principal principal)
+  {
+    if (!checkRoleAccess.onlyAdmin(principal)) {
+      return new ResponseEntity<>("no access", HttpStatus.FORBIDDEN);
+    }
+
+    List<UUID> ids = userService.findAllUsersId();
+
+    return new ResponseEntity<>(ids, HttpStatus.OK);
+  }
+
   @PostMapping
   public ResponseEntity<Object> saveOne(@RequestBody User user)
   {

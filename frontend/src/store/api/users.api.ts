@@ -16,6 +16,14 @@ export const usersApi = createApi({
         }
       })
     }),
+    getAllUserIds: build.query<string[], void>({
+      query: () => ({
+        url: '/ids',
+        headers: {
+          Authorization: `Bearer ${getTokenFromLS()}`
+        }
+      })
+    }),
     saveUser: build.mutation<IUser, IUser>({
       query: (body) => ({
         url: '',
@@ -55,5 +63,6 @@ export const {
   useGetAllUsersQuery,
   useEditUserMutation,
   useDeleteUserMutation,
-  useSaveUserMutation
+  useSaveUserMutation,
+  useGetAllUserIdsQuery
 } = usersApi
