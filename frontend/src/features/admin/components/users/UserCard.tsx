@@ -14,6 +14,8 @@ const UserCard: FC<IUserCardProps> = ({ user, handleEditMod }) => {
   const handleDelete = () => {
     if (user.userId) {
       triggerDeleteUser(user.userId)
+      // cant remove reload(), so much to rewrite
+      // TODO fix this
       window.location.reload()
     }
   }

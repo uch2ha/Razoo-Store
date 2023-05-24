@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { cartActions } from '../../../store/cart/cart.slice'
 import { IProduct } from '../../../types'
 import { useDeleteProductMutation } from '../../../store/api/products.api'
+import { productsActions } from '../../../store/products/products.slice'
 
 interface ICardProps {
   product: IProduct
@@ -23,9 +24,11 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     setProductId(product.productId)
   }
 
-  const deleteProductId = () => {
-    triggerDeleteProduct(product.productId)
-    window.location.reload()
+  const deleteProductId = async () => {
+    const res = await triggerDeleteProduct(product.productId)
+    if ('data' in res) {
+      dispatch(productsActions.deleteProductById(res.data.productId))
+    }
   }
 
   return (

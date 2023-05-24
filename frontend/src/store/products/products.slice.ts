@@ -25,6 +25,7 @@ export const productsSlice = createSlice({
           product.category = action.payload.category
           product.size = action.payload.size
           product.price = action.payload.price
+          product.imgBlob = action.payload.imgBlob
         }
       })
     },

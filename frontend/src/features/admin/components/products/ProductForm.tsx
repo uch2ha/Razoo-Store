@@ -17,9 +17,11 @@ const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, produc
   const [img, setImg] = useState<FormData>()
   const [triggerUploadImg] = useUploadProductImageMutation()
 
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
     if (img && product.productId) {
-      triggerUploadImg({ productId: product.productId, formData: img })
+      await triggerUploadImg({ productId: product.productId, formData: img })
     }
     handleSubmit(e)
   }

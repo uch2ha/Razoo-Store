@@ -9,6 +9,9 @@ import { IUser } from '../../../types'
 import { useEditProductMutation, useSaveProductMutation } from '../../../store/api/products.api'
 import { useEditUserMutation, useSaveUserMutation } from '../../../store/api/users.api'
 import { IServerProduct } from './products/AdminProducts'
+import { useDispatch } from 'react-redux'
+import { productsActions } from '../../../store/products/products.slice'
+import { useGetProductImg } from '../../../hooks/useGetProductImg'
 
 interface IAddEditComponentProps {
   isVisible: boolean
@@ -29,6 +32,8 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   const [triggerSaveProduct] = useSaveProductMutation()
   const [triggerEditUser] = useEditUserMutation()
   const [triggerSaveUser] = useSaveUserMutation()
+
+  const dispatch = useDispatch()
 
   const checkIsEditMode = (propsItem: IServerProduct | IUser) => {
     if ('productId' in propsItem) return propsItem.productId !== ''
@@ -72,18 +77,40 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     }
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // handle product changes
     if (isProduct) {
       // edit
       if (isEditMod) {
-        triggerEditProduct(item as IServerProduct)
+        const res = await triggerEditProduct(item as IServerProduct)
+        if ('data' in res) {
+          const imgUrl = await useGetProductImg(res.data.productId)
+          const updatedData = {
+            ...res.data,
+            imgBlob: ''
+          }
+          if (imgUrl) {
+            updatedData.imgBlob = imgUrl
+          }
+          dispatch(productsActions.editProductById(updatedData))
+        }
       }
       // add
       if (!isEditMod) {
-        triggerSaveProduct(item as IServerProduct)
+        const res = await triggerSaveProduct(item as IServerProduct)
+        if ('data' in res) {
+          const imgUrl = await useGetProductImg(res.data.productId)
+          const updatedData = {
+            ...res.data,
+            imgBlob: ''
+          }
+          if (imgUrl) {
+            updatedData.imgBlob = imgUrl
+          }
+          dispatch(productsActions.addProduct(updatedData))
+        }
       }
     }
 
@@ -91,15 +118,17 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     if (!isProduct) {
       // edit
       if (isEditMod) {
-        triggerEditUser(item as IUser)
+        await triggerEditUser(item as IUser)
       }
       // add
       if (!isEditMod) {
-        triggerSaveUser(item as IUser)
+        await triggerSaveUser(item as IUser)
       }
+      // cant remove reload(), so much to rewrite
+      // TODO fix this
+      window.location.reload()
     }
     handleClose()
-    window.location.reload()
   }
 
   return (

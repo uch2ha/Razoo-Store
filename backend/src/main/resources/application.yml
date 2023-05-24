@@ -49,6 +49,6 @@ aws:
 
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 ##spring.datasource.hikari.connectionTimeout=20000
-##spring.datasource.hikari.maximumPoolSize=5
+##spring.datasource.hikari.maximumPoolSize=5 / 10?
 ##
 ##spring.jpa.hibernate.properties.hibernate.temp.use_jdbc_metadata_defaults=false

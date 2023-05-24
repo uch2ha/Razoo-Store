@@ -18,10 +18,9 @@ public class App
 }
 
 //TODO
-// img sometimes not uploaded, mb size problem
+// s3 public dont work
+// FE logOut w/o reload()????? problem with caching or something
 // SECURITY PART connectionTimeout=20000, maximumPoolSize=5
-// Admin EDit losing focus FE
-// Docker FE yarn dev change to -> ???? production
 
 //-----------------------------
 
