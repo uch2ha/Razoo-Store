@@ -12,8 +12,12 @@ interface IUserFormProps {
 }
 
 const UserForm: FC<IUserFormProps> = ({ handleChange, handleSubmit, user }) => {
+  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    handleSubmit(e)
+  }
   return (
-    <form onSubmit={handleSubmit} className="w-full py-16 max-w-lg mx-auto my-auto">
+    <form onSubmit={(e) => submitForm(e)} className="w-full py-16 max-w-lg mx-auto my-auto">
       {!user.userId && (
         <>
           <div className="mb-4">

@@ -9,6 +9,8 @@ import Button from '../../../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { cartActions } from '../../../store/cart/cart.slice'
 import { useCreateOrderMutation } from '../../../store/api/orders.api'
+import { popUpError700ms, popUpSuccess700ms } from '../../../components/notifications'
+import { ShowConfirmation } from '../../../components/PopUpConfirmation'
 
 export type ICartItemsProduct = {
   amount: number
@@ -55,14 +57,23 @@ const Checkout: FC = () => {
     fetchData()
   }, [cartItems])
 
-  const handlePayMent = () => {
+  const askConfirmation = () => {
+    ShowConfirmation((confirmed) => {
+      if (confirmed) handlePayMent()
+    })
+  }
+
+  const handlePayMent = async () => {
     if (cartItems && user.userId) {
       const orderRequest: ICreateOrder = { userId: user.userId, products: [] }
       cartItems.forEach((item) => {
         orderRequest.products.push({ productId: item.productId, quantity: item.amount })
       })
 
-      triggerCreateOrder(orderRequest)
+      const res = await triggerCreateOrder(orderRequest)
+
+      if ('data' in res) popUpSuccess700ms('Order creation succeed')
+      else popUpError700ms('Something went wrong')
     }
   }
 
@@ -76,14 +87,14 @@ const Checkout: FC = () => {
         <UserInfoSide user={user} />
         <div className="flex flex-col items-start space-y-4 mb-12">
           <Button
-            clickHandler={handlePayMent}
+            clickHandler={askConfirmation}
             label="Complete payment"
             styles="w-fit bg-[#898e68] py-4 px-10 text-white text-lg"
           />
           <Button
             clickHandler={handleReturn}
             label="RETURN TO CART"
-            styles="underline underline-offset-4 text-xl"
+            styles="underline underline-offset-4 pt-4 text-xl"
           />
         </div>
       </div>

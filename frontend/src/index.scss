@@ -52,3 +52,15 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+@layer utilities {
+  /* Pop Ups */
+  .toastBody {
+    @apply xl:text-xl text-lg;
+  }
+
+  // div make it "!important"
+  div.toastProgress {
+    background: #898e68;
+  }
+}

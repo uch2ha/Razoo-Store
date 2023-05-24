@@ -125,7 +125,7 @@ public class ProductController
 
   @PostMapping(value = "/{productId}/product-image",
           consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public ResponseEntity<String> uploadProductImage(@PathVariable("productId") UUID productId,
+  public ResponseEntity<Object> uploadProductImage(@PathVariable("productId") UUID productId,
                                                    @RequestParam("file") MultipartFile file)
   {
     Optional<Product> existingProduct = productService.findById(productId);
@@ -139,7 +139,9 @@ public class ProductController
     }
 
     productService.uploadProductImage(existingProduct.get(), file);
-    return new ResponseEntity<>("OK", HttpStatus.OK);
+    Map<String, String> result = new HashMap<>();
+    result.put("Success", "true");
+    return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
   // validation

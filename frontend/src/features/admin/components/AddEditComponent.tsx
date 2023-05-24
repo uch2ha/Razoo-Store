@@ -6,12 +6,18 @@ import { CloseBtn } from '../../../assets/svg/CloseBtn'
 import ProductForm from './products/ProductForm'
 import UserForm from './users/UserForm'
 import { IUser } from '../../../types'
-import { useEditProductMutation, useSaveProductMutation } from '../../../store/api/products.api'
+import {
+  useEditProductMutation,
+  useSaveProductMutation,
+  useUploadProductImageMutation
+} from '../../../store/api/products.api'
 import { useEditUserMutation, useSaveUserMutation } from '../../../store/api/users.api'
 import { IServerProduct } from './products/AdminProducts'
 import { useDispatch } from 'react-redux'
 import { productsActions } from '../../../store/products/products.slice'
 import { useGetProductImg } from '../../../hooks/useGetProductImg'
+import { popUpError700ms, popUpSuccess700ms } from '../../../components/notifications'
+import { ShowConfirmation } from '../../../components/PopUpConfirmation'
 
 interface IAddEditComponentProps {
   isVisible: boolean
@@ -32,6 +38,7 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
   const [triggerSaveProduct] = useSaveProductMutation()
   const [triggerEditUser] = useEditUserMutation()
   const [triggerSaveUser] = useSaveUserMutation()
+  const [triggerUploadImg] = useUploadProductImageMutation()
 
   const dispatch = useDispatch()
 
@@ -77,13 +84,30 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const askConfirmation = (e: React.FormEvent<HTMLFormElement>, img?: FormData) => {
+    ShowConfirmation((confirmed) => {
+      if (confirmed) handleSubmit(e, img)
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, img?: FormData) => {
     e.preventDefault()
 
     // handle product changes
     if (isProduct) {
       // edit
       if (isEditMod) {
+        if ('productId' in item && img) {
+          if (item?.productId) {
+            const res = await triggerUploadImg({ productId: item.productId, formData: img })
+
+            if ('data' in res) {
+              popUpSuccess700ms('Image has been uploaded')
+            } else {
+              popUpError700ms('Image was not uploaded')
+            }
+          }
+        }
         const res = await triggerEditProduct(item as IServerProduct)
         if ('data' in res) {
           const imgUrl = await useGetProductImg(res.data.productId)
@@ -95,6 +119,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
             updatedData.imgBlob = imgUrl
           }
           dispatch(productsActions.editProductById(updatedData))
+          popUpSuccess700ms('Succeed')
+        } else {
+          popUpError700ms('Something went wrong')
         }
       }
       // add
@@ -110,6 +137,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
             updatedData.imgBlob = imgUrl
           }
           dispatch(productsActions.addProduct(updatedData))
+          popUpSuccess700ms('Succeed')
+        } else {
+          popUpError700ms('Something went wrong')
         }
       }
     }
@@ -118,15 +148,22 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
     if (!isProduct) {
       // edit
       if (isEditMod) {
-        await triggerEditUser(item as IUser)
+        const res = await triggerEditUser(item as IUser)
+        if ('data' in res) {
+          popUpSuccess700ms('Succeed')
+        } else {
+          popUpError700ms('Something went wrong')
+        }
       }
       // add
       if (!isEditMod) {
-        await triggerSaveUser(item as IUser)
+        const res = await triggerSaveUser(item as IUser)
+        if ('data' in res) {
+          popUpSuccess700ms('Succeed')
+        } else {
+          popUpError700ms('Something went wrong')
+        }
       }
-      // cant remove reload(), so much to rewrite
-      // TODO fix this
-      window.location.reload()
     }
     handleClose()
   }
@@ -139,12 +176,12 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
       {isProduct && (
         <ProductForm
           handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          handleSubmit={askConfirmation}
           product={item as IServerProduct}
         />
       )}
       {!isProduct && (
-        <UserForm handleChange={handleChange} handleSubmit={handleSubmit} user={item as IUser} />
+        <UserForm handleChange={handleChange} handleSubmit={askConfirmation} user={item as IUser} />
       )}
       <div className="absolute top-3 right-3">
         <button onClick={handleClose}>

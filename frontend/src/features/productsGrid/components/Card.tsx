@@ -1,11 +1,19 @@
 // packages
 import { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
+import 'react-toastify/dist/ReactToastify.css'
 // components
 import { cartActions } from '../../../store/cart/cart.slice'
 import { IProduct } from '../../../types'
 import { useDeleteProductMutation } from '../../../store/api/products.api'
 import { productsActions } from '../../../store/products/products.slice'
+import {
+  popUpDeleted,
+  popUpError700ms,
+  popUpProductAddedToCart,
+  popUpSuccess700ms
+} from '../../../components/notifications'
+import { ShowConfirmation } from '../../../components/PopUpConfirmation'
 
 interface ICardProps {
   product: IProduct
@@ -19,15 +27,29 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
   const [triggerDeleteProduct] = useDeleteProductMutation()
 
   const handleClick = (e: MouseEvent) => {
-    if ((e.target as HTMLDivElement).id === 'add-to-cart')
+    if ((e.target as HTMLDivElement).id === 'add-to-cart') {
+      popUpProductAddedToCart(product.name)
       return dispatch(cartActions.addItem({ id: product.productId, price: product.price }))
+    }
+    if ((e.target as HTMLDivElement).id === 'delete-btn') return
+    if ((e.target as HTMLDivElement).id === 'edit-btn') return
+
     setProductId(product.productId)
+  }
+
+  const askConfirmation = () => {
+    ShowConfirmation((confirmed) => {
+      if (confirmed) deleteProductId()
+    })
   }
 
   const deleteProductId = async () => {
     const res = await triggerDeleteProduct(product.productId)
     if ('data' in res) {
       dispatch(productsActions.deleteProductById(res.data.productId))
+      popUpSuccess700ms('Deleted')
+    } else {
+      popUpError700ms('Something went wrong')
     }
   }
 
@@ -47,7 +69,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
         {setIsEditProductId && setIsVisible ? (
           <div className="flex px-4 space-x-4">
             <button
-              id="add-to-cart"
+              id="edit-btn"
               className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]/50"
               onClick={() => {
                 setIsEditProductId(product.productId)
@@ -56,9 +78,9 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
               Edit
             </button>
             <button
-              id="add-to-cart"
+              id="delete-btn"
               className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]"
-              onClick={deleteProductId}>
+              onClick={askConfirmation}>
               Delete
             </button>
           </div>
