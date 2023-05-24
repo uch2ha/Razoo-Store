@@ -1,6 +1,7 @@
 // styles
 import './index.scss'
 // packages
+import { ToastContainer } from 'react-toastify'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
@@ -15,7 +16,16 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <App />
+          <>
+            <App />
+            {/* add react-toastify pop up for whole app */}
+            <ToastContainer
+              progressClassName="toastProgress"
+              bodyClassName="toastBody"
+              pauseOnFocusLoss={false}
+              limit={5}
+            />
+          </>
         </PersistGate>
       </Provider>
     </GoogleOAuthProvider>

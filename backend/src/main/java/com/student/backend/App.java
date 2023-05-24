@@ -19,6 +19,7 @@ public class App
 
 //TODO
 // s3 public dont work
+// notification.ts is components or utilities???
 // FE logOut w/o reload()????? problem with caching or something
 // SECURITY PART connectionTimeout=20000, maximumPoolSize=5
 

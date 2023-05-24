@@ -9,6 +9,7 @@ import Button from '../../../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { cartActions } from '../../../store/cart/cart.slice'
 import { useCreateOrderMutation } from '../../../store/api/orders.api'
+import { popLoading, popUpError, popUpOrderCreated } from '../../../components/notifications'
 
 export type ICartItemsProduct = {
   amount: number
@@ -55,14 +56,17 @@ const Checkout: FC = () => {
     fetchData()
   }, [cartItems])
 
-  const handlePayMent = () => {
+  const handlePayMent = async () => {
     if (cartItems && user.userId) {
       const orderRequest: ICreateOrder = { userId: user.userId, products: [] }
       cartItems.forEach((item) => {
         orderRequest.products.push({ productId: item.productId, quantity: item.amount })
       })
 
-      triggerCreateOrder(orderRequest)
+      const res = await triggerCreateOrder(orderRequest)
+
+      if ('data' in res) popUpOrderCreated()
+      else popUpError()
     }
   }
 

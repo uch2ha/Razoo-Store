@@ -12,6 +12,7 @@ import { IServerProduct } from './products/AdminProducts'
 import { useDispatch } from 'react-redux'
 import { productsActions } from '../../../store/products/products.slice'
 import { useGetProductImg } from '../../../hooks/useGetProductImg'
+import { popUpError, popUpSucceed } from '../../../components/notifications'
 
 interface IAddEditComponentProps {
   isVisible: boolean
@@ -95,6 +96,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
             updatedData.imgBlob = imgUrl
           }
           dispatch(productsActions.editProductById(updatedData))
+          popUpSucceed()
+        } else {
+          popUpError()
         }
       }
       // add
@@ -110,6 +114,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
             updatedData.imgBlob = imgUrl
           }
           dispatch(productsActions.addProduct(updatedData))
+          popUpSucceed()
+        } else {
+          popUpError()
         }
       }
     }

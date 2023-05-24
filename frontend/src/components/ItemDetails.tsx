@@ -9,6 +9,7 @@ import { CloseBtn } from '../assets/svg/CloseBtn'
 import Button from './Button'
 // files
 import logo from '../assets/logo-column.png'
+import { popUpProductAddedToCart } from './notifications'
 
 interface IItemDetailsProps {
   handleClose: () => void
@@ -46,6 +47,7 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
 
   const handleAddItem = () => {
     const { productId: id, price } = product
+    popUpProductAddedToCart(product.name)
     dispatch(cartActions.addItem({ id, price }))
   }
 

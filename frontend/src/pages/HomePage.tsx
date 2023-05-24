@@ -1,5 +1,6 @@
 // packages
 import { FC } from 'react'
+
 // components
 import NavBar from '../components/NavBar'
 // files
