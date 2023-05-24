@@ -22,10 +22,10 @@ spring:
   devtools:
     remote:
       secret: mysecret
-  sql:
-    init:
-      mode: always
-      data-locations: classpath:users.sql, classpath:products.sql, classpath:orders.sql
+  #  sql:
+  #    init:
+  #      mode: always
+  #      data-locations: classpath:users.sql, classpath:products.sql, classpath:orders.sql
   config:
     import: optional:file:./backend/.env[.properties]
   servlet:
