@@ -57,7 +57,7 @@ const LogInForm: FC = () => {
 
   const validation = () => {
     if (!email || !password) return setError('Please enter all fields')
-    if (password.length < 6) return setError('Passwords must be at least 6 characters')
+    if (password.length < 5) return setError('Passwords must be at least 5 characters')
     return true
   }
 

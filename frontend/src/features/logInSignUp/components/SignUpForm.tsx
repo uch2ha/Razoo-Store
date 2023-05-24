@@ -70,7 +70,7 @@ const SignUpForm: FC = () => {
       return setError('Please enter all fields')
     if (firstName.length < 3) return setError('First Name must be at least 3 characters')
     if (lastName.length < 3) return setError('Last Name must be at least 3 characters')
-    if (password.length < 6) return setError('Passwords must be at least 6 characters')
+    if (password.length < 5) return setError('Passwords must be at least 5 characters')
     if (password !== rePassword) return setError("Passwords don't match")
     return true
   }
