@@ -8,7 +8,6 @@ import { IProduct } from '../../../types'
 import { useDeleteProductMutation } from '../../../store/api/products.api'
 import { productsActions } from '../../../store/products/products.slice'
 import {
-  popUpDeleted,
   popUpError700ms,
   popUpProductAddedToCart,
   popUpSuccess700ms
