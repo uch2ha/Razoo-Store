@@ -12,7 +12,6 @@ import { useOAuth2AuthenticateMutation } from '../../../store/api/oAuth2Google.a
 import { handleTokenDecode } from '../utilities/handleToken'
 import { IToken } from '../../../types/authentication.type'
 import { setTokenToLS } from '../../../utilities/localStorage'
-import { popUpLogIn } from '../../../components/notifications'
 
 interface IGoogleAuthProps {
   setError: (msg: string) => void

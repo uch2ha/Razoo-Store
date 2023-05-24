@@ -9,9 +9,11 @@ import { useDeleteProductMutation } from '../../../store/api/products.api'
 import { productsActions } from '../../../store/products/products.slice'
 import {
   popUpDeleted,
-  popUpError,
-  popUpProductAddedToCart
+  popUpError700ms,
+  popUpProductAddedToCart,
+  popUpSuccess700ms
 } from '../../../components/notifications'
+import { ShowConfirmation } from '../../../components/PopUpConfirmation'
 
 interface ICardProps {
   product: IProduct
@@ -35,13 +37,19 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     setProductId(product.productId)
   }
 
+  const askConfirmation = () => {
+    ShowConfirmation((confirmed) => {
+      if (confirmed) deleteProductId()
+    })
+  }
+
   const deleteProductId = async () => {
     const res = await triggerDeleteProduct(product.productId)
     if ('data' in res) {
       dispatch(productsActions.deleteProductById(res.data.productId))
-      popUpDeleted()
+      popUpSuccess700ms('Deleted')
     } else {
-      popUpError()
+      popUpError700ms('Something went wrong')
     }
   }
 
@@ -72,7 +80,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
             <button
               id="delete-btn"
               className="border-[1px] w-[90%] my-3 py-2 hover:bg-red-400 bg-[#898e68]"
-              onClick={deleteProductId}>
+              onClick={askConfirmation}>
               Delete
             </button>
           </div>

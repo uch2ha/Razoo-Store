@@ -3,27 +3,22 @@ import React, { FC, useState } from 'react'
 // components
 import { IServerProduct } from './AdminProducts'
 import DropZone from '../../../../components/DropZone'
-import { useUploadProductImageMutation } from '../../../../store/api/products.api'
 
 interface IProductFormProps {
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => void
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>, img?: FormData) => void
   product: IServerProduct
 }
 
 const ProductForm: FC<IProductFormProps> = ({ handleChange, handleSubmit, product }) => {
   const [img, setImg] = useState<FormData>()
-  const [triggerUploadImg] = useUploadProductImageMutation()
 
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (img && product.productId) {
-      await triggerUploadImg({ productId: product.productId, formData: img })
-    }
-    handleSubmit(e)
+    handleSubmit(e, img)
   }
 
   return (

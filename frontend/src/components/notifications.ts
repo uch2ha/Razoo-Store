@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 export const popUpProductAddedToCart = (name = '') =>
   toast(`${name} added to cart`, {
     position: 'bottom-left',
-    autoClose: 1500,
+    autoClose: 1250,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -12,20 +12,8 @@ export const popUpProductAddedToCart = (name = '') =>
     theme: 'light'
   })
 
-export const popUpRemovedFromCart = () =>
-  toast(`Removed from cart`, {
-    position: 'bottom-left',
-    autoClose: 500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: 'light'
-  })
-
-export const popUpOrderCreated = () =>
-  toast.success(`Order creation succeed`, {
+export const popUp700ms = (msg: string) =>
+  toast(`${msg}`, {
     position: 'bottom-left',
     autoClose: 700,
     hideProgressBar: true,
@@ -36,32 +24,8 @@ export const popUpOrderCreated = () =>
     theme: 'light'
   })
 
-export const popUpLogOut = () =>
-  toast.success(`You’ve Been Logged Out`, {
-    position: 'bottom-left',
-    autoClose: 500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: 'light'
-  })
-
-export const popUpLogIn = () =>
-  toast.success(`LogIn succeeded`, {
-    position: 'bottom-left',
-    autoClose: 500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: 'light'
-  })
-
-export const popLoading = () =>
-  toast(`Loading...`, {
+export const popUpSuccess700ms = (msg: string) =>
+  toast.success(`${msg}`, {
     position: 'bottom-left',
     autoClose: 700,
     hideProgressBar: true,
@@ -72,34 +36,10 @@ export const popLoading = () =>
     theme: 'light'
   })
 
-export const popUpError = () =>
-  toast.error(`Something went wrong`, {
+export const popUpError700ms = (msg: string) =>
+  toast.error(`${msg}`, {
     position: 'bottom-left',
     autoClose: 700,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: 'light'
-  })
-
-export const popUpDeleted = () =>
-  toast.success(`Deleted`, {
-    position: 'bottom-left',
-    autoClose: 500,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: 'light'
-  })
-
-export const popUpSucceed = () =>
-  toast.success(`Succeed`, {
-    position: 'bottom-left',
-    autoClose: 500,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,

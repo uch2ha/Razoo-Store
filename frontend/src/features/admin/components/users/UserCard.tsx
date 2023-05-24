@@ -3,6 +3,8 @@ import { FC } from 'react'
 // components
 import { IUser } from '../../../../types'
 import { useDeleteUserMutation } from '../../../../store/api/users.api'
+import { ShowConfirmation } from '../../../../components/PopUpConfirmation'
+import { popUpError700ms, popUpSuccess700ms } from '../../../../components/notifications'
 
 interface IUserCardProps {
   user: IUser
@@ -11,12 +13,21 @@ interface IUserCardProps {
 
 const UserCard: FC<IUserCardProps> = ({ user, handleEditMod }) => {
   const [triggerDeleteUser] = useDeleteUserMutation()
-  const handleDelete = () => {
+
+  const askConfirmation = () => {
+    ShowConfirmation((confirmed) => {
+      if (confirmed) handleDelete()
+    })
+  }
+
+  const handleDelete = async () => {
     if (user.userId) {
-      triggerDeleteUser(user.userId)
-      // cant remove reload(), so much to rewrite
-      // TODO fix this
-      window.location.reload()
+      const res = await triggerDeleteUser(user.userId)
+      if ('data' in res) {
+        popUpSuccess700ms('Succeed')
+      } else {
+        popUpError700ms('Something went wrong')
+      }
     }
   }
 
@@ -35,7 +46,7 @@ const UserCard: FC<IUserCardProps> = ({ user, handleEditMod }) => {
           onClick={() => handleEditMod(user.userId ?? '')}>
           EDIT
         </button>
-        <button className="border-[1px] px-5 text-xl py-2  bg-[#898e68]" onClick={handleDelete}>
+        <button className="border-[1px] px-5 text-xl py-2  bg-[#898e68]" onClick={askConfirmation}>
           DELETE
         </button>
       </div>

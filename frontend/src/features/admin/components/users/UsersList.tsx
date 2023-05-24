@@ -13,6 +13,7 @@ interface IUsersListProps {
 const UsersList: FC<IUsersListProps> = ({ handleEditMod, users }) => {
   return (
     <div className="w-full h-full flex flex-col text-center items-center justify-start">
+      <p className="text-2xl mt-[-20px] mb-6">Refresh the page to see changes (TODO: fix it)</p>
       <button
         className="border-[1px] px-5 text-2xl py-2 mb-5  bg-[#898e68]/50"
         onClick={() => handleEditMod(null)}>
