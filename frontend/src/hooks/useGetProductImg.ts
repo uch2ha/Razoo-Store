@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-const URL = import.meta.env.VITE_BASE_URL + import.meta.env.VITE_API_VERSION
+const BACKEND_URL = import.meta.env.VITE_BASE_URL + import.meta.env.VITE_API_VERSION
 
 export const useGetProductImg = async (productId: string) => {
-  const res = await axios.get(`${URL}/products/${productId}/product-image`, {
+  const res = await axios.get(`${BACKEND_URL}/products/${productId}/product-image`, {
     responseType: 'blob'
   })
 
