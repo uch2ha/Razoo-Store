@@ -134,11 +134,14 @@ public class ProductController
       return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
     }
 
-    if (existingProduct.get().isFixedProduct()) {
-      return new ResponseEntity<>("Fixed product's img cannot be changes", HttpStatus.NOT_FOUND);
-    }
+//    if (existingProduct.get().isFixedProduct()) {
+//      return new ResponseEntity<>("Fixed product's img cannot be changes", HttpStatus.NOT_FOUND);
+//    }
+    Product product = existingProduct.get();
 
-    productService.uploadProductImage(existingProduct.get(), file);
+    product.setFixedProduct(false);
+    productService.uploadProductImage(product, file);
+    
     Map<String, String> result = new HashMap<>();
     result.put("Success", "true");
     return new ResponseEntity<>(result, HttpStatus.OK);
