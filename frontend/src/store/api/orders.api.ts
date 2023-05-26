@@ -27,7 +27,8 @@ export const ordersApi = createApi({
         headers: {
           Authorization: `Bearer ${getTokenFromLS()}`
         }
-      })
+      }),
+      keepUnusedDataFor: 0
     }),
     getAllOrdersByUserId: build.query<IAllUsersOrderData[], string>({
       query: (userId) => ({
