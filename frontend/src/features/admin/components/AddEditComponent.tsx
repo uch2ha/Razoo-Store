@@ -16,7 +16,7 @@ import { IServerProduct } from './products/AdminProducts'
 import { useDispatch } from 'react-redux'
 import { productsActions } from '../../../store/products/products.slice'
 import { useGetProductImg } from '../../../hooks/useGetProductImg'
-import { popUpError700ms, popUpSuccess700ms } from '../../../components/notifications'
+import { popUpError1100ms, popUpSuccess1100ms } from '../../../components/notifications'
 import { ShowConfirmation } from '../../../components/PopUpConfirmation'
 
 interface IAddEditComponentProps {
@@ -102,9 +102,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
             const res = await triggerUploadImg({ productId: item.productId, formData: img })
 
             if ('data' in res) {
-              popUpSuccess700ms('Image has been uploaded')
+              popUpSuccess1100ms('Image has been uploaded')
             } else {
-              popUpError700ms('Image was not uploaded')
+              popUpError1100ms('Image was not uploaded')
             }
           }
         }
@@ -119,9 +119,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
             updatedData.imgBlob = imgUrl
           }
           dispatch(productsActions.editProductById(updatedData))
-          popUpSuccess700ms('Succeed')
+          popUpSuccess1100ms('Succeed')
         } else {
-          popUpError700ms('Something went wrong')
+          popUpError1100ms('Something went wrong')
         }
       }
       // add
@@ -137,9 +137,9 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
             updatedData.imgBlob = imgUrl
           }
           dispatch(productsActions.addProduct(updatedData))
-          popUpSuccess700ms('Succeed')
+          popUpSuccess1100ms('Succeed')
         } else {
-          popUpError700ms('Something went wrong')
+          popUpError1100ms('Something went wrong')
         }
       }
     }
@@ -150,18 +150,18 @@ const AddEditComponent: FC<IAddEditComponentProps> = ({
       if (isEditMod) {
         const res = await triggerEditUser(item as IUser)
         if ('data' in res) {
-          popUpSuccess700ms('Succeed')
+          popUpSuccess1100ms('Succeed')
         } else {
-          popUpError700ms('Something went wrong')
+          popUpError1100ms('Something went wrong')
         }
       }
       // add
       if (!isEditMod) {
         const res = await triggerSaveUser(item as IUser)
         if ('data' in res) {
-          popUpSuccess700ms('Succeed')
+          popUpSuccess1100ms('Succeed')
         } else {
-          popUpError700ms('Something went wrong')
+          popUpError1100ms('Something went wrong')
         }
       }
     }

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 export const popUpProductAddedToCart = (name = '') =>
   toast(`${name} added to cart`, {
     position: 'bottom-left',
-    autoClose: 1250,
+    autoClose: 1300,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -12,10 +12,10 @@ export const popUpProductAddedToCart = (name = '') =>
     theme: 'light'
   })
 
-export const popUp700ms = (msg: string) =>
+export const popUp1100ms = (msg: string) =>
   toast(`${msg}`, {
     position: 'bottom-left',
-    autoClose: 700,
+    autoClose: 1100,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -24,10 +24,10 @@ export const popUp700ms = (msg: string) =>
     theme: 'light'
   })
 
-export const popUpSuccess700ms = (msg: string) =>
+export const popUpSuccess1100ms = (msg: string) =>
   toast.success(`${msg}`, {
     position: 'bottom-left',
-    autoClose: 700,
+    autoClose: 1100,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -36,10 +36,10 @@ export const popUpSuccess700ms = (msg: string) =>
     theme: 'light'
   })
 
-export const popUpError700ms = (msg: string) =>
+export const popUpError1100ms = (msg: string) =>
   toast.error(`${msg}`, {
     position: 'bottom-left',
-    autoClose: 700,
+    autoClose: 1100,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,

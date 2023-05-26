@@ -1,5 +1,5 @@
 // packages
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 // components
@@ -11,6 +11,7 @@ import { setTokenToLS } from '../../../utilities/localStorage'
 import { IUser } from '../../../types'
 import { handleTokenDecode } from '../utilities/handleToken'
 import GoogleAuthBtn from './GoogleAuthBtn'
+import { Id, toast } from 'react-toastify'
 
 const SignUpForm: FC = () => {
   const [firstName, setFirstName] = useState<string>('')
@@ -19,12 +20,48 @@ const SignUpForm: FC = () => {
   const [password, setPassword] = useState<string>('')
   const [rePassword, setRePassword] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
+  const [loadingId, setLoadingId] = useState<Id | null>(null)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   // register new user
-  const [trigger] = useRegisterMutation()
+  const [trigger, { isLoading, isError }] = useRegisterMutation()
+
+  useEffect(() => {
+    if (isLoading) {
+      setLoadingId(
+        toast.loading(`Fetching...`, {
+          position: 'bottom-left',
+          autoClose: false,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: 'light'
+        })
+      )
+    }
+
+    if (!isError && !isLoading && loadingId !== null) {
+      toast.update(loadingId, {
+        render: 'LogIn succeeded',
+        type: toast.TYPE.SUCCESS,
+        autoClose: 1100,
+        isLoading: false
+      })
+    }
+
+    if (isError && loadingId !== null) {
+      toast.update(loadingId, {
+        render: 'Error',
+        type: toast.TYPE.ERROR,
+        autoClose: 1100,
+        isLoading: false
+      })
+    }
+  }, [isLoading])
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.id === 'firstName') setFirstName(e.target.value)

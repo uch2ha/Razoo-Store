@@ -11,6 +11,7 @@ import { ArrowLeft } from '../../../assets/svg/ArrowLeft'
 import { ArrowRight } from '../../../assets/svg/ArrowRight'
 import Card from './Card'
 import { useGetAllProductsQuery } from '../../../store/api/products.api'
+import LongServerRes from '../../../components/LongServerRes'
 
 interface IProductsGridComponentProps {
   setProductId: (id: string) => void
@@ -24,6 +25,7 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
   setIsEditProductId
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
+  const [isLongServerRes, setIsLongServerRes] = useState(false)
 
   // get info about fetching products process
   const { isError, isLoading } = useGetAllProductsQuery()
@@ -43,6 +45,18 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
 
   // product list after pagination
   const productsAfterPaginate = usePaginate(filteredProducts, currentPage)
+
+  useEffect(() => {
+    // Start the timer when the component mounts
+    const timer = setTimeout(() => {
+      setIsLongServerRes(true)
+    }, 5500) // 5.5 seconds
+
+    return () => {
+      // Clear the timer when the component unmounts
+      clearTimeout(timer)
+    }
+  }, [])
 
   const handlePrevPage = () => {
     setCurrentPage((prev) => {
@@ -88,7 +102,10 @@ const ProductsGridComponent: FC<IProductsGridComponentProps> = ({
         </div>
       </div>
       <Grid>
-        {isLoading && <h1 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Loading...</h1>}
+        {isLoading && (
+          <h1 className="col-span-full mx-auto my-4 h-fit text-4xl py-2 px-6">Loading...</h1>
+        )}
+        {isLoading && isLongServerRes && <LongServerRes />}
         {isError && (
           <h1 className="col-span-full mx-auto my-4 text-4xl py-2 px-6">Something went wrong...</h1>
         )}

@@ -9,7 +9,7 @@ import Button from '../../../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { cartActions } from '../../../store/cart/cart.slice'
 import { useCreateOrderMutation } from '../../../store/api/orders.api'
-import { popUpError700ms, popUpSuccess700ms } from '../../../components/notifications'
+import { popUpError1100ms, popUpSuccess1100ms } from '../../../components/notifications'
 import { ShowConfirmation } from '../../../components/PopUpConfirmation'
 
 export type ICartItemsProduct = {
@@ -72,8 +72,8 @@ const Checkout: FC = () => {
 
       const res = await triggerCreateOrder(orderRequest)
 
-      if ('data' in res) popUpSuccess700ms('Order creation succeed')
-      else popUpError700ms('Something went wrong')
+      if ('data' in res) popUpSuccess1100ms('Order creation succeed')
+      else popUpError1100ms('Something went wrong')
     }
   }
 

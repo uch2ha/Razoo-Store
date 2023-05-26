@@ -1,6 +1,6 @@
 // packages
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { popUp700ms, popUpSuccess700ms } from '../../components/notifications'
+import { popUp1100ms } from '../../components/notifications'
 // types
 import { IUser } from '../../types'
 
@@ -22,7 +22,6 @@ export const userSlice = createSlice({
       state.firstName = action.payload.firstName
       state.lastName = action.payload.lastName
       state.role = action.payload.role
-      popUpSuccess700ms('LogIn succeeded')
     },
     logOut: (state) => {
       state.userId = initialState.userId
@@ -30,7 +29,7 @@ export const userSlice = createSlice({
       state.firstName = initialState.firstName
       state.lastName = initialState.lastName
       state.role = initialState.role
-      popUp700ms('You’ve Been Logged Out')
+      popUp1100ms('You’ve Been Logged Out')
     },
     changeFirstLastName: (
       state,

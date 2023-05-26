@@ -1,10 +1,12 @@
 // packages
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 // components
 import NavBar from '../components/NavBar'
 import LogInForm from '../features/logInSignUp/components/LogInForm'
 import SignUpForm from '../features/logInSignUp/components/SignUpForm'
 import Invite from '../features/logInSignUp/components/Invite'
+import { useGetAllProductsQuery } from '../store/api/products.api'
+import LongServerRes from '../components/LongServerRes'
 
 const logInText = {
   title: 'Welcome Back!',
@@ -22,6 +24,9 @@ const signUpText = {
 const LoginPage: FC = () => {
   const [isLogin, setIsLogin] = useState(true)
 
+  // get info about fetching products process
+  const { isError, isLoading } = useGetAllProductsQuery()
+
   const handleSwitch = () => {
     setIsLogin((prev) => !prev)
   }
@@ -29,6 +34,16 @@ const LoginPage: FC = () => {
   return (
     <div className=" w-screen h-screen flex flex-col items-center  justify-start ">
       <NavBar />
+      {isLoading && (
+        <h1 className="col-span-full mx-auto mb-[-56px] text-4xl py-2 px-6">
+          Connect to server, wait...
+        </h1>
+      )}
+      {isError && (
+        <h1 className="col-span-full mx-auto mb-[-56px] text-4xl py-2 px-6">
+          Something went wrong...
+        </h1>
+      )}
       <div className="h-full w-full flex justify-center items-center text-center flex-col text-white">
         <div className="relative flex w-2/3 h-[80%] bg-loginPageBg bg-no-repeat bg-cover">
           <div

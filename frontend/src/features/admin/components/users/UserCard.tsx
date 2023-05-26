@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { IUser } from '../../../../types'
 import { useDeleteUserMutation } from '../../../../store/api/users.api'
 import { ShowConfirmation } from '../../../../components/PopUpConfirmation'
-import { popUpError700ms, popUpSuccess700ms } from '../../../../components/notifications'
+import { popUpError1100ms, popUpSuccess1100ms } from '../../../../components/notifications'
 
 interface IUserCardProps {
   user: IUser
@@ -24,9 +24,9 @@ const UserCard: FC<IUserCardProps> = ({ user, handleEditMod }) => {
     if (user.userId) {
       const res = await triggerDeleteUser(user.userId)
       if ('data' in res) {
-        popUpSuccess700ms('Succeed')
+        popUpSuccess1100ms('Succeed')
       } else {
-        popUpError700ms('Something went wrong')
+        popUpError1100ms('Something went wrong')
       }
     }
   }

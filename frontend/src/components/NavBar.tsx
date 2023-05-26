@@ -29,8 +29,6 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
     dispatch(userActions.logOut())
     deleteTokenFromLS()
     googleLogout()
-    // cant remove reload(), because of cache err with redux or RTKQuery idk
-    setTimeout(() => window.location.reload(), 1550)
   }
 
   useEffect(() => {

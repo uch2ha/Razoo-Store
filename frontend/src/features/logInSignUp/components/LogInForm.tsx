@@ -1,5 +1,5 @@
 // packages
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 // components
@@ -10,16 +10,53 @@ import { setTokenToLS } from '../../../utilities/localStorage'
 import { IUser } from '../../../types'
 import GoogleAuthBtn from './GoogleAuthBtn'
 import { handleTokenDecode } from '../utilities/handleToken'
+import { Id, toast } from 'react-toastify'
 
 const LogInForm: FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [loadingId, setLoadingId] = useState<Id | null>(null)
 
-  const [trigger] = useAuthenticateMutation()
+  const [trigger, { isLoading, isError }] = useAuthenticateMutation()
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoading) {
+      setLoadingId(
+        toast.loading(`Fetching...`, {
+          position: 'bottom-left',
+          autoClose: false,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: 'light'
+        })
+      )
+    }
+
+    if (!isError && !isLoading && loadingId !== null) {
+      toast.update(loadingId, {
+        render: 'LogIn succeeded',
+        type: toast.TYPE.SUCCESS,
+        autoClose: 1100,
+        isLoading: false
+      })
+    }
+
+    if (isError && loadingId !== null) {
+      toast.update(loadingId, {
+        render: 'Error',
+        type: toast.TYPE.ERROR,
+        autoClose: 1100,
+        isLoading: false
+      })
+    }
+  }, [isLoading])
 
   const handleLogIn = async () => {
     if (!validation()) {

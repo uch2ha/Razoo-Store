@@ -8,9 +8,9 @@ import { IProduct } from '../../../types'
 import { useDeleteProductMutation } from '../../../store/api/products.api'
 import { productsActions } from '../../../store/products/products.slice'
 import {
-  popUpError700ms,
+  popUpError1100ms,
   popUpProductAddedToCart,
-  popUpSuccess700ms
+  popUpSuccess1100ms
 } from '../../../components/notifications'
 import { ShowConfirmation } from '../../../components/PopUpConfirmation'
 
@@ -46,9 +46,9 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     const res = await triggerDeleteProduct(product.productId)
     if ('data' in res) {
       dispatch(productsActions.deleteProductById(res.data.productId))
-      popUpSuccess700ms('Deleted')
+      popUpSuccess1100ms('Deleted')
     } else {
-      popUpError700ms('Something went wrong')
+      popUpError1100ms('Something went wrong')
     }
   }
 
