@@ -42,9 +42,17 @@ const NavBar: FC<INavBarProps> = ({ isWhite = false }) => {
       }`}>
       <div className="w-1/3">
         {isWhite ? (
-          <img src={logoWhite} className="w-[30%]" />
+          <div className="w-[30%]">
+            <Link to="/">
+              <img src={logoWhite} className="" />
+            </Link>
+          </div>
         ) : (
-          <img src={logo} className="w-[30%]" />
+          <div className="w-[30%]">
+            <Link to="/">
+              <img src={logo} className="" />
+            </Link>
+          </div>
         )}
       </div>
       <div className="w-1/3">
