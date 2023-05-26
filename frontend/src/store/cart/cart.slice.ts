@@ -2,7 +2,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 // components
 import { ICartItem } from '../../features/cart/types/cart.type'
-import { popUp700ms } from '../../components/notifications'
+import { popUp1100ms } from '../../components/notifications'
 
 const initialState: ICartItem[] = []
 
@@ -43,7 +43,7 @@ export const cartSlice = createSlice({
     removeItem: (state, action: PayloadAction<string>) => {
       const index = state.findIndex((item) => item.productId === action.payload)
       if (index !== -1) {
-        popUp700ms('Removed from cart')
+        popUp1100ms('Removed from cart')
         state.splice(index, 1)
       }
     },
