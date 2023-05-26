@@ -4,8 +4,12 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
+@EnableScheduling
 @OpenAPIDefinition(info = @Info(title = "Razoo onlineShop API", version = "1.0.1"))
 
 public class App
@@ -15,30 +19,11 @@ public class App
     SpringApplication.run(App.class, args);
   }
 
-//  @Bean
-//  CommandLineRunner runner(
-//          UserService userService, PasswordEncoder passwordEncoder)
-//  {
-//    return args -> {
-//      createAdmin(userService, passwordEncoder);
-//    };
-//  }
-//
-//
-//  private static void createAdmin(UserService userService, PasswordEncoder passwordEncoder)
-//  {
-//    User admin = User.builder()
-//            .email("admin@admin.com")
-//            .firstName("admin")
-//            .lastName("admin")
-//            .password(passwordEncoder.encode("admin"))
-//            .role(Role.ADMIN)
-//            .isGoogleLogin(false)
-//            .createdAt(LocalDateTime.now())
-//            .build();
-//
-//    userService.saveOne(admin);
-//  }
+  @Bean
+  public RestTemplate restTemplate()
+  {
+    return new RestTemplate();
+  }
 
 }
 
