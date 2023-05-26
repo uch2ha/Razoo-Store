@@ -15,7 +15,7 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-    show-sql: true
+    show-sql: false
     generate-ddl: false
     defer-datasource-initialization: true
 
