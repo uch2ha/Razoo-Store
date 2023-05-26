@@ -11,6 +11,7 @@ import { cartActions } from '../../../store/cart/cart.slice'
 import { useCreateOrderMutation } from '../../../store/api/orders.api'
 import { popUpError1100ms, popUpSuccess1100ms } from '../../../components/notifications'
 import { ShowConfirmation } from '../../../components/PopUpConfirmation'
+import { Id, toast } from 'react-toastify'
 
 export type ICartItemsProduct = {
   amount: number
@@ -27,12 +28,48 @@ export type ICreateOrder = {
 
 const Checkout: FC = () => {
   const [fetchedItems, setFetchedItems] = useState<ICartItemsProduct[]>([])
+  const [loadingId, setLoadingId] = useState<Id | null>(null)
 
   const cartItems = useSelector((state: RootState) => state.cart)
   const user = useSelector((state: RootState) => state.user)
 
   const [triggerGetProductById] = useLazyGetProductByIdQuery()
-  const [triggerCreateOrder] = useCreateOrderMutation()
+  const [triggerCreateOrder, { isLoading, isError }] = useCreateOrderMutation()
+
+  useEffect(() => {
+    if (isLoading) {
+      setLoadingId(
+        toast.loading(`Fetching...`, {
+          position: 'bottom-left',
+          autoClose: false,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: 'light'
+        })
+      )
+    }
+
+    if (!isError && !isLoading && loadingId !== null) {
+      toast.update(loadingId, {
+        render: 'Order creation succeed',
+        type: toast.TYPE.SUCCESS,
+        autoClose: 1100,
+        isLoading: false
+      })
+    }
+
+    if (isError && loadingId !== null) {
+      toast.update(loadingId, {
+        render: 'Something went wrong',
+        type: toast.TYPE.ERROR,
+        autoClose: 1100,
+        isLoading: false
+      })
+    }
+  }, [isLoading])
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -72,8 +109,10 @@ const Checkout: FC = () => {
 
       const res = await triggerCreateOrder(orderRequest)
 
-      if ('data' in res) popUpSuccess1100ms('Order creation succeed')
-      else popUpError1100ms('Something went wrong')
+      if ('data' in res) {
+        navigate('/account')
+        dispatch(cartActions.clearCart())
+      }
     }
   }
 
