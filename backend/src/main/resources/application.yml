@@ -42,6 +42,8 @@ aws:
     buckets:
       bucket: razoo-store
 
+cronJob:
+  wakeup: ${SERVER_URL}
 
 #logging:
 #  level:
