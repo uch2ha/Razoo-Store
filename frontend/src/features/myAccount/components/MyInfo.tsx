@@ -28,7 +28,7 @@ const MyInfo: FC = () => {
     }
   }
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.id === 'name') return setName(e.target.value)
   }
 

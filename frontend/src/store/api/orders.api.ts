@@ -15,6 +15,12 @@ export type IAllUsersOrderData = {
   productQuantity: number
 }
 
+type ICreatedOrderRes = {
+  [key: string]: {
+    [key: string]: number
+  }
+}
+
 export const ordersApi = createApi({
   reducerPath: 'api/orders',
   baseQuery: fetchBaseQuery({
@@ -38,7 +44,7 @@ export const ordersApi = createApi({
         }
       })
     }),
-    createOrder: build.mutation<any, ICreateOrder>({
+    createOrder: build.mutation<ICreatedOrderRes, ICreateOrder>({
       query: (body) => ({
         url: '/orders',
         method: 'POST',

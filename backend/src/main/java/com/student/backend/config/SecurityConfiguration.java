@@ -57,8 +57,9 @@ public class SecurityConfiguration
           "/api/v*/oauth2/**",
           "/swagger-ui/**",
           "/swagger-ui.html",
-          "/",
-          "/v3/api-docs/**"
+          "/v3/api-docs/**",
+          "/wakeup",
+          "/"
   };
 
   private static final String[] ADMIN_USER_ROUTES = {
