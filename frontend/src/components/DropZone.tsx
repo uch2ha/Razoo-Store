@@ -1,12 +1,12 @@
 import { FC, useCallback } from 'react'
-import { useDropzone } from 'react-dropzone'
+import { FileWithPath, useDropzone } from 'react-dropzone'
 
 interface IMyDropzone {
   setImg: (formData: FormData) => void
 }
 
 const MyDropzone: FC<IMyDropzone> = ({ setImg }) => {
-  const onDrop = useCallback((acceptedFiles: any) => {
+  const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     const formData = new FormData()
     formData.append('file', acceptedFiles[0])
     setImg(formData)
