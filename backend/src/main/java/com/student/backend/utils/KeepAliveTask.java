@@ -24,7 +24,7 @@ public class KeepAliveTask
     this.restTemplate = restTemplate;
   }
 
-  @Scheduled(fixedDelay = 600000) // Run every 10 minutes
+  @Scheduled(fixedDelay = 300000) // Run every 5 minutes
   public void keepAlive()
   {
     // Send a GET request to server to keep it alive
