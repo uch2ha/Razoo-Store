@@ -13,10 +13,10 @@ https://razoo-store.netlify.app/
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" title="Docker" alt="Docker" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" title="PSQL" alt="PSQL" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original-wordmark.svg" title="Tailwind" alt="Tailwind" width="50" height="50"/>&nbsp;
-      
 </div>
+<br>
 
-The application combines React and Spring Boot, utilizing TypeScript for enhanced development. The user interface is built with React and TypeScript, featuring page routing through react-router-dom. Styling is achieved using Tailwind CSS, providing a modern and responsive design. Redux is employed for state management, ensuring efficient data handling. Docker is utilized for containerization, facilitating easy deployment and scalability. PostgreSQL serves as the database for seamless data storage.
+The application combines React and Spring Boot, utilizing TypeScript for enhanced development. The user interface is built with React and TypeScript, featuring page routing through react-router-dom. Styling is achieved using Tailwind CSS, providing a modern and responsive design. Redux is employed for state management, ensuring efficient data handling. Docker is utilized for containerization, facilitating easy deployment and scalability. PostgreSQL serves as the database for seamless data storage. AWS s3 bucket, used to store product images.
 
 ## Installation
 
@@ -40,6 +40,54 @@ docker-compose up -d
 
    - `Backend` http://localhost:8080
    - `Frontend` http://localhost:5713
-   - `PsqlDB` http://localhost:2345
+   - `DB` http://localhost:2345
 
 ## Functionalities and Usage
+
+- Main page
+
+  ![Main Page](frontend/screenshots/mainPage.jpg)
+
+- Shop page with all available products
+
+  ![Shop Page](frontend/screenshots/shopPage.jpg)
+
+- Here you can set filters and sort options
+
+  ![Filters ](frontend/screenshots/filters.jpg)
+
+- By clicking on product's card, you can open product's details dialog
+
+  ![ProductDetails ](frontend/screenshots/productDetails.jpg)
+
+- You can add products to the cart, and proceed checkout for creating new order
+
+  ![Cart ](frontend/screenshots/cartPage.jpg)
+
+- To create a new order you need to be authenticated
+
+  ![Login ](frontend/screenshots/loginPage.jpg)
+
+- You can create account with form or use google authorization
+
+  ![SingIn ](frontend/screenshots/singinPage.jpg)
+
+- After login you can create new order by pressing `Complete payment` button
+
+  ![Checkout ](frontend/screenshots/checkoutPage.jpg)
+
+- On the account page, you can find your info and orders
+
+  ![Account ](frontend/screenshots/accountPage.jpg)
+
+  ![Orders ](frontend/screenshots/orderPage.jpg)
+
+- By login as admin you are able to change/add/delete products, users and orders
+
+  ![Admin Products ](frontend/screenshots/adminProducts.jpg)
+
+  ![Admin Users ](frontend/screenshots/adminUsers.jpg)
+
+- Also you can change product image with the form
+
+  ![Admin Form ](frontend/screenshots/adminForm.jpg)
