@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableScheduling
-@OpenAPIDefinition(info = @Info(title = "Razoo onlineShop API", version = "1.0.1"))
+@OpenAPIDefinition(info = @Info(title = "Razoo store API", version = "1.0.1"))
 
 public class App
 {
