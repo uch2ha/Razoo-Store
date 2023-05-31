@@ -44,50 +44,62 @@ docker-compose up -d
 
 ## Functionalities and Usage
 
+### Backend
+
+- Database:
+
+  ![Database](screenshots/database.jpg)
+
+- API routes, you can find all available routes on [https://razoo.onrender.com](https://razoo.onrender.com):
+
+  ![Swagger](screenshots/swagger.jpg)
+
+### Frontend
+
 - Main page
 
-  ![Main Page](frontend/screenshots/mainPage.jpg)
+  ![Main Page](screenshots/mainPage.jpg)
 
 - Shop page with all available products
 
-  ![Shop Page](frontend/screenshots/shopPage.jpg)
+  ![Shop Page](screenshots/shopPage.jpg)
 
 - Here you can set filters and sort options
 
-  ![Filters ](frontend/screenshots/filters.jpg)
+  ![Filters ](screenshots/filters.jpg)
 
 - By clicking on product's card, you can open product's details dialog
 
-  ![ProductDetails ](frontend/screenshots/productDetails.jpg)
+  ![ProductDetails ](screenshots/productDetails.jpg)
 
 - You can add products to the cart, and proceed checkout for creating new order
 
-  ![Cart ](frontend/screenshots/cartPage.jpg)
+  ![Cart ](screenshots/cartPage.jpg)
 
 - To create a new order you need to be authenticated
 
-  ![Login ](frontend/screenshots/loginPage.jpg)
+  ![Login ](screenshots/loginPage.jpg)
 
 - You can create account with form or use google authorization
 
-  ![SingIn ](frontend/screenshots/singinPage.jpg)
+  ![SingIn ](screenshots/singinPage.jpg)
 
 - After login you can create new order by pressing `Complete payment` button
 
-  ![Checkout ](frontend/screenshots/checkoutPage.jpg)
+  ![Checkout ](screenshots/checkoutPage.jpg)
 
 - On the account page, you can find your info and orders
 
-  ![Account ](frontend/screenshots/accountPage.jpg)
+  ![Account ](screenshots/accountPage.jpg)
 
-  ![Orders ](frontend/screenshots/orderPage.jpg)
+  ![Orders ](screenshots/orderPage.jpg)
 
 - By login as admin you are able to change/add/delete products, users and orders
 
-  ![Admin Products ](frontend/screenshots/adminProducts.jpg)
+  ![Admin Products ](screenshots/adminProducts.jpg)
 
-  ![Admin Users ](frontend/screenshots/adminUsers.jpg)
+  ![Admin Users ](screenshots/adminUsers.jpg)
 
 - Also you can change product image with the form
 
-  ![Admin Form ](frontend/screenshots/adminForm.jpg)
+  ![Admin Form ](screenshots/adminForm.jpg)
