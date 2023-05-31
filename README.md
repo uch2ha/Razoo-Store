@@ -1,6 +1,6 @@
 # Razoo Store
 
-https://razoo-store.netlify.app/
+https://razoo-store.netlify.app
 
 ## Built with
 
