@@ -58,7 +58,7 @@ The application combines React and Spring Boot, utilizing TypeScript for enhance
 
 - You can create account with form or use google authorization
 
-  ![SingIn ](screenshots/singinPage.jpg)
+  ![SingIn ](screenshots/singInPage.jpg)
 
 - After login you can create new order by pressing `Complete payment` button
 
