@@ -13,33 +13,69 @@ https://razoo-store.netlify.app/
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" title="Docker" alt="Docker" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" title="PSQL" alt="PSQL" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original-wordmark.svg" title="Tailwind" alt="Tailwind" width="50" height="50"/>&nbsp;
-      
 </div>
+<br>
 
-The application combines React and Spring Boot, utilizing TypeScript for enhanced development. The user interface is built with React and TypeScript, featuring page routing through react-router-dom. Styling is achieved using Tailwind CSS, providing a modern and responsive design. Redux is employed for state management, ensuring efficient data handling. Docker is utilized for containerization, facilitating easy deployment and scalability. PostgreSQL serves as the database for seamless data storage.
-
-## Installation
-
-### Docker
-
-1. Download and install `Docker` app from official website
-
-```sh
-https://docs.docker.com/get-docker/
-```
-
-2. Clone project or download the zip from git (unzip if needed)
-
-3. Run this command in a terminal, in the root folder where the file `docker-compose.yml` is located
-
-```sh
-docker-compose up -d
-```
-
-4. When all packages are downloaded and installed, the application will run on the ports:
-
-   - `Backend` http://localhost:8080
-   - `Frontend` http://localhost:5713
-   - `PsqlDB` http://localhost:2345
+The application combines React and Spring Boot, utilizing TypeScript for enhanced development. The user interface is built with React and TypeScript, featuring page routing through react-router-dom. Styling is achieved using Tailwind CSS, providing a modern and responsive design. Redux is employed for state management, ensuring efficient data handling. Docker is utilized for containerization, facilitating easy deployment and scalability. PostgreSQL serves as the database for seamless data storage. AWS s3 bucket, used to store product images.
 
 ## Functionalities and Usage
+
+### Backend
+
+- Database:
+
+  ![Database](screenshots/database.jpg)
+
+- REST API, you can find all available routes on [https://razoo.onrender.com](https://razoo.onrender.com):
+
+  ![Swagger](screenshots/swagger.jpg)
+
+### Frontend
+
+- Main page
+
+  ![Main Page](screenshots/mainPage.jpg)
+
+- Shop page with all available products
+
+  ![Shop Page](screenshots/shopPage.jpg)
+
+- Here you can set filters and sort options
+
+  ![Filters ](screenshots/filters.jpg)
+
+- By clicking on product's card, you can open product's details dialog
+
+  ![ProductDetails ](screenshots/productDetails.jpg)
+
+- You can add products to the cart, and proceed checkout for creating new order
+
+  ![Cart ](screenshots/cartPage.jpg)
+
+- To create a new order you need to be authenticated
+
+  ![Login ](screenshots/loginPage.jpg)
+
+- You can create account with form or use google authorization
+
+  ![SingIn ](screenshots/singInPage.jpg)
+
+- After login you can create new order by pressing `Complete payment` button
+
+  ![Checkout ](screenshots/checkoutPage.jpg)
+
+- On the account page, you can find your info and orders
+
+  ![Account ](screenshots/accountPage.jpg)
+
+  ![Orders ](screenshots/orderPage.jpg)
+
+- By login as admin you are able to change/add/delete products, users and orders
+
+  ![Admin Products ](screenshots/adminProducts.jpg)
+
+  ![Admin Users ](screenshots/adminUsers.jpg)
+
+- Also you can change product image with the form
+
+  ![Admin Form ](screenshots/adminForm.jpg)

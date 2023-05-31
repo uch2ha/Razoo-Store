@@ -59,10 +59,7 @@ public class Product
   // all non-fixed will be store in "new" folder
   private boolean isFixedProduct = false;
 
-
   private LocalDateTime createdAt = LocalDateTime.now();
-
-  //todo add IMG column/link
 
 }
 
