@@ -79,3 +79,25 @@ The application combines React and Spring Boot, utilizing TypeScript for enhance
 - Also you can change product image with the form
 
   ![Admin Form ](screenshots/adminForm.jpg)
+  
+  
+  
+  ............ testing ...................
+  ## Environment Variables
+
+The project utilizes environment variables for configuration. Please create a `.env` file in the root directory of the project based on the provided `.env.example` template. Assign the appropriate values to each environment variable.
+
+### .env Example
+
+```plaintext
+# .env.example
+# Rename this file to .env and provide the necessary values for each environment variable.
+
+# Example environment variable 1
+VARIABLE_NAME_1=
+
+# Example environment variable 2
+VARIABLE_NAME_2=
+
+# Example environment variable 3
+VARIABLE_NAME_3=
