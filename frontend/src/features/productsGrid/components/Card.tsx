@@ -54,6 +54,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
 
   return (
     <div
+      data-testid="product_card"
       className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-center h-full">
