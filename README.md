@@ -6,6 +6,14 @@ Throughout this project, I have gained valuable experience and knowledge that I 
 
 https://razoo-store.netlify.app
 
+## Sections
+
+- [Built with](#built-with)
+- [Functionalities and Usage](#functionalities-and-usage)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+- [Docker-compose Setup and Starting](#docker-compose-setup-and-starting)
+
 ## Built with
 
 <!-- ICONS found at: ht<rtps://github.com/devicons/devicon/tree/master/icons -->
@@ -83,25 +91,45 @@ The application combines React and Spring Boot, utilizing TypeScript for enhance
 - Also you can change product image with the form
 
   ![Admin Form ](screenshots/adminForm.jpg)
-  
-  
-  
-  ............ testing ...................
-  ## Environment Variables
 
-The project utilizes environment variables for configuration. Please create a `.env` file in the root directory of the project based on the provided `.env.example` template. Assign the appropriate values to each environment variable.
+## Docker-compose Setup and Starting
 
-### .env Example
+To run the application using Docker Compose, please follow these steps:
 
-```plaintext
-# .env.example
-# Rename this file to .env and provide the necessary values for each environment variable.
+1. Make sure you have Docker and Docker Compose installed on your machine. If not, please refer to the Docker documentation for installation instructions specific to your operating system.
 
-# Example environment variable 1
-VARIABLE_NAME_1=
+```sh
+  docker-compose -v
+```
 
-# Example environment variable 2
-VARIABLE_NAME_2=
+2. Clone the repository to your local machine:
 
-# Example environment variable 3
-VARIABLE_NAME_3=
+```sh
+  git clone git@github.com:uch2ha/Razoo-Store.git
+```
+
+3. Navigate to the project directory:
+
+```sh
+  cd Razoo-Store
+```
+
+4. Create a .env file in the root directory of the project and provide the necessary environment variable values. You can use the provided .env.example file as a template.
+
+- Backend
+
+![Backend env ](screenshots/backend_env.png)
+
+- Frontend
+
+![Frontend env ](screenshots/frontend_env.png)
+
+5. Build and start the application containers using Docker Compose. This command will build the necessary Docker images and start the application containers in the background.
+
+```sh
+  docker-compose up -d
+```
+
+6. Once the containers are up and running, you can access the application in your web browser by visiting the specified URL and port.
+
+- Frontend url: http://localhost:5173
