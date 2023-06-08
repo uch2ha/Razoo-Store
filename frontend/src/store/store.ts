@@ -22,7 +22,7 @@ import { oAuth2Google } from './api/oAuth2Google.api'
 import { ordersApi } from './api/orders.api'
 import { usersApi } from './api/users.api'
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   [authenticationApi.reducerPath]: authenticationApi.reducer,
   [oAuth2Google.reducerPath]: oAuth2Google.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
@@ -40,7 +40,7 @@ const persistConfig = {
   whitelist: ['cart', 'filters', 'user']
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+export const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
   reducer: persistedReducer,
