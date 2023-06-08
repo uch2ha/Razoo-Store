@@ -39,13 +39,13 @@ https://razoo-store.netlify.app
 
 - Styling is achieved using Tailwind CSS, providing a modern and responsive design.
 
-- Redux is employed for state management, ensuring efficient data handling.
-
-- Docker is utilized for containerization, facilitating easy deployment and scalability.
-
 - PostgreSQL serves as the database for seamless data storage.
 
+- Redux is employed for state management, ensuring efficient data handling.
+
 - AWS s3 bucket, used to store product images.
+
+- Docker is utilized for containerization, facilitating easy deployment and scalability.
 
 - The frontend has been integrated with a testing framework called VITEST, which allows for comprehensive testing of the React components to ensure their functionality and reliability.
 
@@ -169,3 +169,5 @@ The project includes a comprehensive testing approach to ensure the quality and 
 ## GitHub Actions
 
 This project utilizes GitHub Actions to streamline the development workflow. Whenever a pull request is made to the main branch, a series of automated steps is triggered, such as an automated testing process and building the Docker Compose application, to ensure the application's reliability and quality before merging the changes. By automating the deployment process, potential errors or issues can be identified early on, leading to more efficient development.
+
+![GitHub Actions ](screenshots/github-actions.png)
