@@ -5,6 +5,8 @@ By working on this application, I aimed to strengthen my proficiency in React an
 
 https://razoo-store.netlify.app
 
+I am using a free plan to deploy my server, which may occasionally result in it not functioning optimally. If you encounter any issues, you have the option to access the site on the [AWS EC2](#aws-ec2) server, as it provides the exact same functionality.
+
 ## Sections
 
 - [Built with](#built-with)
@@ -27,6 +29,7 @@ https://razoo-store.netlify.app
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" title="Redux" alt="Redux" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" title="Docker" alt="Docker" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" title="PSQL" alt="PSQL" width="50" height="50"/>&nbsp;
+      <img src="https://seeklogo.com/images/A/aws-s3-simple-storage-service-logo-B280D33C1B-seeklogo.com.png" title="AWS S3" alt="AWS S3" width="50" height="50"/>&nbsp;
       <img src="https://seeklogo.com/images/V/vitest-logo-9ADDA575A5-seeklogo.com.png" title="Vitest" alt="Vitest" width="50" height="50"/>&nbsp;
       <img src="https://seeklogo.com/images/G/github-actions-logo-031704BDC6-seeklogo.com.png" title="GitActions" alt="GitActions" width="50" height="50"/>&nbsp;
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original-wordmark.svg" title="Tailwind" alt="Tailwind" width="50" height="50"/>&nbsp;
@@ -56,11 +59,11 @@ https://razoo-store.netlify.app
 
 ### Backend
 
-- Database:
+- Database
 
   ![Database](screenshots/database.jpg)
 
-- REST API, you can find all available routes on [https://razoo.onrender.com](https://razoo.onrender.com):
+- REST API, you can find all available routes on [https://razoo.onrender.com](https://razoo.onrender.com) or [here](http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:8080)
 
   ![Swagger](screenshots/swagger.jpg)
 
@@ -175,7 +178,7 @@ This project utilizes GitHub Actions to streamline the development workflow. Whe
 
 ## AWS EC2
 
-I'm also running a demo of my project on the EC2 server
+I'm also running my project on the AWS EC2 instance
 
 - Frontend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:5173
 - Backend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:8080
