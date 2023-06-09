@@ -14,6 +14,7 @@ https://razoo-store.netlify.app
 - [Docker-compose Setup and Starting](#docker-compose-setup-and-starting)
 - [Testing](#testing)
 - [GitHub Actions](#github-actions)
+- [AWS EC2](#aws-ec2)
 
 ## Built with
 
@@ -153,7 +154,7 @@ To run the application using Docker Compose, please follow these steps:
 
 6. Once the containers are up and running, you can access the application in your web browser by visiting the specified URL and port.
 
-- Frontend url: http://localhost:5173
+- Frontend: http://localhost:5173
 
 ## Testing
 
@@ -171,3 +172,12 @@ The project includes a comprehensive testing approach to ensure the quality and 
 This project utilizes GitHub Actions to streamline the development workflow. Whenever a pull request is made to the main branch, a series of automated steps is triggered, such as an automated testing process and building the Docker Compose application, to ensure the application's reliability and quality before merging the changes. By automating the deployment process, potential errors or issues can be identified early on, leading to more efficient development.
 
 ![GitHub Actions ](screenshots/github-actions.png)
+
+## AWS EC2
+
+I'm also running a demo of my project on the EC2 server
+
+- Frontend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:5173
+- Backend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:8080
+
+[GO TOP](#razoo-store)
