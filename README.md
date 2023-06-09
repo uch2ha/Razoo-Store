@@ -135,7 +135,7 @@ To run the application using Docker Compose, please follow these steps:
   cd Razoo-Store
 ```
 
-4. Create a .env file in the root directory of the project and provide the necessary environment variable values. You can use the provided .env.example file as a template.
+4. Create a .env file in the root of the backend or frontend directory and provide the necessary environment variable values. You can use the provided .env.example file as a template.
 
 - Backend
 
