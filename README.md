@@ -179,3 +179,5 @@ I'm also running a demo of my project on the EC2 server
 
 - Frontend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:5173
 - Backend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:8080
+
+[GO TOP](#razoo-store)
