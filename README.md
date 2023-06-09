@@ -5,6 +5,8 @@ By working on this application, I aimed to strengthen my proficiency in React an
 
 https://razoo-store.netlify.app
 
+I am using a free plan to deploy my server, which may occasionally result in it not functioning optimally. If you encounter any issues, you have the option to access the site on the [AWS EC2](#aws-ec2) server, as it provides the exact same functionality.
+
 ## Sections
 
 - [Built with](#built-with)
@@ -175,7 +177,7 @@ This project utilizes GitHub Actions to streamline the development workflow. Whe
 
 ## AWS EC2
 
-I'm also running a demo of my project on the EC2 server
+I'm also running my project on the AWS EC2 instance
 
 - Frontend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:5173
 - Backend: http://ec2-16-16-140-238.eu-north-1.compute.amazonaws.com:8080
