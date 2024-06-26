@@ -52,13 +52,22 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     }
   }
 
+  const getImageByProductId = (productId: string) => {
+    try {
+      return require(`../assets/${productId}.png`)
+    } catch (err) {
+      console.error(`Image for product ID ${productId} not found.`)
+      return null
+    }
+  }
+
   return (
     <div
       data-testid="product_card"
       className="flex flex-col justify-between items-center border-[1px] hover:scale-[1.015] btn"
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-center h-full">
-        <img src={product.imgBlob} alt="My Image" className="my-6 w-[50%]" />
+        <img src={getImageByProductId(product.productId)} alt="My Image" className="my-6 w-[50%]" />
         <p className="text-2xl uppercase">{product.name}</p>
         <p className="text-2xl uppercase">
           {product.category} ({product.size})
