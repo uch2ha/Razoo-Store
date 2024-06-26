@@ -2,7 +2,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IProduct } from '../../types'
 import { getTokenFromLS } from '../../utilities/localStorage'
-import { useGetProductImg } from '../../hooks/useGetProductImg'
+// import { useGetProductImg } from '../../hooks/useGetProductImg'
 import { IServerProduct } from '../../features/admin/components/products/AdminProducts'
 
 export const productsApi = createApi({
@@ -17,13 +17,15 @@ export const productsApi = createApi({
       }),
       transformResponse: async (res: IProduct[]) => {
         const transformedProducts: Promise<IProduct>[] = res.map(async (product) => {
-          try {
-            const imgBlob = await useGetProductImg(product.productId)
+          // try {
+          //   const imgBlob = await useGetProductImg(product.productId)
 
-            if (imgBlob) product.imgBlob = imgBlob
-          } catch (error) {
-            console.log(error)
-          }
+          //   if (imgBlob) product.imgBlob = imgBlob
+          // } catch (error) {
+          //   console.log(error)
+          // }
+
+          product.imgBlob = 'null'
 
           return product
         })
