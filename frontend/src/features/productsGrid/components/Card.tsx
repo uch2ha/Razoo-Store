@@ -54,7 +54,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
 
   const getImageByProductId = (productId: string) => {
     try {
-      return require(`../assets/${productId}.png`)
+      return require(`../${productId}.png`)
     } catch (err) {
       console.error(`Image for product ID ${productId} not found.`)
       return null
