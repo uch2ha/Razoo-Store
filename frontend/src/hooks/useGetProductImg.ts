@@ -16,3 +16,7 @@ export const useGetProductImg = async (productId: string) => {
     throw new Error('Failed to fetch product image')
   }
 }
+
+export const useGetFixedImageByProductId = (productId: string) => {
+  return `./${productId}.png`
+}

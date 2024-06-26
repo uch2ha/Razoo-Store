@@ -13,6 +13,7 @@ import {
   popUpSuccess1100ms
 } from '../../../components/notifications'
 import { ShowConfirmation } from '../../../components/PopUpConfirmation'
+import { useGetFixedImageByProductId } from '../../../hooks/useGetProductImg'
 
 interface ICardProps {
   product: IProduct
@@ -52,19 +53,6 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
     }
   }
 
-  const getFixedImageByProductId = (productId: string) => {
-    try {
-      // return require(`./${productId}.png`)
-      return `./${productId}.png` !== null ? `./${productId}.png` : undefined
-    } catch (err) {
-      console.log('====================================')
-      console.log(err)
-      console.log('====================================')
-      console.error(`Image for product ID ${productId} not found.`)
-      return undefined
-    }
-  }
-
   return (
     <div
       data-testid="product_card"
@@ -72,7 +60,7 @@ const Card: FC<ICardProps> = ({ product, setProductId, setIsEditProductId, setIs
       onClick={handleClick}>
       <div className="w-full flex flex-col items-center justify-center h-full">
         <img
-          src={getFixedImageByProductId(product.productId)}
+          src={useGetFixedImageByProductId(product.productId)}
           alt="My Image"
           className="my-6 w-[50%]"
         />

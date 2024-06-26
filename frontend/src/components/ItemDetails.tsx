@@ -10,6 +10,7 @@ import Button from './Button'
 // files
 import logo from '../assets/logo-column.png'
 import { popUpProductAddedToCart } from './notifications'
+import { useGetFixedImageByProductId } from '../hooks/useGetProductImg'
 
 interface IItemDetailsProps {
   handleClose: () => void
@@ -57,7 +58,13 @@ const ItemDetails: FC<IItemDetailsProps> = ({ handleClose, productId, isVisible 
         isVisible ? 'z-50 top-1/2 ' : 'top-[-100%]'
       }`}>
       <div className="w-[52%] bg-[#e2ded7] -tl-md -bl-md flex justify-center items-center">
-        {productId && <img src={product?.imgBlob} alt="My Image" className="max-h-[70%]" />}
+        {productId && (
+          <img
+            src={useGetFixedImageByProductId(product.productId)}
+            alt="My Image"
+            className="max-h-[70%]"
+          />
+        )}
         <img src={logo} className="absolute top-7 left-7 w-[90px]" />
       </div>
       <div className="w-[48%] bg-[#f2f2f0] flex justify-center items-center -tr-md -br-md overflow-x-scroll">
